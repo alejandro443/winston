@@ -1,16 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './infraestructure/database/module.database';
-import { InterfacesModule } from './interfaces/interfaces.module';
 import { CoreModule } from './core/core.module';
+import { InfraestructureModule } from './infraestructure/infraestructure.module';
+import { SharedModule } from './infraestructure/shared/shared.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    DatabaseModule,
+    InfraestructureModule,
+    SharedModule,
     CoreModule.register({ 
       modules: [
-        InterfacesModule
+        InfraestructureModule
       ] 
     })
   ],

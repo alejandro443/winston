@@ -3,8 +3,8 @@ import { ApiBadRequestResponse, ApiCreatedResponse, ApiInternalServerErrorRespon
 import { RolCreatorFilter } from "../exception_filters/rol.exception_filter";
 import { ROL_APPLICATION } from "src/core/shared/constants/application.constants";
 import { RolApplication } from "src/core/application/Rol/RolApplication";
-import { AppResponse } from "../../infraestructure/responses/app.response";
-import { Log } from "../../infraestructure/shared/log/Log";
+import { AppResponse } from "../../responses/app.response";
+import { Log } from "../../shared/log/Log";
 import { CreateRolRequestDto } from "../request_dto/Rol/create.rol.dto";
 
 @ApiTags('Roles')

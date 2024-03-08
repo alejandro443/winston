@@ -2,12 +2,12 @@ import { Sequelize } from 'sequelize-typescript';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../persistence/constants/constants';
 import { DatabaseConfiguration } from '../shared/configurations/database.configuration';
 
-import { Rol } from 'src/core/domain/entities/Rol.entity';
-import { AccessRol } from 'src/core/domain/entities/AccessRol.entity';
-import { UserAccess } from 'src/core/domain/entities/UserAccess.entity';
-import { User } from 'src/core/domain/entities/User.entity';
-import { Access } from 'src/core/domain/entities/Access.entity';
-import { UserRol } from 'src/core/domain/entities/UserRol.entity';
+import { Rol } from 'src/domain/entities/Rol.entity';
+import { AccessRol } from 'src/domain/entities/AccessRol.entity';
+import { UserAccess } from 'src/domain/entities/UserAccess.entity';
+import { User } from 'src/domain/entities/User.entity';
+import { Access } from 'src/domain/entities/Access.entity';
+import { UserRol } from 'src/domain/entities/UserRol.entity';
 
 export const ConnectionProvider = [
   {
