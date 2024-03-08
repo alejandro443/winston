@@ -1,0 +1,1 @@
+export const ROL_APPLICATION = 'ROL_APPLICATION'
