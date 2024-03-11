@@ -8,7 +8,7 @@ import {
   DeletedAt
 } from 'sequelize-typescript';
 
-@Table
+@Table({ tableName: 'types_clients' })
 export class TypeClient extends Model<TypeClient> {
   @Column({
     type: DataType.INTEGER,

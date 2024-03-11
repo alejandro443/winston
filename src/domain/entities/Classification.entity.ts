@@ -8,7 +8,7 @@ import {
   DeletedAt
 } from 'sequelize-typescript';
 
-@Table
+@Table({ tableName: 'classifications' })
 export class Classification extends Model<Classification> {
   @Column({
     type: DataType.INTEGER,
@@ -18,8 +18,7 @@ export class Classification extends Model<Classification> {
   id: number;
 
   @Column({
-    type: DataType.STRING,
-    unique: true
+    type: DataType.STRING
   })
   name: string;
   

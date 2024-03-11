@@ -8,6 +8,12 @@ import { UserAccess } from 'src/domain/entities/UserAccess.entity';
 import { User } from 'src/domain/entities/User.entity';
 import { Access } from 'src/domain/entities/Access.entity';
 import { UserRol } from 'src/domain/entities/UserRol.entity';
+import { Classification } from 'src/domain/entities/Classification.entity';
+import { Client } from 'src/domain/entities/Client.entity';
+import { Group } from 'src/domain/entities/Group.entity';
+import { TypeClient } from 'src/domain/entities/TypeClient.entity';
+import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
+import { Worker } from 'src/domain/entities/Worker.entity';
 
 export const ConnectionProvider = [
   {
@@ -30,13 +36,19 @@ export const ConnectionProvider = [
       const sequelize = new Sequelize(configuration);
       sequelize.addModels([
         Access,
-        AccessRol,
         Rol,
+        Worker,
         User,
+        Client,
+        Group,
+        TypeClient,
+        TypeWorker,
+        Classification,
+        AccessRol,
         UserAccess,
         UserRol
       ]);
-      await sequelize.sync();
+      await sequelize.sync({ alter: true });
       return sequelize;
     },
   },

@@ -8,7 +8,7 @@ import {
   DeletedAt
 } from 'sequelize-typescript';
 
-@Table
+@Table({ tableName: 'groups' })
 export class Group extends Model<Group> {
   @Column({
     type: DataType.INTEGER,

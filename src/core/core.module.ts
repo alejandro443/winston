@@ -1,6 +1,7 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
-import { ROL_APPLICATION } from './shared/constants/application.constants';
+import { CLASSIFICATION_APPLICATION, ROL_APPLICATION } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
+import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
 
 /**
  * Options for core module 
@@ -22,6 +23,14 @@ export class CoreModule {
       },
       inject: []
     }
+    
+    const ClassificationApplicationProvider = {
+      provide: CLASSIFICATION_APPLICATION,
+      useFactory() {
+        return new ClassificationApplicationService()
+      },
+      inject: []
+    }
 
     return {
       module: CoreModule,
@@ -30,10 +39,12 @@ export class CoreModule {
         ...modules
       ],
       providers: [
-        RolApplicationProvider
+        RolApplicationProvider,
+        ClassificationApplicationProvider
       ],
       exports: [
-        ROL_APPLICATION
+        ROL_APPLICATION,
+        CLASSIFICATION_APPLICATION
       ],
     }
   }

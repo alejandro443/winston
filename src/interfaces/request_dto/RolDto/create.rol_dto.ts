@@ -3,12 +3,14 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateRolRequestDto {
     
     @ApiProperty({
-        description: 'Nombre rol'
+        description: 'Nombre rol',
+        type: String
     })
     name: string;
     
     @ApiProperty({
-        description: 'Descripcion rol'
+        description: 'Descripcion rol',
+        type: String
     })
     description: string;
 

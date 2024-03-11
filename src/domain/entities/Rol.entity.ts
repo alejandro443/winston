@@ -12,7 +12,7 @@ import {
 import { AccessRol } from './AccessRol.entity';
 import { UserRol } from './UserRol.entity';
 
-@Table
+@Table({ tableName: 'roles' })
 export class Rol extends Model<Rol> {
   @Column({
     type: DataType.INTEGER,

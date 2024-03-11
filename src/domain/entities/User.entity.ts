@@ -14,7 +14,7 @@ import {
 
 import bcrypt from 'bcrypt';
 
-@Table
+@Table({ tableName: 'users' })
 export class User extends Model<User> {
   @Column({
     type: DataType.INTEGER,

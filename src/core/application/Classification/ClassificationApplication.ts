@@ -2,8 +2,8 @@ import { AllClassificationDto, NewClassificationDto, OneClassificationDto, Updat
 
 export interface ClassificationApplication {
   getAllClassification(): Promise<Array<AllClassificationDto>>
-  getOneClassification(code: String): Promise<OneClassificationDto>
-  createClassification(access: NewClassificationDto): Promise<OneClassificationDto>
-  updateClassification(access: UpdateClassificationDto): Promise<OneClassificationDto>
-  deleteClassification(code: String)
+  getOneClassification(code: string): Promise<OneClassificationDto>
+  createClassification(classification: NewClassificationDto): Promise<OneClassificationDto>
+  updateClassification(code: string, classification: UpdateClassificationDto): Promise<OneClassificationDto>
+  deleteClassification(code: string)
 }

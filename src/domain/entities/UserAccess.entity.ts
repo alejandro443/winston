@@ -12,7 +12,7 @@ import {
 } from 'sequelize-typescript';
 import { Access } from './Access.entity';
 
-@Table
+@Table({ tableName: 'users_accesses' })
 export class UserAccess extends Model<UserAccess> {
   @Column({
     type: DataType.INTEGER,

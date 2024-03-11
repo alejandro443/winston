@@ -4,7 +4,11 @@ export class AppResponse {
     @ApiProperty()
     status: number;
     @ApiProperty()
-    message: string;
+    statusText?: string;
+    @ApiProperty()
+    message?: string;
+    @ApiProperty()
+    customMessage?: object;
     @ApiProperty({ nullable: true})
     data?: any
 }
