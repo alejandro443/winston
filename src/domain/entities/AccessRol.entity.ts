@@ -3,15 +3,10 @@ import {
   Column,
   Model,
   DataType,
-  ForeignKey,
-  BelongsTo,
   CreatedAt,
   UpdatedAt,
-  DeletedAt,
-  HasMany
+  DeletedAt
 } from 'sequelize-typescript';
-import { Access } from './Access.entity';
-import { Rol } from './Rol.entity';
 
 @Table({ tableName: 'accesses_roles' })
 export class AccessRol extends Model<AccessRol> {
@@ -36,18 +31,4 @@ export class AccessRol extends Model<AccessRol> {
 
   @DeletedAt
   deleted_at: Date;
-
-  @ForeignKey(() => Access)
-  @Column({ field: 'accessId' })
-  accessId: number
-
-  @BelongsTo(() => Access)
-  access: Access
-  
-  @ForeignKey(() => Rol)
-  @Column({ field: 'rolId' })
-  rolId: number
-
-  @BelongsTo(() => Rol)
-  rol: Rol
 }

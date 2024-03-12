@@ -10,9 +10,12 @@ import {
   DeletedAt,
   BeforeUpdate,
   BeforeCreate,
+  HasMany,
 } from 'sequelize-typescript';
 
 import bcrypt from 'bcrypt';
+import { UserAccess } from './UserAccess.entity';
+import { UserRol } from './UserRol.entity';
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -89,6 +92,12 @@ export class User extends Model<User> {
   })
   unique_session_id: string;
 
+  @HasMany(() => UserAccess, { foreignKey: 'user_id', sourceKey: 'id' })
+  userAccesses: UserAccess[];
+
+  @HasMany(() => UserRol, { foreignKey: 'user_id', sourceKey: 'id' })
+  userRoles: UserRol[];
+
   @CreatedAt
   created_at: Date;
 
@@ -99,15 +108,6 @@ export class User extends Model<User> {
   deleted_at: Date;
 
   @BeforeCreate
-  static async BeforeCreateHook(usuario: User) {
-    try {
-      const salt = await bcrypt.genSalt(10);
-      usuario.password = await bcrypt.hashSync(usuario.password, salt);
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   @BeforeUpdate
   static async BeforeUpdateHook(usuario: User) {
     try {

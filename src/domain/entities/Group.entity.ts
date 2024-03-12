@@ -30,6 +30,7 @@ export class Group extends Model<Group> {
   
   @Column({
     type: DataType.STRING,
+    primaryKey: true
   })
   code: string;
 

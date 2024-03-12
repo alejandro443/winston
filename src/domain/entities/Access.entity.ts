@@ -3,61 +3,73 @@ import {
   Column,
   Model,
   DataType,
-  ForeignKey,
   BelongsTo,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
+  HasMany
 } from 'sequelize-typescript';
 import { AccessRol } from './AccessRol.entity';
 import { UserAccess } from './UserAccess.entity';
 
 @Table({ tableName: 'accesses' })
 export class Access extends Model<Access> {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+  @Column({ 
+    type: DataType.INTEGER, 
+    primaryKey: true, 
+    autoIncrement: true 
   })
   id: number;
 
-  @ForeignKey(() => Access)
-  @Column
-  fatherId: number;
+  @Column({ 
+    type: DataType.INTEGER 
+  })
+  father: number;
 
-  @BelongsTo(() => Access, 'fatherId')
-  father: Access;
+  @Column({ 
+    type: DataType.TEXT 
+  })
+  name: string;
 
-  @Column({
-    type: DataType.TEXT
+  @Column({ 
+    type: DataType.TEXT 
   })
   description: string;
 
-  @Column({
-    type: DataType.TEXT,
+  @Column({ 
+    type: DataType.TEXT 
   })
   url: string;
 
-  @Column({
-    type: DataType.TEXT
+  @Column({ 
+    type: DataType.TEXT 
   })
   icon: string;
 
-  @Column({
-    type: DataType.TEXT
+  @Column({ 
+    type: DataType.TEXT 
   })
   alt: string;
 
-  @Column({
-    type: DataType.INTEGER
+  @Column({ 
+    type: DataType.INTEGER 
   })
   priority: number;
 
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: true,
+  @Column({ 
+    type: DataType.BOOLEAN, 
+    defaultValue: true 
   })
   status: boolean;
+
+  @HasMany(() => AccessRol, { foreignKey: 'access_id', sourceKey: 'id' })
+  accessRoles: AccessRol[];
+
+  @HasMany(() => UserAccess, { foreignKey: 'access_id', sourceKey: 'id' })
+  userAccesses: UserAccess[];
+
+  @BelongsTo(() => Access, { as: 'parentAccess', foreignKey: 'father' })
+  parent: Access;
 
   @CreatedAt
   created_at: Date;
@@ -67,18 +79,4 @@ export class Access extends Model<Access> {
 
   @DeletedAt
   deleted_at: Date;
-
-  @ForeignKey(() => AccessRol)
-  @Column({ field: 'accessRolId' })
-  accessRolId: number
-
-  @BelongsTo(() => AccessRol)
-  accessRol: AccessRol
-  
-  @ForeignKey(() => UserAccess)
-  @Column({ field: 'userAccessId' })
-  userAccessId: number
-
-  @BelongsTo(() => UserAccess)
-  userAccess: UserAccess
 }

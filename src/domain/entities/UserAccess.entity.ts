@@ -3,14 +3,10 @@ import {
   Column,
   Model,
   DataType,
-  ForeignKey,
-  BelongsTo,
   CreatedAt,
   UpdatedAt,
-  DeletedAt,
-  HasMany
+  DeletedAt
 } from 'sequelize-typescript';
-import { Access } from './Access.entity';
 
 @Table({ tableName: 'users_accesses' })
 export class UserAccess extends Model<UserAccess> {
@@ -46,6 +42,4 @@ export class UserAccess extends Model<UserAccess> {
   @DeletedAt
   deleted_at: Date;
 
-  @HasMany(() => Access)
-  access: Access[]
 }

@@ -9,14 +9,20 @@ import {
   BelongsTo
 } from 'sequelize-typescript';
 
-@Table({ tableName: 'classifications' })
-export class Classification extends Model<Classification> {
+@Table({ tableName: 'types_documents' })
+export class TypeDocument extends Model<TypeDocument> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   })
   id: number;
+
+  @Column({
+    type: DataType.STRING,
+    primaryKey: true
+  })
+  code: string;
 
   @Column({
     type: DataType.STRING
@@ -27,19 +33,29 @@ export class Classification extends Model<Classification> {
     type: DataType.STRING,
   })
   description: string;
-  
+
+  @Column({
+    type: DataType.ARRAY(DataType.STRING), 
+    defaultValue: [] 
+  })
+  types: string[];
+
   @Column({
     type: DataType.STRING,
-    primaryKey: true
   })
-  code: string;
+  character_validation: string;
+  
+  @Column({
+    type: DataType.INTEGER,
+  })
+  length_validation: number;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   status: boolean;
-  
+
   @CreatedAt
   created_at: Date;
 

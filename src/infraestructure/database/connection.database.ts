@@ -14,6 +14,8 @@ import { Group } from 'src/domain/entities/Group.entity';
 import { TypeClient } from 'src/domain/entities/TypeClient.entity';
 import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
 import { Worker } from 'src/domain/entities/Worker.entity';
+import { Person } from 'src/domain/entities/Person.entity';
+import { TypeDocument } from 'src/domain/entities/TypeDocument.entity';
 
 export const ConnectionProvider = [
   {
@@ -35,18 +37,20 @@ export const ConnectionProvider = [
       }
       const sequelize = new Sequelize(configuration);
       sequelize.addModels([
+        AccessRol,
+        UserAccess,
+        UserRol,
         Access,
         Rol,
-        Worker,
         User,
         Client,
         Group,
+        Worker,
         TypeClient,
         TypeWorker,
         Classification,
-        AccessRol,
-        UserAccess,
-        UserRol
+        Person,
+        TypeDocument
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

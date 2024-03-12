@@ -5,21 +5,23 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
+  ForeignKey,
+  BelongsTo
 } from 'sequelize-typescript';
+import { Client } from './Client.entity';
 
 @Table({ tableName: 'types_clients' })
 export class TypeClient extends Model<TypeClient> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   })
   id: number;
 
   @Column({
-    type: DataType.STRING,
-    unique: true
+    type: DataType.STRING
   })
   name: string;
   
@@ -30,6 +32,8 @@ export class TypeClient extends Model<TypeClient> {
   
   @Column({
     type: DataType.STRING,
+    primaryKey: true,
+    unique: true
   })
   code: string;
 
@@ -38,6 +42,9 @@ export class TypeClient extends Model<TypeClient> {
     defaultValue: true,
   })
   status: boolean;
+
+  @BelongsTo(() => Client, 'type_client_code')
+  client: Client;
 
   @CreatedAt
   created_at: Date;

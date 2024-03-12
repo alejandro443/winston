@@ -3,14 +3,10 @@ import {
   Column,
   Model,
   DataType,
-  ForeignKey,
-  BelongsTo,
   CreatedAt,
   UpdatedAt,
-  DeletedAt,
-  HasMany
+  DeletedAt
 } from 'sequelize-typescript';
-import { Rol } from './Rol.entity';
 
 @Table({ tableName: 'users_roles' })
 export class UserRol extends Model<UserRol> {
@@ -35,7 +31,4 @@ export class UserRol extends Model<UserRol> {
 
   @DeletedAt
   deleted_at: Date;
-
-  @HasMany(() => Rol)
-  rol: Rol[]
 }

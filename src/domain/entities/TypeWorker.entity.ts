@@ -5,8 +5,10 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
+  BelongsTo
 } from 'sequelize-typescript';
+import { Worker } from './Worker.entity';
 
 @Table({ tableName: 'types_workers' })
 export class TypeWorker extends Model<TypeWorker> {
@@ -30,6 +32,7 @@ export class TypeWorker extends Model<TypeWorker> {
   
   @Column({
     type: DataType.STRING,
+    primaryKey: true
   })
   code: string;
 
@@ -38,6 +41,9 @@ export class TypeWorker extends Model<TypeWorker> {
     defaultValue: true,
   })
   status: boolean;
+
+  @BelongsTo(() => Worker, 'type_worker_code')
+  worker: Worker;
 
   @CreatedAt
   created_at: Date;
