@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://fhyona.com/" target="blank"><img src="[https://serviceimages.fhyona.com:4001/image/fhyona/logo/logo.jpeg](https://serviceimages.fhyona.com:4001/image/fhyona/logo/logo.jpeg)" alt="Fhyona Logo" /></a>
+  <a href="https://fhyona.com/" target="blank"><img src="images/fhyona_logo.svg" alt="Fhyona Logo" /></a>
 </p>
 
 ## Description
