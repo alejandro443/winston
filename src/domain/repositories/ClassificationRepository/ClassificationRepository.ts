@@ -1,4 +1,4 @@
-import { DeleteClassificationDto, NewClassificationDto, UpdateClassificationDto } from "src/core/shared/dto/Classification/classification_dto";
+import { NewClassificationDto, UpdateClassificationDto } from "src/core/shared/dto/Classification/classification_dto";
 import { Classification } from "src/domain/entities/Classification.entity";
 
 export class ClassificationRepository {

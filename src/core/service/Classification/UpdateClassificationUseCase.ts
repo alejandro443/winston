@@ -12,7 +12,6 @@ export class UpdateClassificationUseCase {
 async updateClassification(code: string, classification: UpdateClassificationDto) {
     try {
       var response = await this.classificationService.updateClassification(code, classification)
-      console.log(response)
       return {
         id: response.id,
         code: response.code,
