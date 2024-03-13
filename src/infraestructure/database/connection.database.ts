@@ -1,5 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
-import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../persistence/constants/constants';
+import {
+  SEQUELIZE,
+  DEVELOPMENT,
+  TEST,
+  PRODUCTION,
+} from '../persistence/constants/constants';
 import { DatabaseConfiguration } from '../shared/configurations/database.configuration';
 
 import { Rol } from 'src/domain/entities/Rol.entity';
@@ -21,7 +26,7 @@ export const ConnectionProvider = [
   {
     provide: SEQUELIZE,
     useFactory: async () => {
-      var configuration;
+      let configuration;
       switch (process.env.NODE_ENV as any) {
         case DEVELOPMENT:
           configuration = DatabaseConfiguration.development;
@@ -50,7 +55,7 @@ export const ConnectionProvider = [
         TypeWorker,
         Classification,
         Person,
-        TypeDocument
+        TypeDocument,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

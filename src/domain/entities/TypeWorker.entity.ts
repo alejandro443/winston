@@ -6,7 +6,7 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BelongsTo
+  BelongsTo,
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
 
@@ -21,18 +21,18 @@ export class TypeWorker extends Model<TypeWorker> {
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   name: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
-  
+
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   code: string;
 

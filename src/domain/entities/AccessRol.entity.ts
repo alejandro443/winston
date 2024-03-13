@@ -5,7 +5,7 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'accesses_roles' })

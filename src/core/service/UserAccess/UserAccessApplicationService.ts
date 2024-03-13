@@ -1,11 +1,9 @@
-import { UserAccessApplication } from "src/core/application/UserAccess/UserAccessApplication";
+// import { UserAccessApplication } from 'src/core/application/UserAccess/UserAccessApplication';
 
-export class UserAccessApplicationService implements UserAccessApplication {
+// export class UserAccessApplicationService implements UserAccessApplication {
+//   constructor() {}
 
-  constructor() {}
-
-  async createUserAccess(user_access) {
-    return 0
-  }
-
-}
+//   async createUserAccess(user_access) {
+//     return 0;
+//   }
+// }

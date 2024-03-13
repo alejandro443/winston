@@ -6,7 +6,6 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BelongsTo
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'classifications' })
@@ -19,18 +18,18 @@ export class Classification extends Model<Classification> {
   id: number;
 
   @Column({
-    type: DataType.STRING
+    type: DataType.STRING,
   })
   name: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
-  
+
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   code: string;
 
@@ -39,7 +38,7 @@ export class Classification extends Model<Classification> {
     defaultValue: true,
   })
   status: boolean;
-  
+
   @CreatedAt
   created_at: Date;
 

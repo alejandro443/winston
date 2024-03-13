@@ -1,11 +1,10 @@
-import { RolApplication } from "src/core/application/Rol/RolApplication";
+import { RolApplication } from '../../application/Rol/RolApplication';
 
 export class RolApplicationService implements RolApplication {
-
   constructor() {}
 
   async createRol(rol) {
-    return 0
+    console.log(rol);
+    return 0;
   }
-
 }

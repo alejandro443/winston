@@ -1,26 +1,24 @@
-import { ClientService } from "src/domain/services/ClientService/ClientService"
+import { ClientService } from 'src/domain/services/ClientService/ClientService';
 
 export class GetAllClientUseCase {
-
-  constructor(
-    private clientService?: ClientService
-  ) {
-    this.clientService = new ClientService()
+  constructor(private clientService?: ClientService) {
+    this.clientService = new ClientService();
   }
 
   async getAllClient() {
     try {
-      var response = await this.clientService.getAllClient()
+      const response = await this.clientService.getAllClient();
 
-      return response.map(client => ({
+      return response.map((client) => ({
         id: client.id,
         code: client.code,
-        name: client.name,
-        description: client.description,
-        status: client.status
-      }))
+        status: client.status,
+        user_id: client.user_id,
+        person_identification: client.person_identification,
+        type_client_code: client.type_client_code,
+      }));
     } catch (error) {
-      return error
+      return error;
     }
   }
 }

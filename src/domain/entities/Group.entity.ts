@@ -5,7 +5,7 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'groups' })
@@ -19,18 +19,18 @@ export class Group extends Model<Group> {
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   name: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
-  
+
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   code: string;
 

@@ -1,50 +1,48 @@
-import { NewTypeClientDto } from "src/core/shared/dto/TypeClient/type_client_dto";
-import { TypeClientRepository } from "src/domain/repositories/TypeClientRepository/TypeClientRepository";
+import { NewTypeClientDto } from 'src/core/shared/dto/TypeClient/type_client_dto';
+import { TypeClientRepository } from 'src/domain/repositories/TypeClientRepository/TypeClientRepository';
 
 export class TypeClientService {
-  constructor(
-    private repository?: TypeClientRepository
-  ) { 
-    this.repository = new TypeClientRepository()
+  constructor(private repository?: TypeClientRepository) {
+    this.repository = new TypeClientRepository();
   }
 
   async getOneTypeClient(code: string) {
     try {
-      return this.repository.findOne(code)
+      return this.repository.findOne(code);
     } catch (error) {
-      return error
+      return error;
     }
   }
-  
+
   async getAllTypeClient() {
     try {
-      return this.repository.findAll()
+      return this.repository.findAll();
     } catch (error) {
-      return error
+      return error;
     }
   }
-  
+
   async createTypeClient(type_client: NewTypeClientDto) {
     try {
-      return this.repository.create(type_client)
+      return this.repository.create(type_client);
     } catch (error) {
-      return error
+      return error;
     }
   }
-  
+
   async updateTypeClient(code: string, type_client: NewTypeClientDto) {
     try {
-      return this.repository.update(code, type_client)
+      return this.repository.update(code, type_client);
     } catch (error) {
-      return error
+      return error;
     }
   }
-  
+
   async deleteTypeClient(code: string) {
     try {
-      return this.repository.deleted(code)
+      return this.repository.deleted(code);
     } catch (error) {
-      return error
+      return error;
     }
   }
 }

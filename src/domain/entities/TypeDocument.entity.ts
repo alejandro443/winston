@@ -6,7 +6,6 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BelongsTo
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'types_documents' })
@@ -20,23 +19,23 @@ export class TypeDocument extends Model<TypeDocument> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   code: string;
 
   @Column({
-    type: DataType.STRING
+    type: DataType.STRING,
   })
   name: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
 
   @Column({
-    type: DataType.ARRAY(DataType.STRING), 
-    defaultValue: [] 
+    type: DataType.ARRAY(DataType.STRING),
+    defaultValue: [],
   })
   types: string[];
 
@@ -44,7 +43,7 @@ export class TypeDocument extends Model<TypeDocument> {
     type: DataType.STRING,
   })
   character_validation: string;
-  
+
   @Column({
     type: DataType.INTEGER,
   })

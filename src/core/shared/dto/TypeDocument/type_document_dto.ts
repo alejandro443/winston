@@ -1,4 +1,4 @@
-import { IsBoolean, IsDateString, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 class TypeDocumentDto {
   @IsNumber()
@@ -6,7 +6,7 @@ class TypeDocumentDto {
 
   @IsString()
   name?: string;
-  
+
   @IsString()
   description?: string;
 
@@ -18,7 +18,7 @@ class TypeDocumentDto {
 }
 export class DeleteTypeDocumentDto {
   @IsDateString()
-  deleted_at?: Date
+  deleted_at?: Date;
 }
 
 export interface OneTypeDocumentDto extends TypeDocumentDto {}

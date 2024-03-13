@@ -1,11 +1,9 @@
-import { UserApplication } from "src/core/application/User/UserApplication";
+// import { UserApplication } from 'src/core/application/User/UserApplication';
 
-export class UserApplicationService implements UserApplication {
+// export class UserApplicationService implements UserApplication {
+//   constructor() {}
 
-  constructor() {}
-
-  async createUser(user) {
-    return 0
-  }
-
-}
+//   async createUser(user) {
+//     return 0;
+//   }
+// }

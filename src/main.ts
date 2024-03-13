@@ -4,7 +4,7 @@ import { GenerateSwaggerDocs } from './infraestructure/shared/swagger/generate-s
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  GenerateSwaggerDocs(app)
+  GenerateSwaggerDocs(app);
 
   await app.listen(5555);
 }

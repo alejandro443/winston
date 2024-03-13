@@ -3,8 +3,6 @@ import {
   Column,
   Model,
   DataType,
-  ForeignKey,
-  BelongsTo,
   CreatedAt,
   UpdatedAt,
   DeletedAt,
@@ -114,7 +112,7 @@ export class User extends Model<User> {
       const salt = await bcrypt.genSalt(10);
       usuario.password = await bcrypt.hashSync(usuario.password, salt);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }

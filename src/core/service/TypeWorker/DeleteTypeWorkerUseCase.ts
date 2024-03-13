@@ -1,19 +1,16 @@
-import { TypeWorkerService } from "src/domain/services/TypeWorkerService/TypeWorkerService"
+import { TypeWorkerService } from 'src/domain/services/TypeWorkerService/TypeWorkerService';
 
 export class DeleteTypeWorkerUseCase {
-
-  constructor(
-    private type_workerService?: TypeWorkerService
-  ) {
-    this.type_workerService = new TypeWorkerService()
+  constructor(private type_workerService?: TypeWorkerService) {
+    this.type_workerService = new TypeWorkerService();
   }
 
   async deleteTypeWorker(code: string) {
     try {
-      var response = await this.type_workerService.deleteTypeWorker(code)
-      return { id: response.id }
+      const response = await this.type_workerService.deleteTypeWorker(code);
+      return { id: response.id };
     } catch (error) {
-      return error
+      return error;
     }
   }
 }

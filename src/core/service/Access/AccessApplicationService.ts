@@ -1,11 +1,9 @@
-import { AccessApplication } from "src/core/application/Access/AccessApplication";
+// import { AccessApplication } from 'src/core/application/Access/AccessApplication';
 
-export class AccessApplicationService implements AccessApplication {
+// export class AccessApplicationService implements AccessApplication {
+//   constructor() {}
 
-  constructor() {}
-
-  async createAccess(rol) {
-    return 0
-  }
-
-}
+//   async createAccess(rol) {
+//     return 0;
+//   }
+// }

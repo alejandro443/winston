@@ -1,11 +1,9 @@
-import { UserRolApplication } from "src/core/application/UserRol/UserRolApplication";
+// import { UserRolApplication } from 'src/core/application/UserRol/UserRolApplication';
 
-export class UserRolApplicationService implements UserRolApplication {
+// export class UserRolApplicationService implements UserRolApplication {
+//   constructor() {}
 
-  constructor() {}
-
-  async createUserRol(user_rol) {
-    return 0
-  }
-
-}
+//   async createUserRol(user_rol) {
+//     return 0;
+//   }
+// }

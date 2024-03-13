@@ -7,58 +7,58 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasMany
+  HasMany,
 } from 'sequelize-typescript';
 import { AccessRol } from './AccessRol.entity';
 import { UserAccess } from './UserAccess.entity';
 
 @Table({ tableName: 'accesses' })
 export class Access extends Model<Access> {
-  @Column({ 
-    type: DataType.INTEGER, 
-    primaryKey: true, 
-    autoIncrement: true 
+  @Column({
+    type: DataType.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
   })
   id: number;
 
-  @Column({ 
-    type: DataType.INTEGER 
+  @Column({
+    type: DataType.INTEGER,
   })
   father: number;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   name: string;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   description: string;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   url: string;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   icon: string;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   alt: string;
 
-  @Column({ 
-    type: DataType.INTEGER 
+  @Column({
+    type: DataType.INTEGER,
   })
   priority: number;
 
-  @Column({ 
-    type: DataType.BOOLEAN, 
-    defaultValue: true 
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: true,
   })
   status: boolean;
 

@@ -5,7 +5,7 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt
+  DeletedAt,
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'users_accesses' })
@@ -18,12 +18,12 @@ export class UserAccess extends Model<UserAccess> {
   id: number;
 
   @Column({
-    type: DataType.TEXT
+    type: DataType.TEXT,
   })
   title: string;
 
   @Column({
-    type: DataType.TEXT
+    type: DataType.TEXT,
   })
   description: string;
 
@@ -41,5 +41,4 @@ export class UserAccess extends Model<UserAccess> {
 
   @DeletedAt
   deleted_at: Date;
-
 }

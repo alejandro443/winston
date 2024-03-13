@@ -6,8 +6,7 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  ForeignKey,
-  BelongsTo
+  BelongsTo,
 } from 'sequelize-typescript';
 import { Client } from './Client.entity';
 
@@ -16,24 +15,24 @@ export class TypeClient extends Model<TypeClient> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   })
   id: number;
 
   @Column({
-    type: DataType.STRING
+    type: DataType.STRING,
   })
   name: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
-  
+
   @Column({
     type: DataType.STRING,
     primaryKey: true,
-    unique: true
+    unique: true,
   })
   code: string;
 

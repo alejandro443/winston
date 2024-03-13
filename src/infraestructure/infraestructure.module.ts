@@ -5,9 +5,6 @@ import { DatabaseModule } from './database/module.database';
 @Module({
   providers: [],
   exports: [],
-  imports: [
-    DatabaseModule,
-    InterfacesModule
-  ]
+  imports: [DatabaseModule, InterfacesModule],
 })
-export class InfraestructureModule { }
+export class InfraestructureModule {}

@@ -1,53 +1,41 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
-import { CLASSIFICATION_APPLICATION, ROL_APPLICATION } from './shared/constants/application.constants';
+import {
+  CLASSIFICATION_APPLICATION,
+  ROL_APPLICATION,
+} from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
 
-/**
- * Options for core module 
- */
 export type CoreModuleOptions = {
   modules: Type[];
-  adapters?: {}
-}
+  adapters?: Record<string, never>;
+};
 
 @Module({})
 export class CoreModule {
-
-  static register({ modules, adapters }: CoreModuleOptions): DynamicModule {
-
+  static register({ modules }: CoreModuleOptions): DynamicModule {
     const RolApplicationProvider = {
       provide: ROL_APPLICATION,
       useFactory() {
-        return new RolApplicationService()
+        return new RolApplicationService();
       },
-      inject: []
-    }
-    
+      inject: [],
+    };
+
     const ClassificationApplicationProvider = {
       provide: CLASSIFICATION_APPLICATION,
       useFactory() {
-        return new ClassificationApplicationService()
+        return new ClassificationApplicationService();
       },
-      inject: []
-    }
+      inject: [],
+    };
 
     return {
       module: CoreModule,
       global: true,
-      imports: [
-        ...modules
-      ],
-      providers: [
-        RolApplicationProvider,
-        ClassificationApplicationProvider
-      ],
-      exports: [
-        ROL_APPLICATION,
-        CLASSIFICATION_APPLICATION
-      ],
-    }
+      imports: [...modules],
+      providers: [RolApplicationProvider, ClassificationApplicationProvider],
+      exports: [ROL_APPLICATION, CLASSIFICATION_APPLICATION],
+    };
   }
-
 }
-

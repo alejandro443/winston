@@ -6,33 +6,33 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasMany
+  HasMany,
 } from 'sequelize-typescript';
 import { AccessRol } from './AccessRol.entity';
 import { UserRol } from './UserRol.entity';
 
 @Table({ tableName: 'roles' })
 export class Rol extends Model<Rol> {
-  @Column({ 
-    type: DataType.INTEGER, 
-    primaryKey: true, 
-    autoIncrement: true 
+  @Column({
+    type: DataType.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
   })
   id: number;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   name: string;
 
-  @Column({ 
-    type: DataType.TEXT 
+  @Column({
+    type: DataType.TEXT,
   })
   description: string;
 
-  @Column({ 
-    type: DataType.BOOLEAN, 
-    defaultValue: true 
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: true,
   })
   status: boolean;
 

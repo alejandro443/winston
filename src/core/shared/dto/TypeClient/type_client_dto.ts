@@ -1,4 +1,4 @@
-import { IsBoolean, IsDateString, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 class TypeClientDto {
   @IsNumber()
@@ -6,7 +6,7 @@ class TypeClientDto {
 
   @IsString()
   name?: string;
-  
+
   @IsString()
   description?: string;
 
@@ -18,7 +18,7 @@ class TypeClientDto {
 }
 export class DeleteTypeClientDto {
   @IsDateString()
-  deleted_at?: Date
+  deleted_at?: Date;
 }
 
 export interface OneTypeClientDto extends TypeClientDto {}
