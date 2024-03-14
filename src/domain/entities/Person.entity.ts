@@ -1,3 +1,4 @@
+import { PhonesMetadata } from '@src/infraestructure/shared/interfaces/PhonesMetadata';
 import {
   Table,
   Column,
@@ -165,8 +166,15 @@ export class Person extends Model<Person> {
   })
   main_document_type: string;
 
-  @Column({ type: DataType.JSON })
-  documents: DocumentsMetadata;
+  @Column({ 
+    type: DataType.ARRAY(DataType.JSON)
+  })
+  documents: DocumentsMetadata[];
+
+  @Column({ 
+    type: DataType.ARRAY(DataType.JSON)
+  })
+  phones: PhonesMetadata[];
 
   @CreatedAt
   created_at: Date;
