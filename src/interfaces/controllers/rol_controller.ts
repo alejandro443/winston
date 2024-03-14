@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post, UseFilters } from '@nestjs/common';
+import { Body, Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { RolCreatorFilter } from '../exception_filters/rol.exception_filter';
 import { AppResponse } from '../../infraestructure/responses/app.response';
@@ -16,7 +16,7 @@ export class RolController {
   // @ApiBadRequestResponse({ description: 'Invalid user id or supplier id' })
   // @ApiInternalServerErrorResponse({ description: 'Error server' })
   // @ApiCreatedResponse({ description: 'The record has been successfully created.', type: AppResponse })
-  @HttpErrorByCode(201)
+  @HttpCode(201)
   @Post()
   async createRol(@Body() request: CreateRolRequestDto): Promise<AppResponse> {
     Log.info(`(POST) Create rol`);
