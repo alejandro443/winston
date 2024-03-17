@@ -17,12 +17,12 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { GROUP_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetGroupRequestDto } from '../request_dto/GroupDto/get.group_dto';
 import { CreateGroupRequestDto } from '../request_dto/GroupDto/create.group_dto';
 import { GroupApplication } from 'src/core/application/Group/GroupApplication';
 import { GroupCreatorFilter } from '../exception_filters/group.exception_filter';
+import { GroupResponse } from '../responses/group.response';
 
 @ApiTags('Group')
 @Controller('/group')
@@ -37,11 +37,11 @@ export class GroupController {
   @ApiBadRequestResponse({ description: 'Invalid group code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: GroupResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllGroup(): Promise<AppResponse> {
+  async getAllGroup(): Promise<GroupResponse> {
     Log.info(`(Get) Get all groups`);
 
     const groups = await this.application.getAllGroup();
@@ -55,13 +55,13 @@ export class GroupController {
   @ApiBadRequestResponse({ description: 'Invalid group code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: GroupResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneGroup(
     @Param() request: GetGroupRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<GroupResponse> {
     Log.info(`(Get) Get group code: ${request.code}`);
 
     const group = await this.application.getOneGroup(request.code);
@@ -75,13 +75,13 @@ export class GroupController {
   @ApiBadRequestResponse({ description: 'Invalid group code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: GroupResponse,
   })
   @HttpCode(201)
   @Post()
   async createGroup(
     @Body() request: CreateGroupRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<GroupResponse> {
     Log.info(`(POST) Create group`);
 
     const group = await this.application.createGroup(request);
@@ -95,14 +95,14 @@ export class GroupController {
   @ApiBadRequestResponse({ description: 'Invalid group code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: GroupResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateGroup(
     @Param() params: GetGroupRequestDto,
     @Body() request: CreateGroupRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<GroupResponse> {
     Log.info(`(PUT) Put group`);
 
     const group = await this.application.updateGroup(params.code, request);
@@ -116,11 +116,11 @@ export class GroupController {
   @ApiBadRequestResponse({ description: 'Invalid group code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: GroupResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
-  async deleteGroup(@Param() params: GetGroupRequestDto): Promise<AppResponse> {
+  async deleteGroup(@Param() params: GetGroupRequestDto): Promise<GroupResponse> {
     Log.info(`(Delete) Delete group ${params.code}`);
 
     const group = await this.application.deleteGroup(params.code);

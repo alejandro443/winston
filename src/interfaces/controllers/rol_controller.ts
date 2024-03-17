@@ -1,11 +1,11 @@
 import { Body, Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { RolCreatorFilter } from '../exception_filters/rol.exception_filter';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { CreateRolRequestDto } from '../request_dto/RolDto/create.rol_dto';
 import { ROL_APPLICATION } from '../../core/shared/constants/application.constants';
 import { RolApplication } from '../../core/application/Rol/RolApplication';
+import { RolResponse } from '../responses/rol.response';
 
 @ApiTags('Roles')
 @Controller('/rol')
@@ -18,7 +18,7 @@ export class RolController {
   // @ApiCreatedResponse({ description: 'The record has been successfully created.', type: AppResponse })
   @HttpCode(201)
   @Post()
-  async createRol(@Body() request: CreateRolRequestDto): Promise<AppResponse> {
+  async createRol(@Body() request: CreateRolRequestDto): Promise<RolResponse> {
     Log.info(`(POST) Create rol`);
 
     const rolId = await this.application.createRol(request);

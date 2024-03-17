@@ -17,12 +17,12 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { CLIENT_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClientRequestDto } from '../request_dto/ClientDto/get.client_dto';
 import { CreateClientRequestDto } from '../request_dto/ClientDto/create.client_dto';
 import { ClientApplication } from 'src/core/application/Client/ClientApplication';
 import { ClientCreatorFilter } from '../exception_filters/client.exception_filter';
+import { ClientResponse } from '../responses/client.response';
 
 @ApiTags('Client')
 @Controller('/client')
@@ -37,31 +37,31 @@ export class ClientController {
   @ApiBadRequestResponse({ description: 'Invalid client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: ClientResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllClient(): Promise<AppResponse> {
-    Log.info(`(Get) Get all classifications`);
+  async getAllClient(): Promise<ClientResponse> {
+    Log.info(`(Get) Get all clients`);
 
-    const classifications = await this.application.getAllClient();
+    const clients = await this.application.getAllClient();
     return {
       status: 201,
-      message: `Get all classifications`,
-      data: classifications,
+      message: `Get all clients`,
+      data: clients,
     };
   }
 
   @ApiBadRequestResponse({ description: 'Invalid client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: ClientResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneClient(
     @Param() request: GetClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClientResponse> {
     Log.info(`(Get) Get client code: ${request.code}`);
 
     const client = await this.application.getOneClient(request.code);
@@ -75,13 +75,13 @@ export class ClientController {
   @ApiBadRequestResponse({ description: 'Invalid client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: ClientResponse,
   })
   @HttpCode(201)
   @Post()
   async createClient(
     @Body() request: CreateClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClientResponse> {
     Log.info(`(POST) Create client`);
 
     const client = await this.application.createClient(request);
@@ -95,14 +95,14 @@ export class ClientController {
   @ApiBadRequestResponse({ description: 'Invalid client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: ClientResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateClient(
     @Param() params: GetClientRequestDto,
     @Body() request: CreateClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
 
     const client = await this.application.updateClient(params.code, request);
@@ -116,13 +116,13 @@ export class ClientController {
   @ApiBadRequestResponse({ description: 'Invalid client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: ClientResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
   async deleteClient(
     @Param() params: GetClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClientResponse> {
     Log.info(`(Delete) Delete client ${params.code}`);
 
     const client = await this.application.deleteClient(params.code);

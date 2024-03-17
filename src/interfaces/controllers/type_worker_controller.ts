@@ -17,12 +17,12 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { TYPE_WORKER_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeWorkerRequestDto } from '../request_dto/TypeWorkerDto/get.type_worker_dto';
 import { CreateTypeWorkerRequestDto } from '../request_dto/TypeWorkerDto/create.type_worker_dto';
 import { TypeWorkerApplication } from 'src/core/application/TypeWorker/TypeWorkerApplication';
 import { TypeWorkerCreatorFilter } from '../exception_filters/type_worker.exception_filter';
+import { TypeWorkerResponse } from '../responses/type_worker.response';
 
 @ApiTags('TypeWorker')
 @Controller('/type_worker')
@@ -37,11 +37,11 @@ export class TypeWorkerController {
   @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeWorkerResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllTypeWorker(): Promise<AppResponse> {
+  async getAllTypeWorker(): Promise<TypeWorkerResponse> {
     Log.info(`(Get) Get all type_workers`);
 
     const type_workers = await this.application.getAllTypeWorker();
@@ -55,13 +55,13 @@ export class TypeWorkerController {
   @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeWorkerResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneTypeWorker(
     @Param() request: GetTypeWorkerRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeWorkerResponse> {
     Log.info(`(Get) Get type_worker code: ${request.code}`);
 
     const type_worker = await this.application.getOneTypeWorker(request.code);
@@ -75,13 +75,13 @@ export class TypeWorkerController {
   @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: TypeWorkerResponse,
   })
   @HttpCode(201)
   @Post()
   async createTypeWorker(
     @Body() request: CreateTypeWorkerRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeWorkerResponse> {
     Log.info(`(POST) Create type_worker`);
 
     const type_worker = await this.application.createTypeWorker(request);
@@ -95,14 +95,14 @@ export class TypeWorkerController {
   @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: TypeWorkerResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateTypeWorker(
     @Param() params: GetTypeWorkerRequestDto,
     @Body() request: CreateTypeWorkerRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeWorkerResponse> {
     Log.info(`(PUT) Put type_worker`);
 
     const type_worker = await this.application.updateTypeWorker(
@@ -119,13 +119,13 @@ export class TypeWorkerController {
   @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: TypeWorkerResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
   async deleteTypeWorker(
     @Param() params: GetTypeWorkerRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeWorkerResponse> {
     Log.info(`(Delete) Delete type_worker ${params.code}`);
 
     const type_worker = await this.application.deleteTypeWorker(params.code);

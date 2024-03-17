@@ -42,12 +42,6 @@ export class User extends Model<User> {
   code: string;
 
   @Column({
-    type: DataType.TEXT,
-    allowNull: false,
-  })
-  active: boolean;
-
-  @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
@@ -56,7 +50,7 @@ export class User extends Model<User> {
   @Column({
     type: DataType.BOOLEAN,
   })
-  consultant: string;
+  consultant: boolean;
 
   @Column({
     type: DataType.DATE,
