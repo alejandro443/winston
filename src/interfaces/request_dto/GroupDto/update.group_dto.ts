@@ -5,17 +5,17 @@ export class UpdateGroupRequestDto {
     description: 'Nombre del grupo',
     type: String,
   })
-  name: string;
+  name?: string;
 
   @ApiProperty({
     description: 'Descripcion del grupo',
     type: String,
   })
-  description: string;
+  description?: string;
 
   @ApiProperty({
     description: 'Estado del grupo (Activo/Desactivado)',
     type: Boolean,
   })
-  status: boolean;
+  status?: boolean;
 }

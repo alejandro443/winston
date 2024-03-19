@@ -1,7 +1,4 @@
-import {
-  NewUserDto,
-  UpdateUserDto,
-} from 'src/core/shared/dto/User/user_dto';
+import { NewUserDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { User } from 'src/domain/entities/User.entity';
 
 export class UserRepository {
@@ -47,7 +44,7 @@ export class UserRepository {
     }
   }
 
-  async getUser(user){
+  async getUser(user) {
     try {
       return User.findOne({ where: { user: user } });
     } catch (error) {

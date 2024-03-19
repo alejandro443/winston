@@ -5,9 +5,7 @@ import { LoginDto } from '@src/core/shared/dto/authentication/authentication_dto
 export class AuthenticationApplicationService
   implements AuthenticationApplication
 {
-  constructor(
-    private loginAuthUseCase?: LoginAuthUseCase
-  ) {
+  constructor(private loginAuthUseCase?: LoginAuthUseCase) {
     this.loginAuthUseCase = new LoginAuthUseCase();
   }
 

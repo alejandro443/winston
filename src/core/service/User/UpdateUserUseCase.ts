@@ -6,16 +6,10 @@ export class UpdateUserUseCase {
     this.userService = new UserService();
   }
 
-  async updateUser(
-    code: string,
-    user: UpdateUserDto,
-  ) {
+  async updateUser(code: string, user: UpdateUserDto) {
     try {
-      const response = await this.userService.updateUser(
-        code,
-        user,
-      );
-      return {...response};
+      const response = await this.userService.updateUser(code, user);
+      return { ...response };
     } catch (error) {
       return error;
     }

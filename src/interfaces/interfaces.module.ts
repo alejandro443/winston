@@ -15,7 +15,7 @@ import { WorkerController } from './controllers/worker_controller';
   controllers: [
     RootController,
     AuthController,
-    RolController, 
+    RolController,
     ClassificationController,
     UserController,
     ClientController,
@@ -23,7 +23,7 @@ import { WorkerController } from './controllers/worker_controller';
     TypeClientController,
     TypeDocumentController,
     TypeWorkerController,
-    WorkerController
+    WorkerController,
   ],
 })
 export class InterfacesModule {}

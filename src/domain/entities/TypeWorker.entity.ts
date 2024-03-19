@@ -6,7 +6,6 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasMany,
   HasOne,
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';

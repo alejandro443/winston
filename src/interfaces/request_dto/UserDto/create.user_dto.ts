@@ -16,14 +16,14 @@ export class CreateUserRequestDto {
   @ApiProperty({
     description: '¿Consultor CUDESI?',
     type: Boolean,
-    default: false
+    default: false,
   })
   consultant?: boolean;
-  
+
   @ApiProperty({
     description: 'Estado del usuario (Activo/Desactivado)',
     type: Boolean,
-    default: true
+    default: true,
   })
   status?: boolean;
 }

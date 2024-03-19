@@ -31,10 +31,7 @@ export class UserService {
     }
   }
 
-  async updateUser(
-    code: string,
-    user: NewUserDto,
-  ) {
+  async updateUser(code: string, user: NewUserDto) {
     try {
       return this.repository.update(code, user);
     } catch (error) {
@@ -50,7 +47,7 @@ export class UserService {
     }
   }
 
-  async getUser(user: string){
+  async getUser(user: string) {
     try {
       return this.repository.getUser(user);
     } catch (error) {
