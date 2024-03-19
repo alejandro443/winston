@@ -21,6 +21,13 @@ import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
 import { Worker } from 'src/domain/entities/Worker.entity';
 import { Person } from 'src/domain/entities/Person.entity';
 import { TypeDocument } from 'src/domain/entities/TypeDocument.entity';
+import { ClientCompany } from '@src/domain/entities/ClientCompany.entity';
+import { ClientCompanyWorker } from '@src/domain/entities/ClientCompanyWorker.entity';
+import { ClientDeliveryMethod } from '@src/domain/entities/ClientDeliveryMethod.entity';
+import { ClientDeliveryPoint } from '@src/domain/entities/ClientDeliveryPoint.entity';
+import { CompanyPosition } from '@src/domain/entities/CompanyPosition.entity';
+import { DeliveryMethod } from '@src/domain/entities/DeliveryMethod.entity';
+import { DeliveryPoint } from '@src/domain/entities/DeliveryPoint.entity';
 
 export const ConnectionProvider = [
   {
@@ -56,6 +63,13 @@ export const ConnectionProvider = [
         Classification,
         Person,
         TypeDocument,
+        ClientCompany,
+        ClientCompanyWorker,
+        ClientDeliveryMethod,
+        ClientDeliveryPoint,
+        CompanyPosition,
+        DeliveryMethod,
+        DeliveryPoint
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

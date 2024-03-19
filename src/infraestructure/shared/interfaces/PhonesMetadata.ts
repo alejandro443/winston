@@ -1,4 +1,4 @@
 export interface PhonesMetadata {
-  type: string;
-  identification: string;
+  number: string;
+  company: string;
 }
