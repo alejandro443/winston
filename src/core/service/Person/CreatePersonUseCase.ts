@@ -9,7 +9,7 @@ export class CreatePersonUseCase {
   async createPerson(person: NewPersonDto) {
     try {
       const response = await this.personService.createPerson(person);
-      return { ...response };
+      return { ...response.dataValues };
     } catch (error) {
       return error;
     }

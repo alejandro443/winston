@@ -211,7 +211,7 @@ export class PersonDto {
     default: true,
   })
   @IsBoolean()
-  status: boolean;
+  status?: boolean;
 }
 
 export class DeletePersonDto {
