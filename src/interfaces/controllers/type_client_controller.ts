@@ -17,16 +17,16 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { TYPE_CLIENT_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeClientRequestDto } from '../request_dto/TypeClientDto/get.type_client_dto';
 import { CreateTypeClientRequestDto } from '../request_dto/TypeClientDto/create.type_client_dto';
 import { TypeClientApplication } from 'src/core/application/TypeClient/TypeClientApplication';
-import { TypeClientCreatorFilter } from '../exception_filters/type_client.exception_filter';
+import { TypeClientResponse } from '../responses/type_client.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('TypeClient')
 @Controller('/type_client')
-@UseFilters(TypeClientCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class TypeClientController {
   constructor(
@@ -37,11 +37,11 @@ export class TypeClientController {
   @ApiBadRequestResponse({ description: 'Invalid type_client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeClientResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllTypeClient(): Promise<AppResponse> {
+  async getAllTypeClient(): Promise<TypeClientResponse> {
     Log.info(`(Get) Get all type_clients`);
 
     const type_clients = await this.application.getAllTypeClient();
@@ -55,13 +55,13 @@ export class TypeClientController {
   @ApiBadRequestResponse({ description: 'Invalid type_client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeClientResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneTypeClient(
     @Param() request: GetTypeClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeClientResponse> {
     Log.info(`(Get) Get type_client code: ${request.code}`);
 
     const type_client = await this.application.getOneTypeClient(request.code);
@@ -75,13 +75,13 @@ export class TypeClientController {
   @ApiBadRequestResponse({ description: 'Invalid type_client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: TypeClientResponse,
   })
   @HttpCode(201)
   @Post()
   async createTypeClient(
     @Body() request: CreateTypeClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeClientResponse> {
     Log.info(`(POST) Create type_client`);
 
     const type_client = await this.application.createTypeClient(request);
@@ -95,14 +95,14 @@ export class TypeClientController {
   @ApiBadRequestResponse({ description: 'Invalid type_client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: TypeClientResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateTypeClient(
     @Param() params: GetTypeClientRequestDto,
     @Body() request: CreateTypeClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeClientResponse> {
     Log.info(`(PUT) Put type_client`);
 
     const type_client = await this.application.updateTypeClient(
@@ -119,13 +119,13 @@ export class TypeClientController {
   @ApiBadRequestResponse({ description: 'Invalid type_client code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: TypeClientResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
   async deleteTypeClient(
     @Param() params: GetTypeClientRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeClientResponse> {
     Log.info(`(Delete) Delete type_client ${params.code}`);
 
     const type_client = await this.application.deleteTypeClient(params.code);

@@ -8,7 +8,5 @@ export class AppResponse {
   @ApiProperty()
   message?: string;
   @ApiProperty()
-  customMessage?: object;
-  @ApiProperty({ nullable: true })
-  data?: any;
+  customMessage?: string;
 }

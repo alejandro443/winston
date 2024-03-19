@@ -1,10 +1,14 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
 import {
+  AUTH_APPLICATION,
+  USER_APPLICATION,
   CLASSIFICATION_APPLICATION,
   ROL_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
+import { UserApplicationService } from './service/User/UserApplicationService';
+import { AuthenticationApplicationService } from './service/Auth/AuthApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -14,6 +18,22 @@ export type CoreModuleOptions = {
 @Module({})
 export class CoreModule {
   static register({ modules }: CoreModuleOptions): DynamicModule {
+    const AuthenticationApplicationProvider = {
+      provide: AUTH_APPLICATION,
+      useFactory() {
+        return new AuthenticationApplicationService();
+      },
+      inject: [],
+    };
+
+    const UserApplicationProvider = {
+      provide: USER_APPLICATION,
+      useFactory() {
+        return new UserApplicationService();
+      },
+      inject: [],
+    };
+
     const RolApplicationProvider = {
       provide: ROL_APPLICATION,
       useFactory() {
@@ -34,8 +54,18 @@ export class CoreModule {
       module: CoreModule,
       global: true,
       imports: [...modules],
-      providers: [RolApplicationProvider, ClassificationApplicationProvider],
-      exports: [ROL_APPLICATION, CLASSIFICATION_APPLICATION],
+      providers: [
+        AuthenticationApplicationProvider,
+        UserApplicationProvider,
+        RolApplicationProvider, 
+        ClassificationApplicationProvider
+      ],
+      exports: [
+        AUTH_APPLICATION, 
+        USER_APPLICATION, 
+        ROL_APPLICATION, 
+        CLASSIFICATION_APPLICATION
+      ],
     };
   }
 }

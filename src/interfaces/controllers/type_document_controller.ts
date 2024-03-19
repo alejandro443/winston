@@ -17,16 +17,16 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { TYPE_DOCUMENT_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeDocumentRequestDto } from '../request_dto/TypeDocumentDto/get.type_document_dto';
 import { CreateTypeDocumentRequestDto } from '../request_dto/TypeDocumentDto/create.type_document_dto';
 import { TypeDocumentApplication } from 'src/core/application/TypeDocument/TypeDocumentApplication';
-import { TypeDocumentCreatorFilter } from '../exception_filters/type_document.exception_filter';
+import { TypeDocumentResponse } from '../responses/type_document.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('TypeDocument')
 @Controller('/type_document')
-@UseFilters(TypeDocumentCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class TypeDocumentController {
   constructor(
@@ -37,11 +37,11 @@ export class TypeDocumentController {
   @ApiBadRequestResponse({ description: 'Invalid type_document code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeDocumentResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllTypeDocument(): Promise<AppResponse> {
+  async getAllTypeDocument(): Promise<TypeDocumentResponse> {
     Log.info(`(Get) Get all type_documents`);
 
     const type_documents = await this.application.getAllTypeDocument();
@@ -55,13 +55,13 @@ export class TypeDocumentController {
   @ApiBadRequestResponse({ description: 'Invalid type_document code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: TypeDocumentResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneTypeDocument(
     @Param() request: GetTypeDocumentRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeDocumentResponse> {
     Log.info(`(Get) Get type_document code: ${request.code}`);
 
     const type_document = await this.application.getOneTypeDocument(
@@ -77,13 +77,13 @@ export class TypeDocumentController {
   @ApiBadRequestResponse({ description: 'Invalid type_document code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: TypeDocumentResponse,
   })
   @HttpCode(201)
   @Post()
   async createTypeDocument(
     @Body() request: CreateTypeDocumentRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeDocumentResponse> {
     Log.info(`(POST) Create type_document`);
 
     const type_document = await this.application.createTypeDocument(request);
@@ -97,14 +97,14 @@ export class TypeDocumentController {
   @ApiBadRequestResponse({ description: 'Invalid type_document code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: TypeDocumentResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateTypeDocument(
     @Param() params: GetTypeDocumentRequestDto,
     @Body() request: CreateTypeDocumentRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeDocumentResponse> {
     Log.info(`(PUT) Put type_document`);
 
     const type_document = await this.application.updateTypeDocument(
@@ -121,13 +121,13 @@ export class TypeDocumentController {
   @ApiBadRequestResponse({ description: 'Invalid type_document code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: TypeDocumentResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
   async deleteTypeDocument(
     @Param() params: GetTypeDocumentRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<TypeDocumentResponse> {
     Log.info(`(Delete) Delete type_document ${params.code}`);
 
     const type_document = await this.application.deleteTypeDocument(

@@ -166,15 +166,17 @@ export class Person extends Model<Person> {
   })
   main_document_type: string;
 
-  @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
-  })
-  documents: DocumentsMetadata[];
+  // @Column({ 
+  //   type: DataType.ARRAY(DataType.JSON),
+  //   allowNull: true
+  // })
+  // documents: [DocumentsMetadata];
 
-  @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
-  })
-  phones: PhonesMetadata[];
+  // @Column({ 
+  //   type: DataType.ARRAY(DataType.JSON),
+  //   allowNull: true
+  // })
+  // phones: [PhonesMetadata];
 
   @CreatedAt
   created_at: Date;
