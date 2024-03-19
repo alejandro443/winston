@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetUserRequestDto } from '../request_dto/UserDto/get.user_dto';
 import { CreateUserRequestDto } from '../request_dto/UserDto/create.user_dto';
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { UserCreatorFilter } from '../exception_filters/user.exception_filter';
 import { UserResponse, UsersResponse } from '../responses/user.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('User')
 @Controller('/user')
-@UseFilters(UserCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class UserController {
   constructor(

@@ -6,12 +6,11 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BeforeUpdate,
   BeforeCreate,
   HasMany,
 } from 'sequelize-typescript';
 
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { UserAccess } from './UserAccess.entity';
 import { UserRol } from './UserRol.entity';
 
@@ -27,6 +26,7 @@ export class User extends Model<User> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
+    unique: true,
   })
   user: string;
 
@@ -38,6 +38,7 @@ export class User extends Model<User> {
 
   @Column({
     type: DataType.TEXT,
+    unique: true,
   })
   code: string;
 
@@ -49,6 +50,7 @@ export class User extends Model<User> {
 
   @Column({
     type: DataType.BOOLEAN,
+    defaultValue: false,
   })
   consultant: boolean;
 
@@ -83,6 +85,11 @@ export class User extends Model<User> {
     unique: true,
   })
   unique_session_id: string;
+ 
+  @Column({
+    type: DataType.TEXT,
+  })
+  recovery_token: string;
 
   @HasMany(() => UserAccess, { foreignKey: 'user_id', sourceKey: 'id' })
   userAccesses: UserAccess[];
@@ -100,11 +107,11 @@ export class User extends Model<User> {
   deleted_at: Date;
 
   @BeforeCreate
-  @BeforeUpdate
   static async BeforeUpdateHook(usuario: User) {
     try {
-      const salt = await bcrypt.genSalt(10);
-      usuario.password = await bcrypt.hashSync(usuario.password, salt);
+      if (usuario.changed('password')) {
+        usuario.password = await bcrypt.hashSync(usuario.password, 10);
+      }
     } catch (error) {
       console.log(error);
     }

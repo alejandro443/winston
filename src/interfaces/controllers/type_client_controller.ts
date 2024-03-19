@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeClientRequestDto } from '../request_dto/TypeClientDto/get.type_client_dto';
 import { CreateTypeClientRequestDto } from '../request_dto/TypeClientDto/create.type_client_dto';
 import { TypeClientApplication } from 'src/core/application/TypeClient/TypeClientApplication';
-import { TypeClientCreatorFilter } from '../exception_filters/type_client.exception_filter';
 import { TypeClientResponse } from '../responses/type_client.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('TypeClient')
 @Controller('/type_client')
-@UseFilters(TypeClientCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class TypeClientController {
   constructor(

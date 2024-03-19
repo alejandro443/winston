@@ -46,4 +46,12 @@ export class UserRepository {
       return error;
     }
   }
+
+  async getUser(user){
+    try {
+      return User.findOne({ where: { user: user } });
+    } catch (error) {
+      return error;
+    }
+  }
 }

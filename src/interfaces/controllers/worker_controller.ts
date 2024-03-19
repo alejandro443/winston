@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetWorkerRequestDto } from '../request_dto/WorkerDto/get.worker_dto';
 import { CreateWorkerRequestDto } from '../request_dto/WorkerDto/create.worker_dto';
 import { WorkerApplication } from 'src/core/application/Worker/WorkerApplication';
-import { WorkerCreatorFilter } from '../exception_filters/worker.exception_filter';
 import { WorkerResponse } from '../responses/worker.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Worker')
 @Controller('/worker')
-@UseFilters(WorkerCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class WorkerController {
   constructor(

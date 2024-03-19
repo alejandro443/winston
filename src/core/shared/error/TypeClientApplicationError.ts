@@ -1,8 +1,8 @@
-export class TypeClientApplicationError extends Error {
-  __proto__ = Error;
+import { ApplicationError } from "./ApplicationError";
 
-  constructor(message: string) {
-    super(message);
+export class TypeClientApplicationError extends ApplicationError {
+  constructor(message: string, statusError: string = 'INTERNAL_SERVER_ERROR') {
+    super(message, statusError, 'TypeClient Controller');
     Object.setPrototypeOf(this, TypeClientApplicationError.prototype);
   }
 }

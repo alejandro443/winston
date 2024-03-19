@@ -18,12 +18,12 @@ export class CreateUserRequestDto {
     type: Boolean,
     default: false
   })
-  consultant: boolean;
+  consultant?: boolean;
   
   @ApiProperty({
     description: 'Estado del usuario (Activo/Desactivado)',
     type: Boolean,
     default: true
   })
-  status: boolean;
+  status?: boolean;
 }

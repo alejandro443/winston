@@ -1,8 +1,8 @@
-export class UserApplicationError extends Error {
-  __proto__ = Error;
+import { ApplicationError } from "./ApplicationError";
 
-  constructor(message: string) {
-    super(message);
+export class UserApplicationError extends ApplicationError {
+  constructor(message: string, statusError: string = 'INTERNAL_SERVER_ERROR') {
+    super(message, statusError, 'User Controller');
     Object.setPrototypeOf(this, UserApplicationError.prototype);
   }
 }

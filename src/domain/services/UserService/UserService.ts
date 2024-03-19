@@ -24,6 +24,7 @@ export class UserService {
 
   async createUser(user: NewUserDto) {
     try {
+      user.code = user.code + String(Date.now()).slice(-6);
       return this.repository.create(user);
     } catch (error) {
       return error;
@@ -44,6 +45,14 @@ export class UserService {
   async deleteUser(code: string) {
     try {
       return this.repository.deleted(code);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getUser(user: string){
+    try {
+      return this.repository.getUser(user);
     } catch (error) {
       return error;
     }

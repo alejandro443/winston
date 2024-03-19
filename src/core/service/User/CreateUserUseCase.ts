@@ -10,7 +10,13 @@ export class CreateUserUseCase {
     try {
       const response =
         await this.userService.createUser(user);
-      return {...response};
+      return {
+        id: response.id,
+        user: response.user,
+        code: response.code,
+        consultant: response.consultant,
+        status: response.status
+      };
     } catch (error) {
       return error;
     }

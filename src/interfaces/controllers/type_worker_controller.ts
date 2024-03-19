@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeWorkerRequestDto } from '../request_dto/TypeWorkerDto/get.type_worker_dto';
 import { CreateTypeWorkerRequestDto } from '../request_dto/TypeWorkerDto/create.type_worker_dto';
 import { TypeWorkerApplication } from 'src/core/application/TypeWorker/TypeWorkerApplication';
-import { TypeWorkerCreatorFilter } from '../exception_filters/type_worker.exception_filter';
 import { TypeWorkerResponse } from '../responses/type_worker.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('TypeWorker')
 @Controller('/type_worker')
-@UseFilters(TypeWorkerCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class TypeWorkerController {
   constructor(

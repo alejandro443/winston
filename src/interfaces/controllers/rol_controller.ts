@@ -1,15 +1,15 @@
 import { Body, Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { RolCreatorFilter } from '../exception_filters/rol.exception_filter';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { CreateRolRequestDto } from '../request_dto/RolDto/create.rol_dto';
 import { ROL_APPLICATION } from '../../core/shared/constants/application.constants';
 import { RolApplication } from '../../core/application/Rol/RolApplication';
 import { RolResponse } from '../responses/rol.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Roles')
 @Controller('/rol')
-@UseFilters(RolCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 export class RolController {
   constructor(@Inject(ROL_APPLICATION) private application: RolApplication) {}
 

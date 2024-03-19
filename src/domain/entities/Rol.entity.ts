@@ -36,11 +36,11 @@ export class Rol extends Model<Rol> {
   })
   status: boolean;
 
-  @HasMany(() => AccessRol, 'rol_id')
-  accessRols: AccessRol[];
+  @HasMany(() => AccessRol, { foreignKey: 'rol_id'})
+  accessRoles: AccessRol[];
 
-  @HasMany(() => UserRol, 'rol_id')
-  userRols: UserRol[];
+  @HasMany(() => UserRol, { foreignKey: 'rol_id'})
+  userRoles: UserRol[];
 
   @CreatedAt
   created_at: Date;

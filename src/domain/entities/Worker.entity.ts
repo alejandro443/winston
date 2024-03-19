@@ -24,7 +24,7 @@ export class Worker extends Model<Worker> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
+    primaryKey: true,
   })
   code: string;
 
@@ -52,8 +52,8 @@ export class Worker extends Model<Worker> {
   @Column({ field: 'type_worker_code' })
   type_worker_code: string;
 
-  @BelongsTo(() => TypeWorker, 'type_worker_code')
-  type_worker: TypeWorker;
+  @BelongsTo(() => TypeWorker, 'code')
+  typeWorker: TypeWorker;
 
   @CreatedAt
   created_at: Date;

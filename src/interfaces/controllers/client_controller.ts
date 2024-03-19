@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClientRequestDto } from '../request_dto/ClientDto/get.client_dto';
 import { CreateClientRequestDto } from '../request_dto/ClientDto/create.client_dto';
 import { ClientApplication } from 'src/core/application/Client/ClientApplication';
-import { ClientCreatorFilter } from '../exception_filters/client.exception_filter';
 import { ClientResponse } from '../responses/client.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Client')
 @Controller('/client')
-@UseFilters(ClientCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class ClientController {
   constructor(

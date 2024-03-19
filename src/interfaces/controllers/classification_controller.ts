@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClassificationRequestDto } from '../request_dto/ClassificationDto/get.classification_dto';
 import { CreateClassificationRequestDto } from '../request_dto/ClassificationDto/create.classification_dto';
 import { ClassificationApplication } from 'src/core/application/Classification/ClassificationApplication';
-import { ClassificationCreatorFilter } from '../exception_filters/classification.exception_filter';
 import { ClassificationResponse } from '../responses/classification.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Classification')
 @Controller('/classification')
-@UseFilters(ClassificationCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class ClassificationController {
   constructor(

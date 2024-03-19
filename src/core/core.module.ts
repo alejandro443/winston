@@ -8,7 +8,7 @@ import {
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
 import { UserApplicationService } from './service/User/UserApplicationService';
-import { AuthApplicationService } from './service/Auth/AuthApplicationService';
+import { AuthenticationApplicationService } from './service/Auth/AuthApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -21,7 +21,7 @@ export class CoreModule {
     const AuthenticationApplicationProvider = {
       provide: AUTH_APPLICATION,
       useFactory() {
-        return new AuthApplicationService();
+        return new AuthenticationApplicationService();
       },
       inject: [],
     };

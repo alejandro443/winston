@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetTypeDocumentRequestDto } from '../request_dto/TypeDocumentDto/get.type_document_dto';
 import { CreateTypeDocumentRequestDto } from '../request_dto/TypeDocumentDto/create.type_document_dto';
 import { TypeDocumentApplication } from 'src/core/application/TypeDocument/TypeDocumentApplication';
-import { TypeDocumentCreatorFilter } from '../exception_filters/type_document.exception_filter';
 import { TypeDocumentResponse } from '../responses/type_document.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('TypeDocument')
 @Controller('/type_document')
-@UseFilters(TypeDocumentCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class TypeDocumentController {
   constructor(

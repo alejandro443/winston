@@ -21,12 +21,12 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetGroupRequestDto } from '../request_dto/GroupDto/get.group_dto';
 import { CreateGroupRequestDto } from '../request_dto/GroupDto/create.group_dto';
 import { GroupApplication } from 'src/core/application/Group/GroupApplication';
-import { GroupCreatorFilter } from '../exception_filters/group.exception_filter';
 import { GroupResponse } from '../responses/group.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Group')
 @Controller('/group')
-@UseFilters(GroupCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class GroupController {
   constructor(
