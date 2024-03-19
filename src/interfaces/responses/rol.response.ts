@@ -6,5 +6,5 @@ export class RolResponse extends AppResponse {
     type: Object,
     nullable: true,
   })
-  data?: object;
+  data?: {};
 }
