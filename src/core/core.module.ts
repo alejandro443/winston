@@ -4,11 +4,23 @@ import {
   USER_APPLICATION,
   CLASSIFICATION_APPLICATION,
   ROL_APPLICATION,
+  CLIENT_APPLICATION,
+  TYPE_CLIENT_APPLICATION,
+  TYPE_DOCUMENT_APPLICATION,
+  TYPE_WORKER_APPLICATION,
+  GROUP_APPLICATION,
+  WORKER_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
 import { UserApplicationService } from './service/User/UserApplicationService';
 import { AuthenticationApplicationService } from './service/Auth/AuthApplicationService';
+import { ClientApplicationService } from './service/Client/ClientApplicationService';
+import { TypeClientApplicationService } from './service/TypeClient/TypeClientApplicationService';
+import { TypeDocumentApplicationService } from './service/TypeDocument/TypeDocumentApplicationService';
+import { TypeWorkerApplicationService } from './service/TypeWorker/TypeWorkerApplicationService';
+import { GroupApplicationService } from './service/Group/GroupApplicationService';
+import { WorkerApplicationService } from './service/Worker/WorkerApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -49,6 +61,54 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const ClientApplicationProvider = {
+      provide: CLIENT_APPLICATION,
+      useFactory() {
+        return new ClientApplicationService();
+      },
+      inject: [],
+    };
+    
+    const TypeClientApplicationProvider = {
+      provide: TYPE_CLIENT_APPLICATION,
+      useFactory() {
+        return new TypeClientApplicationService();
+      },
+      inject: [],
+    };
+    
+    const TypeDocumentApplicationProvider = {
+      provide: TYPE_DOCUMENT_APPLICATION,
+      useFactory() {
+        return new TypeDocumentApplicationService();
+      },
+      inject: [],
+    };
+    
+    const TypeWorkerApplicationProvider = {
+      provide: TYPE_WORKER_APPLICATION,
+      useFactory() {
+        return new TypeWorkerApplicationService();
+      },
+      inject: [],
+    };
+    
+    const GroupApplicationProvider = {
+      provide: GROUP_APPLICATION,
+      useFactory() {
+        return new GroupApplicationService();
+      },
+      inject: [],
+    };
+    
+    const WorkerApplicationProvider = {
+      provide: WORKER_APPLICATION,
+      useFactory() {
+        return new WorkerApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -58,13 +118,25 @@ export class CoreModule {
         AuthenticationApplicationProvider,
         UserApplicationProvider,
         RolApplicationProvider, 
-        ClassificationApplicationProvider
+        ClassificationApplicationProvider,
+        ClientApplicationProvider,
+        TypeClientApplicationProvider,
+        TypeDocumentApplicationProvider,
+        TypeWorkerApplicationProvider,
+        GroupApplicationProvider,
+        WorkerApplicationProvider
       ],
       exports: [
-        AUTH_APPLICATION, 
-        USER_APPLICATION, 
-        ROL_APPLICATION, 
-        CLASSIFICATION_APPLICATION
+        AUTH_APPLICATION,
+        CLASSIFICATION_APPLICATION,
+        USER_APPLICATION,
+        ROL_APPLICATION,
+        CLIENT_APPLICATION,
+        TYPE_CLIENT_APPLICATION,
+        TYPE_DOCUMENT_APPLICATION,
+        TYPE_WORKER_APPLICATION,
+        GROUP_APPLICATION,
+        WORKER_APPLICATION
       ],
     };
   }

@@ -4,6 +4,12 @@ import { RolController } from './controllers/rol_controller';
 import { ClassificationController } from './controllers/classification_controller';
 import { UserController } from './controllers/user_controller';
 import { AuthController } from './controllers/auth_controller';
+import { ClientController } from './controllers/client_controller';
+import { GroupController } from './controllers/group_controller';
+import { TypeClientController } from './controllers/type_client_controller';
+import { TypeDocumentController } from './controllers/type_document_controller';
+import { TypeWorkerController } from './controllers/type_worker_controller';
+import { WorkerController } from './controllers/worker_controller';
 
 @Module({
   controllers: [
@@ -11,7 +17,13 @@ import { AuthController } from './controllers/auth_controller';
     AuthController,
     RolController, 
     ClassificationController,
-    UserController
+    UserController,
+    ClientController,
+    GroupController,
+    TypeClientController,
+    TypeDocumentController,
+    TypeWorkerController,
+    WorkerController
   ],
 })
 export class InterfacesModule {}

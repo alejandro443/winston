@@ -1,4 +1,4 @@
-import { NewWorkerDto } from '@src/core/shared/dto/Worker/worker_dto';
+import { NewWorkerDto } from '@src/core/shared/dto/Worker/Worker_dto';
 import { WorkerRepository } from 'src/domain/repositories/WorkerRepository/WorkerRepository';
 
 export class WorkerService {

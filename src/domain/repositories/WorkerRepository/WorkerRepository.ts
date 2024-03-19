@@ -1,7 +1,7 @@
 import {
   NewWorkerDto,
   UpdateWorkerDto,
-} from 'src/core/shared/dto/Worker/worker_dto';
+} from 'src/core/shared/dto/Worker/Worker_dto';
 import { Worker } from 'src/domain/entities/Worker.entity';
 
 export class WorkerRepository {
