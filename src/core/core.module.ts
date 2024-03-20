@@ -11,6 +11,7 @@ import {
   GROUP_APPLICATION,
   WORKER_APPLICATION,
   PERSON_APPLICATION,
+  ORGANIZATION_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -23,6 +24,7 @@ import { TypeWorkerApplicationService } from './service/TypeWorker/TypeWorkerApp
 import { GroupApplicationService } from './service/Group/GroupApplicationService';
 import { WorkerApplicationService } from './service/Worker/WorkerApplicationService';
 import { PersonApplicationService } from './service/Person/PersonApplicationService';
+import { OrganizationApplicationService } from './service/Organization/OrganizationApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -119,6 +121,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const OrganizationApplicationProvider = {
+      provide: ORGANIZATION_APPLICATION,
+      useFactory() {
+        return new OrganizationApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -136,6 +146,7 @@ export class CoreModule {
         GroupApplicationProvider,
         WorkerApplicationProvider,
         PersonApplicationProvider,
+        OrganizationApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -149,6 +160,7 @@ export class CoreModule {
         GROUP_APPLICATION,
         WORKER_APPLICATION,
         PERSON_APPLICATION,
+        ORGANIZATION_APPLICATION
       ],
     };
   }

@@ -21,6 +21,7 @@ import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
 import { Worker } from 'src/domain/entities/Worker.entity';
 import { Person } from 'src/domain/entities/Person.entity';
 import { TypeDocument } from 'src/domain/entities/TypeDocument.entity';
+import { Organization } from '@src/domain/entities/Organization.entity';
 
 export const ConnectionProvider = [
   {
@@ -56,6 +57,7 @@ export const ConnectionProvider = [
         Classification,
         Person,
         TypeDocument,
+        Organization
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

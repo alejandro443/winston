@@ -11,6 +11,7 @@ import { TypeDocumentController } from './controllers/type_document_controller';
 import { TypeWorkerController } from './controllers/type_worker_controller';
 import { WorkerController } from './controllers/worker_controller';
 import { PersonController } from './controllers/person_controller';
+import { OrganizationController } from './controllers/organization_controller';
 
 @Module({
   controllers: [
@@ -26,6 +27,7 @@ import { PersonController } from './controllers/person_controller';
     TypeWorkerController,
     WorkerController,
     PersonController,
+    OrganizationController
   ],
 })
 export class InterfacesModule {}
