@@ -1,9 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ClassificationDto } from "@src/core/shared/dto/Classification/classification_dto";
 
-export class GetClassificationRequestDto {
-  @ApiProperty({
-    description: 'Codigo de la clasificación',
-    type: String,
-  })
-  code: string;
-}
+export type GetClassificationRequestDto = Pick<ClassificationDto, 'code'>;

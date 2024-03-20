@@ -1,40 +1,33 @@
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
-export class TypeDocumentDto {
+export class RolDto {
   @ApiResponseProperty({
     type: Number,
   })
   @ApiPropertyOptional({
-    description: 'Id del tipo de documento.',
+    description: 'Id del rol',
     type: Number,
   })
   @IsNumber()
   id?: number;
 
   @ApiProperty({
-    description: 'Nombre del tipo de documento',
+    description: 'Nombre del rol',
     type: String,
   })
   @IsString()
   name?: string;
 
   @ApiProperty({
-    description: 'Descripcion del tipo de documento',
+    description: 'Descripción del rol',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
-    description: 'Codigo del tipo de documento',
-    type: String,
-  })
-  @IsString()
-  code?: string;
-
   @ApiPropertyOptional({
-    description: 'Estado del acceso (Activo/Inactivo)',
+    description: 'Estado del rol (Activo/Inactivo)',
     type: Boolean,
     default: true
   })
@@ -50,7 +43,8 @@ export class TypeDocumentDto {
   })
   created_at?: Date;
 }
-export class DeleteTypeDocumentDto {
+
+export class DeleteRolDto {
   @ApiProperty({
     description: 'Fecha de eliminación',
     type: Date,
@@ -59,7 +53,8 @@ export class DeleteTypeDocumentDto {
   deleted_at?: Date;
 }
 
-export interface OneTypeDocumentDto extends TypeDocumentDto {}
-export interface AllTypeDocumentDto extends TypeDocumentDto {}
-export interface NewTypeDocumentDto extends Omit<TypeDocumentDto, 'id'> {}
-export interface UpdateTypeDocumentDto extends Omit<TypeDocumentDto, 'id'> {}
+export interface OneRolDto extends RolDto {}
+export interface AllRolDto extends RolDto {}
+export interface NewRolDto extends Omit<RolDto, 'id'> {}
+export interface UpdateRolDto
+  extends Omit<RolDto, 'id'> {}

@@ -1,10 +1,13 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class OrganizationDto {
 
   @ApiProperty({
     description: 'ID de la organización',
+    type: Number,
+  })
+  @ApiResponseProperty({
     type: Number,
   })
   @IsNumber()
@@ -122,9 +125,10 @@ export class OrganizationDto {
   @IsString()
   representative_direction?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado de la organización',
     type: Boolean,
+    default: true
   })
   @IsBoolean()
   status?: boolean;

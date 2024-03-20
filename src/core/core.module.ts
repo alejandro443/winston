@@ -12,6 +12,8 @@ import {
   WORKER_APPLICATION,
   PERSON_APPLICATION,
   ORGANIZATION_APPLICATION,
+  ACCESS_APPLICATION,
+  ACCESSROL_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -25,6 +27,8 @@ import { GroupApplicationService } from './service/Group/GroupApplicationService
 import { WorkerApplicationService } from './service/Worker/WorkerApplicationService';
 import { PersonApplicationService } from './service/Person/PersonApplicationService';
 import { OrganizationApplicationService } from './service/Organization/OrganizationApplicationService';
+import { AccessApplicationService } from './service/Access/AccessApplicationService';
+import { AccessRolApplicationService } from './service/AccessRol/AccessRolApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -129,6 +133,22 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const AccessApplicationProvider = {
+      provide: ACCESS_APPLICATION,
+      useFactory() {
+        return new AccessApplicationService();
+      },
+      inject: [],
+    };
+    
+    const AccessRolApplicationProvider = {
+      provide: ACCESSROL_APPLICATION,
+      useFactory() {
+        return new AccessRolApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -146,7 +166,9 @@ export class CoreModule {
         GroupApplicationProvider,
         WorkerApplicationProvider,
         PersonApplicationProvider,
-        OrganizationApplicationProvider
+        OrganizationApplicationProvider,
+        AccessApplicationProvider,
+        AccessRolApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -160,7 +182,9 @@ export class CoreModule {
         GROUP_APPLICATION,
         WORKER_APPLICATION,
         PERSON_APPLICATION,
-        ORGANIZATION_APPLICATION
+        ORGANIZATION_APPLICATION,
+        ACCESS_APPLICATION,
+        ACCESSROL_APPLICATION
       ],
     };
   }

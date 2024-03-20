@@ -1,7 +1,11 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import { createApiPropertyDecorator } from '@nestjs/swagger/dist/decorators/api-property.decorator';
 import { IsBoolean, IsDateString, IsNumber } from 'class-validator';
 
 export class AccessRolDto {
+  @ApiResponseProperty({
+    type: Number,
+  })
   @ApiProperty({
     description: 'Id del registro.',
     type: Number,
@@ -9,6 +13,10 @@ export class AccessRolDto {
   @IsNumber()
   id?: number;
 
+  @createApiPropertyDecorator({
+    description: 'Id del rol del registro.',
+    type: Number,
+  })
   @ApiProperty({
     description: 'Id del rol del registro.',
     type: Number,
@@ -23,9 +31,10 @@ export class AccessRolDto {
   @IsNumber()
   access_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado del registro',
     type: Number,
+    default: true
   })
   @IsBoolean()
   status?: boolean;

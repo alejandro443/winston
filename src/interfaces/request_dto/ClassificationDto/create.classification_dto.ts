@@ -1,28 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ClassificationDto } from '@dto/Classification/classification_dto';
 
-export class CreateClassificationRequestDto {
-  @ApiProperty({
-    description: 'Nombre de la clasificación',
-    type: String,
-  })
-  name: string;
-
-  @ApiProperty({
-    description: 'Codigo de la clasificación',
-    type: String,
-  })
-  code: string;
-
-  @ApiProperty({
-    description: 'Descripcion de la clasificación',
-    type: String,
-  })
-  description?: string;
-
-  @ApiProperty({
-    description: 'Estado de la clasificación (Activo/Desactivado)',
-    default: true,
-    type: Boolean,
-  })
-  status?: boolean;
-}
+export class CreateClassificationRequestDto
+  extends ClassificationDto
+  implements Omit<ClassificationDto, 'id'> {}

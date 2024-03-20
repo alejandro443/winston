@@ -21,7 +21,7 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClientRequestDto } from '../request_dto/ClientDto/get.client_dto';
 import { CreateClientRequestDto } from '../request_dto/ClientDto/create.client_dto';
 import { ClientApplication } from 'src/core/application/Client/ClientApplication';
-import { ClientResponse } from '../responses/client.response';
+import { ClientResponse, ClientsResponse } from '../responses/client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Client')
@@ -41,7 +41,7 @@ export class ClientController {
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllClient(): Promise<ClientResponse> {
+  async getAllClient(): Promise<ClientsResponse> {
     Log.info(`(Get) Get all clients`);
 
     const clients = await this.application.getAllClient();

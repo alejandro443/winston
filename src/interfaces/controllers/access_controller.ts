@@ -21,7 +21,7 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetAccessRequestDto } from '../request_dto/AccessDto/get.access_dto';
 import { CreateAccessRequestDto } from '../request_dto/AccessDto/create.access_dto';
 import { AccessApplication } from 'src/core/application/Access/AccessApplication';
-import { AccessResponse } from '../responses/access.response';
+import { AccessResponse, AccessesResponse } from '../responses/access.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Access')
@@ -41,7 +41,7 @@ export class AccessController {
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllAccess(): Promise<AccessResponse> {
+  async getAllAccess(): Promise<AccessesResponse> {
     Log.info(`(Get) Get all accesss`);
 
     const accesss = await this.application.getAllAccess();
