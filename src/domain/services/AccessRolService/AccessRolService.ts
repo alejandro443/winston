@@ -23,9 +23,9 @@ export class AccessRolService {
     }
   }
 
-  async createUser(access_rol: AccessRolDto) {
+  async createUser(access: AccessRolDto) {
     try {
-      return this.repository.create(access_rol);
+      return this.repository.create(access);
     } catch (error) {
       throw new AccessRolApplicationError(error.message);
     }

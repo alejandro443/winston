@@ -1,5 +1,19 @@
-// import { NewAccessDto } from '@dto/Access/new_access_dto';
+import {
+  AllAccessDto,
+  NewAccessDto,
+  OneAccessDto,
+  UpdateAccessDto,
+} from '@dto/Access/access_dto';
 
 export interface AccessApplication {
-  // createAccess(newAccess: NewAccessDto): Promise<number>;
+  getAllAccess(): Promise<Array<AllAccessDto>>;
+  getOneAccess(id: number): Promise<OneAccessDto>;
+  createAccess(
+    classification: NewAccessDto,
+  ): Promise<OneAccessDto>;
+  updateAccess(
+    id: number,
+    classification: UpdateAccessDto,
+  ): Promise<OneAccessDto>;
+  deleteAccess(id: number);
 }

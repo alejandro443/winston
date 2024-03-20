@@ -2,9 +2,9 @@ import { LoginDto } from '@dto/Authentication/authentication_dto';
 import { ValidatorPassword } from '@src/core/shared/functions/validator_password.function';
 import { UserRolService } from '@src/domain/services/UserRolService/UserRolService';
 import { AuthApplicationError } from '@src/core/shared/error/AuthApplicationError';
-import { AccessRolService } from '@src/domain/services/AccesssService/AccessRolService';
 import { GenerateToken } from '@src/core/shared/functions/generate_token.function';
 import { ClientService } from '@src/domain/services/ClientService/ClientService';
+import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
 
 export class LoginAuthUseCase {
   constructor(
