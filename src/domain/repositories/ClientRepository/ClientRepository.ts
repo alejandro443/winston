@@ -1,7 +1,7 @@
 import {
   NewClientDto,
   UpdateClientDto,
-} from 'src/core/shared/dto/Client/client_dto';
+} from '@dto/Client/client_dto';
 import { Client } from 'src/domain/entities/Client.entity';
 
 export class ClientRepository {
@@ -42,6 +42,14 @@ export class ClientRepository {
   async deleted(code: string) {
     try {
       return Client.destroy({ where: { code: code } });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async findOneByUser(user_id: number) {
+    try {
+      return Client.findOne({ where: { user_id: user_id } });
     } catch (error) {
       return error;
     }

@@ -25,7 +25,7 @@ import { PersonController } from './controllers/person_controller';
     TypeDocumentController,
     TypeWorkerController,
     WorkerController,
-    PersonController
+    PersonController,
   ],
 })
 export class InterfacesModule {}

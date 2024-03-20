@@ -1,4 +1,4 @@
-import { NewClassificationDto } from 'src/core/shared/dto/Classification/classification_dto';
+import { NewClassificationDto } from '@dto/Classification/classification_dto';
 import { ClassificationRepository } from 'src/domain/repositories/ClassificationRepository/ClassificationRepository';
 
 export class ClassificationService {

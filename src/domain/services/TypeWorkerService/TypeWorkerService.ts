@@ -1,4 +1,4 @@
-import { NewTypeWorkerDto } from 'src/core/shared/dto/TypeWorker/type_worker_dto';
+import { NewTypeWorkerDto } from '@dto/TypeWorker/type_worker_dto';
 import { TypeWorkerRepository } from 'src/domain/repositories/TypeWorkerRepository/TypeWorkerRepository';
 
 export class TypeWorkerService {

@@ -1,4 +1,4 @@
-import { UpdateTypeWorkerDto } from 'src/core/shared/dto/TypeWorker/type_worker_dto';
+import { UpdateTypeWorkerDto } from '@dto/TypeWorker/type_worker_dto';
 import { TypeWorkerService } from 'src/domain/services/TypeWorkerService/TypeWorkerService';
 
 export class UpdateTypeWorkerUseCase {

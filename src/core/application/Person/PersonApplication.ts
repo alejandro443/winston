@@ -3,7 +3,7 @@ import {
   NewPersonDto,
   OnePersonDto,
   UpdatePersonDto,
-} from 'src/core/shared/dto/Person/person_dto';
+} from '@dto/Person/person_dto';
 
 export interface PersonApplication {
   getAllPerson(): Promise<Array<AllPersonDto>>;

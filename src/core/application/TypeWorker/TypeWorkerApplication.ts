@@ -3,7 +3,7 @@ import {
   NewTypeWorkerDto,
   OneTypeWorkerDto,
   UpdateTypeWorkerDto,
-} from 'src/core/shared/dto/TypeWorker/type_worker_dto';
+} from '@dto/TypeWorker/type_worker_dto';
 
 export interface TypeWorkerApplication {
   getAllTypeWorker(): Promise<Array<AllTypeWorkerDto>>;

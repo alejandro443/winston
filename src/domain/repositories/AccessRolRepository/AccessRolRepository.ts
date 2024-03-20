@@ -4,7 +4,7 @@ import { Access } from '@src/domain/entities/Access.entity';
 import {
   NewAccessRolDto,
   UpdateAccessRolDto,
-} from 'src/core/shared/dto/AccessRol/access_rol_dto';
+} from '@dto/AccessRol/access_rol_dto';
 import { AccessRol } from 'src/domain/entities/AccessRol.entity';
 
 export class AccessRolRepository {

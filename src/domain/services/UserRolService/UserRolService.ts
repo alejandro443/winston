@@ -1,6 +1,6 @@
 import { UserRolApplicationError } from '@src/core/shared/error/UserRolApplicationError';
 import { UserRolRepository } from '@src/domain/repositories/UserRolRepository/UserRolRepository';
-import { UserRolDto } from 'src/core/shared/dto/UserRol/user_rol_dto';
+import { UserRolDto } from '@dto/UserRol/user_rol_dto';
 
 export class UserRolService {
   constructor(private repository?: UserRolRepository) {

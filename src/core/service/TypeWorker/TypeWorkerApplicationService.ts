@@ -2,7 +2,7 @@ import { TypeWorkerApplication } from 'src/core/application/TypeWorker/TypeWorke
 import {
   NewTypeWorkerDto,
   UpdateTypeWorkerDto,
-} from 'src/core/shared/dto/TypeWorker/type_worker_dto';
+} from '@dto/TypeWorker/type_worker_dto';
 import { GetOneTypeWorkerUseCase } from './GetOneTypeWorkerUseCase';
 import { GetAllTypeWorkerUseCase } from './GetAllTypeWorkerUseCase';
 import { CreateTypeWorkerUseCase } from './CreateTypeWorkerUseCase';
