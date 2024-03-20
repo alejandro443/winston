@@ -17,17 +17,17 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { ORGANIZATION_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetOrganizationRequestDto } from '../request_dto/OrganizationDto/get.organization_dto';
 import { CreateOrganizationRequestDto } from '../request_dto/OrganizationDto/create.organization_dto';
 import { UpdateOrganizationRequestDto } from '../request_dto/OrganizationDto/update.organization_dto';
 import { OrganizationApplication } from 'src/core/application/Organization/OrganizationApplication';
-import { OrganizationCreatorFilter } from '../exception_filters/organization.exception_filter';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { OrganizationResponse } from '../responses/organization.response';
 
 @ApiTags('Organization')
 @Controller('/organization')
-@UseFilters(OrganizationCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class OrganizationController {
   constructor(
@@ -38,11 +38,11 @@ export class OrganizationController {
   @ApiBadRequestResponse({ description: 'Invalid organization id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: OrganizationResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllOrganization(): Promise<AppResponse> {
+  async getAllOrganization(): Promise<OrganizationResponse> {
     Log.info(`(Get) Get all organizations`);
 
     const organizations = await this.application.getAllOrganization();
@@ -56,13 +56,13 @@ export class OrganizationController {
   @ApiBadRequestResponse({ description: 'Invalid organization id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: OrganizationResponse,
   })
   @HttpCode(201)
   @Get('/one/:id')
   async getOneOrganization(
     @Param() request: GetOrganizationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<OrganizationResponse> {
     Log.info(`(Get) Get organization id: ${request.id}`);
 
     const organization = await this.application.getOneOrganization(
@@ -78,13 +78,13 @@ export class OrganizationController {
   @ApiBadRequestResponse({ description: 'Invalid organization id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: OrganizationResponse,
   })
   @HttpCode(201)
   @Post()
   async createOrganization(
     @Body() request: CreateOrganizationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<OrganizationResponse> {
     Log.info(`(POST) Create organization`);
 
     const organization = await this.application.createOrganization(request);
@@ -98,14 +98,14 @@ export class OrganizationController {
   @ApiBadRequestResponse({ description: 'Invalid organization id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: OrganizationResponse,
   })
   @HttpCode(200)
   @Put('/update/:id')
   async updateOrganization(
     @Param() params: GetOrganizationRequestDto,
     @Body() request: UpdateOrganizationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<OrganizationResponse> {
     Log.info(`(PUT) Put organization`);
 
     const organization = await this.application.updateOrganization(
@@ -122,13 +122,13 @@ export class OrganizationController {
   @ApiBadRequestResponse({ description: 'Invalid organization id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: OrganizationResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteOrganization(
     @Param() params: GetOrganizationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<OrganizationResponse> {
     Log.info(`(Delete) Delete organization ${params.id}`);
 
     const organization = await this.application.deleteOrganization(
