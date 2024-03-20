@@ -19,7 +19,7 @@ export class Classification extends Model<Classification> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   main_identification: string;
 
@@ -42,7 +42,7 @@ export class Classification extends Model<Classification> {
     type: DataType.STRING,
   })
   zip_code: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
@@ -52,12 +52,12 @@ export class Classification extends Model<Classification> {
     type: DataType.STRING,
   })
   department: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   province: string;
-  
+
   @Column({
     type: DataType.STRING,
   })

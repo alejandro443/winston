@@ -15,7 +15,10 @@ import {
 import { AUTH_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
-import { LoginRequestDto, LoginResponseDto } from '../request_dto/AuthDto/login.auth_dto';
+import {
+  LoginRequestDto,
+  LoginResponseDto,
+} from '../request_dto/AuthDto/login.auth_dto';
 import { LoginResponse } from '../responses/auth.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
@@ -36,9 +39,7 @@ export class AuthController {
   @HttpCode(200)
   @UseFilters(ApplicationCreatorFilter)
   @Post('/login')
-  async Login(
-    @Body() request: LoginRequestDto,
-  ): Promise<LoginResponse> {
+  async Login(@Body() request: LoginRequestDto): Promise<LoginResponse> {
     Log.info(`Login`);
 
     const user = await this.application.loginAuth(request);

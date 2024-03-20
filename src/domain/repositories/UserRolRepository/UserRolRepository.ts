@@ -59,20 +59,20 @@ export class UserRolRepository {
     }
   }
 
-  async getUserRolByUser(user: string){
+  async getUserRolByUser(user: string) {
     try {
-      return await UserRol.findAll({ 
+      return await UserRol.findAll({
         include: [
           {
             model: Rol,
-            attributes: ['id', 'name']
+            attributes: ['id', 'name'],
           },
           {
             model: User,
             where: {
-              user: user
+              user: user,
             },
-          }
+          },
         ],
       });
     } catch (error) {

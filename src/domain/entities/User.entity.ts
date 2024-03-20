@@ -85,7 +85,7 @@ export class User extends Model<User> {
     unique: true,
   })
   unique_session_id: string;
- 
+
   @Column({
     type: DataType.TEXT,
   })

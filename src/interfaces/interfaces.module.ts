@@ -10,12 +10,13 @@ import { TypeClientController } from './controllers/type_client_controller';
 import { TypeDocumentController } from './controllers/type_document_controller';
 import { TypeWorkerController } from './controllers/type_worker_controller';
 import { WorkerController } from './controllers/worker_controller';
+import { PersonController } from './controllers/person_controller';
 
 @Module({
   controllers: [
     RootController,
     AuthController,
-    RolController, 
+    RolController,
     ClassificationController,
     UserController,
     ClientController,
@@ -23,7 +24,8 @@ import { WorkerController } from './controllers/worker_controller';
     TypeClientController,
     TypeDocumentController,
     TypeWorkerController,
-    WorkerController
+    WorkerController,
+    PersonController
   ],
 })
 export class InterfacesModule {}

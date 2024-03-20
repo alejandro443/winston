@@ -9,10 +9,13 @@ export const GenerateToken = async (user, client) => {
       user_code: user.code,
       client_code: client.code,
       username: user.user,
-      expires: new Date(new Date().getTime() + +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000)
+      expires: new Date(
+        new Date().getTime() +
+          +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000,
+      ),
     },
     process.env.JWT_TOKEN_KEY,
-    { expiresIn: +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000 }
+    { expiresIn: +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000 },
   );
   return token;
-}
+};

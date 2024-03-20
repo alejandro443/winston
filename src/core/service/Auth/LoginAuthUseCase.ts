@@ -19,7 +19,7 @@ export class LoginAuthUseCase {
 
   async loginAuth(login: LoginDto) {
     try {
-      const { user, password } = login
+      const { user, password } = login;
       const user_rol_data = await this.userRolService.getUserRolByUser(user);
 
       if (!user_rol_data || user_rol_data.length === 0) {

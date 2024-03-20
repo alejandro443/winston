@@ -1,4 +1,4 @@
-import { ApplicationError } from "./ApplicationError";
+import { ApplicationError } from './ApplicationError';
 
 export class GroupApplicationError extends ApplicationError {
   constructor(message: string, statusError: string = 'INTERNAL_SERVER_ERROR') {

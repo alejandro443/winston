@@ -22,5 +22,4 @@ export class DeleteAccessRolDto {
 export interface OneAccessRolDto extends AccessRolDto {}
 export interface AllAccessRolDto extends AccessRolDto {}
 export interface NewAccessRolDto extends Omit<AccessRolDto, 'id'> {}
-export interface UpdateAccessRolDto
-  extends Omit<AccessRolDto, 'id'> {}
+export interface UpdateAccessRolDto extends Omit<AccessRolDto, 'id'> {}

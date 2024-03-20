@@ -22,5 +22,4 @@ export class DeleteUserRolDto {
 export interface OneUserRolDto extends UserRolDto {}
 export interface AllUserRolDto extends UserRolDto {}
 export interface NewUserRolDto extends Omit<UserRolDto, 'id'> {}
-export interface UpdateUserRolDto
-  extends Omit<UserRolDto, 'id'> {}
+export interface UpdateUserRolDto extends Omit<UserRolDto, 'id'> {}

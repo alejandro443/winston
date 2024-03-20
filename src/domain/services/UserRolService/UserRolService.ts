@@ -31,10 +31,7 @@ export class UserRolService {
     }
   }
 
-  async updateUser(
-    id: number,
-    user: UserRolDto,
-  ) {
+  async updateUser(id: number, user: UserRolDto) {
     try {
       return this.repository.update(id, user);
     } catch (error) {
@@ -50,7 +47,7 @@ export class UserRolService {
     }
   }
 
-  async getUserRolByUser(user: string){
+  async getUserRolByUser(user: string) {
     try {
       return await this.repository.getUserRolByUser(user);
     } catch (error) {

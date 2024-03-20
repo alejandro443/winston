@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class GetUserRequestDto {
   @ApiProperty({
     description: 'Codigo de usuario',
-    type: String
+    type: String,
   })
   code?: string;
 }
@@ -13,7 +13,7 @@ export class GetUserResponseRequestDto {
     description: 'Id de usuario',
     type: Number,
   })
-  id?: Number;
+  id?: number;
 
   @ApiProperty({
     description: 'Usuario',
@@ -23,21 +23,21 @@ export class GetUserResponseRequestDto {
 
   @ApiProperty({
     description: 'Codigo de usuario',
-    type: String
+    type: String,
   })
   code?: string;
 
   @ApiProperty({
     description: '¿Consultor CUDESI?',
     type: Boolean,
-    default: false
+    default: false,
   })
   consultant?: boolean;
-  
+
   @ApiProperty({
     description: 'Estado del usuario (Activo/Desactivado)',
     type: Boolean,
-    default: true
+    default: true,
   })
   status?: boolean;
 }

@@ -120,7 +120,9 @@ export class GroupController {
   })
   @HttpCode(200)
   @Delete('/delete/:code')
-  async deleteGroup(@Param() params: GetGroupRequestDto): Promise<GroupResponse> {
+  async deleteGroup(
+    @Param() params: GetGroupRequestDto,
+  ): Promise<GroupResponse> {
     Log.info(`(Delete) Delete group ${params.code}`);
 
     const group = await this.application.deleteGroup(params.code);

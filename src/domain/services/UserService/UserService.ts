@@ -35,10 +35,7 @@ export class UserService {
     }
   }
 
-  async updateUser(
-    code: string,
-    user: NewUserDto,
-  ) {
+  async updateUser(code: string, user: NewUserDto) {
     try {
       return this.repository.update(code, user);
     } catch (error) {

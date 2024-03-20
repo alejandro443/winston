@@ -9,7 +9,7 @@ export class GetAllUserUseCase {
     try {
       const response = await this.userService.getAllUser();
 
-      return response.map((user) => ({...user}));
+      return response.map((user) => ({ ...user }));
     } catch (error) {
       return error;
     }

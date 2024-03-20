@@ -7,8 +7,7 @@ export class DeleteUserUseCase {
 
   async deleteUser(code: string) {
     try {
-      const response =
-        await this.userService.deleteUser(code);
+      const response = await this.userService.deleteUser(code);
       return { id: response.id };
     } catch (error) {
       return error;
