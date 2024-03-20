@@ -3,7 +3,7 @@ import {
   NewTypeClientDto,
   OneTypeClientDto,
   UpdateTypeClientDto,
-} from 'src/core/shared/dto/TypeClient/type_client_dto';
+} from '@dto/TypeClient/type_client_dto';
 
 export interface TypeClientApplication {
   getAllTypeClient(): Promise<Array<AllTypeClientDto>>;

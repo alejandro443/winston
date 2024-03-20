@@ -1,5 +1,5 @@
 import { TypeDocumentService } from 'src/domain/services/TypeDocumentService/TypeDocumentService';
-import { NewTypeDocumentDto } from 'src/core/shared/dto/TypeDocument/type_document_dto';
+import { NewTypeDocumentDto } from '@dto/TypeDocument/type_document_dto';
 
 export class CreateTypeDocumentUseCase {
   constructor(private type_documentService?: TypeDocumentService) {

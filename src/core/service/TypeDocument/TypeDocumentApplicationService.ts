@@ -2,7 +2,7 @@ import { TypeDocumentApplication } from 'src/core/application/TypeDocument/TypeD
 import {
   NewTypeDocumentDto,
   UpdateTypeDocumentDto,
-} from 'src/core/shared/dto/TypeDocument/type_document_dto';
+} from '@dto/TypeDocument/type_document_dto';
 import { GetOneTypeDocumentUseCase } from './GetOneTypeDocumentUseCase';
 import { GetAllTypeDocumentUseCase } from './GetAllTypeDocumentUseCase';
 import { CreateTypeDocumentUseCase } from './CreateTypeDocumentUseCase';

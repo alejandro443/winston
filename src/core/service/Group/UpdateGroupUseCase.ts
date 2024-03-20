@@ -1,4 +1,4 @@
-import { UpdateGroupDto } from 'src/core/shared/dto/Group/group_dto';
+import { UpdateGroupDto } from '@dto/Group/group_dto';
 import { GroupService } from 'src/domain/services/GroupService/GroupService';
 
 export class UpdateGroupUseCase {

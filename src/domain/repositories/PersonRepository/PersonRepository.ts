@@ -1,7 +1,7 @@
 import {
   NewPersonDto,
   UpdatePersonDto,
-} from 'src/core/shared/dto/Person/person_dto';
+} from '@dto/Person/person_dto';
 import { Person } from 'src/domain/entities/Person.entity';
 
 export class PersonRepository {

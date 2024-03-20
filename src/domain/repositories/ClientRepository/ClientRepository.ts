@@ -1,7 +1,7 @@
 import {
   NewClientDto,
   UpdateClientDto,
-} from 'src/core/shared/dto/Client/client_dto';
+} from '@dto/Client/client_dto';
 import { Client } from 'src/domain/entities/Client.entity';
 
 export class ClientRepository {

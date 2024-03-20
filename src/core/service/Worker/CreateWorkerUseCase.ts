@@ -1,5 +1,5 @@
 import { WorkerService } from 'src/domain/services/WorkerService/WorkerService';
-import { NewWorkerDto } from 'src/core/shared/dto/Worker/Worker_dto';
+import { NewWorkerDto } from '@dto/Worker/worker_dto';
 
 export class CreateWorkerUseCase {
   constructor(private workerService?: WorkerService) {

@@ -1,4 +1,4 @@
-import { NewPersonDto } from 'src/core/shared/dto/Person/person_dto';
+import { NewPersonDto } from '@dto/Person/person_dto';
 import { PersonRepository } from 'src/domain/repositories/PersonRepository/PersonRepository';
 
 export class PersonService {

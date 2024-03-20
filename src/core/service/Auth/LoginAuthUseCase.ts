@@ -1,4 +1,4 @@
-import { LoginDto } from '@src/core/shared/dto/authentication/authentication_dto';
+import { LoginDto } from '@@dto/authentication/authentication_dto';
 import { ValidatorPassword } from '@src/core/shared/functions/validator_password.function';
 import { UserRolService } from '@src/domain/services/UserRolService/UserRolService';
 import { AuthApplicationError } from '@src/core/shared/error/AuthApplicationError';

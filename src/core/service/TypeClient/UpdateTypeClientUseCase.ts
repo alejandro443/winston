@@ -1,4 +1,4 @@
-import { UpdateTypeClientDto } from 'src/core/shared/dto/TypeClient/type_client_dto';
+import { UpdateTypeClientDto } from '@dto/TypeClient/type_client_dto';
 import { TypeClientService } from 'src/domain/services/TypeClientService/TypeClientService';
 
 export class UpdateTypeClientUseCase {

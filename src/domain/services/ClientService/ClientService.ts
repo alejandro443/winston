@@ -1,5 +1,5 @@
 import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
-import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
+import { NewClientDto } from '@dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
 export class ClientService {
