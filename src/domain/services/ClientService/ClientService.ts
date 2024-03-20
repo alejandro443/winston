@@ -26,7 +26,9 @@ export class ClientService {
   async createClient(client: NewClientDto) {
     try {
       // TO DO: El segundo client.person_identification cambiarlo a el valor que identifica a la compañia
-      client.code = await GenerateCodeClient(client.person_identification || client.person_identification)
+      client.code = await GenerateCodeClient(
+        client.person_identification || client.person_identification,
+      );
       return this.repository.create(client);
     } catch (error) {
       return error;

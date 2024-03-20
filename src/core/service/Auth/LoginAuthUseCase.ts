@@ -23,26 +23,36 @@ export class LoginAuthUseCase {
       const user_rol_data = await this.userRolService.getUserRolByUser(user);
 
       if (!user_rol_data || user_rol_data.length === 0) {
-        throw new AuthApplicationError('(Usuario) o contraseña incorrectos.', 'BAD_REQUEST');
+        throw new AuthApplicationError(
+          '(Usuario) o contraseña incorrectos.',
+          'BAD_REQUEST',
+        );
       }
 
-      var user_data = user_rol_data[0]['user']['dataValues']
-      if (!await ValidatorPassword(password, user_data.password)) {
-        throw new AuthApplicationError('Usuario o (contraseña) incorrectos.', 'BAD_REQUEST');
+      const user_data = user_rol_data[0]['user']['dataValues'];
+      if (!(await ValidatorPassword(password, user_data.password))) {
+        throw new AuthApplicationError(
+          'Usuario o (contraseña) incorrectos.',
+          'BAD_REQUEST',
+        );
       }
 
-      var rol_data = user_rol_data[0]['rol']['dataValues']
-      var access_data = await this.accessRolService.getAccessRolByRol(rol_data.id)
-      var client_data = await this.clientService.getOneClientByUserId(user_data.id)
+      const rol_data = user_rol_data[0]['rol']['dataValues'];
+      const access_data = await this.accessRolService.getAccessRolByRol(
+        rol_data.id,
+      );
+      const client_data = await this.clientService.getOneClientByUserId(
+        user_data.id,
+      );
 
-      var token = await GenerateToken(user_data, client_data)
+      const token = await GenerateToken(user_data, client_data);
       return {
         id: user_data.id,
         code: user_data.code,
         user: user_data.user,
         accesses: access_data,
-        token: token
-      }
+        token: token,
+      };
     } catch (error) {
       throw new AuthApplicationError(error.message, error.statusError);
     }

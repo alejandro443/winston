@@ -9,7 +9,7 @@ export class GetAllPersonUseCase {
     try {
       const response = await this.workerService.getAllPerson();
 
-      return response.map((worker) => ({...worker.dataValues}));
+      return response.map((worker) => ({ ...worker.dataValues }));
     } catch (error) {
       return error;
     }

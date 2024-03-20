@@ -38,7 +38,7 @@ export class Client extends Model<Client> {
   status: boolean;
 
   @ForeignKey(() => User)
-  @Column({ 
+  @Column({
     field: 'user_id',
     allowNull: true,
   })
@@ -48,7 +48,7 @@ export class Client extends Model<Client> {
   user: User;
 
   @ForeignKey(() => Person)
-  @Column({ 
+  @Column({
     field: 'person_identification',
     allowNull: true,
   })
@@ -58,7 +58,7 @@ export class Client extends Model<Client> {
   person: Person;
 
   @ForeignKey(() => TypeClient)
-  @Column({ 
+  @Column({
     field: 'type_client_code',
     allowNull: true,
   })
@@ -68,7 +68,7 @@ export class Client extends Model<Client> {
   typeClient: TypeClient;
 
   @ForeignKey(() => Classification)
-  @Column({ 
+  @Column({
     field: 'classification_code',
     allowNull: true,
   })
@@ -78,7 +78,7 @@ export class Client extends Model<Client> {
   classification: Classification;
 
   @ForeignKey(() => Group)
-  @Column({ 
+  @Column({
     field: 'group_code',
     allowNull: true,
   })
