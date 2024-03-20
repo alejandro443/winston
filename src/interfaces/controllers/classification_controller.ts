@@ -17,16 +17,16 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { CLASSIFICATION_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClassificationRequestDto } from '../request_dto/ClassificationDto/get.classification_dto';
 import { CreateClassificationRequestDto } from '../request_dto/ClassificationDto/create.classification_dto';
 import { ClassificationApplication } from 'src/core/application/Classification/ClassificationApplication';
-import { ClassificationCreatorFilter } from '../exception_filters/classification.exception_filter';
+import { ClassificationResponse } from '../responses/classification.response';
+import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('Classification')
 @Controller('/classification')
-@UseFilters(ClassificationCreatorFilter)
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class ClassificationController {
   constructor(
@@ -37,11 +37,11 @@ export class ClassificationController {
   @ApiBadRequestResponse({ description: 'Invalid classification code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: ClassificationResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllClassification(): Promise<AppResponse> {
+  async getAllClassification(): Promise<ClassificationResponse> {
     Log.info(`(Get) Get all classifications`);
 
     const classifications = await this.application.getAllClassification();
@@ -55,13 +55,13 @@ export class ClassificationController {
   @ApiBadRequestResponse({ description: 'Invalid classification code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: AppResponse,
+    type: ClassificationResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
   async getOneClassification(
     @Param() request: GetClassificationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClassificationResponse> {
     Log.info(`(Get) Get classification code: ${request.code}`);
 
     const classification = await this.application.getOneClassification(
@@ -77,13 +77,13 @@ export class ClassificationController {
   @ApiBadRequestResponse({ description: 'Invalid classification code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: AppResponse,
+    type: ClassificationResponse,
   })
   @HttpCode(201)
   @Post()
   async createClassification(
     @Body() request: CreateClassificationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClassificationResponse> {
     Log.info(`(POST) Create classification`);
 
     const classification = await this.application.createClassification(request);
@@ -97,14 +97,14 @@ export class ClassificationController {
   @ApiBadRequestResponse({ description: 'Invalid classification code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: AppResponse,
+    type: ClassificationResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
   async updateClassification(
     @Param() params: GetClassificationRequestDto,
     @Body() request: CreateClassificationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClassificationResponse> {
     Log.info(`(PUT) Put classification`);
 
     const classification = await this.application.updateClassification(
@@ -121,13 +121,13 @@ export class ClassificationController {
   @ApiBadRequestResponse({ description: 'Invalid classification code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: AppResponse,
+    type: ClassificationResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
   async deleteClassification(
     @Param() params: GetClassificationRequestDto,
-  ): Promise<AppResponse> {
+  ): Promise<ClassificationResponse> {
     Log.info(`(Delete) Delete classification ${params.code}`);
 
     const classification = await this.application.deleteClassification(

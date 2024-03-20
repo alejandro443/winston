@@ -6,7 +6,7 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BelongsTo,
+  HasOne,
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
 
@@ -21,6 +21,12 @@ export class TypeWorker extends Model<TypeWorker> {
 
   @Column({
     type: DataType.STRING,
+    primaryKey: true,
+  })
+  code: string;
+
+  @Column({
+    type: DataType.STRING,
     unique: true,
   })
   name: string;
@@ -31,18 +37,12 @@ export class TypeWorker extends Model<TypeWorker> {
   description: string;
 
   @Column({
-    type: DataType.STRING,
-    primaryKey: true,
-  })
-  code: string;
-
-  @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   status: boolean;
 
-  @BelongsTo(() => Worker, 'type_worker_code')
+  @HasOne(() => Worker)
   worker: Worker;
 
   @CreatedAt

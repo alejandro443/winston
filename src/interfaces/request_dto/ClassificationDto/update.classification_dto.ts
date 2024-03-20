@@ -5,17 +5,18 @@ export class UpdateClassificationRequestDto {
     description: 'Nombre de la clasificación',
     type: String,
   })
-  name: string;
+  name?: string;
 
   @ApiProperty({
     description: 'Descripcion de la clasificación',
     type: String,
   })
-  description: string;
+  description?: string;
 
   @ApiProperty({
     description: 'Estado de la clasificación (Activo/Desactivado)',
     type: Boolean,
+    default: true,
   })
-  status: boolean;
+  status?: boolean;
 }

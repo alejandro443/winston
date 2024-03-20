@@ -1,3 +1,5 @@
+import { PhonesMetadata } from '@src/infraestructure/shared/interfaces/PhonesMetadata';
+import { DocumentsMetadata } from 'src/infraestructure/shared/interfaces/DocumentsMetadata';
 import {
   Table,
   Column,
@@ -7,7 +9,6 @@ import {
   UpdatedAt,
   DeletedAt,
 } from 'sequelize-typescript';
-import { DocumentsMetadata } from 'src/infraestructure/shared/interfaces/DocumentsMetadata';
 
 @Table({ tableName: 'persons' })
 export class Person extends Model<Person> {
@@ -165,8 +166,23 @@ export class Person extends Model<Person> {
   })
   main_document_type: string;
 
-  @Column({ type: DataType.JSON })
-  documents: DocumentsMetadata;
+  // @Column({
+  //   type: DataType.ARRAY(DataType.JSON),
+  //   allowNull: true
+  // })
+  // documents: [DocumentsMetadata];
+
+  // @Column({
+  //   type: DataType.ARRAY(DataType.JSON),
+  //   allowNull: true
+  // })
+  // phones: [PhonesMetadata];
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: true,
+  })
+  status: boolean;
 
   @CreatedAt
   created_at: Date;

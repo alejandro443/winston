@@ -2,7 +2,7 @@
 repository:
   name: service_backend_fhyona
   description: Backend for Fhyona
-  homepage: 
+  homepage:
   topics: nodejs, template, typescript, nestjs-template, nestjs
   has_wiki: false
   private: false

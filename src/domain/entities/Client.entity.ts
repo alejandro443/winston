@@ -27,6 +27,7 @@ export class Client extends Model<Client> {
   @Column({
     type: DataType.STRING,
     unique: true,
+    allowNull: true,
   })
   code: string;
 
@@ -37,35 +38,50 @@ export class Client extends Model<Client> {
   status: boolean;
 
   @ForeignKey(() => User)
-  @Column({ field: 'user_id' })
+  @Column({
+    field: 'user_id',
+    allowNull: true,
+  })
   user_id: number;
 
   @BelongsTo(() => Person, 'user_id')
   user: User;
 
   @ForeignKey(() => Person)
-  @Column({ field: 'person_identification' })
+  @Column({
+    field: 'person_identification',
+    allowNull: true,
+  })
   person_identification: string;
 
   @BelongsTo(() => Person, 'person_identification')
   person: Person;
 
   @ForeignKey(() => TypeClient)
-  @Column({ field: 'type_client_code' })
+  @Column({
+    field: 'type_client_code',
+    allowNull: true,
+  })
   type_client_code: string;
 
   @BelongsTo(() => TypeClient, 'type_client_code')
   typeClient: TypeClient;
 
   @ForeignKey(() => Classification)
-  @Column({ field: 'classification_code' })
+  @Column({
+    field: 'classification_code',
+    allowNull: true,
+  })
   classification_code: string;
 
   @BelongsTo(() => Classification, 'classification_code')
   classification: Classification;
 
   @ForeignKey(() => Group)
-  @Column({ field: 'group_code' })
+  @Column({
+    field: 'group_code',
+    allowNull: true,
+  })
   group_code: string;
 
   @BelongsTo(() => Group, 'group_code')

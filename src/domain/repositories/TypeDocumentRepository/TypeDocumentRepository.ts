@@ -1,7 +1,7 @@
 import {
   NewTypeDocumentDto,
   UpdateTypeDocumentDto,
-} from 'src/core/shared/dto/TypeDocument/type_document_dto';
+} from '@dto/TypeDocument/type_document_dto';
 import { TypeDocument } from 'src/domain/entities/TypeDocument.entity';
 
 export class TypeDocumentRepository {

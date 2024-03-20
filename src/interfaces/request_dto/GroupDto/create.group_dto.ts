@@ -11,12 +11,12 @@ export class CreateGroupRequestDto {
     description: 'Descripcion del grupo',
     type: String,
   })
-  description: string;
+  description?: string;
 
   @ApiProperty({
     description: 'Estado del grupo (Activo/Desactivado)',
     default: true,
     type: Boolean,
   })
-  status: boolean;
+  status?: boolean;
 }

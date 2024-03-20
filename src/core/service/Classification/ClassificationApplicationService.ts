@@ -2,7 +2,7 @@ import { ClassificationApplication } from 'src/core/application/Classification/C
 import {
   NewClassificationDto,
   UpdateClassificationDto,
-} from 'src/core/shared/dto/Classification/classification_dto';
+} from '@dto/Classification/classification_dto';
 import { GetOneClassificationUseCase } from './GetOneClassificationUseCase';
 import { GetAllClassificationUseCase } from './GetAllClassificationUseCase';
 import { CreateClassificationUseCase } from './CreateClassificationUseCase';
