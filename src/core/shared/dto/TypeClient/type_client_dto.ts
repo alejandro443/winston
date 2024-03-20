@@ -27,7 +27,7 @@ export class TypeClientDto {
   description?: string;
 
   @ApiProperty({
-    description: 'Codigo del tipo de cliente.',
+    description: 'Código del tipo de cliente.',
     type: String,
   })
   @IsString()

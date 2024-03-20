@@ -27,7 +27,7 @@ export class ClassificationDto {
   description?: string;
 
   @ApiProperty({
-    description: 'Codigo de la clasificación',
+    description: 'Código de la clasificación',
     type: String,
   })
   @IsString()

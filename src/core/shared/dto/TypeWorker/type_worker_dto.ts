@@ -27,7 +27,7 @@ export class TypeWorkerDto {
   description?: string;
 
   @ApiProperty({
-    description: 'Codigo del tipo de trabajador',
+    description: 'Código del tipo de trabajador',
     type: String,
   })
   @IsString()

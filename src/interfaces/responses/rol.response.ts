@@ -7,7 +7,7 @@ export class RolResponse extends AppResponse {
     type: RolDto,
     nullable: true,
   })
-  data?: {};
+  data?: object;
 }
 
 export class RolesResponse extends AppResponse {

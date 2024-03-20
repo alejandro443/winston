@@ -27,7 +27,7 @@ export class GroupDto {
   description?: string;
 
   @ApiProperty({
-    description: 'Codigo del grupo.',
+    description: 'Código del grupo.',
     type: String,
     writeOnly: true
   })

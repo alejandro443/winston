@@ -16,7 +16,7 @@ export class LoginRequestDto {
 
 export class LoginResponseDto {
   @ApiProperty({
-    description: 'Codigo de usuario',
+    description: 'Código de usuario',
     type: String,
   })
   code: string;

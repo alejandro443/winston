@@ -13,7 +13,7 @@ export class WorkerDto {
   id?: number;
 
   @ApiProperty({
-    description: 'Codigo del trabajador.',
+    description: 'Código del trabajador.',
     type: String,
   })
   @IsString()
@@ -42,21 +42,21 @@ export class WorkerDto {
   person_identification?: string;
 
   @ApiPropertyOptional({
-    description: 'Codigo del tipo de trabajador.',
+    description: 'Código del tipo de trabajador.',
     type: String,
   })
   @IsString()
   type_worker_code?: string;
 
   @ApiPropertyOptional({
-    description: 'Codigo de la clasificación del trabajador.',
+    description: 'Código de la clasificación del trabajador.',
     type: String,
   })
   @IsString()
   classification_code?: string;
 
   @ApiPropertyOptional({
-    description: 'Codigo del grupo del trabajador.',
+    description: 'Código del grupo al que pertenece el trabajador.',
     type: String,
   })
   @IsString()

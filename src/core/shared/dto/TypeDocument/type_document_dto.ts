@@ -27,7 +27,7 @@ export class TypeDocumentDto {
   description?: string;
 
   @ApiProperty({
-    description: 'Codigo del tipo de documento',
+    description: 'Código del tipo de documento',
     type: String,
   })
   @IsString()

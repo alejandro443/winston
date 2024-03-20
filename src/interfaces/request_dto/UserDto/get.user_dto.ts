@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class GetUserRequestDto {
   @ApiProperty({
-    description: 'Codigo de usuario',
+    description: 'Código de usuario',
     type: String,
   })
   code?: string;
@@ -22,7 +22,7 @@ export class GetUserResponseRequestDto {
   user?: string;
 
   @ApiProperty({
-    description: 'Codigo de usuario',
+    description: 'Código de usuario',
     type: String,
   })
   code?: string;
