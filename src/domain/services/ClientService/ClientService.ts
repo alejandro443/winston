@@ -1,3 +1,4 @@
+import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
 import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
@@ -24,6 +25,8 @@ export class ClientService {
 
   async createClient(client: NewClientDto) {
     try {
+      // TO DO: El segundo client.person_identification cambiarlo a el valor que identifica a la compañia
+      client.code = await GenerateCodeClient(client.person_identification || client.person_identification)
       return this.repository.create(client);
     } catch (error) {
       return error;
@@ -41,6 +44,14 @@ export class ClientService {
   async deleteClient(code: string) {
     try {
       return this.repository.deleted(code);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getOneClientByUserId(user_id: number) {
+    try {
+      return this.repository.findOneByUser(user_id);
     } catch (error) {
       return error;
     }

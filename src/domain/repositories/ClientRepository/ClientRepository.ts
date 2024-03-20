@@ -46,4 +46,12 @@ export class ClientRepository {
       return error;
     }
   }
+
+  async findOneByUser(user_id: number) {
+    try {
+      return Client.findOne({ where: { user_id: user_id } });
+    } catch (error) {
+      return error;
+    }
+  }
 }
