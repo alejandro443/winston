@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
-import { PersonDto } from '@@dto/Person/person_dto';
+import { PersonDto } from '@dto/Person/person_dto';
 
 export class PersonResponse extends AppResponse {
   @ApiProperty({
