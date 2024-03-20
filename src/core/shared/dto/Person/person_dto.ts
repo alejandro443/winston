@@ -215,6 +215,10 @@ export class PersonDto {
 }
 
 export class DeletePersonDto {
+  @ApiProperty({
+    description: 'Fecha de eliminación',
+    type: Date,
+  })
   @IsDateString()
   deleted_at?: Date;
 }

@@ -7,7 +7,7 @@ export class AccessRolService {
     this.repository = new AccessRolRepository();
   }
 
-  async getOneUser(id: number) {
+  async getOneAccessRol(id: number) {
     try {
       return this.repository.findOne(id);
     } catch (error) {
@@ -15,7 +15,7 @@ export class AccessRolService {
     }
   }
 
-  async getAllUser() {
+  async getAllAccessRol() {
     try {
       return this.repository.findAll();
     } catch (error) {
@@ -23,7 +23,7 @@ export class AccessRolService {
     }
   }
 
-  async createUser(access: AccessRolDto) {
+  async createAccessRol(access: AccessRolDto) {
     try {
       return this.repository.create(access);
     } catch (error) {
@@ -31,7 +31,7 @@ export class AccessRolService {
     }
   }
 
-  async updateUser(id: number, access: AccessRolDto) {
+  async updateAccessRol(id: number, access: AccessRolDto) {
     try {
       return this.repository.update(id, access);
     } catch (error) {
@@ -39,7 +39,7 @@ export class AccessRolService {
     }
   }
 
-  async deleteUser(id: number) {
+  async deleteAccessRol(id: number) {
     try {
       return this.repository.deleted(id);
     } catch (error) {

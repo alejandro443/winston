@@ -1,0 +1,18 @@
+import { NewAccessRolDto } from '@dto/AccessRol/access_rol_dto';
+import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
+
+export class CreateAccessRolUseCase {
+  constructor(private accessService?: AccessRolService) {
+    this.accessService = new AccessRolService();
+  }
+
+  async createAccessRol(access: NewAccessRolDto) {
+    try {
+      const response =
+        await this.accessService.createAccessRol(access);
+      return { ...response };
+    } catch (error) {
+      return error;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { AccessService } from "@src/domain/services/AccesssService/AccessService";
+import { AccessService } from "@src/domain/services/AccessService/AccessService";
 
 export class GetAllAccessUseCase {
   constructor(private accessService?: AccessService) {

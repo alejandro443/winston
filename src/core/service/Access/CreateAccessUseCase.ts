@@ -1,5 +1,5 @@
 import { NewAccessDto } from '@dto/Access/access_dto';
-import { AccessService } from '@src/domain/services/AccesssService/AccessService';
+import { AccessService } from '@src/domain/services/AccessService/AccessService';
 
 export class CreateAccessUseCase {
   constructor(private accessService?: AccessService) {
