@@ -7,9 +7,8 @@ export class GetOneUserUseCase {
 
   async getOneUser(code: string) {
     try {
-      const response =
-        await this.userService.getOneUser(code);
-      return {...response};
+      const response = await this.userService.getOneUser(code);
+      return { ...response };
     } catch (error) {
       return error;
     }

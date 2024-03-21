@@ -1,4 +1,4 @@
-import { NewGroupDto } from 'src/core/shared/dto/Group/group_dto';
+import { NewGroupDto } from '@dto/Group/group_dto';
 import { GroupRepository } from 'src/domain/repositories/GroupRepository/GroupRepository';
 
 export class GroupService {

@@ -1,7 +1,8 @@
-import { IsObject, IsString } from "class-validator";
-import { UserDto } from "../User/user_dto";
+import { IsObject, IsString } from 'class-validator';
+import { UserDto } from '../User/user_dto';
 
-export interface LoginDto extends Omit<UserDto, 'id, code, consultant, status'> {}
+export interface LoginDto
+  extends Omit<UserDto, 'id, code, consultant, status'> {}
 
 export class LoginResponseDto {
   @IsString()

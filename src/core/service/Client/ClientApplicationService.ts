@@ -2,7 +2,7 @@ import { ClientApplication } from 'src/core/application/Client/ClientApplication
 import {
   NewClientDto,
   UpdateClientDto,
-} from 'src/core/shared/dto/Client/client_dto';
+} from '@dto/Client/client_dto';
 import { GetOneClientUseCase } from './GetOneClientUseCase';
 import { GetAllClientUseCase } from './GetAllClientUseCase';
 import { CreateClientUseCase } from './CreateClientUseCase';

@@ -1,10 +1,71 @@
-import { RolApplication } from '../../application/Rol/RolApplication';
+import { RolApplication } from 'src/core/application/Rol/RolApplication';
+import {
+  NewRolDto,
+  UpdateRolDto,
+} from '@dto/Rol/rol_dto';
+import { GetOneRolUseCase } from './GetOneRolUseCase';
+import { GetAllRolUseCase } from './GetAllRolUseCase';
+import { CreateRolUseCase } from './CreateRolUseCase';
+import { UpdateRolUseCase } from './UpdateRolUseCase';
+import { DeleteRolUseCase } from './DeleteRolUseCase';
 
-export class RolApplicationService implements RolApplication {
-  constructor() {}
+export class RolApplicationService
+  implements RolApplication
+{
+  constructor(
+    private getOneUseCase?: GetOneRolUseCase,
+    private getAllUseCase?: GetAllRolUseCase,
+    private createUseCase?: CreateRolUseCase,
+    private updateUseCase?: UpdateRolUseCase,
+    private deleteUseCase?: DeleteRolUseCase,
+  ) {
+    this.getOneUseCase = new GetOneRolUseCase();
+    this.getAllUseCase = new GetAllRolUseCase();
+    this.createUseCase = new CreateRolUseCase();
+    this.updateUseCase = new UpdateRolUseCase();
+    this.deleteUseCase = new DeleteRolUseCase();
+  }
 
-  async createRol(rol) {
-    console.log(rol);
-    return 0;
+  async getAllRol() {
+    try {
+      return this.getAllUseCase.getAllRol();
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getOneRol(rol_id: number) {
+    try {
+      return this.getOneUseCase.getOneRol(rol_id);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async createRol(rol: NewRolDto) {
+    try {
+      return this.createUseCase.createRol(rol);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateRol(
+    id: number,
+    rol: UpdateRolDto,
+  ) {
+    try {
+      return this.updateUseCase.updateRol(id, rol);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteRol(id: number) {
+    try {
+      return this.deleteUseCase.deleteRol(id);
+    } catch (error) {
+      return error;
+    }
   }
 }

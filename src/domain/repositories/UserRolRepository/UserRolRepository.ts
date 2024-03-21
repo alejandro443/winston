@@ -5,7 +5,7 @@ import { User } from '@src/domain/entities/User.entity';
 import {
   NewUserRolDto,
   UpdateUserRolDto,
-} from 'src/core/shared/dto/UserRol/user_rol_dto';
+} from '@dto/UserRol/user_rol_dto';
 import { UserRol } from 'src/domain/entities/UserRol.entity';
 
 export class UserRolRepository {
@@ -59,20 +59,20 @@ export class UserRolRepository {
     }
   }
 
-  async getUserRolByUser(user: string){
+  async getUserRolByUser(user: string) {
     try {
-      return await UserRol.findAll({ 
+      return await UserRol.findAll({
         include: [
           {
             model: Rol,
-            attributes: ['id', 'name']
+            attributes: ['id', 'name'],
           },
           {
             model: User,
             where: {
-              user: user
+              user: user,
             },
-          }
+          },
         ],
       });
     } catch (error) {

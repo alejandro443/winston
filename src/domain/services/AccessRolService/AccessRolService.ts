@@ -1,13 +1,13 @@
 import { AccessRolApplicationError } from '@src/core/shared/error/AccessRolApplicationError';
 import { AccessRolRepository } from '@src/domain/repositories/AccessRolRepository/AccessRolRepository';
-import { AccessRolDto } from 'src/core/shared/dto/AccessRol/access_rol_dto';
+import { AccessRolDto } from '@dto/AccessRol/access_rol_dto';
 
 export class AccessRolService {
   constructor(private repository?: AccessRolRepository) {
     this.repository = new AccessRolRepository();
   }
 
-  async getOneUser(id: number) {
+  async getOneAccessRol(id: number) {
     try {
       return this.repository.findOne(id);
     } catch (error) {
@@ -15,7 +15,7 @@ export class AccessRolService {
     }
   }
 
-  async getAllUser() {
+  async getAllAccessRol() {
     try {
       return this.repository.findAll();
     } catch (error) {
@@ -23,18 +23,15 @@ export class AccessRolService {
     }
   }
 
-  async createUser(access_rol: AccessRolDto) {
+  async createAccessRol(access: AccessRolDto) {
     try {
-      return this.repository.create(access_rol);
+      return this.repository.create(access);
     } catch (error) {
       throw new AccessRolApplicationError(error.message);
     }
   }
 
-  async updateUser(
-    id: number,
-    access: AccessRolDto,
-  ) {
+  async updateAccessRol(id: number, access: AccessRolDto) {
     try {
       return this.repository.update(id, access);
     } catch (error) {
@@ -42,7 +39,7 @@ export class AccessRolService {
     }
   }
 
-  async deleteUser(id: number) {
+  async deleteAccessRol(id: number) {
     try {
       return this.repository.deleted(id);
     } catch (error) {
@@ -50,7 +47,7 @@ export class AccessRolService {
     }
   }
 
-  async getAccessRolByRol(rol_id: number){
+  async getAccessRolByRol(rol_id: number) {
     try {
       return await this.repository.getAccessRolByRol(rol_id);
     } catch (error) {

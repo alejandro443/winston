@@ -28,6 +28,7 @@ import { ClientDeliveryPoint } from '@src/domain/entities/ClientDeliveryPoint.en
 import { CompanyPosition } from '@src/domain/entities/CompanyPosition.entity';
 import { DeliveryMethod } from '@src/domain/entities/DeliveryMethod.entity';
 import { DeliveryPoint } from '@src/domain/entities/DeliveryPoint.entity';
+import { Organization } from '@src/domain/entities/Organization.entity';
 
 export const ConnectionProvider = [
   {
@@ -69,7 +70,8 @@ export const ConnectionProvider = [
         ClientDeliveryPoint,
         CompanyPosition,
         DeliveryMethod,
-        DeliveryPoint
+        DeliveryPoint,
+        Organization
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

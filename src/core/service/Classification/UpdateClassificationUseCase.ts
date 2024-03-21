@@ -1,4 +1,4 @@
-import { UpdateClassificationDto } from 'src/core/shared/dto/Classification/classification_dto';
+import { UpdateClassificationDto } from '@dto/Classification/classification_dto';
 import { ClassificationService } from 'src/domain/services/ClassificationService/ClassificationService';
 
 export class UpdateClassificationUseCase {

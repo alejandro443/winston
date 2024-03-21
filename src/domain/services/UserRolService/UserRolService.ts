@@ -1,13 +1,13 @@
 import { UserRolApplicationError } from '@src/core/shared/error/UserRolApplicationError';
 import { UserRolRepository } from '@src/domain/repositories/UserRolRepository/UserRolRepository';
-import { UserRolDto } from 'src/core/shared/dto/UserRol/user_rol_dto';
+import { UserRolDto } from '@dto/UserRol/user_rol_dto';
 
 export class UserRolService {
   constructor(private repository?: UserRolRepository) {
     this.repository = new UserRolRepository();
   }
 
-  async getOneUser(id: number) {
+  async getOneUserRol(id: number) {
     try {
       return this.repository.findOne(id);
     } catch (error) {
@@ -15,7 +15,7 @@ export class UserRolService {
     }
   }
 
-  async getAllUser() {
+  async getAllUserRol() {
     try {
       return this.repository.findAll();
     } catch (error) {
@@ -23,7 +23,7 @@ export class UserRolService {
     }
   }
 
-  async createUser(user_rol: UserRolDto) {
+  async createUserRol(user_rol: UserRolDto) {
     try {
       return this.repository.create(user_rol);
     } catch (error) {
@@ -31,10 +31,7 @@ export class UserRolService {
     }
   }
 
-  async updateUser(
-    id: number,
-    user: UserRolDto,
-  ) {
+  async updateUserRol(id: number, user: UserRolDto) {
     try {
       return this.repository.update(id, user);
     } catch (error) {
@@ -42,7 +39,7 @@ export class UserRolService {
     }
   }
 
-  async deleteUser(id: number) {
+  async deleteUserRol(id: number) {
     try {
       return this.repository.deleted(id);
     } catch (error) {
@@ -50,7 +47,7 @@ export class UserRolService {
     }
   }
 
-  async getUserRolByUser(user: string){
+  async getUserRolByUserRol(user: string) {
     try {
       return await this.repository.getUserRolByUser(user);
     } catch (error) {

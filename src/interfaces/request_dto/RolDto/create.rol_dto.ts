@@ -1,22 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { RolDto } from '@src/core/shared/dto/Rol/rol_dto';
 
-export class CreateRolRequestDto {
-  @ApiProperty({
-    description: 'Nombre rol',
-    type: String,
-  })
-  name: string;
-
-  @ApiProperty({
-    description: 'Descripcion rol',
-    type: String,
-  })
-  description: string;
-
-  @ApiProperty({
-    description: 'Estado del rol (Activo/Desactivado)',
-    default: true,
-    type: Boolean,
-  })
-  status: boolean;
-}
+export class CreateRolRequestDto
+  extends RolDto
+  implements Omit<RolDto, 'id, created_at'> {}

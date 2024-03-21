@@ -21,7 +21,7 @@ export class ClientCompany extends Model<ClientCompany> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    primaryKey: true,
   })
   main_identification: string;
 
@@ -71,7 +71,7 @@ export class ClientCompany extends Model<ClientCompany> {
     type: DataType.STRING,
   })
   zip_code: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
@@ -81,12 +81,12 @@ export class ClientCompany extends Model<ClientCompany> {
     type: DataType.STRING,
   })
   department: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   province: string;
-  
+
   @Column({
     type: DataType.STRING,
   })

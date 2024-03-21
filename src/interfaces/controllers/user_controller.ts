@@ -59,14 +59,10 @@ export class UserController {
   })
   @HttpCode(201)
   @Get('/one/:code')
-  async getOneUser(
-    @Param() request: GetUserRequestDto,
-  ): Promise<UserResponse> {
+  async getOneUser(@Param() request: GetUserRequestDto): Promise<UserResponse> {
     Log.info(`(Get) Get user code: ${request.code}`);
 
-    const user = await this.application.getOneUser(
-      request.code,
-    );
+    const user = await this.application.getOneUser(request.code);
     return {
       status: 201,
       message: `User ${request.code} OK`,
@@ -107,10 +103,7 @@ export class UserController {
   ): Promise<UserResponse> {
     Log.info(`(PUT) Put user`);
 
-    const user = await this.application.updateUser(
-      params.code,
-      request,
-    );
+    const user = await this.application.updateUser(params.code, request);
     return {
       status: 200,
       message: `User updated.`,
@@ -125,14 +118,10 @@ export class UserController {
   })
   @HttpCode(200)
   @Delete('/delete/:code')
-  async deleteUser(
-    @Param() params: GetUserRequestDto,
-  ): Promise<UserResponse> {
+  async deleteUser(@Param() params: GetUserRequestDto): Promise<UserResponse> {
     Log.info(`(Delete) Delete user ${params.code}`);
 
-    const user = await this.application.deleteUser(
-      params.code,
-    );
+    const user = await this.application.deleteUser(params.code);
     return {
       status: 200,
       message: `User ${params.code} deleted.`,

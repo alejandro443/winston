@@ -1,9 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { WorkerDto } from "@src/core/shared/dto/Worker/worker_dto";
 
-export class GetWorkerRequestDto {
-  @ApiProperty({
-    description: 'Código del trabajador',
-    type: String,
-  })
-  code: string;
-}
+export type GetWorkerRequestDto = Pick<WorkerDto, 'code'>;

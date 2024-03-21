@@ -1,17 +1,12 @@
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import {
-  NewUserDto,
-  UpdateUserDto,
-} from 'src/core/shared/dto/User/user_dto';
+import { NewUserDto, UpdateUserDto } from '@dto/User/user_dto';
 import { GetOneUserUseCase } from './GetOneUserUseCase';
 import { GetAllUserUseCase } from './GetAllUserUseCase';
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { UpdateUserUseCase } from './UpdateUserUseCase';
 import { DeleteUserUseCase } from './DeleteUserUseCase';
 
-export class UserApplicationService
-  implements UserApplication
-{
+export class UserApplicationService implements UserApplication {
   constructor(
     private getOneUseCase?: GetOneUserUseCase,
     private getAllUseCase?: GetAllUserUseCase,
@@ -50,10 +45,7 @@ export class UserApplicationService
     }
   }
 
-  async updateUser(
-    code: string,
-    user: UpdateUserDto,
-  ) {
+  async updateUser(code: string, user: UpdateUserDto) {
     try {
       return this.updateUseCase.updateUser(code, user);
     } catch (error) {

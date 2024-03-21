@@ -1,10 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { RolDto } from '@src/core/shared/dto/Rol/rol_dto';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
 
 export class RolResponse extends AppResponse {
-  @ApiProperty({ 
-    type: {},
-    nullable: true 
+  @ApiProperty({
+    type: RolDto,
+    nullable: true,
   })
-  data?: {};
+  data?: object;
+}
+
+export class RolesResponse extends AppResponse {
+  @ApiProperty({
+    type: [RolDto],
+    nullable: true,
+  })
+  data?: RolDto[];
 }

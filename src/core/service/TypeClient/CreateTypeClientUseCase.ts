@@ -1,5 +1,5 @@
 import { TypeClientService } from 'src/domain/services/TypeClientService/TypeClientService';
-import { NewTypeClientDto } from 'src/core/shared/dto/TypeClient/type_client_dto';
+import { NewTypeClientDto } from '@dto/TypeClient/type_client_dto';
 
 export class CreateTypeClientUseCase {
   constructor(private type_clientService?: TypeClientService) {

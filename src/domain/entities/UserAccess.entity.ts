@@ -6,7 +6,11 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  ForeignKey,
+  BelongsTo,
 } from 'sequelize-typescript';
+import { User } from './User.entity';
+import { Access } from './Access.entity';
 
 @Table({ tableName: 'users_accesses' })
 export class UserAccess extends Model<UserAccess> {
@@ -20,12 +24,22 @@ export class UserAccess extends Model<UserAccess> {
   @Column({
     type: DataType.TEXT,
   })
-  title: string;
-
-  @Column({
-    type: DataType.TEXT,
-  })
   description: string;
+
+  @ForeignKey(() => Access)
+  @Column({
+    type: DataType.INTEGER,
+  })
+  access_id: number;
+
+  @BelongsTo(() => Access)
+  rol: Access;
+
+  @ForeignKey(() => User)
+  @Column({
+    type: DataType.INTEGER,
+  })
+  user_id: number;
 
   @Column({
     type: DataType.BOOLEAN,

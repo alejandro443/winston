@@ -1,4 +1,4 @@
-import { UpdateTypeDocumentDto } from 'src/core/shared/dto/TypeDocument/type_document_dto';
+import { UpdateTypeDocumentDto } from '@dto/TypeDocument/type_document_dto';
 import { TypeDocumentService } from 'src/domain/services/TypeDocumentService/TypeDocumentService';
 
 export class UpdateTypeDocumentUseCase {

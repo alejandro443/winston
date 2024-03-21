@@ -1,16 +1,14 @@
 import { AccessRolApplicationError } from '@src/core/shared/error/AccessRolApplicationError';
 import { Access } from '@src/domain/entities/Access.entity';
-import { Rol } from '@src/domain/entities/Rol.entity';
-import { User } from '@src/domain/entities/User.entity';
 
 import {
   NewAccessRolDto,
   UpdateAccessRolDto,
-} from 'src/core/shared/dto/AccessRol/access_rol_dto';
+} from '@dto/AccessRol/access_rol_dto';
 import { AccessRol } from 'src/domain/entities/AccessRol.entity';
 
 export class AccessRolRepository {
-  constructor() { }
+  constructor() {}
 
   async findAccessRoles(id: number) {
     try {
@@ -62,37 +60,40 @@ export class AccessRolRepository {
 
   async getAccessRolByRol(rol_id: number) {
     try {
-      return await AccessRol.findAll(
-        {
-          include: [{
+      return await AccessRol.findAll({
+        include: [
+          {
             model: Access,
             attributes: ['name', 'url', 'priority'],
             required: true,
-            include: [{
-              model: Access,
-              as: 'parentAccess',
-              attributes: [
-                ['name', 'parent_name'],
-                ['priority', 'parent_priority'],
-                ['url', 'parent_url']
-              ],
-              required: true,
-              order: [[Access, 'priority', 'ASC']]
-            }],
-            where: { status: true }
-          }],
-          attributes: ['rol_id'],
-          where: {
-            rol_id: rol_id,
-            status: true
-          }
-        }
-      ).then(result => {
-        const accesses = result.map(
-          accessRole => {
+            include: [
+              {
+                model: Access,
+                as: 'parentAccess',
+                attributes: [
+                  ['name', 'parent_name'],
+                  ['priority', 'parent_priority'],
+                  ['url', 'parent_url'],
+                ],
+                required: true,
+                order: [[Access, 'priority', 'ASC']],
+              },
+            ],
+            where: { status: true },
+          },
+        ],
+        attributes: ['rol_id'],
+        where: {
+          rol_id: rol_id,
+          status: true,
+        },
+      })
+        .then((result) => {
+          const accesses = result.map((accessRole) => {
             const data = accessRole['access']['dataValues'];
             const { name, url, priority } = data;
-            const { parent_name, parent_url, parent_priority } = data['parentAccess']['dataValues'];
+            const { parent_name, parent_url, parent_priority } =
+              data['parentAccess']['dataValues'];
 
             return {
               parent_name,
@@ -100,15 +101,15 @@ export class AccessRolRepository {
               parent_priority,
               name,
               url,
-              priority
-            }
-          }
-        );
+              priority,
+            };
+          });
 
-        return accesses
-      }).catch(error => {
-        throw new Error(error)
-      });
+          return accesses;
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
     } catch (error) {
       throw new AccessRolApplicationError(error.message);
     }

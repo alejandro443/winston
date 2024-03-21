@@ -1,22 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { TypeWorkerDto } from '@src/core/shared/dto/TypeWorker/type_worker_dto';
 
-export class CreateTypeWorkerRequestDto {
-  @ApiProperty({
-    description: 'Nombre del tipo de trabajador',
-    type: String,
-  })
-  name: string;
-
-  @ApiProperty({
-    description: 'Descripcion del tipo de trabajador',
-    type: String,
-  })
-  description: string;
-
-  @ApiProperty({
-    description: 'Estado del tipo de trabajador (Activo/Desactivado)',
-    default: true,
-    type: Boolean,
-  })
-  status: boolean;
-}
+export class CreateTypeWorkerRequestDto
+  extends TypeWorkerDto
+  implements Omit<TypeWorkerDto, 'id, created_at'> {}

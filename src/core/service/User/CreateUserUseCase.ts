@@ -1,5 +1,5 @@
 import { UserService } from 'src/domain/services/UserService/UserService';
-import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
+import { NewUserDto } from '@dto/User/user_dto';
 
 export class CreateUserUseCase {
   constructor(private userService?: UserService) {
@@ -8,14 +8,13 @@ export class CreateUserUseCase {
 
   async createUser(user: NewUserDto) {
     try {
-      const response =
-        await this.userService.createUser(user);
+      const response = await this.userService.createUser(user);
       return {
         id: response.id,
         user: response.user,
         code: response.code,
         consultant: response.consultant,
-        status: response.status
+        status: response.status,
       };
     } catch (error) {
       return error;

@@ -1,5 +1,19 @@
-// import { NewAccessRolDto } from 'src/core/shared/dto/AccessRol/new_access_rol_dto';
+import {
+  AllAccessRolDto,
+  NewAccessRolDto,
+  OneAccessRolDto,
+  UpdateAccessRolDto,
+} from '@dto/AccessRol/access_rol_dto';
 
 export interface AccessRolApplication {
-  createAccessRol(newAccessRol: any): Promise<number>;
+  getAllAccessRol(): Promise<Array<AllAccessRolDto>>;
+  getOneAccessRol(id: number): Promise<OneAccessRolDto>;
+  createAccessRol(
+    classification: NewAccessRolDto,
+  ): Promise<OneAccessRolDto>;
+  updateAccessRol(
+    id: number,
+    classification: UpdateAccessRolDto,
+  ): Promise<OneAccessRolDto>;
+  deleteAccessRol(id: number);
 }

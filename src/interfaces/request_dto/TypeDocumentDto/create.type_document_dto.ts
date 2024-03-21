@@ -1,22 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { TypeDocumentDto } from '@src/core/shared/dto/TypeDocument/type_document_dto';
 
-export class CreateTypeDocumentRequestDto {
-  @ApiProperty({
-    description: 'Nombre del tipo de documento',
-    type: String,
-  })
-  name: string;
-
-  @ApiProperty({
-    description: 'Descripcion del tipo de documento',
-    type: String,
-  })
-  description: string;
-
-  @ApiProperty({
-    description: 'Estado del tipo de documento (Activo/Desactivado)',
-    default: true,
-    type: Boolean,
-  })
-  status: boolean;
-}
+export class CreateTypeDocumentRequestDto
+  extends TypeDocumentDto
+  implements Omit<TypeDocumentDto, 'id, created_at'> {}

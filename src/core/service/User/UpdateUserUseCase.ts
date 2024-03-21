@@ -1,4 +1,4 @@
-import { UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
+import { UpdateUserDto } from '@dto/User/user_dto';
 import { UserService } from 'src/domain/services/UserService/UserService';
 
 export class UpdateUserUseCase {
@@ -6,16 +6,10 @@ export class UpdateUserUseCase {
     this.userService = new UserService();
   }
 
-  async updateUser(
-    code: string,
-    user: UpdateUserDto,
-  ) {
+  async updateUser(code: string, user: UpdateUserDto) {
     try {
-      const response = await this.userService.updateUser(
-        code,
-        user,
-      );
-      return {...response};
+      const response = await this.userService.updateUser(code, user);
+      return { ...response };
     } catch (error) {
       return error;
     }
