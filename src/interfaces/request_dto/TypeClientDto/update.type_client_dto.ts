@@ -1,21 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { TypeClientDto } from '@src/core/shared/dto/TypeClient/type_client_dto';
 
-export class UpdateTypeClientRequestDto {
-  @ApiProperty({
-    description: 'Nombre del tipo de cliente',
-    type: String,
-  })
-  name: string;
-
-  @ApiProperty({
-    description: 'Descripcion del tipo de cliente',
-    type: String,
-  })
-  description: string;
-
-  @ApiProperty({
-    description: 'Estado del tipo de cliente (Activo/Desactivado)',
-    type: Boolean,
-  })
-  status: boolean;
-}
+export type UpdateTypeClientRequestDto = Omit<TypeClientDto, 'id, created_at'>;

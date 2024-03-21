@@ -1,9 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { GroupDto } from '@src/core/shared/dto/Group/group_dto';
 
-export class GetGroupRequestDto {
-  @ApiProperty({
-    description: 'Código del grupo',
-    type: String,
-  })
-  code: string;
-}
+export type GetGroupRequestDto = Pick<GroupDto, 'code'>;

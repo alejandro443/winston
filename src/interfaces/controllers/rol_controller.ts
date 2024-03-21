@@ -28,11 +28,11 @@ export class RolController {
   async createRol(@Body() request: CreateRolRequestDto): Promise<RolResponse> {
     Log.info(`(POST) Create rol`);
 
-    const rolId = await this.application.createRol(request);
+    const rol_data = await this.application.createRol(request);
     return {
       status: 201,
       message: `Rol ${request.name} created OK`,
-      data: rolId,
+      data: rol_data,
     };
   }
 }

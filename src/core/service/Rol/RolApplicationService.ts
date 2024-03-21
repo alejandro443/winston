@@ -4,7 +4,11 @@ export class RolApplicationService implements RolApplication {
   constructor() {}
 
   async createRol(rol) {
-    console.log(rol);
-    return 0;
+    try {
+      console.log(rol);
+      return true;
+    } catch (error) {
+      return error;
+    }
   }
 }

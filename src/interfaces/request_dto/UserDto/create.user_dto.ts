@@ -1,29 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { UserDto } from '@src/core/shared/dto/User/user_dto';
 
-export class CreateUserRequestDto {
-  @ApiProperty({
-    description: 'Usuario',
-    type: String,
-  })
-  user: string;
-
-  @ApiProperty({
-    description: 'Contraseña del usuario',
-    type: String,
-  })
-  password: string;
-
-  @ApiProperty({
-    description: '¿Consultor CUDESI?',
-    type: Boolean,
-    default: false,
-  })
-  consultant?: boolean;
-
-  @ApiProperty({
-    description: 'Estado del usuario (Activo/Desactivado)',
-    type: Boolean,
-    default: true,
-  })
-  status?: boolean;
-}
+export class CreateUserRequestDto
+  extends UserDto
+  implements Omit<UserDto, 'id, created_at'> {}
