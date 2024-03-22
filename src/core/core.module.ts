@@ -18,7 +18,7 @@ import {
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
 import { UserApplicationService } from './service/User/UserApplicationService';
-// import { AuthenticationApplicationService } from './service/Auth/AuthApplicationService';
+import { AuthenticationApplicationService } from './service/Auth/AuthApplicationService';
 import { ClientApplicationService } from './service/Client/ClientApplicationService';
 import { TypeClientApplicationService } from './service/TypeClient/TypeClientApplicationService';
 import { TypeDocumentApplicationService } from './service/TypeDocument/TypeDocumentApplicationService';
@@ -38,13 +38,13 @@ export type CoreModuleOptions = {
 @Module({})
 export class CoreModule {
   static register({ modules }: CoreModuleOptions): DynamicModule {
-    // const AuthenticationApplicationProvider = {
-    //   provide: AUTH_APPLICATION,
-    //   useFactory() {
-    //     return new AuthenticationApplicationService();
-    //   },
-    //   inject: [],
-    // };
+    const AuthenticationApplicationProvider = {
+      provide: AUTH_APPLICATION,
+      useFactory() {
+        return new AuthenticationApplicationService();
+      },
+      inject: [],
+    };
 
     const UserApplicationProvider = {
       provide: USER_APPLICATION,
@@ -155,7 +155,7 @@ export class CoreModule {
       global: true,
       imports: [...modules],
       providers: [
-        // AuthenticationApplicationProvider,
+        AuthenticationApplicationProvider,
         UserApplicationProvider,
         RolApplicationProvider,
         ClassificationApplicationProvider,
@@ -171,7 +171,7 @@ export class CoreModule {
         AccessRolApplicationProvider,
       ],
       exports: [
-        // AUTH_APPLICATION,
+        AUTH_APPLICATION,
         CLASSIFICATION_APPLICATION,
         USER_APPLICATION,
         ROL_APPLICATION,
