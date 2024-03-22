@@ -8,11 +8,15 @@ import {
   DeletedAt,
   BeforeCreate,
   HasMany,
+  HasOne,
+  ForeignKey,
 } from 'sequelize-typescript';
 
 import * as bcrypt from 'bcrypt';
 import { UserAccess } from './UserAccess.entity';
 import { UserRol } from './UserRol.entity';
+import { Worker } from './Worker.entity';
+import { Client } from './Client.entity';
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -38,7 +42,7 @@ export class User extends Model<User> {
 
   @Column({
     type: DataType.TEXT,
-    unique: true,
+    allowNull: true,
   })
   code: string;
 
@@ -96,6 +100,12 @@ export class User extends Model<User> {
 
   @HasMany(() => UserRol, { foreignKey: 'user_id', sourceKey: 'id' })
   userRoles: UserRol[];
+
+  @HasOne(() => Worker, 'user_id')
+  worker: Worker;
+ 
+  @HasOne(() => Client, 'user_id')
+  client: Client;
 
   @CreatedAt
   created_at: Date;

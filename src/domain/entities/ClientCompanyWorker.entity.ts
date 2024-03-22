@@ -1,5 +1,3 @@
-import { DirectionsMetadata } from '@src/infraestructure/shared/interfaces/DirectionsMetadata';
-import { PhonesMetadata } from '@src/infraestructure/shared/interfaces/PhonesMetadata';
 import {
   Table,
   Column,
@@ -8,7 +6,13 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  ForeignKey,
+  BelongsTo,
 } from 'sequelize-typescript';
+import { ClientCompany } from './ClientCompany.entity';
+import { Person } from './Person.entity';
+import { CompanyArea } from './CompanyArea.entity';
+import { CompanyPosition } from './CompanyPosition.entity';
 
 @Table({ tableName: 'clients_company_workers' })
 export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
@@ -19,98 +23,45 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
   })
   id: number;
 
-  @Column({
-    type: DataType.STRING,
-    primaryKey: true
-  })
-  main_identification: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  type_identification: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  name_company: string;
-  
-  @Column({
-    type: DataType.STRING,
-  })
-  main_phone: string;
-
+  @ForeignKey(() => ClientCompany)
   @Column({ 
-    type: DataType.STRING, 
-    unique: true, 
-    validate: { isEmail: true } 
+    field: 'client_company_id',
+    allowNull: true
   })
-  main_email: string;
+  client_company_id: number | null;
 
-  @Column({
-    type: DataType.STRING,
-  })
-  website_url: string;
+  @BelongsTo(() => ClientCompany, 'id')
+  clientCompany: ClientCompany;
 
-  @Column({
-    type: DataType.STRING,
-  })
-  main_direction: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  type_company: string;
-  
-  @Column({
-    type: DataType.STRING,
-  })
-  type_industry: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  zip_code: string;
-  
-  @Column({
-    type: DataType.STRING,
-  })
-  country: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  department: string;
-  
-  @Column({
-    type: DataType.STRING,
-  })
-  province: string;
-  
-  @Column({
-    type: DataType.STRING,
-  })
-  district: string;
-  
-  @Column({
-    type: DataType.DATE,
-  })
-  foundation_date: Date;
-
+  @ForeignKey(() => Person)
   @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
+    field: 'person_id',
+    allowNull: true
   })
-  phones: PhonesMetadata[];
-  
+  person_id: number | null;
+
+  @BelongsTo(() => Person, 'id')
+  person: Person;
+ 
+  @ForeignKey(() => CompanyPosition)
   @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
+    field: 'company_position_id',
+    allowNull: true
   })
-  directions: DirectionsMetadata[];
-  
+  company_position_id: number | null;
+
+  @BelongsTo(() => CompanyPosition, 'id')
+  companyPosition: CompanyPosition;
+
+  @ForeignKey(() => CompanyArea)
   @Column({ 
-    type: DataType.ARRAY(DataType.STRING)
+    field: 'company_area_id',
+    allowNull: true
   })
-  emails: DirectionsMetadata[];
+  company_area_id: number | null;
+
+  @BelongsTo(() => CompanyArea, 'id')
+  companyArea: CompanyArea;
 
   @Column({
     type: DataType.BOOLEAN,

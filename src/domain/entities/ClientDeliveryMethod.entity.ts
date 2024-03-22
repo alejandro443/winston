@@ -23,18 +23,21 @@ export class ClientDeliveryMethod extends Model<ClientDeliveryMethod> {
 
   @ForeignKey(() => Client)
   @Column({ 
-    field: 'client_code',
+    field: 'client_id',
     allowNull: true
   })
-  client_code: string | null;
+  client_id: number | null;
+
+  @BelongsTo(() => Client, 'id')
+  client: Client;
 
   @ForeignKey(() => DeliveryMethod)
   @Column({ 
-    field: 'delivery_method_code'
+    field: 'delivery_method_id'
   })
-  delivery_method_code: string;
+  delivery_method_id: number;
 
-  @BelongsTo(() => DeliveryMethod, 'delivery_method_code')
+  @BelongsTo(() => DeliveryMethod, 'id')
   deliveryMethod: DeliveryMethod;
 
   @Column({

@@ -8,7 +8,9 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasMany,
 } from 'sequelize-typescript';
+import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
 
 @Table({ tableName: 'clients_companies' })
 export class ClientCompany extends Model<ClientCompany> {
@@ -21,7 +23,7 @@ export class ClientCompany extends Model<ClientCompany> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    unique: true,
   })
   main_identification: string;
 
@@ -117,6 +119,9 @@ export class ClientCompany extends Model<ClientCompany> {
     defaultValue: true,
   })
   status: boolean;
+
+  @HasMany(() => ClientCompanyWorker, 'client_company_id')
+  clientCompanyWorker: ClientCompanyWorker[];
 
   @CreatedAt
   created_at: Date;

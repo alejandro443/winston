@@ -21,7 +21,7 @@ export class DeliveryMethod extends Model<DeliveryMethod> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    allowNull: true,
   })
   code: string;
 
@@ -80,7 +80,7 @@ export class DeliveryMethod extends Model<DeliveryMethod> {
   })
   status: boolean;
 
-  @HasMany(() => ClientDeliveryMethod, 'delivery_method_code')
+  @HasMany(() => ClientDeliveryMethod, 'delivery_method_id')
   clientDeliveryMethods: ClientDeliveryMethod[];
 
   @CreatedAt

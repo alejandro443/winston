@@ -6,7 +6,9 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasMany,
 } from 'sequelize-typescript';
+import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
 
 @Table({ tableName: 'delivery_points' })
 export class DeliveryPoint extends Model<DeliveryPoint> {
@@ -19,13 +21,12 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
+    allowNull: true,
   })
   code: string;
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true
   })
   name: string;
 
@@ -50,6 +51,9 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
     defaultValue: true,
   })
   status: boolean;
+
+  @HasMany(() => ClientDeliveryPoint, 'delivery_point_id')
+  clientDeliveryPoints: ClientDeliveryPoint[];
 
   @CreatedAt
   created_at: Date;

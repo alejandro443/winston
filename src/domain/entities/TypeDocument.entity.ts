@@ -19,7 +19,7 @@ export class TypeDocument extends Model<TypeDocument> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
   })
   code: string;
 

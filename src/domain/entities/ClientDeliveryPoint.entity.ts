@@ -23,18 +23,22 @@ export class ClientDeliveryPoint extends Model<ClientDeliveryPoint> {
 
   @ForeignKey(() => Client)
   @Column({ 
-    field: 'client_code',
-    allowNull: true
+    field: 'client_id',
+    allowNull: true,
   })
-  client_code: string | null;
+  client_id: number;
+
+  @BelongsTo(() => Client, 'id')
+  client: Client;
 
   @ForeignKey(() => DeliveryPoint)
   @Column({ 
-    field: 'delivery_point_code'
+    field: 'delivery_point_id',
+    allowNull: true,
   })
-  delivery_point_code: string;
+  delivery_point_id: number;
 
-  @BelongsTo(() => DeliveryPoint, 'delivery_point_code')
+  @BelongsTo(() => DeliveryPoint, 'id')
   deliveryPoint: DeliveryPoint;
 
   @Column({

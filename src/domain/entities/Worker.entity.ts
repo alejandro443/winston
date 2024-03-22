@@ -8,10 +8,13 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 import { TypeWorker } from './TypeWorker.entity';
 import { Person } from './Person.entity';
 import { User } from './User.entity';
+import { Client } from './Client.entity';
+import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
 
 @Table({ tableName: 'workers' })
 export class Worker extends Model<Worker> {
@@ -24,7 +27,7 @@ export class Worker extends Model<Worker> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
   })
   code: string;
 
@@ -34,26 +37,30 @@ export class Worker extends Model<Worker> {
   })
   status: boolean;
 
-  @ForeignKey(() => User)
-  @Column({ field: 'user_id' })
-  user_id: number;
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+  })
+  person_id: number;
 
-  @BelongsTo(() => Person, 'user_id')
-  user: User;
-
-  @ForeignKey(() => Person)
-  @Column({ field: 'person_identification' })
-  person_identification: string;
-
-  @BelongsTo(() => Person, 'person_identification')
+  @BelongsTo(() => Person, 'id')
   person: Person;
 
   @ForeignKey(() => TypeWorker)
-  @Column({ field: 'type_worker_code' })
-  type_worker_code: string;
+  @Column({ field: 'type_worker_id' })
+  type_worker_id: number;
 
-  @BelongsTo(() => TypeWorker, 'code')
+  @BelongsTo(() => TypeWorker, 'id')
   typeWorker: TypeWorker;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+  })
+  user_id: number;
+
+  @BelongsTo(() => User, 'id')
+  user: User;
 
   @CreatedAt
   created_at: Date;
