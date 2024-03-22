@@ -9,9 +9,7 @@ import { CreateOrganizationUseCase } from './CreateOrganizationUseCase';
 import { UpdateOrganizationUseCase } from './UpdateOrganizationUseCase';
 import { DeleteOrganizationUseCase } from './DeleteOrganizationUseCase';
 
-export class OrganizationApplicationService
-  implements OrganizationApplication
-{
+export class OrganizationApplicationService implements OrganizationApplication {
   constructor(
     private getOneUseCase?: GetOneOrganizationUseCase,
     private getAllUseCase?: GetAllOrganizationUseCase,
@@ -50,10 +48,7 @@ export class OrganizationApplicationService
     }
   }
 
-  async updateOrganization(
-    id: number,
-    organization: UpdateOrganizationDto,
-  ) {
+  async updateOrganization(id: number, organization: UpdateOrganizationDto) {
     try {
       return this.updateUseCase.updateOrganization(id, organization);
     } catch (error) {

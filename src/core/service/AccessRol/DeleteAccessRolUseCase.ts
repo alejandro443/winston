@@ -1,4 +1,4 @@
-import { AccessRolService } from "@src/domain/services/AccessRolService/AccessRolService";
+import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
 
 export class DeleteAccessRolUseCase {
   constructor(private accessService?: AccessRolService) {
@@ -7,8 +7,7 @@ export class DeleteAccessRolUseCase {
 
   async deleteAccessRol(id: number) {
     try {
-      const response =
-        await this.accessService.deleteAccessRol(id);
+      const response = await this.accessService.deleteAccessRol(id);
       return { id: response['id'] };
     } catch (error) {
       return error;

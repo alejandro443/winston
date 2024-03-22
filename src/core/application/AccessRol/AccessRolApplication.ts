@@ -8,9 +8,7 @@ import {
 export interface AccessRolApplication {
   getAllAccessRol(): Promise<Array<AllAccessRolDto>>;
   getOneAccessRol(id: number): Promise<OneAccessRolDto>;
-  createAccessRol(
-    classification: NewAccessRolDto,
-  ): Promise<OneAccessRolDto>;
+  createAccessRol(classification: NewAccessRolDto): Promise<OneAccessRolDto>;
   updateAccessRol(
     id: number,
     classification: UpdateAccessRolDto,

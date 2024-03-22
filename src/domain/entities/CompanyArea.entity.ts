@@ -24,12 +24,12 @@ export class CompanyArea extends Model<CompanyArea> {
     allowNull: true,
   })
   code: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   name: string;
- 
+
   @Column({
     type: DataType.STRING,
   })

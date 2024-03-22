@@ -24,19 +24,19 @@ export class CompanyPosition extends Model<CompanyPosition> {
     allowNull: true,
   })
   code: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   name: string;
- 
+
   @Column({
     type: DataType.STRING,
   })
   description: string;
-  
-  @Column({ 
-    type: DataType.ARRAY(DataType.STRING)
+
+  @Column({
+    type: DataType.ARRAY(DataType.STRING),
   })
   types: string[];
 

@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class AccessDto {
@@ -64,7 +68,7 @@ export class AccessDto {
   @ApiPropertyOptional({
     description: 'Estado del acceso (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;
@@ -91,5 +95,4 @@ export class DeleteAccessDto {
 export interface OneAccessDto extends AccessDto {}
 export interface AllAccessDto extends AccessDto {}
 export interface NewAccessDto extends Omit<AccessDto, 'id'> {}
-export interface UpdateAccessDto
-  extends Omit<AccessDto, 'id'> {}
+export interface UpdateAccessDto extends Omit<AccessDto, 'id'> {}

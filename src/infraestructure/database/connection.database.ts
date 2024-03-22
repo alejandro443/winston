@@ -73,7 +73,7 @@ export const ConnectionProvider = [
         DeliveryMethod,
         DeliveryPoint,
         Organization,
-        CompanyArea
+        CompanyArea,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

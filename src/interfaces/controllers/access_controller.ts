@@ -64,9 +64,7 @@ export class AccessController {
   ): Promise<AccessResponse> {
     Log.info(`(Get) Get access id: ${request.id}`);
 
-    const access = await this.application.getOneAccess(
-      request.id,
-    );
+    const access = await this.application.getOneAccess(request.id);
     return {
       status: 201,
       message: `Access ${request.id} OK`,
@@ -107,10 +105,7 @@ export class AccessController {
   ): Promise<AccessResponse> {
     Log.info(`(PUT) Put access`);
 
-    const access = await this.application.updateAccess(
-      params.id,
-      request,
-    );
+    const access = await this.application.updateAccess(params.id, request);
     return {
       status: 200,
       message: `Access updated.`,
@@ -130,9 +125,7 @@ export class AccessController {
   ): Promise<AccessResponse> {
     Log.info(`(Delete) Delete access ${params.id}`);
 
-    const access = await this.application.deleteAccess(
-      params.id,
-    );
+    const access = await this.application.deleteAccess(params.id);
     return {
       status: 200,
       message: `Access ${params.id} deleted.`,

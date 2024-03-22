@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class ClassificationDto {

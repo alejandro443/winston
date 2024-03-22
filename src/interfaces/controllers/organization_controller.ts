@@ -65,9 +65,7 @@ export class OrganizationController {
   ): Promise<OrganizationResponse> {
     Log.info(`(Get) Get organization id: ${request.id}`);
 
-    const organization = await this.application.getOneOrganization(
-      request.id,
-    );
+    const organization = await this.application.getOneOrganization(request.id);
     return {
       status: 201,
       message: `Organization ${request.id} OK`,
@@ -131,9 +129,7 @@ export class OrganizationController {
   ): Promise<OrganizationResponse> {
     Log.info(`(Delete) Delete organization ${params.id}`);
 
-    const organization = await this.application.deleteOrganization(
-      params.id,
-    );
+    const organization = await this.application.deleteOrganization(params.id);
     return {
       status: 200,
       message: `Organization ${params.id} deleted.`,

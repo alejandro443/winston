@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber } from 'class-validator';
 
 export class UserRolDto {
@@ -29,7 +33,7 @@ export class UserRolDto {
   @ApiPropertyOptional({
     description: 'Estado del registro (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

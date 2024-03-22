@@ -9,9 +9,7 @@ import { CreateAccessUseCase } from './CreateAccessUseCase';
 import { UpdateAccessUseCase } from './UpdateAccessUseCase';
 import { DeleteAccessUseCase } from './DeleteAccessUseCase';
 
-export class AccessApplicationService
-  implements AccessApplication
-{
+export class AccessApplicationService implements AccessApplication {
   constructor(
     private getOneUseCase?: GetOneAccessUseCase,
     private getAllUseCase?: GetAllAccessUseCase,
@@ -50,10 +48,7 @@ export class AccessApplicationService
     }
   }
 
-  async updateAccess(
-    id: number,
-    access: UpdateAccessDto,
-  ) {
+  async updateAccess(id: number, access: UpdateAccessDto) {
     try {
       return this.updateUseCase.updateAccess(id, access);
     } catch (error) {

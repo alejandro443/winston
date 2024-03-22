@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class WorkerDto {
@@ -22,7 +26,7 @@ export class WorkerDto {
   @ApiPropertyOptional({
     description: 'Estado del trabajador (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

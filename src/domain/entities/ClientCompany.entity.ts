@@ -36,16 +36,16 @@ export class ClientCompany extends Model<ClientCompany> {
     type: DataType.STRING,
   })
   name_company: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
   main_phone: string;
 
-  @Column({ 
-    type: DataType.STRING, 
-    unique: true, 
-    validate: { isEmail: true } 
+  @Column({
+    type: DataType.STRING,
+    unique: true,
+    validate: { isEmail: true },
   })
   main_email: string;
 
@@ -63,7 +63,7 @@ export class ClientCompany extends Model<ClientCompany> {
     type: DataType.STRING,
   })
   type_company: string;
-  
+
   @Column({
     type: DataType.STRING,
   })
@@ -93,24 +93,24 @@ export class ClientCompany extends Model<ClientCompany> {
     type: DataType.STRING,
   })
   district: string;
-  
+
   @Column({
     type: DataType.DATE,
   })
   foundation_date: Date;
 
-  @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
+  @Column({
+    type: DataType.ARRAY(DataType.JSON),
   })
   phones: PhonesMetadata[];
-  
-  @Column({ 
-    type: DataType.ARRAY(DataType.JSON)
+
+  @Column({
+    type: DataType.ARRAY(DataType.JSON),
   })
   directions: DirectionsMetadata[];
-  
-  @Column({ 
-    type: DataType.ARRAY(DataType.STRING)
+
+  @Column({
+    type: DataType.ARRAY(DataType.STRING),
   })
   emails: string[];
 

@@ -6,15 +6,9 @@ export class UpdateRolUseCase {
     this.rolService = new RolService();
   }
 
-  async updateRol(
-    id: number,
-    rol: UpdateRolDto,
-  ) {
+  async updateRol(id: number, rol: UpdateRolDto) {
     try {
-      const response = await this.rolService.updateRol(
-        id,
-        rol,
-      );
+      const response = await this.rolService.updateRol(id, rol);
       return { ...response.dataValues };
     } catch (error) {
       return error;

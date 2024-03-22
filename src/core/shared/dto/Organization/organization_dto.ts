@@ -1,8 +1,11 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class OrganizationDto {
-
   @ApiProperty({
     description: 'ID de la organización',
     type: Number,
@@ -105,7 +108,8 @@ export class OrganizationDto {
   representative_legal?: string;
 
   @ApiProperty({
-    description: 'Correo electrónico del representante legal de la organización',
+    description:
+      'Correo electrónico del representante legal de la organización',
     type: String,
   })
   @IsString()
@@ -128,7 +132,7 @@ export class OrganizationDto {
   @ApiPropertyOptional({
     description: 'Estado de la organización',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;
@@ -317,5 +321,4 @@ export class DeleteOrganizationDto {
 export interface OneOrganizationDto extends OrganizationDto {}
 export interface AllOrganizationDto extends OrganizationDto {}
 export interface NewOrganizationDto extends Omit<OrganizationDto, 'id'> {}
-export interface UpdateOrganizationDto
-  extends Omit<OrganizationDto, 'id'> {}
+export interface UpdateOrganizationDto extends Omit<OrganizationDto, 'id'> {}

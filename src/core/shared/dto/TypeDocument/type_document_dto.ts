@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class TypeDocumentDto {
@@ -36,7 +40,7 @@ export class TypeDocumentDto {
   @ApiPropertyOptional({
     description: 'Estado del acceso (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

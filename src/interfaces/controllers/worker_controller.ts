@@ -17,7 +17,6 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { WORKER_APPLICATION } from 'src/core/shared/constants/application.constants';
-import { AppResponse } from '../../infraestructure/responses/app.response';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetWorkerRequestDto } from '../request_dto/WorkerDto/get.worker_dto';
 import { CreateWorkerRequestDto } from '../request_dto/WorkerDto/create.worker_dto';

@@ -39,7 +39,8 @@ COPY .swcrc .
 COPY nest-cli.json .
 COPY src src
 
-RUN npm run build
+RUN npm run build && \
+    npm prune --production
 
 FROM base AS production
 

@@ -1,4 +1,4 @@
-import { AccessService } from "@src/domain/services/AccessService/AccessService";
+import { AccessService } from '@src/domain/services/AccessService/AccessService';
 
 export class DeleteAccessUseCase {
   constructor(private accessService?: AccessService) {
@@ -7,8 +7,7 @@ export class DeleteAccessUseCase {
 
   async deleteAccess(id: number) {
     try {
-      const response =
-        await this.accessService.deleteAccess(id);
+      const response = await this.accessService.deleteAccess(id);
       return { id: response.id };
     } catch (error) {
       return error;

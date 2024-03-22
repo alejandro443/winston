@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class RolDto {
@@ -29,7 +33,7 @@ export class RolDto {
   @ApiPropertyOptional({
     description: 'Estado del rol (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;
@@ -56,5 +60,4 @@ export class DeleteRolDto {
 export interface OneRolDto extends RolDto {}
 export interface AllRolDto extends RolDto {}
 export interface NewRolDto extends Omit<RolDto, 'id'> {}
-export interface UpdateRolDto
-  extends Omit<RolDto, 'id'> {}
+export interface UpdateRolDto extends Omit<RolDto, 'id'> {}

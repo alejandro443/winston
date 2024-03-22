@@ -1,5 +1,4 @@
 import { UserAccessApplicationError } from '@src/core/shared/error/UserAccessApplicationError';
-import { Rol } from '@src/domain/entities/Rol.entity';
 import { User } from '@src/domain/entities/User.entity';
 
 import {

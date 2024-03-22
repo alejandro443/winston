@@ -10,7 +10,7 @@ export class GetAllOrganizationUseCase {
       const response = await this.organizationService.getAllOrganization();
 
       return response.map((organization) => ({
-        ...organization
+        ...organization,
       }));
     } catch (error) {
       return error;

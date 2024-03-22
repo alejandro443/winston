@@ -7,10 +7,9 @@ export class GetOneOrganizationUseCase {
 
   async getOneOrganization(id: number) {
     try {
-      const response =
-        await this.classificationService.getOneOrganization(id);
+      const response = await this.classificationService.getOneOrganization(id);
       return {
-        ...response
+        ...response,
       };
     } catch (error) {
       return error;

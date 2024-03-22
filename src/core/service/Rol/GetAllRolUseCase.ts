@@ -1,4 +1,4 @@
-import { RolService } from "@src/domain/services/RolService/RolService";
+import { RolService } from '@src/domain/services/RolService/RolService';
 
 export class GetAllRolUseCase {
   constructor(private rolService?: RolService) {
@@ -9,7 +9,7 @@ export class GetAllRolUseCase {
     try {
       const response = await this.rolService.getAllRol();
 
-      return response.map((rol) => ({...rol}));
+      return response.map((rol) => ({ ...rol }));
     } catch (error) {
       return error;
     }

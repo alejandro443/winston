@@ -7,8 +7,7 @@ export class DeleteOrganizationUseCase {
 
   async deleteOrganization(id: number) {
     try {
-      const response =
-        await this.organizationService.deleteOrganization(id);
+      const response = await this.organizationService.deleteOrganization(id);
       return { id: response.id };
     } catch (error) {
       return error;

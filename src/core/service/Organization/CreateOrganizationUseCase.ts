@@ -11,7 +11,7 @@ export class CreateOrganizationUseCase {
       const response =
         await this.organizationService.createOrganization(organization);
       return {
-        ...response
+        ...response,
       };
     } catch (error) {
       return error;

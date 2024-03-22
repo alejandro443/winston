@@ -8,13 +8,10 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
-  HasMany,
 } from 'sequelize-typescript';
 import { TypeWorker } from './TypeWorker.entity';
 import { Person } from './Person.entity';
 import { User } from './User.entity';
-import { Client } from './Client.entity';
-import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
 
 @Table({ tableName: 'workers' })
 export class Worker extends Model<Worker> {

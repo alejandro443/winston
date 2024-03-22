@@ -6,17 +6,14 @@ export class UpdateOrganizationUseCase {
     this.organizationService = new OrganizationService();
   }
 
-  async updateOrganization(
-    id: number,
-    organization: UpdateOrganizationDto,
-  ) {
+  async updateOrganization(id: number, organization: UpdateOrganizationDto) {
     try {
       const response = await this.organizationService.updateOrganization(
         id,
         organization,
       );
       return {
-        ...response
+        ...response,
       };
     } catch (error) {
       return error;

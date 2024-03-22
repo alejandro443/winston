@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class GroupDto {
@@ -29,7 +33,7 @@ export class GroupDto {
   @ApiProperty({
     description: 'Código del grupo.',
     type: String,
-    writeOnly: true
+    writeOnly: true,
   })
   @IsString()
   code?: string;
@@ -37,7 +41,7 @@ export class GroupDto {
   @ApiPropertyOptional({
     description: 'Estado del grupo (Activo/Inactivo)',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

@@ -6,15 +6,9 @@ export class UpdateUserRolUseCase {
     this.userService = new UserRolService();
   }
 
-  async updateUserRol(
-    id: number,
-    user: UpdateUserRolDto,
-  ) {
+  async updateUserRol(id: number, user: UpdateUserRolDto) {
     try {
-      const response = await this.userService.updateUserRol(
-        id,
-        user,
-      );
+      const response = await this.userService.updateUserRol(id, user);
       return { ...response };
     } catch (error) {
       return error;

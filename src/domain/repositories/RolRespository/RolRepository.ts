@@ -1,7 +1,4 @@
-import {
-  NewRolDto,
-  UpdateRolDto,
-} from 'src/core/shared/dto/Rol/rol_dto';
+import { NewRolDto, UpdateRolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { Rol } from 'src/domain/entities/Rol.entity';
 
 export class RolRepository {

@@ -8,8 +8,7 @@ export class CreateUserRolUseCase {
 
   async createUserRol(userRol: NewUserRolDto) {
     try {
-      const response =
-        await this.userRolService.createUserRol(userRol);
+      const response = await this.userRolService.createUserRol(userRol);
       return { ...response };
     } catch (error) {
       return error;

@@ -1,4 +1,9 @@
-import { AllUserRolDto, NewUserRolDto, OneUserRolDto, UpdateUserRolDto } from 'src/core/shared/dto/UserRol/user_rol_dto';
+import {
+  AllUserRolDto,
+  NewUserRolDto,
+  OneUserRolDto,
+  UpdateUserRolDto,
+} from 'src/core/shared/dto/UserRol/user_rol_dto';
 
 export interface UserRolApplication {
   getAllUserRol(): Promise<Array<AllUserRolDto>>;

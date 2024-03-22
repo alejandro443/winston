@@ -9,7 +9,6 @@ import {
   BeforeCreate,
   HasMany,
   HasOne,
-  ForeignKey,
 } from 'sequelize-typescript';
 
 import * as bcrypt from 'bcrypt';
@@ -103,7 +102,7 @@ export class User extends Model<User> {
 
   @HasOne(() => Worker, 'user_id')
   worker: Worker;
- 
+
   @HasOne(() => Client, 'user_id')
   client: Client;
 

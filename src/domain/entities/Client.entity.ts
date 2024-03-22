@@ -8,7 +8,6 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
-  HasOne,
   HasMany,
 } from 'sequelize-typescript';
 import { TypeClient } from './TypeClient.entity';
@@ -59,9 +58,9 @@ export class Client extends Model<Client> {
   @BelongsTo(() => Person, 'id')
   person: Person;
 
-  @Column({ 
+  @Column({
     type: DataType.INTEGER,
-    allowNull: true
+    allowNull: true,
   })
   client_company_id: number;
 

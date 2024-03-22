@@ -64,9 +64,7 @@ export class AccessRolController {
   ): Promise<AccessRolResponse> {
     Log.info(`(Get) Get access_rol id: ${request.id}`);
 
-    const access_rol = await this.application.getOneAccessRol(
-      request.id,
-    );
+    const access_rol = await this.application.getOneAccessRol(request.id);
     return {
       status: 201,
       message: `AccessRol ${request.id} OK`,
@@ -130,9 +128,7 @@ export class AccessRolController {
   ): Promise<AccessRolResponse> {
     Log.info(`(Delete) Delete access_rol ${params.id}`);
 
-    const access_rol = await this.application.deleteAccessRol(
-      params.id,
-    );
+    const access_rol = await this.application.deleteAccessRol(params.id);
     return {
       status: 200,
       message: `AccessRol ${params.id} deleted.`,

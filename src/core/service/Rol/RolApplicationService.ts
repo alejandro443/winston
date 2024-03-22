@@ -1,17 +1,12 @@
 import { RolApplication } from 'src/core/application/Rol/RolApplication';
-import {
-  NewRolDto,
-  UpdateRolDto,
-} from 'src/core/shared/dto/Rol/rol_dto';
+import { NewRolDto, UpdateRolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { GetOneRolUseCase } from './GetOneRolUseCase';
 import { GetAllRolUseCase } from './GetAllRolUseCase';
 import { CreateRolUseCase } from './CreateRolUseCase';
 import { UpdateRolUseCase } from './UpdateRolUseCase';
 import { DeleteRolUseCase } from './DeleteRolUseCase';
 
-export class RolApplicationService
-  implements RolApplication
-{
+export class RolApplicationService implements RolApplication {
   constructor(
     private getOneUseCase?: GetOneRolUseCase,
     private getAllUseCase?: GetAllRolUseCase,
@@ -50,10 +45,7 @@ export class RolApplicationService
     }
   }
 
-  async updateRol(
-    id: number,
-    rol: UpdateRolDto,
-  ) {
+  async updateRol(id: number, rol: UpdateRolDto) {
     try {
       return this.updateUseCase.updateRol(id, rol);
     } catch (error) {

@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class UserDto {
@@ -36,7 +40,7 @@ export class UserDto {
   @ApiPropertyOptional({
     description: '¿El usuario es consultor CUDESI?.',
     type: Boolean,
-    default: false
+    default: false,
   })
   @IsString()
   consultant?: boolean;
@@ -44,7 +48,7 @@ export class UserDto {
   @ApiPropertyOptional({
     description: 'Estado del usuario(Activo/Desactivado).',
     type: Boolean,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

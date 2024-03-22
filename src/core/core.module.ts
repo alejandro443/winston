@@ -125,7 +125,7 @@ export class CoreModule {
       },
       inject: [],
     };
-    
+
     const OrganizationApplicationProvider = {
       provide: ORGANIZATION_APPLICATION,
       useFactory() {
@@ -133,7 +133,7 @@ export class CoreModule {
       },
       inject: [],
     };
-    
+
     const AccessApplicationProvider = {
       provide: ACCESS_APPLICATION,
       useFactory() {
@@ -141,7 +141,7 @@ export class CoreModule {
       },
       inject: [],
     };
-    
+
     const AccessRolApplicationProvider = {
       provide: ACCESSROL_APPLICATION,
       useFactory() {
@@ -168,7 +168,7 @@ export class CoreModule {
         PersonApplicationProvider,
         OrganizationApplicationProvider,
         AccessApplicationProvider,
-        AccessRolApplicationProvider
+        AccessRolApplicationProvider,
       ],
       exports: [
         AUTH_APPLICATION,
@@ -184,7 +184,7 @@ export class CoreModule {
         PERSON_APPLICATION,
         ORGANIZATION_APPLICATION,
         ACCESS_APPLICATION,
-        ACCESSROL_APPLICATION
+        ACCESSROL_APPLICATION,
       ],
     };
   }

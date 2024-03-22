@@ -6,15 +6,9 @@ export class UpdateAccessUseCase {
     this.accessService = new AccessService();
   }
 
-  async updateAccess(
-    id: number,
-    access: UpdateAccessDto,
-  ) {
+  async updateAccess(id: number, access: UpdateAccessDto) {
     try {
-      const response = await this.accessService.updateAccess(
-        id,
-        access,
-      );
+      const response = await this.accessService.updateAccess(id, access);
       return { ...response.dataValues };
     } catch (error) {
       return error;

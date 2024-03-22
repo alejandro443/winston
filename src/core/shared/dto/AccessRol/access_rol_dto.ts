@@ -1,4 +1,8 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
 import { createApiPropertyDecorator } from '@nestjs/swagger/dist/decorators/api-property.decorator';
 import { IsBoolean, IsDateString, IsNumber } from 'class-validator';
 
@@ -34,7 +38,7 @@ export class AccessRolDto {
   @ApiPropertyOptional({
     description: 'Estado del registro',
     type: Number,
-    default: true
+    default: true,
   })
   @IsBoolean()
   status?: boolean;

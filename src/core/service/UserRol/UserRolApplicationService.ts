@@ -9,9 +9,7 @@ import { UpdateUserRolUseCase } from './UpdateUserRolUseCase';
 import { DeleteUserRolUseCase } from './DeleteUserRolUseCase';
 import { CreateUserRolUseCase } from '../UserRol/CreateUserRolUseCase';
 
-export class UserRolApplicationService
-  implements UserRolApplication
-{
+export class UserRolApplicationService implements UserRolApplication {
   constructor(
     private getOneUseCase?: GetOneUserRolUseCase,
     private getAllUseCase?: GetAllUserRolUseCase,
@@ -50,10 +48,7 @@ export class UserRolApplicationService
     }
   }
 
-  async updateUserRol(
-    id: number,
-    user_rol: UpdateUserRolDto,
-  ) {
+  async updateUserRol(id: number, user_rol: UpdateUserRolDto) {
     try {
       return this.updateUseCase.updateUserRol(id, user_rol);
     } catch (error) {

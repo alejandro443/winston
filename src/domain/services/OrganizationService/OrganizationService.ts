@@ -30,10 +30,7 @@ export class OrganizationService {
     }
   }
 
-  async updateOrganization(
-    id: number,
-    organization: NewOrganizationDto,
-  ) {
+  async updateOrganization(id: number, organization: NewOrganizationDto) {
     try {
       return this.repository.update(id, organization);
     } catch (error) {

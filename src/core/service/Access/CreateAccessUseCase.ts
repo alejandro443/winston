@@ -8,8 +8,7 @@ export class CreateAccessUseCase {
 
   async createAccess(access: NewAccessDto) {
     try {
-      const response =
-        await this.accessService.createAccess(access);
+      const response = await this.accessService.createAccess(access);
       return {
         id: response.id,
         code: response.code,

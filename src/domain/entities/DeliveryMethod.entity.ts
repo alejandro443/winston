@@ -34,40 +34,40 @@ export class DeliveryMethod extends Model<DeliveryMethod> {
     type: DataType.STRING,
   })
   description: string;
-  
+
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
   schedule: string[];
-  
+
   @Column({
     type: DataType.STRING,
   })
   shipping_cost: string;
-  
+
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
   availability_countries: string[];
-  
+
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
   tracking: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
   shipping_insurance: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
   international_delivery: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,

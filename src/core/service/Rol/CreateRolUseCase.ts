@@ -8,8 +8,7 @@ export class CreateRolUseCase {
 
   async createRol(rol: NewRolDto) {
     try {
-      const response =
-        await this.rolService.createRol(rol);
+      const response = await this.rolService.createRol(rol);
       return {
         id: response.id,
         code: response.code,

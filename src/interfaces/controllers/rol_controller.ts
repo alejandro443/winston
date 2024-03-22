@@ -10,7 +10,11 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { CreateRolRequestDto } from '../request_dto/RolDto/create.rol_dto';
 import { ROL_APPLICATION } from '../../core/shared/constants/application.constants';
@@ -50,14 +54,10 @@ export class RolController {
   })
   @HttpCode(201)
   @Get('/one/:id')
-  async getOneRol(
-    @Param() request: GetRolRequestDto,
-  ): Promise<RolResponse> {
+  async getOneRol(@Param() request: GetRolRequestDto): Promise<RolResponse> {
     Log.info(`(Get) Get access id: ${request.id}`);
 
-    const access = await this.application.getOneRol(
-      request.id,
-    );
+    const access = await this.application.getOneRol(request.id);
     return {
       status: 201,
       message: `Rol ${request.id} OK`,
@@ -72,9 +72,7 @@ export class RolController {
   })
   @HttpCode(201)
   @Post()
-  async createRol(
-    @Body() request: CreateRolRequestDto,
-  ): Promise<RolResponse> {
+  async createRol(@Body() request: CreateRolRequestDto): Promise<RolResponse> {
     Log.info(`(POST) Create access`);
 
     const access = await this.application.createRol(request);
@@ -98,10 +96,7 @@ export class RolController {
   ): Promise<RolResponse> {
     Log.info(`(PUT) Put access`);
 
-    const access = await this.application.updateRol(
-      params.id,
-      request,
-    );
+    const access = await this.application.updateRol(params.id, request);
     return {
       status: 200,
       message: `Rol updated.`,
@@ -116,14 +111,10 @@ export class RolController {
   })
   @HttpCode(200)
   @Delete('/delete/:id')
-  async deleteRol(
-    @Param() params: GetRolRequestDto,
-  ): Promise<RolResponse> {
+  async deleteRol(@Param() params: GetRolRequestDto): Promise<RolResponse> {
     Log.info(`(Delete) Delete access ${params.id}`);
 
-    const access = await this.application.deleteRol(
-      params.id,
-    );
+    const access = await this.application.deleteRol(params.id);
     return {
       status: 200,
       message: `Rol ${params.id} deleted.`,

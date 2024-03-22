@@ -31,7 +31,7 @@ import { AccessRolController } from './controllers/access_rol_controller';
     PersonController,
     OrganizationController,
     AccessController,
-    AccessRolController
+    AccessRolController,
   ],
 })
 export class InterfacesModule {}

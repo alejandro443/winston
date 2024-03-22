@@ -24,9 +24,9 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
   id: number;
 
   @ForeignKey(() => ClientCompany)
-  @Column({ 
+  @Column({
     field: 'client_company_id',
-    allowNull: true
+    allowNull: true,
   })
   client_company_id: number | null;
 
@@ -34,19 +34,19 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
   clientCompany: ClientCompany;
 
   @ForeignKey(() => Person)
-  @Column({ 
+  @Column({
     field: 'person_id',
-    allowNull: true
+    allowNull: true,
   })
   person_id: number | null;
 
   @BelongsTo(() => Person, 'id')
   person: Person;
- 
+
   @ForeignKey(() => CompanyPosition)
-  @Column({ 
+  @Column({
     field: 'company_position_id',
-    allowNull: true
+    allowNull: true,
   })
   company_position_id: number | null;
 
@@ -54,9 +54,9 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
   companyPosition: CompanyPosition;
 
   @ForeignKey(() => CompanyArea)
-  @Column({ 
+  @Column({
     field: 'company_area_id',
-    allowNull: true
+    allowNull: true,
   })
   company_area_id: number | null;
 

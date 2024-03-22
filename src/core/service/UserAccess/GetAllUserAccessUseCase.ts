@@ -1,4 +1,4 @@
-import { AccessRolService } from "@src/domain/services/AccessRolService/AccessRolService";
+import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
 
 export class GetAllAccessRolUseCase {
   constructor(private accessService?: AccessRolService) {
@@ -9,7 +9,7 @@ export class GetAllAccessRolUseCase {
     try {
       const response = await this.accessService.getAllAccessRol();
 
-      return response.map((access) => ({...access}));
+      return response.map((access) => ({ ...access }));
     } catch (error) {
       return error;
     }

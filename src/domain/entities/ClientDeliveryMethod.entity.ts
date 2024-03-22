@@ -22,9 +22,9 @@ export class ClientDeliveryMethod extends Model<ClientDeliveryMethod> {
   id: number;
 
   @ForeignKey(() => Client)
-  @Column({ 
+  @Column({
     field: 'client_id',
-    allowNull: true
+    allowNull: true,
   })
   client_id: number | null;
 
@@ -32,8 +32,8 @@ export class ClientDeliveryMethod extends Model<ClientDeliveryMethod> {
   client: Client;
 
   @ForeignKey(() => DeliveryMethod)
-  @Column({ 
-    field: 'delivery_method_id'
+  @Column({
+    field: 'delivery_method_id',
   })
   delivery_method_id: number;
 

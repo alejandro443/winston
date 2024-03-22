@@ -34,7 +34,7 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
     type: DataType.STRING,
   })
   direction: string;
-  
+
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })

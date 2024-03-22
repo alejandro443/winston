@@ -9,9 +9,7 @@ import { UpdateAccessRolUseCase } from './UpdateUserAccessUseCase';
 import { DeleteAccessRolUseCase } from './DeleteUserAccessUseCase';
 import { CreateAccessRolUseCase } from '../AccessRol/CreateAccessRolUseCase';
 
-export class AccessRolApplicationService
-  implements AccessRolApplication
-{
+export class AccessRolApplicationService implements AccessRolApplication {
   constructor(
     private getOneUseCase?: GetOneAccessRolUseCase,
     private getAllUseCase?: GetAllAccessRolUseCase,
@@ -50,10 +48,7 @@ export class AccessRolApplicationService
     }
   }
 
-  async updateAccessRol(
-    id: number,
-    access_rol: UpdateAccessRolDto,
-  ) {
+  async updateAccessRol(id: number, access_rol: UpdateAccessRolDto) {
     try {
       return this.updateUseCase.updateAccessRol(id, access_rol);
     } catch (error) {

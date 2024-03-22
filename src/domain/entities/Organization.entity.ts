@@ -222,12 +222,11 @@ export class Organization extends Model<Organization> {
     type: DataType.BOOLEAN,
   })
   price_wholesale: boolean;
-  
+
   @Column({
     type: DataType.INTEGER,
   })
-  amount_wholesale:number;
-
+  amount_wholesale: number;
 
   @CreatedAt
   created_at: Date;
