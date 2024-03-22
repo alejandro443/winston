@@ -1,10 +1,10 @@
-import { LoginDto } from 'src/core/shared/dto/Authentication/authentication_dto';
 import { ValidatorPassword } from '@src/core/shared/functions/validator_password.function';
 import { UserRolService } from '@src/domain/services/UserRolService/UserRolService';
 import { AuthApplicationError } from '@src/core/shared/error/AuthApplicationError';
 import { GenerateToken } from '@src/core/shared/functions/generate_token.function';
 import { ClientService } from '@src/domain/services/ClientService/ClientService';
 import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
+import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
 
 export class LoginAuthUseCase {
   constructor(

@@ -1,6 +1,6 @@
 import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
 import { LoginAuthUseCase } from './LoginAuthUseCase';
-import { LoginDto } from 'src/core/shared/dto/Authentication/authentication_dto';
+import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
 
 export class AuthenticationApplicationService
   implements AuthenticationApplication
