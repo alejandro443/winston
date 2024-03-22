@@ -47,7 +47,7 @@ export class UserRolService {
     }
   }
 
-  async getUserRolByUserRol(user: string) {
+  async getUserRolByUser(user: string) {
     try {
       return await this.repository.getUserRolByUser(user);
     } catch (error) {

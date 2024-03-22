@@ -21,7 +21,7 @@ export class TypeWorker extends Model<TypeWorker> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
   })
   code: string;
 

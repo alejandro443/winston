@@ -8,12 +8,17 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
+  HasOne,
+  HasMany,
 } from 'sequelize-typescript';
 import { TypeClient } from './TypeClient.entity';
 import { Classification } from './Classification.entity';
 import { Group } from './Group.entity';
 import { Person } from './Person.entity';
 import { User } from './User.entity';
+import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
+import { ClientDeliveryMethod } from './ClientDeliveryMethod.entity';
+import { ClientCompany } from './ClientCompany.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -26,7 +31,6 @@ export class Client extends Model<Client> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
     allowNull: true,
   })
   code: string;
@@ -37,55 +41,64 @@ export class Client extends Model<Client> {
   })
   status: boolean;
 
-  @ForeignKey(() => User)
   @Column({
-    field: 'user_id',
+    type: DataType.INTEGER,
     allowNull: true,
   })
   user_id: number;
 
-  @BelongsTo(() => Person, 'user_id')
+  @BelongsTo(() => User, 'id')
   user: User;
 
-  @ForeignKey(() => Person)
   @Column({
-    field: 'person_identification',
+    type: DataType.INTEGER,
     allowNull: true,
   })
-  person_identification: string;
+  person_id: number;
 
-  @BelongsTo(() => Person, 'person_identification')
+  @BelongsTo(() => Person, 'id')
   person: Person;
 
-  @ForeignKey(() => TypeClient)
-  @Column({
-    field: 'type_client_code',
-    allowNull: true,
+  @Column({ 
+    type: DataType.INTEGER,
+    allowNull: true
   })
-  type_client_code: string;
+  client_company_id: number;
 
-  @BelongsTo(() => TypeClient, 'type_client_code')
-  typeClient: TypeClient;
+  @BelongsTo(() => ClientCompany, 'id')
+  clientCompany: ClientCompany;
 
   @ForeignKey(() => Classification)
   @Column({
-    field: 'classification_code',
+    type: DataType.INTEGER,
     allowNull: true,
   })
-  classification_code: string;
+  classification_id: number;
 
-  @BelongsTo(() => Classification, 'classification_code')
+  @BelongsTo(() => Classification, 'id')
   classification: Classification;
 
-  @ForeignKey(() => Group)
   @Column({
-    field: 'group_code',
+    type: DataType.INTEGER,
     allowNull: true,
   })
-  group_code: string;
+  group_id: number;
 
-  @BelongsTo(() => Group, 'group_code')
+  @BelongsTo(() => Group, 'id')
   group: Group;
+
+  @ForeignKey(() => TypeClient)
+  @Column({ field: 'type_client_id' })
+  type_client_id: number;
+
+  @BelongsTo(() => TypeClient, 'type_client_id')
+  typeClient: TypeClient;
+
+  @HasMany(() => ClientDeliveryPoint, 'client_id')
+  clientDeliveryPoints: ClientDeliveryPoint[];
+
+  @HasMany(() => ClientDeliveryMethod, 'client_id')
+  clientDeliveryMethods: ClientDeliveryMethod[];
 
   @CreatedAt
   created_at: Date;

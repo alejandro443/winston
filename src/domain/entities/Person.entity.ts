@@ -8,7 +8,12 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasOne,
+  HasMany,
 } from 'sequelize-typescript';
+import { Worker } from './Worker.entity';
+import { Client } from './Client.entity';
+import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
 
 @Table({ tableName: 'persons' })
 export class Person extends Model<Person> {
@@ -31,7 +36,6 @@ export class Person extends Model<Person> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
     unique: true,
   })
   main_identification: string;
@@ -183,6 +187,15 @@ export class Person extends Model<Person> {
     defaultValue: true,
   })
   status: boolean;
+
+  @HasOne(() => Worker, { foreignKey: 'person_id', sourceKey: 'id' })
+  worker: Worker;
+
+  @HasOne(() => Client, 'person_id')
+  client: Client;
+
+  @HasMany(() => ClientCompanyWorker, 'person_id')
+  person: ClientCompanyWorker[];
 
   @CreatedAt
   created_at: Date;

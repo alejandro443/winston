@@ -6,12 +6,12 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasOne,
+  HasMany,
 } from 'sequelize-typescript';
-import { Client } from './Client.entity';
+import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
 
-@Table({ tableName: 'groups' })
-export class Group extends Model<Group> {
+@Table({ tableName: 'company_areas' })
+export class CompanyArea extends Model<CompanyArea> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -21,20 +21,19 @@ export class Group extends Model<Group> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
+    allowNull: true,
+  })
+  code: string;
+  
+  @Column({
+    type: DataType.STRING,
   })
   name: string;
-
+ 
   @Column({
     type: DataType.STRING,
   })
   description: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
-  code: string;
 
   @Column({
     type: DataType.BOOLEAN,
@@ -42,8 +41,8 @@ export class Group extends Model<Group> {
   })
   status: boolean;
 
-  @HasOne(() => Client, 'group_id')
-  client: Client;
+  @HasMany(() => ClientCompanyWorker, 'company_area_id')
+  clientCompanyWorker: ClientCompanyWorker[];
 
   @CreatedAt
   created_at: Date;

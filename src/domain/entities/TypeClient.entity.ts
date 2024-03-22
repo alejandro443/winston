@@ -6,7 +6,7 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  BelongsTo,
+  HasOne,
 } from 'sequelize-typescript';
 import { Client } from './Client.entity';
 
@@ -31,7 +31,7 @@ export class TypeClient extends Model<TypeClient> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
     unique: true,
   })
   code: string;
@@ -42,7 +42,7 @@ export class TypeClient extends Model<TypeClient> {
   })
   status: boolean;
 
-  @BelongsTo(() => Client, 'type_client_code')
+  @HasOne(() => Client)
   client: Client;
 
   @CreatedAt

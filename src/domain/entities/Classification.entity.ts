@@ -6,7 +6,10 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasOne,
+  HasMany,
 } from 'sequelize-typescript';
+import { Client } from './Client.entity';
 
 @Table({ tableName: 'classifications' })
 export class Classification extends Model<Classification> {
@@ -29,7 +32,7 @@ export class Classification extends Model<Classification> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
   })
   code: string;
 
@@ -38,6 +41,9 @@ export class Classification extends Model<Classification> {
     defaultValue: true,
   })
   status: boolean;
+
+  @HasMany(() => Client, { foreignKey: 'classification_id', sourceKey: 'id' })
+  userRoles: Client[];
 
   @CreatedAt
   created_at: Date;

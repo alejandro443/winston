@@ -6,10 +6,12 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasMany,
 } from 'sequelize-typescript';
+import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
 
-@Table({ tableName: 'clients_companies' })
-export class Classification extends Model<Classification> {
+@Table({ tableName: 'delivery_points' })
+export class DeliveryPoint extends Model<DeliveryPoint> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -19,55 +21,39 @@ export class Classification extends Model<Classification> {
 
   @Column({
     type: DataType.STRING,
-    primaryKey: true,
+    allowNull: true,
   })
-  main_identification: string;
+  code: string;
 
   @Column({
     type: DataType.STRING,
   })
-  type_identification: string;
+  name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name_company: string;
+  direction: string;
+  
+  @Column({
+    type: DataType.ARRAY(DataType.STRING),
+  })
+  schedule: string[];
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.BOOLEAN,
+    defaultValue: false,
   })
-  main_direction: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  zip_code: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  country: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  department: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  province: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  district: string;
+  notification: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   status: boolean;
+
+  @HasMany(() => ClientDeliveryPoint, 'delivery_point_id')
+  clientDeliveryPoints: ClientDeliveryPoint[];
 
   @CreatedAt
   created_at: Date;
