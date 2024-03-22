@@ -14,7 +14,7 @@ import {
 } from '@nestjs/swagger';
 import { AUTH_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
+// import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
 import {
   LoginRequestDto,
   LoginResponseDto,
@@ -28,7 +28,7 @@ import { ApplicationCreatorFilter } from '../exception_filters/application.excep
 export class AuthController {
   constructor(
     @Inject(AUTH_APPLICATION)
-    private application: AuthenticationApplication,
+    private application: any,
   ) {}
 
   @ApiBadRequestResponse({ description: 'Autenticación erroneo.' })
