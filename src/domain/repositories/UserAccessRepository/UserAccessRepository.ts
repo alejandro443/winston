@@ -5,7 +5,7 @@ import { User } from '@src/domain/entities/User.entity';
 import {
   NewUserAccessDto,
   UpdateUserAccessDto,
-} from '@dto/UserAccess/user_access_dto';
+} from 'src/core/shared/dto/UserAccess/user_access_dto';
 import { UserAccess } from 'src/domain/entities/UserAccess.entity';
 import { Access } from '@src/domain/entities/Access.entity';
 

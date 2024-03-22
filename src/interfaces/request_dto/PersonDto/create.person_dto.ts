@@ -1,4 +1,4 @@
-import { PersonDto } from '@dto/Person/person_dto';
+import { PersonDto } from 'src/core/shared/dto/Person/person_dto';
 
 export class CreatePersonRequestDto
   extends PersonDto

@@ -2,7 +2,7 @@ import { AccessRolApplication } from 'src/core/application/AccessRol/AccessRolAp
 import {
   NewAccessRolDto,
   UpdateAccessRolDto,
-} from '@dto/AccessRol/access_rol_dto';
+} from 'src/core/shared/dto/AccessRol/access_rol_dto';
 import { GetOneAccessRolUseCase } from './GetOneAccessRolUseCase';
 import { GetAllAccessRolUseCase } from './GetAllAccessRolUseCase';
 import { CreateAccessRolUseCase } from './CreateAccessRolUseCase';

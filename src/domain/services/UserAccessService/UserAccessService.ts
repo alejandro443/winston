@@ -1,6 +1,6 @@
 import { UserAccessApplicationError } from '@src/core/shared/error/UserAccessApplicationError';
 import { UserAccessRepository } from '@src/domain/repositories/UserAccessRepository/UserAccessRepository';
-import { UserAccessDto } from '@dto/UserAccess/user_access_dto';
+import { UserAccessDto } from 'src/core/shared/dto/UserAccess/user_access_dto';
 
 export class UserAccessService {
   constructor(private repository?: UserAccessRepository) {

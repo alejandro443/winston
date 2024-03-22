@@ -1,3 +1,3 @@
-import { AccessDto } from '@dto/Access/access_dto';
+import { AccessDto } from 'src/core/shared/dto/Access/access_dto';
 
 export type UpdateAccessRequestDto = Omit<AccessDto, 'id'>;

@@ -1,4 +1,4 @@
-import { NewAccessDto } from '@dto/Access/access_dto';
+import { NewAccessDto } from 'src/core/shared/dto/Access/access_dto';
 import { AccessService } from '@src/domain/services/AccessService/AccessService';
 
 export class CreateAccessUseCase {

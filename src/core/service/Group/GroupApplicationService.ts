@@ -2,7 +2,7 @@ import { GroupApplication } from 'src/core/application/Group/GroupApplication';
 import {
   NewGroupDto,
   UpdateGroupDto,
-} from '@dto/Group/group_dto';
+} from 'src/core/shared/dto/Group/group_dto';
 import { GetOneGroupUseCase } from './GetOneGroupUseCase';
 import { GetAllGroupUseCase } from './GetAllGroupUseCase';
 import { CreateGroupUseCase } from './CreateGroupUseCase';

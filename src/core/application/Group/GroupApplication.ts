@@ -3,7 +3,7 @@ import {
   NewGroupDto,
   OneGroupDto,
   UpdateGroupDto,
-} from '@dto/Group/group_dto';
+} from 'src/core/shared/dto/Group/group_dto';
 
 export interface GroupApplication {
   getAllGroup(): Promise<Array<AllGroupDto>>;

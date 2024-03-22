@@ -1,7 +1,7 @@
 import {
   NewTypeClientDto,
   UpdateTypeClientDto,
-} from '@dto/TypeClient/type_client_dto';
+} from 'src/core/shared/dto/TypeClient/type_client_dto';
 import { TypeClient } from 'src/domain/entities/TypeClient.entity';
 
 export class TypeClientRepository {

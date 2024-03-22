@@ -1,6 +1,6 @@
 import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
 import { AccessRepository } from '@src/domain/repositories/ClassificationRepository copy/AccessRepository';
-import { AccessDto } from '@dto/Access/access_dto';
+import { AccessDto } from 'src/core/shared/dto/Access/access_dto';
 
 export class AccessService {
   constructor(private repository?: AccessRepository) {

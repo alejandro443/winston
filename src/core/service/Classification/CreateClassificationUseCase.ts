@@ -1,5 +1,5 @@
 import { ClassificationService } from 'src/domain/services/ClassificationService/ClassificationService';
-import { NewClassificationDto } from '@dto/Classification/classification_dto';
+import { NewClassificationDto } from 'src/core/shared/dto/Classification/classification_dto';
 
 export class CreateClassificationUseCase {
   constructor(private classificationService?: ClassificationService) {

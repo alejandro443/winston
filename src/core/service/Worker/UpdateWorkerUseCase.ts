@@ -1,4 +1,4 @@
-import { UpdateWorkerDto } from '@dto/Worker/worker_dto';
+import { UpdateWorkerDto } from 'src/core/shared/dto/Worker/worker_dto';
 import { WorkerService } from 'src/domain/services/WorkerService/WorkerService';
 
 export class UpdateWorkerUseCase {

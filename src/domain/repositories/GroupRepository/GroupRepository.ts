@@ -1,7 +1,7 @@
 import {
   NewGroupDto,
   UpdateGroupDto,
-} from '@dto/Group/group_dto';
+} from 'src/core/shared/dto/Group/group_dto';
 import { Group } from 'src/domain/entities/Group.entity';
 
 export class GroupRepository {

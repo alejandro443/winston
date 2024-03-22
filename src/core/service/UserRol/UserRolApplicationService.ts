@@ -2,7 +2,7 @@ import { UserRolApplication } from 'src/core/application/UserRol/UserRolApplicat
 import {
   NewUserRolDto,
   UpdateUserRolDto,
-} from '@dto/UserRol/user_rol_dto';
+} from 'src/core/shared/dto/UserRol/user_rol_dto';
 import { GetOneUserRolUseCase } from './GetOneUserRolUseCase';
 import { GetAllUserRolUseCase } from './GetAllUserRolUseCase';
 import { UpdateUserRolUseCase } from './UpdateUserRolUseCase';

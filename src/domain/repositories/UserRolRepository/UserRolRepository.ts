@@ -5,7 +5,7 @@ import { User } from '@src/domain/entities/User.entity';
 import {
   NewUserRolDto,
   UpdateUserRolDto,
-} from '@dto/UserRol/user_rol_dto';
+} from 'src/core/shared/dto/UserRol/user_rol_dto';
 import { UserRol } from 'src/domain/entities/UserRol.entity';
 
 export class UserRolRepository {

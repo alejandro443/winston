@@ -1,4 +1,4 @@
-import { NewUserDto, UpdateUserDto } from '@dto/User/user_dto';
+import { NewUserDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { User } from 'src/domain/entities/User.entity';
 
 export class UserRepository {

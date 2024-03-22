@@ -1,4 +1,4 @@
-import { UpdateClientDto } from '@dto/Client/client_dto';
+import { UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientService } from 'src/domain/services/ClientService/ClientService';
 
 export class UpdateClientUseCase {

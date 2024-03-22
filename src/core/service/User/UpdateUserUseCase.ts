@@ -1,4 +1,4 @@
-import { UpdateUserDto } from '@dto/User/user_dto';
+import { UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { UserService } from 'src/domain/services/UserService/UserService';
 
 export class UpdateUserUseCase {

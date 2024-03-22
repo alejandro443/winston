@@ -1,4 +1,4 @@
-import { NewTypeClientDto } from '@dto/TypeClient/type_client_dto';
+import { NewTypeClientDto } from 'src/core/shared/dto/TypeClient/type_client_dto';
 import { TypeClientRepository } from 'src/domain/repositories/TypeClientRepository/TypeClientRepository';
 
 export class TypeClientService {

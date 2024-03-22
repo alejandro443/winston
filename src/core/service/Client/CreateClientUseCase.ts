@@ -1,5 +1,5 @@
 import { ClientService } from 'src/domain/services/ClientService/ClientService';
-import { NewClientDto } from '@dto/Client/client_dto';
+import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
 
 export class CreateClientUseCase {
   constructor(private clientService?: ClientService) {

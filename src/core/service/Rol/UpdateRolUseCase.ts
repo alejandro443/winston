@@ -1,4 +1,4 @@
-import { UpdateRolDto } from '@dto/Rol/rol_dto';
+import { UpdateRolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { RolService } from '@src/domain/services/RolService/RolService';
 
 export class UpdateRolUseCase {

@@ -1,5 +1,5 @@
 import { UserService } from 'src/domain/services/UserService/UserService';
-import { NewUserDto } from '@dto/User/user_dto';
+import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
 
 export class CreateUserUseCase {
   constructor(private userService?: UserService) {

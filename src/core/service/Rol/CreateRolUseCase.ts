@@ -1,4 +1,4 @@
-import { NewRolDto } from '@dto/Rol/rol_dto';
+import { NewRolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { RolService } from '@src/domain/services/RolService/RolService';
 
 export class CreateRolUseCase {

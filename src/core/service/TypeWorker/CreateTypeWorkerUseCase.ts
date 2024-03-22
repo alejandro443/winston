@@ -1,5 +1,5 @@
 import { TypeWorkerService } from 'src/domain/services/TypeWorkerService/TypeWorkerService';
-import { NewTypeWorkerDto } from '@dto/TypeWorker/type_worker_dto';
+import { NewTypeWorkerDto } from 'src/core/shared/dto/TypeWorker/type_worker_dto';
 
 export class CreateTypeWorkerUseCase {
   constructor(private type_workerService?: TypeWorkerService) {

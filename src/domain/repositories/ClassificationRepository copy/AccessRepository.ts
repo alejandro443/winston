@@ -1,7 +1,7 @@
 import {
   NewAccessDto,
   UpdateAccessDto,
-} from '@dto/Access/access_dto';
+} from 'src/core/shared/dto/Access/access_dto';
 import { Access } from 'src/domain/entities/Access.entity';
 
 export class AccessRepository {

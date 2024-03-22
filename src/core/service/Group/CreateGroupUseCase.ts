@@ -1,5 +1,5 @@
 import { GroupService } from 'src/domain/services/GroupService/GroupService';
-import { NewGroupDto } from '@dto/Group/group_dto';
+import { NewGroupDto } from 'src/core/shared/dto/Group/group_dto';
 
 export class CreateGroupUseCase {
   constructor(private groupService?: GroupService) {

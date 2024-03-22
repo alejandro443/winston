@@ -3,7 +3,7 @@ import {
   NewAccessRolDto,
   OneAccessRolDto,
   UpdateAccessRolDto,
-} from '@dto/AccessRol/access_rol_dto';
+} from 'src/core/shared/dto/AccessRol/access_rol_dto';
 
 export interface AccessRolApplication {
   getAllAccessRol(): Promise<Array<AllAccessRolDto>>;

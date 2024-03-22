@@ -1,4 +1,4 @@
-import { NewTypeDocumentDto } from '@dto/TypeDocument/type_document_dto';
+import { NewTypeDocumentDto } from 'src/core/shared/dto/TypeDocument/type_document_dto';
 import { TypeDocumentRepository } from 'src/domain/repositories/TypeDocumentRepository/TypeDocumentRepository';
 
 export class TypeDocumentService {

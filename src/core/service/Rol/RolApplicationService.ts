@@ -2,7 +2,7 @@ import { RolApplication } from 'src/core/application/Rol/RolApplication';
 import {
   NewRolDto,
   UpdateRolDto,
-} from '@dto/Rol/rol_dto';
+} from 'src/core/shared/dto/Rol/rol_dto';
 import { GetOneRolUseCase } from './GetOneRolUseCase';
 import { GetAllRolUseCase } from './GetAllRolUseCase';
 import { CreateRolUseCase } from './CreateRolUseCase';

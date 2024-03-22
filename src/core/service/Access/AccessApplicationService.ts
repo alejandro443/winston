@@ -2,7 +2,7 @@ import { AccessApplication } from 'src/core/application/Access/AccessApplication
 import {
   NewAccessDto,
   UpdateAccessDto,
-} from '@dto/Access/access_dto';
+} from 'src/core/shared/dto/Access/access_dto';
 import { GetOneAccessUseCase } from './GetOneAccessUseCase';
 import { GetAllAccessUseCase } from './GetAllAccessUseCase';
 import { CreateAccessUseCase } from './CreateAccessUseCase';

@@ -3,7 +3,7 @@ import {
   NewTypeDocumentDto,
   OneTypeDocumentDto,
   UpdateTypeDocumentDto,
-} from '@dto/TypeDocument/type_document_dto';
+} from 'src/core/shared/dto/TypeDocument/type_document_dto';
 
 export interface TypeDocumentApplication {
   getAllTypeDocument(): Promise<Array<AllTypeDocumentDto>>;

@@ -1,5 +1,5 @@
 import { RolApplicationError } from '@src/core/shared/error/RolApplicationError';
-import { RolDto } from '@dto/Rol/rol_dto';
+import { RolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { RolRepository } from '@src/domain/repositories/RolRespository/RolRepository';
 
 export class RolService {

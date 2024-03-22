@@ -1,5 +1,5 @@
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { NewUserDto, UpdateUserDto } from '@dto/User/user_dto';
+import { NewUserDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { GetOneUserUseCase } from './GetOneUserUseCase';
 import { GetAllUserUseCase } from './GetAllUserUseCase';
 import { CreateUserUseCase } from './CreateUserUseCase';

@@ -2,7 +2,7 @@ import { WorkerApplication } from 'src/core/application/Worker/WorkerApplication
 import {
   NewWorkerDto,
   UpdateWorkerDto,
-} from '@dto/Worker/worker_dto';
+} from 'src/core/shared/dto/Worker/worker_dto';
 import { GetOneWorkerUseCase } from './GetOneWorkerUseCase';
 import { GetAllWorkerUseCase } from './GetAllWorkerUseCase';
 import { CreateWorkerUseCase } from './CreateWorkerUseCase';

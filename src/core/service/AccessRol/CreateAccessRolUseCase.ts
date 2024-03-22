@@ -1,4 +1,4 @@
-import { NewAccessRolDto } from '@dto/AccessRol/access_rol_dto';
+import { NewAccessRolDto } from 'src/core/shared/dto/AccessRol/access_rol_dto';
 import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
 
 export class CreateAccessRolUseCase {

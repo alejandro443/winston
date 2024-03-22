@@ -1,7 +1,7 @@
 import {
   NewClassificationDto,
   UpdateClassificationDto,
-} from '@dto/Classification/classification_dto';
+} from 'src/core/shared/dto/Classification/classification_dto';
 import { Classification } from 'src/domain/entities/Classification.entity';
 
 export class ClassificationRepository {

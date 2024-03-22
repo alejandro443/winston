@@ -3,7 +3,7 @@ import {
   NewAccessDto,
   OneAccessDto,
   UpdateAccessDto,
-} from '@dto/Access/access_dto';
+} from 'src/core/shared/dto/Access/access_dto';
 
 export interface AccessApplication {
   getAllAccess(): Promise<Array<AllAccessDto>>;

@@ -3,7 +3,7 @@ import {
   NewClassificationDto,
   OneClassificationDto,
   UpdateClassificationDto,
-} from '@dto/Classification/classification_dto';
+} from 'src/core/shared/dto/Classification/classification_dto';
 
 export interface ClassificationApplication {
   getAllClassification(): Promise<Array<AllClassificationDto>>;

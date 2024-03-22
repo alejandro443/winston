@@ -2,7 +2,7 @@ import { TypeClientApplication } from 'src/core/application/TypeClient/TypeClien
 import {
   NewTypeClientDto,
   UpdateTypeClientDto,
-} from '@dto/TypeClient/type_client_dto';
+} from 'src/core/shared/dto/TypeClient/type_client_dto';
 import { GetOneTypeClientUseCase } from './GetOneTypeClientUseCase';
 import { GetAllTypeClientUseCase } from './GetAllTypeClientUseCase';
 import { CreateTypeClientUseCase } from './CreateTypeClientUseCase';

@@ -3,7 +3,7 @@ import {
   NewWorkerDto,
   OneWorkerDto,
   UpdateWorkerDto,
-} from '@dto/Worker/worker_dto';
+} from 'src/core/shared/dto/Worker/worker_dto';
 
 export interface WorkerApplication {
   getAllWorker(): Promise<Array<AllWorkerDto>>;

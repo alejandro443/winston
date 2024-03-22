@@ -2,7 +2,7 @@ import { PersonApplication } from 'src/core/application/Person/PersonApplication
 import {
   NewPersonDto,
   UpdatePersonDto,
-} from '@dto/Person/person_dto';
+} from 'src/core/shared/dto/Person/person_dto';
 import { GetOnePersonUseCase } from './GetOnePersonUseCase';
 import { GetAllPersonUseCase } from './GetAllPersonUseCase';
 import { CreatePersonUseCase } from './CreatePersonUseCase';

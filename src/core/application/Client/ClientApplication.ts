@@ -3,7 +3,7 @@ import {
   NewClientDto,
   OneClientDto,
   UpdateClientDto,
-} from '@dto/Client/client_dto';
+} from 'src/core/shared/dto/Client/client_dto';
 
 export interface ClientApplication {
   getAllClient(): Promise<Array<AllClientDto>>;

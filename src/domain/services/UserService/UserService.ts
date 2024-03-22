@@ -2,7 +2,7 @@ import {
   GenerateCodeUser,
   GenerateRandomCodeUser,
 } from '@src/core/shared/functions/generate_code_user.function';
-import { NewUserDto } from '@dto/User/user_dto';
+import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
 import { UserRepository } from 'src/domain/repositories/UserRepository/UserRepository';
 
 export class UserService {

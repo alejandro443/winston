@@ -1,7 +1,7 @@
 import {
   NewRolDto,
   UpdateRolDto,
-} from '@dto/Rol/rol_dto';
+} from 'src/core/shared/dto/Rol/rol_dto';
 import { Rol } from 'src/domain/entities/Rol.entity';
 
 export class RolRepository {

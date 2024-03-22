@@ -1,7 +1,7 @@
 import {
   NewTypeWorkerDto,
   UpdateTypeWorkerDto,
-} from '@dto/TypeWorker/type_worker_dto';
+} from 'src/core/shared/dto/TypeWorker/type_worker_dto';
 import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
 
 export class TypeWorkerRepository {
