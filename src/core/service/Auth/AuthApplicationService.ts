@@ -1,6 +1,6 @@
 import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
 import { LoginAuthUseCase } from './LoginAuthUseCase';
-import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
+// import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
 
 export class AuthenticationApplicationService
   implements AuthenticationApplication
@@ -9,7 +9,7 @@ export class AuthenticationApplicationService
     this.loginAuthUseCase = new LoginAuthUseCase();
   }
 
-  async loginAuth(login: LoginDto) {
+  async loginAuth(login: any) {
     try {
       return this.loginAuthUseCase.loginAuth(login);
     } catch (error) {

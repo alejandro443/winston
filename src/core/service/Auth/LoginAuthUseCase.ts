@@ -4,7 +4,7 @@ import { AuthApplicationError } from '@src/core/shared/error/AuthApplicationErro
 import { GenerateToken } from '@src/core/shared/functions/generate_token.function';
 import { ClientService } from '@src/domain/services/ClientService/ClientService';
 import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
-import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
+// import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
 
 export class LoginAuthUseCase {
   constructor(
@@ -17,7 +17,7 @@ export class LoginAuthUseCase {
     this.clientService = new ClientService();
   }
 
-  async loginAuth(login: LoginDto) {
+  async loginAuth(login: any) {
     try {
       const { user, password } = login;
       const user_rol_data = await this.userRolService.getUserRolByUser(user);
