@@ -19,7 +19,7 @@ export class PersonRepository {
 
   async findAll() {
     try {
-      return Person.findAll({ where: { deleted_at: '' } });
+      return Person.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

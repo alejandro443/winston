@@ -17,7 +17,7 @@ export class ClientRepository {
 
   async findAll() {
     try {
-      return Client.findAll({ where: { deleted_at: '' } });
+      return Client.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

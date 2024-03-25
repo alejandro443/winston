@@ -29,7 +29,7 @@ export class UserAccessRepository {
 
   async findAll() {
     try {
-      return UserAccess.findAll({ where: { deleted_at: '' } });
+      return UserAccess.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }

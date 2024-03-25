@@ -17,7 +17,7 @@ export class OrganizationRepository {
 
   async findAll() {
     try {
-      return Organization.findAll({ where: { deleted_at: '' } });
+      return Organization.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

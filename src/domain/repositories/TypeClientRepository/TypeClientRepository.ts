@@ -17,7 +17,7 @@ export class TypeClientRepository {
 
   async findAll() {
     try {
-      return TypeClient.findAll({ where: { deleted_at: '' } });
+      return TypeClient.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

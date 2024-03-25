@@ -29,7 +29,7 @@ export class UserRolRepository {
 
   async findAll() {
     try {
-      return UserRol.findAll({ where: { deleted_at: '' } });
+      return UserRol.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }

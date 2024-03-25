@@ -17,7 +17,7 @@ export class AccessRepository {
 
   async findAll() {
     try {
-      return Access.findAll({ where: { deleted_at: '' } });
+      return Access.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

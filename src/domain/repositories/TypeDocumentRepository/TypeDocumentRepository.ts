@@ -17,7 +17,7 @@ export class TypeDocumentRepository {
 
   async findAll() {
     try {
-      return TypeDocument.findAll({ where: { deleted_at: '' } });
+      return TypeDocument.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

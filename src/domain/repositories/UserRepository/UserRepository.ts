@@ -14,7 +14,7 @@ export class UserRepository {
 
   async findAll() {
     try {
-      return User.findAll({ where: { deleted_at: '' } });
+      return User.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

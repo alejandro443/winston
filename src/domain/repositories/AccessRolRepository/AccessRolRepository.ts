@@ -28,7 +28,7 @@ export class AccessRolRepository {
 
   async findAll() {
     try {
-      return AccessRol.findAll({ where: { deleted_at: '' } });
+      return AccessRol.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }

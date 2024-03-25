@@ -17,7 +17,7 @@ export class WorkerRepository {
 
   async findAll() {
     try {
-      return Worker.findAll({ where: { deleted_at: '' } });
+      return Worker.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

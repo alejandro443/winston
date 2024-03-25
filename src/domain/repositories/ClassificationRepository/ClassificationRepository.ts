@@ -17,7 +17,7 @@ export class ClassificationRepository {
 
   async findAll() {
     try {
-      return Classification.findAll({ where: { deleted_at: '' } });
+      return Classification.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

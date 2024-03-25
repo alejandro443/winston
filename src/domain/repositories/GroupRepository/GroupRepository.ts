@@ -17,7 +17,7 @@ export class GroupRepository {
 
   async findAll() {
     try {
-      return Group.findAll({ where: { deleted_at: '' } });
+      return Group.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }

@@ -17,7 +17,7 @@ export class TypeWorkerRepository {
 
   async findAll() {
     try {
-      return TypeWorker.findAll({ where: { deleted_at: '' } });
+      return TypeWorker.findAll({ where: { deleted_at: null} });
     } catch (error: any) {
       return error;
     }
