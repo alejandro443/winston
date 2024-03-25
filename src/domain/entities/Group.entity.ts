@@ -17,40 +17,40 @@ export class Group extends Model<Group> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     unique: true,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasOne(() => Client, 'group_id')
-  client: Client;
+  declare client: Client;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

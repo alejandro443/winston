@@ -19,40 +19,40 @@ export class UserAccess extends Model<UserAccess> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.TEXT,
   })
-  description: string;
+  declare description: string;
 
   @ForeignKey(() => Access)
   @Column({
     type: DataType.INTEGER,
   })
-  access_id: number;
+  declare access_id: number;
 
   @BelongsTo(() => Access)
-  rol: Access;
+  declare rol: Access;
 
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
   })
-  user_id: number;
+  declare user_id: number;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

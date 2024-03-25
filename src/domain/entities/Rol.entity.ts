@@ -18,36 +18,36 @@ export class Rol extends Model<Rol> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.TEXT,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => AccessRol, { foreignKey: 'rol_id' })
-  accessRoles: AccessRol[];
+  declare accessRoles: AccessRol[];
 
   @HasMany(() => UserRol, { foreignKey: 'rol_id' })
-  userRoles: UserRol[];
+  declare userRoles: UserRol[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

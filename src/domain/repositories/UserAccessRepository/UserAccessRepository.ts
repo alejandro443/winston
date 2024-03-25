@@ -14,7 +14,7 @@ export class UserAccessRepository {
   async findUserAccesses(id: number) {
     try {
       return UserAccess.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
@@ -22,23 +22,23 @@ export class UserAccessRepository {
   async findOne(id: number) {
     try {
       return UserAccess.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
   async findAll() {
     try {
-      return UserAccess.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return UserAccess.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
-  async create(user: NewUserAccessDto) {
+  async create(user: any) {
     try {
       return UserAccess.create(user);
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
@@ -46,7 +46,7 @@ export class UserAccessRepository {
   async update(id: number, user: UpdateUserAccessDto) {
     try {
       return UserAccess.update(user, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
@@ -54,7 +54,7 @@ export class UserAccessRepository {
   async deleted(id: number) {
     try {
       return UserAccess.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
@@ -75,7 +75,7 @@ export class UserAccessRepository {
           },
         ],
       });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }

@@ -7,31 +7,31 @@ export class UserRepository {
   async findOne(code: string) {
     try {
       return User.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return User.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return User.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(user: NewUserDto) {
+  async create(user: any) {
     try {
       return User.create(user);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, user: UpdateUserDto) {
+  async update(code: any, user: UpdateUserDto) {
     try {
       return User.update(user, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -39,15 +39,15 @@ export class UserRepository {
   async deleted(code: string) {
     try {
       return User.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getUser(user) {
+  async getUser(user: any) {
     try {
       return User.findOne({ where: { user: user } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

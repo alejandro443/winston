@@ -26,40 +26,40 @@ export class AccessRolApplicationService implements AccessRolApplication {
 
   async getAllAccessRol() {
     try {
-      return this.getAllUseCase.getAllAccessRol();
-    } catch (error) {
+      return this.getAllUseCase?.getAllAccessRol();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneAccessRol(access_rol_id: number) {
     try {
-      return this.getOneUseCase.getOneAccessRol(access_rol_id);
-    } catch (error) {
+      return this.getOneUseCase?.getOneAccessRol(access_rol_id);
+    } catch (error: any) {
       return error;
     }
   }
 
   async createAccessRol(access_rol: NewAccessRolDto) {
     try {
-      return this.createUseCase.createAccessRol(access_rol);
-    } catch (error) {
+      return this.createUseCase?.createAccessRol(access_rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateAccessRol(id: number, access_rol: UpdateAccessRolDto) {
     try {
-      return this.updateUseCase.updateAccessRol(id, access_rol);
-    } catch (error) {
+      return this.updateUseCase?.updateAccessRol(id, access_rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteAccessRol(id: number) {
     try {
-      return this.deleteUseCase.deleteAccessRol(id);
-    } catch (error) {
+      return this.deleteUseCase?.deleteAccessRol(id);
+    } catch (error: any) {
       return error;
     }
   }

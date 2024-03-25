@@ -6,9 +6,9 @@ export class UpdateGroupUseCase {
     this.groupService = new GroupService();
   }
 
-  async updateGroup(code: string, group: UpdateGroupDto) {
+  async updateGroup(code: any, group: UpdateGroupDto) {
     try {
-      const response = await this.groupService.updateGroup(code, group);
+      const response: any = await this.groupService?.updateGroup(code, group);
       return {
         id: response.id,
         code: response.code,
@@ -16,7 +16,7 @@ export class UpdateGroupUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -7,8 +7,8 @@ import {
 
 export interface ClientApplication {
   getAllClient(): Promise<Array<AllClientDto>>;
-  getOneClient(code: string): Promise<OneClientDto>;
+  getOneClient(code: any): Promise<OneClientDto>;
   createClient(client: NewClientDto): Promise<OneClientDto>;
-  updateClient(code: string, client: UpdateClientDto): Promise<OneClientDto>;
-  deleteClient(code: string);
+  updateClient(code: any, client: UpdateClientDto): Promise<OneClientDto>;
+  deleteClient(code: any): any;
 }

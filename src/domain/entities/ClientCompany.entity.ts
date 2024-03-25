@@ -19,116 +19,116 @@ export class ClientCompany extends Model<ClientCompany> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     unique: true,
   })
-  main_identification: string;
+  declare main_identification: string;
 
   @Column({
     type: DataType.STRING,
   })
-  type_identification: string;
+  declare type_identification: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name_company: string;
+  declare name_company: string;
 
   @Column({
     type: DataType.STRING,
   })
-  main_phone: string;
+  declare main_phone: string;
 
   @Column({
     type: DataType.STRING,
     unique: true,
     validate: { isEmail: true },
   })
-  main_email: string;
+  declare main_email: string;
 
   @Column({
     type: DataType.STRING,
   })
-  website_url: string;
+  declare website_url: string;
 
   @Column({
     type: DataType.STRING,
   })
-  main_direction: string;
+  declare main_direction: string;
 
   @Column({
     type: DataType.STRING,
   })
-  type_company: string;
+  declare type_company: string;
 
   @Column({
     type: DataType.STRING,
   })
-  type_industry: string;
+  declare type_industry: string;
 
   @Column({
     type: DataType.STRING,
   })
-  zip_code: string;
+  declare zip_code: string;
 
   @Column({
     type: DataType.STRING,
   })
-  country: string;
+  declare country: string;
 
   @Column({
     type: DataType.STRING,
   })
-  department: string;
+  declare department: string;
 
   @Column({
     type: DataType.STRING,
   })
-  province: string;
+  declare province: string;
 
   @Column({
     type: DataType.STRING,
   })
-  district: string;
+  declare district: string;
 
   @Column({
     type: DataType.DATE,
   })
-  foundation_date: Date;
+  declare foundation_date: Date;
 
   @Column({
     type: DataType.ARRAY(DataType.JSON),
   })
-  phones: PhonesMetadata[];
+  declare phones: PhonesMetadata[];
 
   @Column({
     type: DataType.ARRAY(DataType.JSON),
   })
-  directions: DirectionsMetadata[];
+  declare directions: DirectionsMetadata[];
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  emails: string[];
+  declare emails: string[];
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => ClientCompanyWorker, 'client_company_id')
-  clientCompanyWorker: ClientCompanyWorker[];
+  declare clientCompanyWorker: ClientCompanyWorker[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

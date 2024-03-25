@@ -19,64 +19,64 @@ export class Access extends Model<Access> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.INTEGER,
   })
-  father: number;
+  declare father: number;
 
   @Column({
     type: DataType.TEXT,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  url: string;
+  declare url: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  icon: string;
+  declare icon: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  alt: string;
+  declare alt: string;
 
   @Column({
     type: DataType.INTEGER,
   })
-  priority: number;
+  declare priority: number;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => AccessRol, { foreignKey: 'access_id', sourceKey: 'id' })
-  accessRoles: AccessRol[];
+  declare accessRoles: AccessRol[];
 
   @HasMany(() => UserAccess, { foreignKey: 'access_id', sourceKey: 'id' })
-  userAccesses: UserAccess[];
+  declare userAccesses: UserAccess[];
 
   @BelongsTo(() => Access, { as: 'parentAccess', foreignKey: 'father' })
-  parent: Access;
+  declare parent: Access;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

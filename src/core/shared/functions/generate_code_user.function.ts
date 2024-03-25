@@ -1,4 +1,4 @@
-export const GenerateCodeUser = async (identifier) => {
+export const GenerateCodeUser = async (identifier: any) => {
   const prefix_code: string = 'USR_';
   return prefix_code + identifier;
 };

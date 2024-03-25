@@ -7,8 +7,8 @@ import {
 
 export interface UserApplication {
   getAllUser(): Promise<Array<AllUserDto>>;
-  getOneUser(code: string): Promise<OneUserDto>;
+  getOneUser(code: any): Promise<OneUserDto>;
   createUser(classification: NewUserDto): Promise<OneUserDto>;
-  updateUser(code: string, classification: UpdateUserDto): Promise<OneUserDto>;
-  deleteUser(code: string);
+  updateUser(code: any, classification: UpdateUserDto): Promise<OneUserDto>;
+  deleteUser(code: any): any;
 }

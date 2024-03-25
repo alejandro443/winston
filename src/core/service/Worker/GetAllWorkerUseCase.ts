@@ -7,9 +7,9 @@ export class GetAllWorkerUseCase {
 
   async getAllWorker() {
     try {
-      const response = await this.workerService.getAllWorker();
+      const response: any = await this.workerService?.getAllWorker();
 
-      return response.map((worker) => ({
+      return response.map((worker: any) => ({
         id: worker.id,
         code: worker.code,
         status: worker.status,
@@ -17,7 +17,7 @@ export class GetAllWorkerUseCase {
         person_identification: worker.person_identification,
         type_worker_code: worker.type_worker_code,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

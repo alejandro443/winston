@@ -26,40 +26,40 @@ export class OrganizationApplicationService implements OrganizationApplication {
 
   async getAllOrganization() {
     try {
-      return this.getAllUseCase.getAllOrganization();
-    } catch (error) {
+      return this.getAllUseCase?.getAllOrganization();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneOrganization(organization_id: number) {
     try {
-      return this.getOneUseCase.getOneOrganization(organization_id);
-    } catch (error) {
+      return this.getOneUseCase?.getOneOrganization(organization_id);
+    } catch (error: any) {
       return error;
     }
   }
 
   async createOrganization(organization: NewOrganizationDto) {
     try {
-      return this.createUseCase.createOrganization(organization);
-    } catch (error) {
+      return this.createUseCase?.createOrganization(organization);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateOrganization(id: number, organization: UpdateOrganizationDto) {
     try {
-      return this.updateUseCase.updateOrganization(id, organization);
-    } catch (error) {
+      return this.updateUseCase?.updateOrganization(id, organization);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteOrganization(id: number) {
     try {
-      return this.deleteUseCase.deleteOrganization(id);
-    } catch (error) {
+      return this.deleteUseCase?.deleteOrganization(id);
+    } catch (error: any) {
       return error;
     }
   }

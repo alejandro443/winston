@@ -9,10 +9,10 @@ export class AuthenticationApplicationService
     this.loginAuthUseCase = new LoginAuthUseCase();
   }
 
-  async loginAuth(login: any) {
+  async loginAuth(login: any): Promise<any> {
     try {
-      return this.loginAuthUseCase.loginAuth(login);
-    } catch (error) {
+      return this.loginAuthUseCase?.loginAuth(login);
+    } catch (error: any) {
       return error;
     }
   }

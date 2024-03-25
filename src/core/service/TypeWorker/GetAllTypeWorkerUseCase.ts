@@ -7,16 +7,16 @@ export class GetAllTypeWorkerUseCase {
 
   async getAllTypeWorker() {
     try {
-      const response = await this.type_workerService.getAllTypeWorker();
+      const response: any = await this.type_workerService?.getAllTypeWorker();
 
-      return response.map((type_worker) => ({
+      return response.map((type_worker: any) => ({
         id: type_worker.id,
         code: type_worker.code,
         name: type_worker.name,
         description: type_worker.description,
         status: type_worker.status,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

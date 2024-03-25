@@ -7,9 +7,9 @@ export class GetOneUserRolUseCase {
 
   async getOneUserRol(id: number) {
     try {
-      const response = await this.userService.getOneUserRol(id);
+      const response: any = await this.userService?.getOneUserRol(id);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

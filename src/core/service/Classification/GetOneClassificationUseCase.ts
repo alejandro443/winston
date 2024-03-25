@@ -7,8 +7,8 @@ export class GetOneClassificationUseCase {
 
   async getOneClassification(code: string) {
     try {
-      const response =
-        await this.classificationService.getOneClassification(code);
+      const response: any =
+        await this.classificationService?.getOneClassification(code);
       return {
         id: response.id,
         code: response.code,
@@ -16,7 +16,7 @@ export class GetOneClassificationUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

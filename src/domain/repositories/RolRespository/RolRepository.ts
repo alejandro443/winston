@@ -7,23 +7,23 @@ export class RolRepository {
   async findOne(id: number) {
     try {
       return Rol.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Rol.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Rol.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(rol: NewRolDto) {
+  async create(rol: any) {
     try {
       return Rol.create(rol);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -31,7 +31,7 @@ export class RolRepository {
   async update(id: number, rol: UpdateRolDto) {
     try {
       return Rol.update(rol, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -39,7 +39,7 @@ export class RolRepository {
   async deleted(id: number) {
     try {
       return Rol.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

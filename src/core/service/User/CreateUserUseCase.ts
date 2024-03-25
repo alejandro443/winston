@@ -8,7 +8,7 @@ export class CreateUserUseCase {
 
   async createUser(user: NewUserDto) {
     try {
-      const response = await this.userService.createUser(user);
+      const response: any = await this.userService?.createUser(user);
       return {
         id: response.id,
         user: response.user,
@@ -16,7 +16,7 @@ export class CreateUserUseCase {
         consultant: response.consultant,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -10,31 +10,31 @@ export class GroupRepository {
   async findOne(code: string) {
     try {
       return Group.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Group.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Group.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(group: NewGroupDto) {
+  async create(group: any) {
     try {
       return Group.create(group);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, group: UpdateGroupDto) {
+  async update(code: any, group: UpdateGroupDto) {
     try {
       return Group.update(group, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class GroupRepository {
   async deleted(code: string) {
     try {
       return Group.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

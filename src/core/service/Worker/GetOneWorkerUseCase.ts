@@ -7,7 +7,7 @@ export class GetOneWorkerUseCase {
 
   async getOneWorker(code: string) {
     try {
-      const response = await this.workerService.getOneWorker(code);
+      const response: any = await this.workerService?.getOneWorker(code);
       return {
         id: response.id,
         code: response.code,
@@ -16,7 +16,7 @@ export class GetOneWorkerUseCase {
         person_identification: response.person_identification,
         type_worker_code: response.type_worker_code,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

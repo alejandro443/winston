@@ -8,8 +8,8 @@ export class CreateTypeWorkerUseCase {
 
   async createTypeWorker(type_worker: NewTypeWorkerDto) {
     try {
-      const response =
-        await this.type_workerService.createTypeWorker(type_worker);
+      const response: any =
+        await this.type_workerService?.createTypeWorker(type_worker);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class CreateTypeWorkerUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

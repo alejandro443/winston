@@ -7,13 +7,13 @@ import {
 
 export interface OrganizationApplication {
   getAllOrganization(): Promise<Array<AllOrganizationDto>>;
-  getOneOrganization(id: number): Promise<OneOrganizationDto>;
+  getOneOrganization(id: any): Promise<OneOrganizationDto>;
   createOrganization(
     organization: NewOrganizationDto,
   ): Promise<OneOrganizationDto>;
   updateOrganization(
-    id: number,
+    id: any,
     organization: UpdateOrganizationDto,
   ): Promise<OneOrganizationDto>;
-  deleteOrganization(id: number);
+  deleteOrganization(id: any): any;
 }

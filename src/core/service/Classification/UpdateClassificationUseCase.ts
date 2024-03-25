@@ -7,11 +7,11 @@ export class UpdateClassificationUseCase {
   }
 
   async updateClassification(
-    code: string,
+    code: any,
     classification: UpdateClassificationDto,
   ) {
     try {
-      const response = await this.classificationService.updateClassification(
+      const response: any = await this.classificationService?.updateClassification(
         code,
         classification,
       );
@@ -22,7 +22,7 @@ export class UpdateClassificationUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

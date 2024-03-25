@@ -7,9 +7,9 @@ export class GetAllClientUseCase {
 
   async getAllClient() {
     try {
-      const response = await this.clientService.getAllClient();
+      const response: any = await this.clientService?.getAllClient();
 
-      return response.map((client) => ({
+      return response.map((client: any) => ({
         id: client.id,
         code: client.code,
         status: client.status,
@@ -17,7 +17,7 @@ export class GetAllClientUseCase {
         person_identification: client.person_identification,
         type_client_code: client.type_client_code,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

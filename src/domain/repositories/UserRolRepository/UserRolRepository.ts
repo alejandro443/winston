@@ -14,7 +14,7 @@ export class UserRolRepository {
   async findUserRoles(id: number) {
     try {
       return UserRol.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
@@ -22,23 +22,23 @@ export class UserRolRepository {
   async findOne(id: number) {
     try {
       return UserRol.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async findAll() {
     try {
-      return UserRol.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return UserRol.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
-  async create(user: NewUserRolDto) {
+  async create(user: any) {
     try {
       return UserRol.create(user);
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
@@ -46,7 +46,7 @@ export class UserRolRepository {
   async update(id: number, user: UpdateUserRolDto) {
     try {
       return UserRol.update(user, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
@@ -54,7 +54,7 @@ export class UserRolRepository {
   async deleted(id: number) {
     try {
       return UserRol.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
@@ -75,7 +75,7 @@ export class UserRolRepository {
           },
         ],
       });
-    } catch (error) {
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }

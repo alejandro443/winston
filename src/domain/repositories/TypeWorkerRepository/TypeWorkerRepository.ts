@@ -10,31 +10,31 @@ export class TypeWorkerRepository {
   async findOne(code: string) {
     try {
       return TypeWorker.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return TypeWorker.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return TypeWorker.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(type_worker: NewTypeWorkerDto) {
+  async create(type_worker: any) {
     try {
       return TypeWorker.create(type_worker);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, type_worker: UpdateTypeWorkerDto) {
+  async update(code: any, type_worker: UpdateTypeWorkerDto) {
     try {
       return TypeWorker.update(type_worker, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class TypeWorkerRepository {
   async deleted(code: string) {
     try {
       return TypeWorker.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

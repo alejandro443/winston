@@ -7,9 +7,9 @@ export class GetOneAccessRolUseCase {
 
   async getOneAccessRol(id: number) {
     try {
-      const response = await this.accessService.getOneAccessRol(id);
+      const response: any = await this.accessService?.getOneAccessRol(id);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

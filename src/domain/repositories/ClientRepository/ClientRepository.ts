@@ -10,31 +10,31 @@ export class ClientRepository {
   async findOne(code: string) {
     try {
       return Client.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Client.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Client.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(worker: NewClientDto) {
+  async create(worker: any) {
     try {
       return Client.create(worker);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, worker: UpdateClientDto) {
+  async update(code: any, worker: UpdateClientDto) {
     try {
       return Client.update(worker, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class ClientRepository {
   async deleted(code: string) {
     try {
       return Client.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -50,7 +50,7 @@ export class ClientRepository {
   async findOneByUser(user_id: number) {
     try {
       return Client.findOne({ where: { user_id: user_id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

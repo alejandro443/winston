@@ -8,40 +8,40 @@ export class PersonService {
 
   async getOnePerson(main_identification: string) {
     try {
-      return this.repository.findOne(main_identification);
-    } catch (error) {
+      return this.repository?.findOne(main_identification);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllPerson() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createPerson(person: NewPersonDto) {
     try {
-      return this.repository.create(person);
-    } catch (error) {
+      return this.repository?.create(person);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updatePerson(main_identification: string, person: NewPersonDto) {
     try {
-      return this.repository.update(main_identification, person);
-    } catch (error) {
+      return this.repository?.update(main_identification, person);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deletePerson(main_identification: string) {
     try {
-      return this.repository.deleted(main_identification);
-    } catch (error) {
+      return this.repository?.deleted(main_identification);
+    } catch (error: any) {
       return error;
     }
   }

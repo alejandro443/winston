@@ -8,12 +8,12 @@ export class CreateOrganizationUseCase {
 
   async createOrganization(organization: NewOrganizationDto) {
     try {
-      const response =
-        await this.organizationService.createOrganization(organization);
+      const response: any =
+        await this.organizationService?.createOrganization(organization);
       return {
         ...response,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

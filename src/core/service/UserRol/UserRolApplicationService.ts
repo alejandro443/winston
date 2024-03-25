@@ -26,40 +26,40 @@ export class UserRolApplicationService implements UserRolApplication {
 
   async getAllUserRol() {
     try {
-      return this.getAllUseCase.getAllUserRol();
-    } catch (error) {
+      return this.getAllUseCase?.getAllUserRol();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneUserRol(user_rol_id: number) {
     try {
-      return this.getOneUseCase.getOneUserRol(user_rol_id);
-    } catch (error) {
+      return this.getOneUseCase?.getOneUserRol(user_rol_id);
+    } catch (error: any) {
       return error;
     }
   }
 
   async createUserRol(user_rol: NewUserRolDto) {
     try {
-      return this.createUseCase.createUserRol(user_rol);
-    } catch (error) {
+      return this.createUseCase?.createUserRol(user_rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateUserRol(id: number, user_rol: UpdateUserRolDto) {
     try {
-      return this.updateUseCase.updateUserRol(id, user_rol);
-    } catch (error) {
+      return this.updateUseCase?.updateUserRol(id, user_rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteUserRol(id: number) {
     try {
-      return this.deleteUseCase.deleteUserRol(id);
-    } catch (error) {
+      return this.deleteUseCase?.deleteUserRol(id);
+    } catch (error: any) {
       return error;
     }
   }

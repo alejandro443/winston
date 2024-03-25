@@ -10,31 +10,31 @@ export class WorkerRepository {
   async findOne(code: string) {
     try {
       return Worker.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Worker.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Worker.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(worker: NewWorkerDto) {
+  async create(worker: any) {
     try {
       return Worker.create(worker);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, worker: UpdateWorkerDto) {
+  async update(code: any, worker: UpdateWorkerDto) {
     try {
       return Worker.update(worker, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class WorkerRepository {
   async deleted(code: string) {
     try {
       return Worker.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

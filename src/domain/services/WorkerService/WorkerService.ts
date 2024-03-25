@@ -8,40 +8,40 @@ export class WorkerService {
 
   async getOneWorker(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllWorker() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createWorker(worker: NewWorkerDto) {
     try {
-      return this.repository.create(worker);
-    } catch (error) {
+      return this.repository?.create(worker);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateWorker(code: string, worker: NewWorkerDto) {
+  async updateWorker(code: any, worker: NewWorkerDto) {
     try {
-      return this.repository.update(code, worker);
-    } catch (error) {
+      return this.repository?.update(code, worker);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteWorker(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }

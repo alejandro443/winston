@@ -10,23 +10,23 @@ export class OrganizationRepository {
   async findOne(id: number) {
     try {
       return Organization.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Organization.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Organization.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(organization: NewOrganizationDto) {
+  async create(organization: any) {
     try {
       return Organization.create(organization);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -34,7 +34,7 @@ export class OrganizationRepository {
   async update(id: number, organization: UpdateOrganizationDto) {
     try {
       return Organization.update(organization, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class OrganizationRepository {
   async deleted(id: number) {
     try {
       return Organization.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

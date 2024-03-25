@@ -9,48 +9,48 @@ export class UserRolService {
 
   async getOneUserRol(id: number) {
     try {
-      return this.repository.findOne(id);
-    } catch (error) {
+      return this.repository?.findOne(id);
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async getAllUserRol() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async createUserRol(user_rol: UserRolDto) {
     try {
-      return this.repository.create(user_rol);
-    } catch (error) {
+      return this.repository?.create(user_rol);
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async updateUserRol(id: number, user: UserRolDto) {
     try {
-      return this.repository.update(id, user);
-    } catch (error) {
+      return this.repository?.update(id, user);
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async deleteUserRol(id: number) {
     try {
-      return this.repository.deleted(id);
-    } catch (error) {
+      return this.repository?.deleted(id);
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
   async getUserRolByUser(user: string) {
     try {
-      return await this.repository.getUserRolByUser(user);
-    } catch (error) {
+      return await this.repository?.getUserRolByUser(user);
+    } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }

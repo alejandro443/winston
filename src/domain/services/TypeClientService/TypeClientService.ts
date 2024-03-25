@@ -8,40 +8,40 @@ export class TypeClientService {
 
   async getOneTypeClient(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllTypeClient() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createTypeClient(type_client: NewTypeClientDto) {
     try {
-      return this.repository.create(type_client);
-    } catch (error) {
+      return this.repository?.create(type_client);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateTypeClient(code: string, type_client: NewTypeClientDto) {
+  async updateTypeClient(code: any, type_client: NewTypeClientDto) {
     try {
-      return this.repository.update(code, type_client);
-    } catch (error) {
+      return this.repository?.update(code, type_client);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteTypeClient(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }

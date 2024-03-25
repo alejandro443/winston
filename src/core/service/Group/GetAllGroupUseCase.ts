@@ -7,16 +7,16 @@ export class GetAllGroupUseCase {
 
   async getAllGroup() {
     try {
-      const response = await this.groupService.getAllGroup();
+      const response: any = await this.groupService?.getAllGroup();
 
-      return response.map((group) => ({
+      return response.map((group: any) => ({
         id: group.id,
         code: group.code,
         name: group.name,
         description: group.description,
         status: group.status,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

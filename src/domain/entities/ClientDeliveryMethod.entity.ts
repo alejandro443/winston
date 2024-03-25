@@ -19,39 +19,39 @@ export class ClientDeliveryMethod extends Model<ClientDeliveryMethod> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @ForeignKey(() => Client)
   @Column({
     field: 'client_id',
     allowNull: true,
   })
-  client_id: number | null;
+  declare client_id: number | null;
 
   @BelongsTo(() => Client, 'id')
-  client: Client;
+  declare client: Client;
 
   @ForeignKey(() => DeliveryMethod)
   @Column({
     field: 'delivery_method_id',
   })
-  delivery_method_id: number;
+  declare delivery_method_id: number;
 
   @BelongsTo(() => DeliveryMethod, 'id')
-  deliveryMethod: DeliveryMethod;
+  declare deliveryMethod: DeliveryMethod;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

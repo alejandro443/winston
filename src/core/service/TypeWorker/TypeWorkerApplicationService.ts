@@ -26,40 +26,40 @@ export class TypeWorkerApplicationService implements TypeWorkerApplication {
 
   async getAllTypeWorker() {
     try {
-      return this.getAllUseCase.getAllTypeWorker();
-    } catch (error) {
+      return this.getAllUseCase?.getAllTypeWorker();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneTypeWorker(type_worker_code: string) {
+  async getOneTypeWorker(type_worker_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneTypeWorker(type_worker_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneTypeWorker(type_worker_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createTypeWorker(type_worker: NewTypeWorkerDto) {
+  async createTypeWorker(type_worker: NewTypeWorkerDto): Promise<any> {
     try {
-      return this.createUseCase.createTypeWorker(type_worker);
-    } catch (error) {
+      return this.createUseCase?.createTypeWorker(type_worker);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateTypeWorker(code: string, type_worker: UpdateTypeWorkerDto) {
+  async updateTypeWorker(code: any, type_worker: UpdateTypeWorkerDto): Promise<any> {
     try {
-      return this.updateUseCase.updateTypeWorker(code, type_worker);
-    } catch (error) {
+      return this.updateUseCase?.updateTypeWorker(code, type_worker);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteTypeWorker(code: string) {
     try {
-      return this.deleteUseCase.deleteTypeWorker(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteTypeWorker(code);
+    } catch (error: any) {
       return error;
     }
   }

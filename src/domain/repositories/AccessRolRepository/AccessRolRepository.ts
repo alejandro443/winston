@@ -13,7 +13,7 @@ export class AccessRolRepository {
   async findAccessRoles(id: number) {
     try {
       return AccessRol.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
@@ -21,23 +21,23 @@ export class AccessRolRepository {
   async findOne(id: number) {
     try {
       return AccessRol.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
 
   async findAll() {
     try {
-      return AccessRol.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return AccessRol.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
 
-  async create(access: NewAccessRolDto) {
+  async create(access: any) {
     try {
       return AccessRol.create(access);
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
@@ -45,7 +45,7 @@ export class AccessRolRepository {
   async update(id: number, access: UpdateAccessRolDto) {
     try {
       return AccessRol.update(access, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
@@ -53,7 +53,7 @@ export class AccessRolRepository {
   async deleted(id: number) {
     try {
       return AccessRol.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
@@ -89,7 +89,7 @@ export class AccessRolRepository {
         },
       })
         .then((result) => {
-          const accesses = result.map((accessRole) => {
+          const accesses = result.map((accessRole: any) => {
             const data = accessRole['access']['dataValues'];
             const { name, url, priority } = data;
             const { parent_name, parent_url, parent_priority } =
@@ -110,7 +110,7 @@ export class AccessRolRepository {
         .catch((error) => {
           throw new Error(error);
         });
-    } catch (error) {
+    } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }

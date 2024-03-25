@@ -6,11 +6,11 @@ export class UpdatePersonUseCase {
     this.clientService = new PersonService();
   }
 
-  async updatePerson(code: string, client: UpdatePersonDto) {
+  async updatePerson(code: any, client: UpdatePersonDto) {
     try {
-      const response = await this.clientService.updatePerson(code, client);
+      const response: any = await this.clientService?.updatePerson(code, client);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

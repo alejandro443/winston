@@ -7,9 +7,9 @@ export class DeleteAccessRolUseCase {
 
   async deleteAccessRol(id: number) {
     try {
-      const response = await this.accessService.deleteAccessRol(id);
+      const response: any = await this.accessService?.deleteAccessRol(id);
       return { id: response['id'] };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

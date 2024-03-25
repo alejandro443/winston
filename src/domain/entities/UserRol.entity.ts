@@ -19,38 +19,38 @@ export class UserRol extends Model<UserRol> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @ForeignKey(() => Rol)
   @Column({
     type: DataType.INTEGER,
   })
-  rol_id: number;
+  declare rol_id: number;
 
   @BelongsTo(() => Rol)
-  rol: Rol;
+  declare rol: Rol;
 
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
   })
-  user_id: number;
+  declare user_id: number;
 
   @BelongsTo(() => User)
-  user: User;
+  declare user: User;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

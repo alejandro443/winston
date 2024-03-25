@@ -20,7 +20,7 @@ export class LoginAuthUseCase {
   async loginAuth(login: any) {
     try {
       const { user, password } = login;
-      const user_rol_data = await this.userRolService.getUserRolByUser(user);
+      const user_rol_data = await this.userRolService?.getUserRolByUser(user);
 
       if (!user_rol_data || user_rol_data.length === 0) {
         throw new AuthApplicationError(
@@ -38,10 +38,10 @@ export class LoginAuthUseCase {
       }
 
       const rol_data = user_rol_data[0]['rol']['dataValues'];
-      const access_data = await this.accessRolService.getAccessRolByRol(
+      const access_data = await this.accessRolService?.getAccessRolByRol(
         rol_data.id,
       );
-      const client_data = await this.clientService.getOneClientByUserId(
+      const client_data = await this.clientService?.getOneClientByUserId(
         user_data.id,
       );
 
@@ -53,7 +53,7 @@ export class LoginAuthUseCase {
         accesses: access_data,
         token: token,
       };
-    } catch (error) {
+    } catch (error: any) {
       throw new AuthApplicationError(error.message, error.statusError);
     }
   }

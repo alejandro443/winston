@@ -12,23 +12,23 @@ export class PersonRepository {
       return Person.findOne({
         where: { main_identification: main_identification },
       });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Person.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Person.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(person: NewPersonDto) {
+  async create(person: any) {
     try {
       return Person.create(person);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -38,7 +38,7 @@ export class PersonRepository {
       return Person.update(person, {
         where: { main_identification: main_identification },
       });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -48,7 +48,7 @@ export class PersonRepository {
       return Person.destroy({
         where: { main_identification: main_identification },
       });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

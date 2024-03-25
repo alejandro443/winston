@@ -7,5 +7,5 @@ export class LoginResponse extends AppResponse {
     type: LoginResponseDto,
     nullable: true,
   })
-  data: object;
+  data?: object;
 }

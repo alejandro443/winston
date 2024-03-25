@@ -35,7 +35,7 @@ export const ConnectionProvider = [
   {
     provide: SEQUELIZE,
     useFactory: async () => {
-      let configuration;
+      let configuration: any;
       switch (process.env.NODE_ENV as any) {
         case DEVELOPMENT:
           configuration = DatabaseConfiguration.development;
@@ -51,12 +51,12 @@ export const ConnectionProvider = [
       }
       const sequelize = new Sequelize(configuration);
       sequelize.addModels([
+        Access,
+        User,
+        Rol,
         AccessRol,
         UserAccess,
         UserRol,
-        Access,
-        Rol,
-        User,
         Client,
         Group,
         Worker,

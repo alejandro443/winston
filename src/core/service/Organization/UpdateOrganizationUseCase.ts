@@ -8,14 +8,14 @@ export class UpdateOrganizationUseCase {
 
   async updateOrganization(id: number, organization: UpdateOrganizationDto) {
     try {
-      const response = await this.organizationService.updateOrganization(
+      const response: any = await this.organizationService?.updateOrganization(
         id,
         organization,
       );
       return {
         ...response,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

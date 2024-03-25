@@ -8,9 +8,9 @@ export class CreateAccessRolUseCase {
 
   async createAccessRol(access: NewAccessRolDto) {
     try {
-      const response = await this.accessService.createAccessRol(access);
+      const response: any = await this.accessService?.createAccessRol(access);
       return { ...response };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -6,8 +6,8 @@ import {
 } from '@src/core/shared/dto/Rol/rol_dto';
 export interface RolApplication {
   getAllRol(): Promise<Array<AllRolDto>>;
-  getOneRol(id: number): Promise<OneRolDto>;
+  getOneRol(id: any): Promise<OneRolDto>;
   createRol(rol: NewRolDto): Promise<OneRolDto>;
-  updateRol(id: number, rol: UpdateRolDto): Promise<OneRolDto>;
-  deleteRol(id: number);
+  updateRol(id: any, rol: UpdateRolDto): Promise<OneRolDto>;
+  deleteRol(id: any): any;
 }

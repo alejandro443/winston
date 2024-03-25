@@ -23,40 +23,40 @@ export class RolApplicationService implements RolApplication {
 
   async getAllRol() {
     try {
-      return this.getAllUseCase.getAllRol();
-    } catch (error) {
+      return this.getAllUseCase?.getAllRol();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneRol(rol_id: number) {
     try {
-      return this.getOneUseCase.getOneRol(rol_id);
-    } catch (error) {
+      return this.getOneUseCase?.getOneRol(rol_id);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createRol(rol: NewRolDto) {
+  async createRol(rol: NewRolDto): Promise<any> {
     try {
-      return this.createUseCase.createRol(rol);
-    } catch (error) {
+      return this.createUseCase?.createRol(rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateRol(id: number, rol: UpdateRolDto) {
     try {
-      return this.updateUseCase.updateRol(id, rol);
-    } catch (error) {
+      return this.updateUseCase?.updateRol(id, rol);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteRol(id: number) {
     try {
-      return this.deleteUseCase.deleteRol(id);
-    } catch (error) {
+      return this.deleteUseCase?.deleteRol(id);
+    } catch (error: any) {
       return error;
     }
   }

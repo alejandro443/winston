@@ -7,16 +7,16 @@ export class GetAllTypeClientUseCase {
 
   async getAllTypeClient() {
     try {
-      const response = await this.type_clientService.getAllTypeClient();
+      const response: any = await this.type_clientService?.getAllTypeClient();
 
-      return response.map((type_client) => ({
+      return response.map((type_client: any) => ({
         id: type_client.id,
         code: type_client.code,
         name: type_client.name,
         description: type_client.description,
         status: type_client.status,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -8,7 +8,7 @@ export class CreateGroupUseCase {
 
   async createGroup(group: NewGroupDto) {
     try {
-      const response = await this.groupService.createGroup(group);
+      const response: any = await this.groupService?.createGroup(group);
       return {
         id: response.id,
         code: response.code,
@@ -16,7 +16,7 @@ export class CreateGroupUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -7,10 +7,10 @@ export class DeleteClassificationUseCase {
 
   async deleteClassification(code: string) {
     try {
-      const response =
-        await this.classificationService.deleteClassification(code);
+      const response: any =
+        await this.classificationService?.deleteClassification(code);
       return { id: response.id };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

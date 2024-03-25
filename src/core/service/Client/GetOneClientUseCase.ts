@@ -7,7 +7,7 @@ export class GetOneClientUseCase {
 
   async getOneClient(code: string) {
     try {
-      const response = await this.clientService.getOneClient(code);
+      const response: any = await this.clientService?.getOneClient(code);
       return {
         id: response.id,
         code: response.code,
@@ -16,7 +16,7 @@ export class GetOneClientUseCase {
         person_identification: response.person_identification,
         type_client_code: response.type_client_code,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

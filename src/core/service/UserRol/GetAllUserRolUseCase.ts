@@ -7,10 +7,10 @@ export class GetAllUserRolUseCase {
 
   async getAllUserRol() {
     try {
-      const response = await this.userService.getAllUserRol();
+      const response: any = await this.userService?.getAllUserRol();
 
-      return response.map((user) => ({ ...user }));
-    } catch (error) {
+      return response.map((user: any) => ({ ...user }));
+    } catch (error: any) {
       return error;
     }
   }

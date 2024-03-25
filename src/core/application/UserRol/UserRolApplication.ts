@@ -7,8 +7,8 @@ import {
 
 export interface UserRolApplication {
   getAllUserRol(): Promise<Array<AllUserRolDto>>;
-  getOneUserRol(id: number): Promise<OneUserRolDto>;
+  getOneUserRol(id: any): Promise<OneUserRolDto>;
   createUserRol(client: NewUserRolDto): Promise<OneUserRolDto>;
   updateUserRol(id: number, client: UpdateUserRolDto): Promise<OneUserRolDto>;
-  deleteUserRol(id: number);
+  deleteUserRol(id: any): any;
 }

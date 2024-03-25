@@ -23,40 +23,40 @@ export class UserApplicationService implements UserApplication {
 
   async getAllUser() {
     try {
-      return this.getAllUseCase.getAllUser();
-    } catch (error) {
+      return this.getAllUseCase?.getAllUser();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneUser(user_code: string) {
     try {
-      return this.getOneUseCase.getOneUser(user_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneUser(user_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createUser(user: NewUserDto) {
+  async createUser(user: NewUserDto): Promise<any> {
     try {
-      return this.createUseCase.createUser(user);
-    } catch (error) {
+      return this.createUseCase?.createUser(user);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateUser(code: string, user: UpdateUserDto) {
+  async updateUser(code: any, user: UpdateUserDto) {
     try {
-      return this.updateUseCase.updateUser(code, user);
-    } catch (error) {
+      return this.updateUseCase?.updateUser(code, user);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteUser(code: string) {
     try {
-      return this.deleteUseCase.deleteUser(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteUser(code);
+    } catch (error: any) {
       return error;
     }
   }

@@ -10,23 +10,23 @@ export class AccessRepository {
   async findOne(id: number) {
     try {
       return Access.findOne({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Access.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Access.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(access: NewAccessDto) {
+  async create(access: any) {
     try {
       return Access.create(access);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -34,7 +34,7 @@ export class AccessRepository {
   async update(id: number, access: UpdateAccessDto) {
     try {
       return Access.update(access, { where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class AccessRepository {
   async deleted(id: number) {
     try {
       return Access.destroy({ where: { id: id } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

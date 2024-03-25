@@ -8,9 +8,9 @@ export class UpdateAccessRolUseCase {
 
   async updateAccessRol(id: number, access: UpdateAccessRolDto) {
     try {
-      const response = await this.accessService.updateAccessRol(id, access);
+      const response: any = await this.accessService?.updateAccessRol(id, access);
       return { ...response };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

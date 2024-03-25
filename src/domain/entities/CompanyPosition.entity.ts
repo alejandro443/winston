@@ -17,44 +17,44 @@ export class CompanyPosition extends Model<CompanyPosition> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  types: string[];
+  declare types: string[];
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => ClientCompanyWorker, 'company_position_id')
-  clientCompanyWorker: ClientCompanyWorker[];
+  declare clientCompanyWorker: ClientCompanyWorker[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

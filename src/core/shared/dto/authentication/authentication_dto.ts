@@ -6,17 +6,17 @@ export interface LoginDto
 
 export class LoginResponseDto {
   @IsString()
-  code: string;
+  declare code: string;
 
   @IsString()
-  rol: string;
+  declare rol: string;
 
   @IsString()
-  session_id?: string;
+  declare session_id?: string;
 
   @IsString()
-  token: string;
+  declare token: string;
 
   @IsObject()
-  accesses: object;
+  declare accesses: object;
 }

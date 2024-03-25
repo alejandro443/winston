@@ -8,8 +8,8 @@ export class CreateTypeDocumentUseCase {
 
   async createTypeDocument(type_document: NewTypeDocumentDto) {
     try {
-      const response =
-        await this.type_documentService.createTypeDocument(type_document);
+      const response: any =
+        await this.type_documentService?.createTypeDocument(type_document);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class CreateTypeDocumentUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -8,9 +8,9 @@ export class UpdateUserRolUseCase {
 
   async updateUserRol(id: number, user: UpdateUserRolDto) {
     try {
-      const response = await this.userService.updateUserRol(id, user);
+      const response: any = await this.userService?.updateUserRol(id, user);
       return { ...response };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

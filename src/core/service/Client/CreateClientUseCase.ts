@@ -8,9 +8,9 @@ export class CreateClientUseCase {
 
   async createClient(client: NewClientDto) {
     try {
-      const response = await this.clientService.createClient(client);
+      const response: any = await this.clientService?.createClient(client);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

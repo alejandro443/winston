@@ -21,60 +21,60 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @ForeignKey(() => ClientCompany)
   @Column({
     field: 'client_company_id',
     allowNull: true,
   })
-  client_company_id: number | null;
+  declare client_company_id: number | null;
 
   @BelongsTo(() => ClientCompany, 'id')
-  clientCompany: ClientCompany;
+  declare clientCompany: ClientCompany;
 
   @ForeignKey(() => Person)
   @Column({
     field: 'person_id',
     allowNull: true,
   })
-  person_id: number | null;
+  declare person_id: number | null;
 
   @BelongsTo(() => Person, 'id')
-  person: Person;
+  declare person: Person;
 
   @ForeignKey(() => CompanyPosition)
   @Column({
     field: 'company_position_id',
     allowNull: true,
   })
-  company_position_id: number | null;
+  declare company_position_id: number | null;
 
   @BelongsTo(() => CompanyPosition, 'id')
-  companyPosition: CompanyPosition;
+  declare companyPosition: CompanyPosition;
 
   @ForeignKey(() => CompanyArea)
   @Column({
     field: 'company_area_id',
     allowNull: true,
   })
-  company_area_id: number | null;
+  declare company_area_id: number | null;
 
   @BelongsTo(() => CompanyArea, 'id')
-  companyArea: CompanyArea;
+  declare companyArea: CompanyArea;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

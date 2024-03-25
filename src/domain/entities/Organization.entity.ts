@@ -15,225 +15,225 @@ export class Organization extends Model<Organization> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
   })
-  logo: string;
+  declare logo: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  sector: string;
+  declare sector: string;
 
   @Column({
     type: DataType.STRING,
   })
-  ruc: string;
+  declare ruc: string;
 
   @Column({
     type: DataType.STRING,
   })
-  type: string;
+  declare type: string;
 
   @Column({
     type: DataType.STRING,
   })
-  year: string;
+  declare year: string;
 
   @Column({
     type: DataType.STRING,
   })
-  direction: string;
+  declare direction: string;
 
   @Column({
     type: DataType.STRING,
   })
-  web_page: string;
+  declare web_page: string;
 
   @Column({
     type: DataType.STRING,
   })
-  email: string;
+  declare email: string;
 
   @Column({
     type: DataType.STRING,
   })
-  phone_one: string;
+  declare phone_one: string;
 
   @Column({
     type: DataType.STRING,
   })
-  phone_two: string;
+  declare phone_two: string;
 
   @Column({
     type: DataType.STRING,
   })
-  phone_three: string;
+  declare phone_three: string;
 
   @Column({
     type: DataType.STRING,
   })
-  representative_legal: string;
+  declare representative_legal: string;
 
   @Column({
     type: DataType.STRING,
   })
-  representative_email: string;
+  declare representative_email: string;
 
   @Column({
     type: DataType.STRING,
   })
-  representative_phone: string;
+  declare representative_phone: string;
 
   @Column({
     type: DataType.STRING,
   })
-  representative_direction: string;
+  declare representative_direction: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  config_online: boolean;
+  declare config_online: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  open_cash: boolean;
+  declare open_cash: boolean;
 
   @Column({
     type: DataType.STRING,
   })
-  district: string;
+  declare district: string;
 
   @Column({
     type: DataType.STRING,
   })
-  province: string;
+  declare province: string;
 
   @Column({
     type: DataType.STRING,
   })
-  department: string;
+  declare department: string;
 
   @Column({
     type: DataType.STRING,
   })
-  urbanization: string;
+  declare urbanization: string;
 
   @Column({
     type: DataType.STRING,
   })
-  ubigeo: string;
+  declare ubigeo: string;
 
   @Column({
     type: DataType.STRING,
   })
-  country: string;
+  declare country: string;
 
   @Column({
     type: DataType.STRING,
   })
-  comercial_name: string;
+  declare comercial_name: string;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  exonerated: boolean;
+  declare exonerated: boolean;
 
   @Column({
     type: DataType.STRING,
   })
-  instagram: string;
+  declare instagram: string;
 
   @Column({
     type: DataType.STRING,
   })
-  facebook: string;
+  declare facebook: string;
 
   @Column({
     type: DataType.STRING,
   })
-  youtube: string;
+  declare youtube: string;
 
   @Column({
     type: DataType.STRING,
   })
-  whatsapp: string;
+  declare whatsapp: string;
 
   @Column({
     type: DataType.STRING,
   })
-  tiktok: string;
+  declare tiktok: string;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  edit_price: boolean;
+  declare edit_price: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  footer: boolean;
+  declare footer: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  accounts: boolean;
+  declare accounts: boolean;
 
   @Column({
     type: DataType.STRING,
   })
-  footer_description: string;
+  declare footer_description: string;
 
   @Column({
     type: DataType.STRING,
   })
-  edit_documents: string;
+  declare edit_documents: string;
 
   @Column({
     type: DataType.STRING,
   })
-  license: string;
+  declare license: string;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  point_sale: boolean;
+  declare point_sale: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  store_online: boolean;
+  declare store_online: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  price_wholesale: boolean;
+  declare price_wholesale: boolean;
 
   @Column({
     type: DataType.INTEGER,
   })
-  amount_wholesale: number;
+  declare amount_wholesale: number;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

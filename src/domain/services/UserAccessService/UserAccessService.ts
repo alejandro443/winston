@@ -9,40 +9,40 @@ export class UserAccessService {
 
   async getOneUserAccess(id: number) {
     try {
-      return this.repository.findOne(id);
-    } catch (error) {
+      return this.repository?.findOne(id);
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
   async getAllUserAccess() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
   async createUserAccess(user_rol: UserAccessDto) {
     try {
-      return this.repository.create(user_rol);
-    } catch (error) {
+      return this.repository?.create(user_rol);
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
   async updateUserAccess(id: number, user: UserAccessDto) {
     try {
-      return this.repository.update(id, user);
-    } catch (error) {
+      return this.repository?.update(id, user);
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
   async deleteUserAccess(id: number) {
     try {
-      return this.repository.deleted(id);
-    } catch (error) {
+      return this.repository?.deleted(id);
+    } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }

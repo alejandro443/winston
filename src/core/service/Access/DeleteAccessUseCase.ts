@@ -7,9 +7,9 @@ export class DeleteAccessUseCase {
 
   async deleteAccess(id: number) {
     try {
-      const response = await this.accessService.deleteAccess(id);
+      const response: any = await this.accessService?.deleteAccess(id);
       return { id: response.id };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

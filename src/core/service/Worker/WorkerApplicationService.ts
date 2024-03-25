@@ -26,40 +26,40 @@ export class WorkerApplicationService implements WorkerApplication {
 
   async getAllWorker() {
     try {
-      return this.getAllUseCase.getAllWorker();
-    } catch (error) {
+      return this.getAllUseCase?.getAllWorker();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneWorker(worker_code: string) {
+  async getOneWorker(worker_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneWorker(worker_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneWorker(worker_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createWorker(worker: NewWorkerDto) {
+  async createWorker(worker: NewWorkerDto): Promise<any> {
     try {
-      return this.createUseCase.createWorker(worker);
-    } catch (error) {
+      return this.createUseCase?.createWorker(worker);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateWorker(code: string, worker: UpdateWorkerDto) {
+  async updateWorker(code: any, worker: UpdateWorkerDto): Promise<any> {
     try {
-      return this.updateUseCase.updateWorker(code, worker);
-    } catch (error) {
+      return this.updateUseCase?.updateWorker(code, worker);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteWorker(code: string) {
     try {
-      return this.deleteUseCase.deleteWorker(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteWorker(code);
+    } catch (error: any) {
       return error;
     }
   }

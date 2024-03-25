@@ -7,7 +7,7 @@ export class GetOneGroupUseCase {
 
   async getOneGroup(code: string) {
     try {
-      const response = await this.groupService.getOneGroup(code);
+      const response: any = await this.groupService?.getOneGroup(code);
       return {
         id: response.id,
         code: response.code,
@@ -15,7 +15,7 @@ export class GetOneGroupUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

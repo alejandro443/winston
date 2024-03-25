@@ -7,11 +7,11 @@ import {
 
 export interface UserAccessApplication {
   getAllUserAccess(): Promise<Array<AllUserAccessDto>>;
-  getOneUserAccess(code: string): Promise<OneUserAccessDto>;
+  getOneUserAccess(code: any): Promise<OneUserAccessDto>;
   createUserAccess(client: NewUserAccessDto): Promise<OneUserAccessDto>;
   updateUserAccess(
-    code: string,
+    code: any,
     client: UpdateUserAccessDto,
   ): Promise<OneUserAccessDto>;
-  deleteUserAccess(code: string);
+  deleteUserAccess(code: any): any;
 }

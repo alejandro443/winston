@@ -7,9 +7,9 @@ export class DeleteGroupUseCase {
 
   async deleteGroup(code: string) {
     try {
-      const response = await this.groupService.deleteGroup(code);
+      const response: any = await this.groupService?.deleteGroup(code);
       return { id: response.id };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

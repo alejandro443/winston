@@ -11,13 +11,11 @@
       "legacyDecorator": true,
       "decoratorMetadata": true
     },
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
       "@core/*": ["src/core/*"],
-      "@shared/*": ["src/shared/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@tests/*": ["tests/*"]
+      "@tests/*": ["test/*"]
     },
     "target": "es2022"
   },

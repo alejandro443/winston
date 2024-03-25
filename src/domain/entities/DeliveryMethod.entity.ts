@@ -17,78 +17,78 @@ export class DeliveryMethod extends Model<DeliveryMethod> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  schedule: string[];
+  declare schedule: string[];
 
   @Column({
     type: DataType.STRING,
   })
-  shipping_cost: string;
+  declare shipping_cost: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  availability_countries: string[];
+  declare availability_countries: string[];
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  tracking: boolean;
+  declare tracking: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  shipping_insurance: boolean;
+  declare shipping_insurance: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  international_delivery: boolean;
+  declare international_delivery: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  return_policy: boolean;
+  declare return_policy: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => ClientDeliveryMethod, 'delivery_method_id')
-  clientDeliveryMethods: ClientDeliveryMethod[];
+  declare clientDeliveryMethods: ClientDeliveryMethod[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

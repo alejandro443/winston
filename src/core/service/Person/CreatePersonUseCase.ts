@@ -8,9 +8,9 @@ export class CreatePersonUseCase {
 
   async createPerson(person: NewPersonDto) {
     try {
-      const response = await this.personService.createPerson(person);
+      const response: any = await this.personService?.createPerson(person);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

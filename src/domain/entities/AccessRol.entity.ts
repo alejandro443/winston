@@ -19,38 +19,38 @@ export class AccessRol extends Model<AccessRol> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @ForeignKey(() => Rol)
   @Column({
     type: DataType.INTEGER,
   })
-  rol_id: number;
+  declare rol_id: number;
 
   @BelongsTo(() => Rol)
-  rol: Rol;
+  declare rol: Rol;
 
   @ForeignKey(() => Access)
   @Column({
     type: DataType.INTEGER,
   })
-  access_id: number;
+  declare access_id: number;
 
   @BelongsTo(() => Access)
-  access: Access;
+  declare access: Access;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

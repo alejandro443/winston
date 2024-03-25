@@ -9,16 +9,16 @@ export class ClientService {
 
   async getOneClient(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllClient() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
@@ -29,32 +29,32 @@ export class ClientService {
       client.code = await GenerateCodeClient(
         client.person_identification || client.person_identification,
       );
-      return this.repository.create(client);
-    } catch (error) {
+      return this.repository?.create(client);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateClient(code: string, client: NewClientDto) {
+  async updateClient(code: any, client: NewClientDto) {
     try {
-      return this.repository.update(code, client);
-    } catch (error) {
+      return this.repository?.update(code, client);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteClient(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneClientByUserId(user_id: number) {
     try {
-      return this.repository.findOneByUser(user_id);
-    } catch (error) {
+      return this.repository?.findOneByUser(user_id);
+    } catch (error: any) {
       return error;
     }
   }

@@ -7,9 +7,9 @@ export class GetOneAccessUseCase {
 
   async getOneAccess(id: number) {
     try {
-      const response = await this.accessService.getOneAccess(id);
+      const response: any = await this.accessService?.getOneAccess(id);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

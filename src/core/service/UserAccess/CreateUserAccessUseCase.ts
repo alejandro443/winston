@@ -8,10 +8,10 @@ export class CreateUserAccessUseCase {
 
   async createUserAccess(userAccess: NewUserAccessDto) {
     try {
-      const response =
-        await this.userAccessService.createUserAccess(userAccess);
+      const response: any =
+        await this.userAccessService?.createUserAccess(userAccess);
       return { ...response };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

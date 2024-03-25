@@ -7,11 +7,11 @@ import {
 
 export interface TypeWorkerApplication {
   getAllTypeWorker(): Promise<Array<AllTypeWorkerDto>>;
-  getOneTypeWorker(code: string): Promise<OneTypeWorkerDto>;
+  getOneTypeWorker(code: any): Promise<OneTypeWorkerDto>;
   createTypeWorker(type_worker: NewTypeWorkerDto): Promise<OneTypeWorkerDto>;
   updateTypeWorker(
-    code: string,
+    code: any,
     type_worker: UpdateTypeWorkerDto,
   ): Promise<OneTypeWorkerDto>;
-  deleteTypeWorker(code: string);
+  deleteTypeWorker(code: any): any;
 }

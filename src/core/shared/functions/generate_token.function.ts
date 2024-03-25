@@ -2,7 +2,9 @@ import * as jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
 config();
 
-export const GenerateToken = async (user, client) => {
+export const GenerateToken = async (user: any, client: any) => {
+  var process: any = process.env;
+  
   const token = jwt.sign(
     {
       user_id: user.id,
@@ -11,11 +13,11 @@ export const GenerateToken = async (user, client) => {
       username: user.user,
       expires: new Date(
         new Date().getTime() +
-          +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000,
+          +process.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000,
       ),
     },
-    process.env.JWT_TOKEN_KEY,
-    { expiresIn: +process.env.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000 },
+    process.JWT_TOKEN_KEY,
+    { expiresIn: +process.DAYS_EXPIRE_JWT * 24 * 60 * 60 * 1000 },
   );
   return token;
 };

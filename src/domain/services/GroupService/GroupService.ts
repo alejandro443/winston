@@ -8,40 +8,40 @@ export class GroupService {
 
   async getOneGroup(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllGroup() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createGroup(group: NewGroupDto) {
     try {
-      return this.repository.create(group);
-    } catch (error) {
+      return this.repository?.create(group);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateGroup(code: string, group: NewGroupDto) {
+  async updateGroup(code: any, group: NewGroupDto) {
     try {
-      return this.repository.update(code, group);
-    } catch (error) {
+      return this.repository?.update(code, group);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteGroup(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }

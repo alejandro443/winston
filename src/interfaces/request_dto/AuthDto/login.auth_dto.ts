@@ -5,13 +5,13 @@ export class LoginRequestDto {
     description: 'Usuario de sistema',
     type: String,
   })
-  user: string;
+  declare user: string;
 
   @ApiProperty({
     description: 'Contraseña de sistema',
     type: String,
   })
-  password: string;
+  declare password: string;
 }
 
 export class LoginResponseDto {
@@ -19,29 +19,29 @@ export class LoginResponseDto {
     description: 'Código de usuario',
     type: String,
   })
-  code: string;
+  declare code: string;
 
   @ApiProperty({
     description: 'Nombre de rol de usuario',
     type: String,
   })
-  rol: string;
+  declare rol: string;
 
   @ApiProperty({
     description: 'Sesión para el usuario',
     type: String,
   })
-  session_id: string;
+  declare session_id: string;
 
   @ApiProperty({
     description: 'Token para el usuario',
     type: String,
   })
-  token: string;
+  declare token: string;
 
   @ApiProperty({
     description: 'Accesos de el usuario',
     type: Object,
   })
-  accesses: object;
+  declare accesses: object;
 }

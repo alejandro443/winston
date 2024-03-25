@@ -8,8 +8,8 @@ export class CreateTypeClientUseCase {
 
   async createTypeClient(type_client: NewTypeClientDto) {
     try {
-      const response =
-        await this.type_clientService.createTypeClient(type_client);
+      const response: any =
+        await this.type_clientService?.createTypeClient(type_client);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class CreateTypeClientUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -7,13 +7,13 @@ import {
 
 export interface ClassificationApplication {
   getAllClassification(): Promise<Array<AllClassificationDto>>;
-  getOneClassification(code: string): Promise<OneClassificationDto>;
+  getOneClassification(code: any): Promise<OneClassificationDto>;
   createClassification(
     classification: NewClassificationDto,
   ): Promise<OneClassificationDto>;
   updateClassification(
-    code: string,
+    code: any,
     classification: UpdateClassificationDto,
   ): Promise<OneClassificationDto>;
-  deleteClassification(code: string);
+  deleteClassification(code: any): any;
 }

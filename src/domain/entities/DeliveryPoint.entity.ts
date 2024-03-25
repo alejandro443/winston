@@ -17,50 +17,50 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  direction: string;
+  declare direction: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  schedule: string[];
+  declare schedule: string[];
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  notification: boolean;
+  declare notification: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasMany(() => ClientDeliveryPoint, 'delivery_point_id')
-  clientDeliveryPoints: ClientDeliveryPoint[];
+  declare clientDeliveryPoints: ClientDeliveryPoint[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

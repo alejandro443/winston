@@ -10,31 +10,31 @@ export class ClassificationRepository {
   async findOne(code: string) {
     try {
       return Classification.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return Classification.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return Classification.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(classification: NewClassificationDto) {
+  async create(classification: any) {
     try {
       return Classification.create(classification);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, classification: UpdateClassificationDto) {
+  async update(code: any, classification: UpdateClassificationDto) {
     try {
       return Classification.update(classification, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class ClassificationRepository {
   async deleted(code: string) {
     try {
       return Classification.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -7,16 +7,16 @@ export class GetAllClassificationUseCase {
 
   async getAllClassification() {
     try {
-      const response = await this.classificationService.getAllClassification();
+      const response: any = await this.classificationService?.getAllClassification();
 
-      return response.map((classification) => ({
+      return response.map((classification: any) => ({
         id: classification.id,
         code: classification.code,
         name: classification.name,
         description: classification.description,
         status: classification.status,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

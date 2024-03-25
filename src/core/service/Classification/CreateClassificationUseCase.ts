@@ -8,8 +8,8 @@ export class CreateClassificationUseCase {
 
   async createClassification(classification: NewClassificationDto) {
     try {
-      const response =
-        await this.classificationService.createClassification(classification);
+      const response: any =
+        await this.classificationService?.createClassification(classification);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class CreateClassificationUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

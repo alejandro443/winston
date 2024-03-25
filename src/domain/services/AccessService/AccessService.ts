@@ -9,40 +9,40 @@ export class AccessService {
 
   async getOneAccess(id: number) {
     try {
-      return this.repository.findOne(id);
-    } catch (error) {
+      return this.repository?.findOne(id);
+    } catch (error: any) {
       throw new AccessApplicationError(error.message);
     }
   }
 
   async getAllAccess() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       throw new AccessApplicationError(error.message);
     }
   }
 
   async createAccess(access: AccessDto) {
     try {
-      return this.repository.create(access);
-    } catch (error) {
+      return this.repository?.create(access);
+    } catch (error: any) {
       throw new AccessApplicationError(error.message);
     }
   }
 
   async updateAccess(id: number, access: AccessDto) {
     try {
-      return this.repository.update(id, access);
-    } catch (error) {
+      return this.repository?.update(id, access);
+    } catch (error: any) {
       throw new AccessApplicationError(error.message);
     }
   }
 
   async deleteAccess(id: number) {
     try {
-      return this.repository.deleted(id);
-    } catch (error) {
+      return this.repository?.deleted(id);
+    } catch (error: any) {
       throw new AccessApplicationError(error.message);
     }
   }

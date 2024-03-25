@@ -7,9 +7,9 @@ export class GetOnePersonUseCase {
 
   async getOnePerson(code: string) {
     try {
-      const response = await this.workerService.getOnePerson(code);
+      const response: any = await this.workerService?.getOnePerson(code);
       return { ...response.dataValues };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

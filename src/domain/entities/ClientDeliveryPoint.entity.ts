@@ -19,40 +19,40 @@ export class ClientDeliveryPoint extends Model<ClientDeliveryPoint> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @ForeignKey(() => Client)
   @Column({
     field: 'client_id',
     allowNull: true,
   })
-  client_id: number;
+  declare client_id: number;
 
   @BelongsTo(() => Client, 'id')
-  client: Client;
+  declare client: Client;
 
   @ForeignKey(() => DeliveryPoint)
   @Column({
     field: 'delivery_point_id',
     allowNull: true,
   })
-  delivery_point_id: number;
+  declare delivery_point_id: number;
 
   @BelongsTo(() => DeliveryPoint, 'id')
-  deliveryPoint: DeliveryPoint;
+  declare deliveryPoint: DeliveryPoint;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

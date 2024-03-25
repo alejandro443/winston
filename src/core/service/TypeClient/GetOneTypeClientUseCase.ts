@@ -7,7 +7,7 @@ export class GetOneTypeClientUseCase {
 
   async getOneTypeClient(code: string) {
     try {
-      const response = await this.classificationService.getOneTypeClient(code);
+      const response: any = await this.classificationService?.getOneTypeClient(code);
       return {
         id: response.id,
         code: response.code,
@@ -15,7 +15,7 @@ export class GetOneTypeClientUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -26,40 +26,40 @@ export class TypeClientApplicationService implements TypeClientApplication {
 
   async getAllTypeClient() {
     try {
-      return this.getAllUseCase.getAllTypeClient();
-    } catch (error) {
+      return this.getAllUseCase?.getAllTypeClient();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneTypeClient(type_client_code: string) {
+  async getOneTypeClient(type_client_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneTypeClient(type_client_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneTypeClient(type_client_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createTypeClient(type_client: NewTypeClientDto) {
+  async createTypeClient(type_client: NewTypeClientDto): Promise<any> {
     try {
-      return this.createUseCase.createTypeClient(type_client);
-    } catch (error) {
+      return this.createUseCase?.createTypeClient(type_client);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateTypeClient(code: string, type_client: UpdateTypeClientDto) {
+  async updateTypeClient(code: any, type_client: UpdateTypeClientDto): Promise<any> {
     try {
-      return this.updateUseCase.updateTypeClient(code, type_client);
-    } catch (error) {
+      return this.updateUseCase?.updateTypeClient(code, type_client);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteTypeClient(code: string) {
     try {
-      return this.deleteUseCase.deleteTypeClient(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteTypeClient(code);
+    } catch (error: any) {
       return error;
     }
   }

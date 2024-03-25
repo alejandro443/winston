@@ -7,10 +7,10 @@ export class GetAllRolUseCase {
 
   async getAllRol() {
     try {
-      const response = await this.rolService.getAllRol();
+      const response: any = await this.rolService?.getAllRol();
 
-      return response.map((rol) => ({ ...rol }));
-    } catch (error) {
+      return response.map((rol: any) => ({ ...rol }));
+    } catch (error: any) {
       return error;
     }
   }

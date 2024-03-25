@@ -8,40 +8,40 @@ export class OrganizationService {
 
   async getOneOrganization(id: number) {
     try {
-      return this.repository.findOne(id);
-    } catch (error) {
+      return this.repository?.findOne(id);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllOrganization() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createOrganization(organization: NewOrganizationDto) {
     try {
-      return this.repository.create(organization);
-    } catch (error) {
+      return this.repository?.create(organization);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateOrganization(id: number, organization: NewOrganizationDto) {
     try {
-      return this.repository.update(id, organization);
-    } catch (error) {
+      return this.repository?.update(id, organization);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteOrganization(id: number) {
     try {
-      return this.repository.deleted(id);
-    } catch (error) {
+      return this.repository?.deleted(id);
+    } catch (error: any) {
       return error;
     }
   }

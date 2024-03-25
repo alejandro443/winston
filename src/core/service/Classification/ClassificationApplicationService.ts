@@ -28,43 +28,43 @@ export class ClassificationApplicationService
 
   async getAllClassification() {
     try {
-      return this.getAllUseCase.getAllClassification();
-    } catch (error) {
+      return this.getAllUseCase?.getAllClassification();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneClassification(classification_code: string) {
+  async getOneClassification(classification_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneClassification(classification_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneClassification(classification_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createClassification(classification: NewClassificationDto) {
+  async createClassification(classification: NewClassificationDto): Promise<any> {
     try {
-      return this.createUseCase.createClassification(classification);
-    } catch (error) {
+      return this.createUseCase?.createClassification(classification);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateClassification(
-    code: string,
+    code: any,
     classification: UpdateClassificationDto,
-  ) {
+  ): Promise<any> {
     try {
-      return this.updateUseCase.updateClassification(code, classification);
-    } catch (error) {
+      return this.updateUseCase?.updateClassification(code, classification);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteClassification(code: string) {
     try {
-      return this.deleteUseCase.deleteClassification(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteClassification(code);
+    } catch (error: any) {
       return error;
     }
   }

@@ -26,40 +26,40 @@ export class GroupApplicationService implements GroupApplication {
 
   async getAllGroup() {
     try {
-      return this.getAllUseCase.getAllGroup();
-    } catch (error) {
+      return this.getAllUseCase?.getAllGroup();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneGroup(group_code: string) {
+  async getOneGroup(group_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneGroup(group_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneGroup(group_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createGroup(group: NewGroupDto) {
+  async createGroup(group: NewGroupDto): Promise<any> {
     try {
-      return this.createUseCase.createGroup(group);
-    } catch (error) {
+      return this.createUseCase?.createGroup(group);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateGroup(code: string, group: UpdateGroupDto) {
+  async updateGroup(code: any, group: UpdateGroupDto): Promise<any> {
     try {
-      return this.updateUseCase.updateGroup(code, group);
-    } catch (error) {
+      return this.updateUseCase?.updateGroup(code, group);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteGroup(code: string) {
     try {
-      return this.deleteUseCase.deleteGroup(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteGroup(code);
+    } catch (error: any) {
       return error;
     }
   }

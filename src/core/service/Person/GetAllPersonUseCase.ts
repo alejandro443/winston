@@ -7,10 +7,10 @@ export class GetAllPersonUseCase {
 
   async getAllPerson() {
     try {
-      const response = await this.workerService.getAllPerson();
+      const response: any = await this.workerService?.getAllPerson();
 
-      return response.map((worker) => ({ ...worker.dataValues }));
-    } catch (error) {
+      return response.map((worker: any) => ({ ...worker.dataValues }));
+    } catch (error: any) {
       return error;
     }
   }

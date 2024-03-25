@@ -7,16 +7,16 @@ export class GetAllTypeDocumentUseCase {
 
   async getAllTypeDocument() {
     try {
-      const response = await this.type_documentService.getAllTypeDocument();
+      const response: any = await this.type_documentService?.getAllTypeDocument();
 
-      return response.map((type_document) => ({
+      return response.map((type_document: any) => ({
         id: type_document.id,
         code: type_document.code,
         name: type_document.name,
         description: type_document.description,
         status: type_document.status,
       }));
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

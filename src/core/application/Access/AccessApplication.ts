@@ -7,11 +7,11 @@ import {
 
 export interface AccessApplication {
   getAllAccess(): Promise<Array<AllAccessDto>>;
-  getOneAccess(id: number): Promise<OneAccessDto>;
+  getOneAccess(id: any): Promise<OneAccessDto>;
   createAccess(classification: NewAccessDto): Promise<OneAccessDto>;
   updateAccess(
-    id: number,
+    id: any,
     classification: UpdateAccessDto,
   ): Promise<OneAccessDto>;
-  deleteAccess(id: number);
+  deleteAccess(id: any): any;
 }

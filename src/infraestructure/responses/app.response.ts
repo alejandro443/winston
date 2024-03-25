@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class AppResponse {
   @ApiProperty()
-  status: number;
+  declare status: number;
   @ApiProperty()
   statusText?: string;
   @ApiProperty()

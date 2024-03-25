@@ -6,9 +6,9 @@ export class UpdateTypeDocumentUseCase {
     this.type_documentService = new TypeDocumentService();
   }
 
-  async updateTypeDocument(code: string, type_document: UpdateTypeDocumentDto) {
+  async updateTypeDocument(code: any, type_document: UpdateTypeDocumentDto) {
     try {
-      const response = await this.type_documentService.updateTypeDocument(
+      const response: any = await this.type_documentService?.updateTypeDocument(
         code,
         type_document,
       );
@@ -19,7 +19,7 @@ export class UpdateTypeDocumentUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

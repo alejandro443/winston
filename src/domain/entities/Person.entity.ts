@@ -22,153 +22,153 @@ export class Person extends Model<Person> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
   })
-  lastname: string;
+  declare lastname: string;
 
   @Column({
     type: DataType.STRING,
     unique: true,
   })
-  main_identification: string;
+  declare main_identification: string;
 
   @Column({
     type: DataType.DATEONLY,
   })
-  birthdate: Date;
+  declare birthdate: Date;
 
   @Column({
     type: DataType.STRING,
     unique: true,
     validate: { isEmail: true },
   })
-  email: string;
+  declare email: string;
 
   @Column({
     type: DataType.STRING,
     unique: true,
   })
-  main_telephone: string;
+  declare main_telephone: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
     defaultValue: [],
   })
-  secondary_phone: string[];
+  declare secondary_phone: string[];
 
   @Column({
     type: DataType.STRING,
   })
-  gender: string;
+  declare gender: string;
 
   @Column({
     type: DataType.STRING,
   })
-  marital_status: string;
+  declare marital_status: string;
 
   @Column({
     type: DataType.STRING,
   })
-  occupation: string;
+  declare occupation: string;
 
   @Column({
     type: DataType.STRING,
   })
-  nationality: string;
+  declare nationality: string;
 
   @Column({
     type: DataType.STRING,
   })
-  country: string;
+  declare country: string;
 
   @Column({
     type: DataType.STRING,
   })
-  department: string;
+  declare department: string;
 
   @Column({
     type: DataType.STRING,
   })
-  province: string;
+  declare province: string;
 
   @Column({
     type: DataType.STRING,
   })
-  district: string;
+  declare district: string;
 
   @Column({
     type: DataType.STRING,
   })
-  direction: string;
+  declare direction: string;
 
   @Column({
     type: DataType.STRING,
   })
-  ubigeo: string;
+  declare ubigeo: string;
 
   @Column({
     type: DataType.STRING,
   })
-  photo: string;
+  declare photo: string;
 
   @Column({
     type: DataType.BOOLEAN,
   })
-  active: boolean;
+  declare active: boolean;
 
   @Column({
     type: DataType.STRING,
   })
-  tradename: string;
+  declare tradename: string;
 
   @Column({
     type: DataType.STRING,
   })
-  condition: string;
+  declare condition: string;
 
   @Column({
     type: DataType.STRING,
   })
-  plate: string;
+  declare plate: string;
 
   @Column({
     type: DataType.STRING,
   })
-  licence: string;
+  declare licence: string;
 
   @Column({
     type: DataType.STRING,
   })
-  profession: string;
+  declare profession: string;
 
   @Column({
     type: DataType.STRING,
   })
-  denomination: string;
+  declare denomination: string;
 
   @Column({
     type: DataType.STRING,
   })
-  married_regimen: string;
+  declare married_regimen: string;
 
   @Column({
     type: DataType.INTEGER,
   })
-  couple_id: number;
+  declare couple_id: number;
 
   @Column({
     type: DataType.STRING,
     unique: true,
   })
-  main_document_type: string;
+  declare main_document_type: string;
 
   // @Column({
   //   type: DataType.ARRAY(DataType.JSON),
@@ -186,23 +186,23 @@ export class Person extends Model<Person> {
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @HasOne(() => Worker, { foreignKey: 'person_id', sourceKey: 'id' })
-  worker: Worker;
+  declare worker: Worker;
 
   @HasOne(() => Client, 'person_id')
-  client: Client;
+  declare client: Client;
 
   @HasMany(() => ClientCompanyWorker, 'person_id')
-  person: ClientCompanyWorker[];
+  declare person: ClientCompanyWorker[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

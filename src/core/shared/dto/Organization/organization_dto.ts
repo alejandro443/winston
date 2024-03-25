@@ -289,21 +289,21 @@ export class OrganizationDto {
     type: Boolean,
   })
   @IsBoolean()
-  point_sale: boolean;
+  point_sale?: boolean;
 
   @ApiProperty({
     description: '¿La organización tiene tienda online?',
     type: Boolean,
   })
   @IsBoolean()
-  store_online: boolean;
+  store_online?: boolean;
 
   @ApiProperty({
     description: '¿La organización tiene price_wholesale?',
     type: Boolean,
   })
   @IsBoolean()
-  price_wholesale: boolean;
+  price_wholesale?: boolean;
 
   @ApiProperty({
     description: '¿La organización tiene amount_wholesale?',

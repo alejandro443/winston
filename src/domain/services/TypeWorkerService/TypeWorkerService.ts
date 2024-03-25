@@ -8,40 +8,40 @@ export class TypeWorkerService {
 
   async getOneTypeWorker(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllTypeWorker() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
 
   async createTypeWorker(type_worker: NewTypeWorkerDto) {
     try {
-      return this.repository.create(type_worker);
-    } catch (error) {
+      return this.repository?.create(type_worker);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateTypeWorker(code: string, type_worker: NewTypeWorkerDto) {
+  async updateTypeWorker(code: any, type_worker: NewTypeWorkerDto) {
     try {
-      return this.repository.update(code, type_worker);
-    } catch (error) {
+      return this.repository?.update(code, type_worker);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteTypeWorker(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }

@@ -6,9 +6,9 @@ export class UpdateTypeWorkerUseCase {
     this.type_workerService = new TypeWorkerService();
   }
 
-  async updateTypeWorker(code: string, type_worker: UpdateTypeWorkerDto) {
+  async updateTypeWorker(code: any, type_worker: UpdateTypeWorkerDto) {
     try {
-      const response = await this.type_workerService.updateTypeWorker(
+      const response: any = await this.type_workerService?.updateTypeWorker(
         code,
         type_worker,
       );
@@ -19,7 +19,7 @@ export class UpdateTypeWorkerUseCase {
         description: response.description,
         status: response.status,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

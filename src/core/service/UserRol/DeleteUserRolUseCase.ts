@@ -7,9 +7,9 @@ export class DeleteUserRolUseCase {
 
   async deleteUserRol(id: number) {
     try {
-      const response = await this.userService.deleteUserRol(id);
+      const response: any = await this.userService?.deleteUserRol(id);
       return { id: response['id'] };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

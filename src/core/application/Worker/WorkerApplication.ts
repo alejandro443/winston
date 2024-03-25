@@ -7,8 +7,8 @@ import {
 
 export interface WorkerApplication {
   getAllWorker(): Promise<Array<AllWorkerDto>>;
-  getOneWorker(code: string): Promise<OneWorkerDto>;
+  getOneWorker(code: any): Promise<OneWorkerDto>;
   createWorker(client: NewWorkerDto): Promise<OneWorkerDto>;
-  updateWorker(code: string, client: UpdateWorkerDto): Promise<OneWorkerDto>;
-  deleteWorker(code: string);
+  updateWorker(code: any, client: UpdateWorkerDto): Promise<OneWorkerDto>;
+  deleteWorker(code: any): any;
 }

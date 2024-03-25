@@ -24,96 +24,96 @@ export class User extends Model<User> {
     primaryKey: true,
     autoIncrement: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
     unique: true,
   })
-  user: string;
+  declare user: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  password: string;
+  declare password: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  consultant: boolean;
+  declare consultant: boolean;
 
   @Column({
     type: DataType.DATE,
   })
-  inactivation_date: string;
+  declare inactivation_date: string;
 
   @Column({
     type: DataType.DATE,
   })
-  current_sign_in_at: string;
+  declare current_sign_in_at: string;
 
   @Column({
     type: DataType.DATE,
   })
-  last_sign_in_at: string;
+  declare last_sign_in_at: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  current_sign_in_ip: string;
+  declare current_sign_in_ip: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  last_sign_in_ip: string;
+  declare last_sign_in_ip: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
     unique: true,
   })
-  unique_session_id: string;
+  declare unique_session_id: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  recovery_token: string;
+  declare recovery_token: string;
 
   @HasMany(() => UserAccess, { foreignKey: 'user_id', sourceKey: 'id' })
-  userAccesses: UserAccess[];
+  declare userAccesses: UserAccess[];
 
   @HasMany(() => UserRol, { foreignKey: 'user_id', sourceKey: 'id' })
-  userRoles: UserRol[];
+  declare userRoles: UserRol[];
 
   @HasOne(() => Worker, 'user_id')
-  worker: Worker;
+  declare worker: Worker;
 
   @HasOne(() => Client, 'user_id')
-  client: Client;
+  declare client: Client;
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 
   @BeforeCreate
   static async BeforeUpdateHook(usuario: User) {
@@ -121,7 +121,7 @@ export class User extends Model<User> {
       if (usuario.changed('password')) {
         usuario.password = await bcrypt.hashSync(usuario.password, 10);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
     }
   }

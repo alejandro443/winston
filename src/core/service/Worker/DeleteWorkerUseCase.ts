@@ -7,9 +7,9 @@ export class DeleteWorkerUseCase {
 
   async deleteWorker(code: string) {
     try {
-      const response = await this.workerService.deleteWorker(code);
+      const response: any = await this.workerService?.deleteWorker(code);
       return { id: response.id };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

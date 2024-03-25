@@ -7,11 +7,11 @@ export class GetOneOrganizationUseCase {
 
   async getOneOrganization(id: number) {
     try {
-      const response = await this.classificationService.getOneOrganization(id);
+      const response: any = await this.classificationService?.getOneOrganization(id);
       return {
         ...response,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -12,15 +12,16 @@ import { Response, Request } from 'express';
 export class ApplicationCreatorFilter implements ExceptionFilter {
   catch(exception: ApplicationError, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<Response>();
+    const response: any = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
+    const exc: any = exception
 
     Logger.error(
       `${exception.controller} (${request.method}) at {${request.path}} error: ${exception.message}`,
     );
 
-    response.status(HttpStatus[exception.statusError]).json({
-      status: HttpStatus[exception.statusError],
+    response.status(HttpStatus[exc.statusError]).json({
+      status: HttpStatus[exc.statusError],
       message: exception.message,
     });
   }

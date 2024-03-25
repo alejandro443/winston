@@ -12,16 +12,16 @@ export class UserService {
 
   async getOneUser(code: string) {
     try {
-      return this.repository.findOne(code);
-    } catch (error) {
+      return this.repository?.findOne(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getAllUser() {
     try {
-      return this.repository.findAll();
-    } catch (error) {
+      return this.repository?.findAll();
+    } catch (error: any) {
       return error;
     }
   }
@@ -32,32 +32,32 @@ export class UserService {
         ? await GenerateCodeUser(user.code)
         : await GenerateRandomCodeUser();
 
-      return this.repository.create(user);
-    } catch (error) {
+      return this.repository?.create(user);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateUser(code: string, user: NewUserDto) {
+  async updateUser(code: any, user: NewUserDto) {
     try {
-      return this.repository.update(code, user);
-    } catch (error) {
+      return this.repository?.update(code, user);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteUser(code: string) {
     try {
-      return this.repository.deleted(code);
-    } catch (error) {
+      return this.repository?.deleted(code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async getUser(user: string) {
     try {
-      return this.repository.getUser(user);
-    } catch (error) {
+      return this.repository?.getUser(user);
+    } catch (error: any) {
       return error;
     }
   }

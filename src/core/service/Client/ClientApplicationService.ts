@@ -26,40 +26,40 @@ export class ClientApplicationService implements ClientApplication {
 
   async getAllClient() {
     try {
-      return this.getAllUseCase.getAllClient();
-    } catch (error) {
+      return this.getAllUseCase?.getAllClient();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneClient(client_code: string) {
+  async getOneClient(client_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneClient(client_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneClient(client_code);
+    } catch (error: any) {
       return error;
     }
   }
 
   async createClient(client: NewClientDto) {
     try {
-      return this.createUseCase.createClient(client);
-    } catch (error) {
+      return this.createUseCase?.createClient(client);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateClient(code: string, client: UpdateClientDto) {
+  async updateClient(code: any, client: UpdateClientDto): Promise<any> {
     try {
-      return this.updateUseCase.updateClient(code, client);
-    } catch (error) {
+      return this.updateUseCase?.updateClient(code, client);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteClient(code: string) {
     try {
-      return this.deleteUseCase.deleteClient(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteClient(code);
+    } catch (error: any) {
       return error;
     }
   }

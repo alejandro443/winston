@@ -8,7 +8,7 @@ export class CreateWorkerUseCase {
 
   async createWorker(worker: NewWorkerDto) {
     try {
-      const response = await this.workerService.createWorker(worker);
+      const response: any = await this.workerService?.createWorker(worker);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class CreateWorkerUseCase {
         person_identification: response.person_identification,
         type_worker_code: response.type_worker_code,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

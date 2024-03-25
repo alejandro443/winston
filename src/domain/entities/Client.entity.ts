@@ -26,85 +26,85 @@ export class Client extends Model<Client> {
     autoIncrement: true,
     primaryKey: true,
   })
-  id: number;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  code: string;
+  declare code: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
-  status: boolean;
+  declare status: boolean;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  user_id: number;
+  declare user_id: number;
 
   @BelongsTo(() => User, 'id')
-  user: User;
+  declare user: User;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  person_id: number;
+  declare person_id: number;
 
   @BelongsTo(() => Person, 'id')
-  person: Person;
+  declare person: Person;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  client_company_id: number;
+  declare client_company_id: number;
 
   @BelongsTo(() => ClientCompany, 'id')
-  clientCompany: ClientCompany;
+  declare clientCompany: ClientCompany;
 
   @ForeignKey(() => Classification)
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  classification_id: number;
+  declare classification_id: number;
 
   @BelongsTo(() => Classification, 'id')
-  classification: Classification;
+  declare classification: Classification;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  group_id: number;
+  declare group_id: number;
 
   @BelongsTo(() => Group, 'id')
-  group: Group;
+  declare group: Group;
 
   @ForeignKey(() => TypeClient)
   @Column({ field: 'type_client_id' })
-  type_client_id: number;
+  declare type_client_id: number;
 
   @BelongsTo(() => TypeClient, 'type_client_id')
-  typeClient: TypeClient;
+  declare typeClient: TypeClient;
 
   @HasMany(() => ClientDeliveryPoint, 'client_id')
-  clientDeliveryPoints: ClientDeliveryPoint[];
+  declare clientDeliveryPoints: ClientDeliveryPoint[];
 
   @HasMany(() => ClientDeliveryMethod, 'client_id')
-  clientDeliveryMethods: ClientDeliveryMethod[];
+  declare clientDeliveryMethods: ClientDeliveryMethod[];
 
   @CreatedAt
-  created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  declare updated_at: Date;
 
   @DeletedAt
-  deleted_at: Date;
+  declare deleted_at: Date;
 }

@@ -7,11 +7,11 @@ import {
 
 export interface AccessRolApplication {
   getAllAccessRol(): Promise<Array<AllAccessRolDto>>;
-  getOneAccessRol(id: number): Promise<OneAccessRolDto>;
+  getOneAccessRol(id: any): Promise<OneAccessRolDto>;
   createAccessRol(classification: NewAccessRolDto): Promise<OneAccessRolDto>;
   updateAccessRol(
-    id: number,
+    id: any,
     classification: UpdateAccessRolDto,
   ): Promise<OneAccessRolDto>;
-  deleteAccessRol(id: number);
+  deleteAccessRol(id: any): any;
 }

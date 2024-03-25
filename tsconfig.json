@@ -21,6 +21,7 @@
       "@src/*": ["src/*"],
       "@core/*": ["src/core/*"],
       "@tests/*": ["test/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   }
 }

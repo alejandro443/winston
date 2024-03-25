@@ -7,8 +7,8 @@ import {
 
 export interface GroupApplication {
   getAllGroup(): Promise<Array<AllGroupDto>>;
-  getOneGroup(code: string): Promise<OneGroupDto>;
+  getOneGroup(code: any): Promise<OneGroupDto>;
   createGroup(group: NewGroupDto): Promise<OneGroupDto>;
-  updateGroup(code: string, group: UpdateGroupDto): Promise<OneGroupDto>;
-  deleteGroup(code: string);
+  updateGroup(code: any, group: UpdateGroupDto): Promise<OneGroupDto>;
+  deleteGroup(code: any): any;
 }

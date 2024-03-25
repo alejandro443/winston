@@ -7,13 +7,13 @@ import {
 
 export interface TypeDocumentApplication {
   getAllTypeDocument(): Promise<Array<AllTypeDocumentDto>>;
-  getOneTypeDocument(code: string): Promise<OneTypeDocumentDto>;
+  getOneTypeDocument(code: any): Promise<OneTypeDocumentDto>;
   createTypeDocument(
     type_document: NewTypeDocumentDto,
   ): Promise<OneTypeDocumentDto>;
   updateTypeDocument(
-    code: string,
+    code: any,
     type_document: UpdateTypeDocumentDto,
   ): Promise<OneTypeDocumentDto>;
-  deleteTypeDocument(code: string);
+  deleteTypeDocument(code: any): any;
 }

@@ -10,31 +10,31 @@ export class TypeDocumentRepository {
   async findOne(code: string) {
     try {
       return TypeDocument.findOne({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
   async findAll() {
     try {
-      return TypeDocument.findAll({ where: { deleted_at: null } });
-    } catch (error) {
+      return TypeDocument.findAll({ where: { deleted_at: '' } });
+    } catch (error: any) {
       return error;
     }
   }
 
-  async create(type_document: NewTypeDocumentDto) {
+  async create(type_document: any) {
     try {
       return TypeDocument.create(type_document);
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: string, type_document: UpdateTypeDocumentDto) {
+  async update(code: any, type_document: UpdateTypeDocumentDto) {
     try {
       return TypeDocument.update(type_document, { where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -42,7 +42,7 @@ export class TypeDocumentRepository {
   async deleted(code: string) {
     try {
       return TypeDocument.destroy({ where: { code: code } });
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

@@ -6,9 +6,9 @@ export class UpdateWorkerUseCase {
     this.clientService = new WorkerService();
   }
 
-  async updateWorker(code: string, client: UpdateWorkerDto) {
+  async updateWorker(code: any, client: UpdateWorkerDto) {
     try {
-      const response = await this.clientService.updateWorker(code, client);
+      const response: any = await this.clientService?.updateWorker(code, client);
       return {
         id: response.id,
         code: response.code,
@@ -17,7 +17,7 @@ export class UpdateWorkerUseCase {
         person_identification: response.person_identification,
         type_worker_code: response.type_worker_code,
       };
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

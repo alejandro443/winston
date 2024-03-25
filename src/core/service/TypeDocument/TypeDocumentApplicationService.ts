@@ -26,40 +26,40 @@ export class TypeDocumentApplicationService implements TypeDocumentApplication {
 
   async getAllTypeDocument() {
     try {
-      return this.getAllUseCase.getAllTypeDocument();
-    } catch (error) {
+      return this.getAllUseCase?.getAllTypeDocument();
+    } catch (error: any) {
       return error;
     }
   }
 
-  async getOneTypeDocument(type_document_code: string) {
+  async getOneTypeDocument(type_document_code: string): Promise<any> {
     try {
-      return this.getOneUseCase.getOneTypeDocument(type_document_code);
-    } catch (error) {
+      return this.getOneUseCase?.getOneTypeDocument(type_document_code);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createTypeDocument(type_document: NewTypeDocumentDto) {
+  async createTypeDocument(type_document: NewTypeDocumentDto): Promise<any> {
     try {
-      return this.createUseCase.createTypeDocument(type_document);
-    } catch (error) {
+      return this.createUseCase?.createTypeDocument(type_document);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async updateTypeDocument(code: string, type_document: UpdateTypeDocumentDto) {
+  async updateTypeDocument(code: any, type_document: UpdateTypeDocumentDto): Promise<any> {
     try {
-      return this.updateUseCase.updateTypeDocument(code, type_document);
-    } catch (error) {
+      return this.updateUseCase?.updateTypeDocument(code, type_document);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteTypeDocument(code: string) {
     try {
-      return this.deleteUseCase.deleteTypeDocument(code);
-    } catch (error) {
+      return this.deleteUseCase?.deleteTypeDocument(code);
+    } catch (error: any) {
       return error;
     }
   }

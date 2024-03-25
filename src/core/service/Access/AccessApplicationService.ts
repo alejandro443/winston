@@ -26,40 +26,40 @@ export class AccessApplicationService implements AccessApplication {
 
   async getAllAccess() {
     try {
-      return this.getAllUseCase.getAllAccess();
-    } catch (error) {
+      return this.getAllUseCase?.getAllAccess();
+    } catch (error: any) {
       return error;
     }
   }
 
   async getOneAccess(access_id: number) {
     try {
-      return this.getOneUseCase.getOneAccess(access_id);
-    } catch (error) {
+      return this.getOneUseCase?.getOneAccess(access_id);
+    } catch (error: any) {
       return error;
     }
   }
 
-  async createAccess(access: NewAccessDto) {
+  async createAccess(access: NewAccessDto): Promise<any> {
     try {
-      return this.createUseCase.createAccess(access);
-    } catch (error) {
+      return this.createUseCase?.createAccess(access);
+    } catch (error: any) {
       return error;
     }
   }
 
   async updateAccess(id: number, access: UpdateAccessDto) {
     try {
-      return this.updateUseCase.updateAccess(id, access);
-    } catch (error) {
+      return this.updateUseCase?.updateAccess(id, access);
+    } catch (error: any) {
       return error;
     }
   }
 
   async deleteAccess(id: number) {
     try {
-      return this.deleteUseCase.deleteAccess(id);
-    } catch (error) {
+      return this.deleteUseCase?.deleteAccess(id);
+    } catch (error: any) {
       return error;
     }
   }
