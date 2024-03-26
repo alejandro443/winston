@@ -1,11 +1,15 @@
 import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as basicAuth from 'express-basic-auth';
+import { config } from 'dotenv';
+config();
 
 const SWAGGER_ENVS = ['development'];
 
 export function GenerateSwaggerDocs(app: INestApplication) {
-  if (SWAGGER_ENVS.includes(process.env.NODE_ENV)) {
+  let processenv: any = process.env;
+
+  if (SWAGGER_ENVS.includes(processenv.NODE_ENV)) {
     app.use(['/api-docs'], basicAuth({
       challenge: true,
       users: {

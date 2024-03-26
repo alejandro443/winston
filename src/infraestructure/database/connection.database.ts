@@ -30,6 +30,8 @@ import { DeliveryMethod } from '@src/domain/entities/DeliveryMethod.entity';
 import { DeliveryPoint } from '@src/domain/entities/DeliveryPoint.entity';
 import { Organization } from '@src/domain/entities/Organization.entity';
 import { CompanyArea } from '@src/domain/entities/CompanyArea.entity';
+import { config } from 'dotenv';
+config();
 
 export const ConnectionProvider = [
   {
