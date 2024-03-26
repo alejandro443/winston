@@ -4,7 +4,7 @@ import * as basicAuth from 'express-basic-auth';
 import { config } from 'dotenv';
 config();
 
-const SWAGGER_ENVS = ['development'];
+const SWAGGER_ENVS = ['test'];
 
 export function GenerateSwaggerDocs(app: INestApplication) {
   let processenv: any = process.env;
