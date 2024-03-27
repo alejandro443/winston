@@ -48,7 +48,10 @@ export class TypeClientApplicationService implements TypeClientApplication {
     }
   }
 
-  async updateTypeClient(code: any, type_client: UpdateTypeClientDto): Promise<any> {
+  async updateTypeClient(
+    code: any,
+    type_client: UpdateTypeClientDto,
+  ): Promise<any> {
     try {
       return this.updateUseCase?.updateTypeClient(code, type_client);
     } catch (error: any) {

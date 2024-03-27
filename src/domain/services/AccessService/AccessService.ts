@@ -1,5 +1,5 @@
 import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
-import { AccessRepository } from '@src/domain/repositories/ClassificationRepository copy/AccessRepository';
+import { AccessRepository } from '@src/domain/repositories/AccessRepository/AccessRepository';
 import { AccessDto } from 'src/core/shared/dto/Access/access_dto';
 
 export class AccessService {

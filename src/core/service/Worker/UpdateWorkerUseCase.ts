@@ -8,7 +8,10 @@ export class UpdateWorkerUseCase {
 
   async updateWorker(code: any, client: UpdateWorkerDto) {
     try {
-      const response: any = await this.clientService?.updateWorker(code, client);
+      const response: any = await this.clientService?.updateWorker(
+        code,
+        client,
+      );
       return {
         id: response.id,
         code: response.code,

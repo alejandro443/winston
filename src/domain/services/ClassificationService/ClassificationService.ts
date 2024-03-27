@@ -30,10 +30,7 @@ export class ClassificationService {
     }
   }
 
-  async updateClassification(
-    code: any,
-    classification: NewClassificationDto,
-  ) {
+  async updateClassification(code: any, classification: NewClassificationDto) {
     try {
       return this.repository?.update(code, classification);
     } catch (error: any) {

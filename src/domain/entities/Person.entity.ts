@@ -13,7 +13,7 @@ import {
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
 import { Client } from './Client.entity';
-import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
+import { CompanyWorker } from './CompanyWorker.entity';
 
 @Table({ tableName: 'persons' })
 export class Person extends Model<Person> {
@@ -194,8 +194,8 @@ export class Person extends Model<Person> {
   @HasOne(() => Client, 'person_id')
   declare client: Client;
 
-  @HasMany(() => ClientCompanyWorker, 'person_id')
-  declare person: ClientCompanyWorker[];
+  @HasMany(() => CompanyWorker, 'person_id')
+  declare person: CompanyWorker[];
 
   @CreatedAt
   declare created_at: Date;

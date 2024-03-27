@@ -11,10 +11,11 @@ export class UpdateClassificationUseCase {
     classification: UpdateClassificationDto,
   ) {
     try {
-      const response: any = await this.classificationService?.updateClassification(
-        code,
-        classification,
-      );
+      const response: any =
+        await this.classificationService?.updateClassification(
+          code,
+          classification,
+        );
       return {
         id: response.id,
         code: response.code,

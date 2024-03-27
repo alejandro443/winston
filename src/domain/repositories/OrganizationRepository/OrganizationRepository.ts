@@ -17,13 +17,13 @@ export class OrganizationRepository {
 
   async findAll() {
     try {
-      return Organization.findAll({ where: { deleted_at: null} });
+      return Organization.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(organization: any) {
+  async create(organization: NewOrganizationDto) {
     try {
       return Organization.create(organization);
     } catch (error: any) {

@@ -29,13 +29,13 @@ export class UserRolRepository {
 
   async findAll() {
     try {
-      return UserRol.findAll({ where: { deleted_at: null} });
+      return UserRol.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       throw new UserRolApplicationError(error.message);
     }
   }
 
-  async create(user: any) {
+  async create(user: NewUserRolDto) {
     try {
       return UserRol.create(user);
     } catch (error: any) {

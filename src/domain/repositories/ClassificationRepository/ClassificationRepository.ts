@@ -17,13 +17,13 @@ export class ClassificationRepository {
 
   async findAll() {
     try {
-      return Classification.findAll({ where: { deleted_at: null} });
+      return Classification.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(classification: any) {
+  async create(classification: NewClassificationDto) {
     try {
       return Classification.create(classification);
     } catch (error: any) {

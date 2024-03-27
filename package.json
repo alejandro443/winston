@@ -10,6 +10,7 @@
     "npm": ">=9.x"
   },
   "scripts": {
+    "seeds": "ts-node src/infraestructure/database/seed/seeds.ts",
     "build:clean": "rimraf dist; exit 0",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -89,6 +90,7 @@
     "lint-staged": "^15.2.2",
     "nock": "^13.5.4",
     "nyc": "^15.1.0",
+    "path": "^0.12.7",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "source-map-support": "^0.5.21",
@@ -99,7 +101,9 @@
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.2",
-    "unplugin-swc": "^1.4.4"
+    "unplugin-swc": "^1.4.4",
+    "yaml": "^2.4.1",
+    "js-yaml": "^4.1.0"
   },
   "jest": {
     "moduleFileExtensions": [

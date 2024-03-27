@@ -7,7 +7,8 @@ export class GetAllTypeDocumentUseCase {
 
   async getAllTypeDocument() {
     try {
-      const response: any = await this.type_documentService?.getAllTypeDocument();
+      const response: any =
+        await this.type_documentService?.getAllTypeDocument();
 
       return response.map((type_document: any) => ({
         id: type_document.id,

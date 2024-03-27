@@ -14,7 +14,7 @@ export class ApplicationCreatorFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response: any = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
-    const exc: any = exception
+    const exc: any = exception;
 
     Logger.error(
       `${exception.controller} (${request.method}) at {${request.path}} error: ${exception.message}`,

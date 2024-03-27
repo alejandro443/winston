@@ -8,6 +8,7 @@ import { GetAllClientUseCase } from './GetAllClientUseCase';
 import { CreateClientUseCase } from './CreateClientUseCase';
 import { UpdateClientUseCase } from './UpdateClientUseCase';
 import { DeleteClientUseCase } from './DeleteClientUseCase';
+import { PortfolioClientUseCase } from './PortfolioClientUseCase';
 
 export class ClientApplicationService implements ClientApplication {
   constructor(
@@ -16,17 +17,21 @@ export class ClientApplicationService implements ClientApplication {
     private createUseCase?: CreateClientUseCase,
     private updateUseCase?: UpdateClientUseCase,
     private deleteUseCase?: DeleteClientUseCase,
+    private portfolioUseCase?: PortfolioClientUseCase,
   ) {
     this.getOneUseCase = new GetOneClientUseCase();
     this.getAllUseCase = new GetAllClientUseCase();
     this.createUseCase = new CreateClientUseCase();
     this.updateUseCase = new UpdateClientUseCase();
     this.deleteUseCase = new DeleteClientUseCase();
+    this.portfolioUseCase = new PortfolioClientUseCase();
   }
 
   async getAllClient() {
     try {
-      return this.getAllUseCase?.getAllClient();
+      const asd: any = await this.getAllUseCase?.getAllClient();
+      console.log(asd);
+      return asd;
     } catch (error: any) {
       return error;
     }
@@ -59,6 +64,14 @@ export class ClientApplicationService implements ClientApplication {
   async deleteClient(code: string) {
     try {
       return this.deleteUseCase?.deleteClient(code);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getPortfolioClient(): Promise<any> {
+    try {
+      return this.portfolioUseCase.getPortfolioClient();
     } catch (error: any) {
       return error;
     }

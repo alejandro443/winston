@@ -9,9 +9,6 @@ export interface AccessApplication {
   getAllAccess(): Promise<Array<AllAccessDto>>;
   getOneAccess(id: any): Promise<OneAccessDto>;
   createAccess(classification: NewAccessDto): Promise<OneAccessDto>;
-  updateAccess(
-    id: any,
-    classification: UpdateAccessDto,
-  ): Promise<OneAccessDto>;
+  updateAccess(id: any, classification: UpdateAccessDto): Promise<OneAccessDto>;
   deleteAccess(id: any): any;
 }

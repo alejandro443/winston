@@ -1,0 +1,19 @@
+---
+- id: 1
+  father:
+  name:	Inicio
+  description: Inicio
+  url: '/home'
+  icon: 
+  alt:
+  status:	true
+  priority:	1
+- id:	2
+  father:
+  name:	Ventas
+  description: Ventas
+  url: '/ventas'
+  icon: 
+  alt:
+  status:	true
+  priority:	2

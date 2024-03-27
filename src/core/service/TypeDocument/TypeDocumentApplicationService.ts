@@ -48,7 +48,10 @@ export class TypeDocumentApplicationService implements TypeDocumentApplication {
     }
   }
 
-  async updateTypeDocument(code: any, type_document: UpdateTypeDocumentDto): Promise<any> {
+  async updateTypeDocument(
+    code: any,
+    type_document: UpdateTypeDocumentDto,
+  ): Promise<any> {
     try {
       return this.updateUseCase?.updateTypeDocument(code, type_document);
     } catch (error: any) {

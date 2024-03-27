@@ -29,13 +29,13 @@ export class UserAccessRepository {
 
   async findAll() {
     try {
-      return UserAccess.findAll({ where: { deleted_at: null} });
+      return UserAccess.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       throw new UserAccessApplicationError(error.message);
     }
   }
 
-  async create(user: any) {
+  async create(user: NewUserAccessDto) {
     try {
       return UserAccess.create(user);
     } catch (error: any) {

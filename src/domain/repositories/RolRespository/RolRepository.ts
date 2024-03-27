@@ -2,7 +2,7 @@ import { NewRolDto, UpdateRolDto } from 'src/core/shared/dto/Rol/rol_dto';
 import { Rol } from 'src/domain/entities/Rol.entity';
 
 export class RolRepository {
-  constructor() { }
+  constructor() {}
 
   async findOne(id: number) {
     try {

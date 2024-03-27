@@ -7,7 +7,8 @@ export class GetOneTypeDocumentUseCase {
 
   async getOneTypeDocument(code: string) {
     try {
-      const response: any = await this.type_documentService?.getOneTypeDocument(code);
+      const response: any =
+        await this.type_documentService?.getOneTypeDocument(code);
       return {
         id: response.id,
         code: response.code,

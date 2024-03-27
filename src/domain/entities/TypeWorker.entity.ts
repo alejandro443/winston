@@ -46,7 +46,7 @@ export class TypeWorker extends Model<TypeWorker> {
   declare worker: Worker;
 
   @CreatedAt
- declare created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
   declare updated_at: Date;

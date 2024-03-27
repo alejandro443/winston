@@ -19,13 +19,13 @@ export class PersonRepository {
 
   async findAll() {
     try {
-      return Person.findAll({ where: { deleted_at: null} });
+      return Person.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(person: any) {
+  async create(person: NewPersonDto) {
     try {
       return Person.create(person);
     } catch (error: any) {

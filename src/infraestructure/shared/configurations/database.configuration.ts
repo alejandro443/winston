@@ -2,7 +2,7 @@ import { IDatabaseConfiguration } from 'src/infraestructure/database/interface.d
 import { config } from 'dotenv';
 config();
 
-const processenv: any = process.env
+const processenv: any = process.env;
 
 export const DatabaseConfiguration: IDatabaseConfiguration = {
   development: {
@@ -12,7 +12,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     password: processenv.DATABASE_PASSWORD_DEV,
     host: processenv.DATABASE_HOST_DEV,
     dialect: processenv.DATABASE_DIALECT_DEV,
-    dialectModule: require('pg'), 
+    dialectModule: require('pg'),
   },
   test: {
     port: parseInt(processenv.DATABASE_PORT_TEST, 10),
@@ -21,7 +21,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     password: processenv.DATABASE_PASSWORD_TEST,
     host: processenv.DATABASE_HOST_TEST,
     dialect: processenv.DATABASE_DIALECT_TEST,
-    dialectModule: require('pg'), 
+    dialectModule: require('pg'),
   },
   production: {
     port: parseInt(processenv.DATABASE_PORT_PROD, 10),
@@ -30,7 +30,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     password: processenv.DATABASE_PASSWORD_PROD,
     host: processenv.DATABASE_HOST_PROD_PROD,
     dialect: processenv.DATABASE_DIALECT_PROD,
-    dialectModule: require('pg'), 
+    dialectModule: require('pg'),
   },
 };
 

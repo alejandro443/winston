@@ -17,13 +17,13 @@ export class WorkerRepository {
 
   async findAll() {
     try {
-      return Worker.findAll({ where: { deleted_at: null} });
+      return Worker.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(worker: any) {
+  async create(worker: NewWorkerDto) {
     try {
       return Worker.create(worker);
     } catch (error: any) {

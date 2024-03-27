@@ -17,13 +17,13 @@ export class TypeDocumentRepository {
 
   async findAll() {
     try {
-      return TypeDocument.findAll({ where: { deleted_at: null} });
+      return TypeDocument.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(type_document: any) {
+  async create(type_document: NewTypeDocumentDto) {
     try {
       return TypeDocument.create(type_document);
     } catch (error: any) {

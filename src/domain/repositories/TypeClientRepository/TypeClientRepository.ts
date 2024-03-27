@@ -17,13 +17,13 @@ export class TypeClientRepository {
 
   async findAll() {
     try {
-      return TypeClient.findAll({ where: { deleted_at: null} });
+      return TypeClient.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(type_client: any) {
+  async create(type_client: NewTypeClientDto) {
     try {
       return TypeClient.create(type_client);
     } catch (error: any) {

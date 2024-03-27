@@ -1,7 +1,4 @@
-import {
-  NewClientDto,
-  UpdateClientDto,
-} from 'src/core/shared/dto/Client/client_dto';
+import { UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { Client } from 'src/domain/entities/Client.entity';
 
 export class ClientRepository {
@@ -17,7 +14,7 @@ export class ClientRepository {
 
   async findAll() {
     try {
-      return Client.findAll({ where: { deleted_at: null} });
+      return Client.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }

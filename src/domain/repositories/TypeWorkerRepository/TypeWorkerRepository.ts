@@ -17,13 +17,13 @@ export class TypeWorkerRepository {
 
   async findAll() {
     try {
-      return TypeWorker.findAll({ where: { deleted_at: null} });
+      return TypeWorker.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(type_worker: any) {
+  async create(type_worker: NewTypeWorkerDto) {
     try {
       return TypeWorker.create(type_worker);
     } catch (error: any) {

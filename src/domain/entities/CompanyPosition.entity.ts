@@ -8,7 +8,7 @@ import {
   DeletedAt,
   HasMany,
 } from 'sequelize-typescript';
-import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
+import { CompanyWorker } from './CompanyWorker.entity';
 
 @Table({ tableName: 'company_positions' })
 export class CompanyPosition extends Model<CompanyPosition> {
@@ -46,8 +46,8 @@ export class CompanyPosition extends Model<CompanyPosition> {
   })
   declare status: boolean;
 
-  @HasMany(() => ClientCompanyWorker, 'company_position_id')
-  declare clientCompanyWorker: ClientCompanyWorker[];
+  @HasMany(() => CompanyWorker, 'company_position_id')
+  declare companyWorker: CompanyWorker[];
 
   @CreatedAt
   declare created_at: Date;

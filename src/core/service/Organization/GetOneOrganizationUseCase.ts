@@ -7,7 +7,8 @@ export class GetOneOrganizationUseCase {
 
   async getOneOrganization(id: number) {
     try {
-      const response: any = await this.classificationService?.getOneOrganization(id);
+      const response: any =
+        await this.classificationService?.getOneOrganization(id);
       return {
         ...response,
       };

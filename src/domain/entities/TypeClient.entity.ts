@@ -46,7 +46,7 @@ export class TypeClient extends Model<TypeClient> {
   declare client: Client;
 
   @CreatedAt
- declare created_at: Date;
+  declare created_at: Date;
 
   @UpdatedAt
   declare updated_at: Date;

@@ -48,7 +48,10 @@ export class TypeWorkerApplicationService implements TypeWorkerApplication {
     }
   }
 
-  async updateTypeWorker(code: any, type_worker: UpdateTypeWorkerDto): Promise<any> {
+  async updateTypeWorker(
+    code: any,
+    type_worker: UpdateTypeWorkerDto,
+  ): Promise<any> {
     try {
       return this.updateUseCase?.updateTypeWorker(code, type_worker);
     } catch (error: any) {

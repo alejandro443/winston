@@ -42,7 +42,9 @@ export class ClassificationApplicationService
     }
   }
 
-  async createClassification(classification: NewClassificationDto): Promise<any> {
+  async createClassification(
+    classification: NewClassificationDto,
+  ): Promise<any> {
     try {
       return this.createUseCase?.createClassification(classification);
     } catch (error: any) {

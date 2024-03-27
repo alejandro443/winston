@@ -23,6 +23,7 @@ import { CreateClientRequestDto } from '../request_dto/ClientDto/create.client_d
 import { ClientApplication } from 'src/core/application/Client/ClientApplication';
 import { ClientResponse, ClientsResponse } from '../responses/client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { PortfolioResponse } from '../responses/client.response';
 
 @ApiTags('Client')
 @Controller('/client')
@@ -130,6 +131,24 @@ export class ClientController {
       status: 200,
       message: `Client ${params.code} deleted.`,
       data: client,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Client portfolio not found.' })
+  @ApiCreatedResponse({
+    description: 'Client portfolio successfully obtained.',
+    type: PortfolioResponse,
+  })
+  @HttpCode(201)
+  @Get('/portfolio')
+  async clientPortfolio(): Promise<PortfolioResponse> {
+    Log.info(`(Get) Get portfolio clients`);
+
+    const clients = await this.application.getPortfolioClient();
+    return {
+      status: 201,
+      message: `Get all clients`,
+      data: clients,
     };
   }
 }

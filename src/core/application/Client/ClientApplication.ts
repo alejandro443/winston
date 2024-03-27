@@ -1,3 +1,4 @@
+import { PortfolioDto } from '@src/core/shared/dto/Client/portfolio_dto';
 import {
   AllClientDto,
   NewClientDto,
@@ -11,4 +12,6 @@ export interface ClientApplication {
   createClient(client: NewClientDto): Promise<OneClientDto>;
   updateClient(code: any, client: UpdateClientDto): Promise<OneClientDto>;
   deleteClient(code: any): any;
+
+  getPortfolioClient(): Promise<Array<PortfolioDto>>;
 }

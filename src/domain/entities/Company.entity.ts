@@ -10,10 +10,10 @@ import {
   DeletedAt,
   HasMany,
 } from 'sequelize-typescript';
-import { ClientCompanyWorker } from './ClientCompanyWorker.entity';
+import { CompanyWorker } from './CompanyWorker.entity';
 
-@Table({ tableName: 'clients_companies' })
-export class ClientCompany extends Model<ClientCompany> {
+@Table({ tableName: 'companies' })
+export class Company extends Model<Company> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -120,8 +120,8 @@ export class ClientCompany extends Model<ClientCompany> {
   })
   declare status: boolean;
 
-  @HasMany(() => ClientCompanyWorker, 'client_company_id')
-  declare clientCompanyWorker: ClientCompanyWorker[];
+  @HasMany(() => CompanyWorker, 'company_id')
+  declare companyWorker: CompanyWorker[];
 
   @CreatedAt
   declare created_at: Date;

@@ -17,7 +17,7 @@ import { Person } from './Person.entity';
 import { User } from './User.entity';
 import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
 import { ClientDeliveryMethod } from './ClientDeliveryMethod.entity';
-import { ClientCompany } from './ClientCompany.entity';
+import { Company } from './Company.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -62,10 +62,10 @@ export class Client extends Model<Client> {
     type: DataType.INTEGER,
     allowNull: true,
   })
-  declare client_company_id: number;
+  declare company_id: number;
 
-  @BelongsTo(() => ClientCompany, 'id')
-  declare clientCompany: ClientCompany;
+  @BelongsTo(() => Company, 'id')
+  declare company: Company;
 
   @ForeignKey(() => Classification)
   @Column({
@@ -87,7 +87,10 @@ export class Client extends Model<Client> {
   declare group: Group;
 
   @ForeignKey(() => TypeClient)
-  @Column({ field: 'type_client_id' })
+  @Column({
+    field: 'type_client_id',
+    allowNull: false,
+  })
   declare type_client_id: number;
 
   @BelongsTo(() => TypeClient, 'type_client_id')

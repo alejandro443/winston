@@ -9,13 +9,13 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { ClientCompany } from './ClientCompany.entity';
+import { Company } from './Company.entity';
 import { Person } from './Person.entity';
 import { CompanyArea } from './CompanyArea.entity';
 import { CompanyPosition } from './CompanyPosition.entity';
 
-@Table({ tableName: 'clients_company_workers' })
-export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
+@Table({ tableName: 'company_workers' })
+export class CompanyWorker extends Model<CompanyWorker> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -23,15 +23,15 @@ export class ClientCompanyWorker extends Model<ClientCompanyWorker> {
   })
   declare id: number;
 
-  @ForeignKey(() => ClientCompany)
+  @ForeignKey(() => Company)
   @Column({
-    field: 'client_company_id',
+    field: 'company_id',
     allowNull: true,
   })
-  declare client_company_id: number | null;
+  declare company_id: number | null;
 
-  @BelongsTo(() => ClientCompany, 'id')
-  declare clientCompany: ClientCompany;
+  @BelongsTo(() => Company, 'id')
+  declare company: Company;
 
   @ForeignKey(() => Person)
   @Column({

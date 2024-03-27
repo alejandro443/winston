@@ -7,7 +7,8 @@ export class DeleteTypeDocumentUseCase {
 
   async deleteTypeDocument(code: string) {
     try {
-      const response: any = await this.type_documentService?.deleteTypeDocument(code);
+      const response: any =
+        await this.type_documentService?.deleteTypeDocument(code);
       return { id: response.id };
     } catch (error: any) {
       return error;

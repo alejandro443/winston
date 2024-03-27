@@ -14,13 +14,13 @@ export class UserRepository {
 
   async findAll() {
     try {
-      return User.findAll({ where: { deleted_at: null} });
+      return User.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(user: any) {
+  async create(user: NewUserDto) {
     try {
       return User.create(user);
     } catch (error: any) {

@@ -7,9 +7,10 @@ export class GetAllOrganizationUseCase {
 
   async getAllOrganization() {
     try {
-      const response: any = await this.organizationService?.getAllOrganization();
+      const response: any =
+        await this.organizationService?.getAllOrganization();
 
-      return response.map((organization:any) => ({
+      return response.map((organization: any) => ({
         ...organization,
       }));
     } catch (error: any) {

@@ -1,0 +1,33 @@
+---
+- name: 'PERSONA NATURAL'
+  description: 'PERSONA NATURAL'
+  code: 'PNAT'
+  status: true
+- name: 'SOCIEDAD ANONIMA (S.A)'
+  description: 'Mínimo: 2 || Máximo: Ilimitado'
+  code: 'SA'
+  status: true
+- name: 'SOCIEDAD ANÓNIMA CERRADA (S.A.C)'
+  description: 'Mínimo: 2 || Máximo: 20'
+  code: 'SAC'
+  status: true
+- name: 'SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA (S.R.L)'
+  description: 'Mínimo: 2 || Máximo: 20'
+  code: 'SRL'
+  status: true
+- name: 'EMPRESARIO INDIVIDUAL DE RESPONSABILIDAD LIMITADA (E.I.R.L)'
+  description: 'Minimo: 1 || Máximo: 1'
+  code: 'EIRL'
+  status: true
+- name: 'SOCIEDAD ANÓNIMA ABIERTA (S.A.A)'
+  description: 'Mínimo: 750 || Maximo: Ilimitado'
+  code: 'SAA'
+  status: true
+- name: 'PERSONA SIN DEFINIR'
+  description: 'PERSONA SIN DEFINIR'
+  code: 'PSDEF'
+  status: true
+- name: 'PERSONA CON NEGOCIO'
+  description: 'PERSONA CON NEGOCIO'
+  code: 'PCNEG'
+  status: true

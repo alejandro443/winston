@@ -7,7 +7,8 @@ export class GetOneTypeClientUseCase {
 
   async getOneTypeClient(code: string) {
     try {
-      const response: any = await this.classificationService?.getOneTypeClient(code);
+      const response: any =
+        await this.classificationService?.getOneTypeClient(code);
       return {
         id: response.id,
         code: response.code,

@@ -17,13 +17,13 @@ export class GroupRepository {
 
   async findAll() {
     try {
-      return Group.findAll({ where: { deleted_at: null} });
+      return Group.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(group: any) {
+  async create(group: NewGroupDto) {
     try {
       return Group.create(group);
     } catch (error: any) {

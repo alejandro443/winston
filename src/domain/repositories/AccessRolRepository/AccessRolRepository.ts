@@ -1,6 +1,5 @@
 import { AccessRolApplicationError } from '@src/core/shared/error/AccessRolApplicationError';
 import { Access } from '@src/domain/entities/Access.entity';
-
 import {
   NewAccessRolDto,
   UpdateAccessRolDto,
@@ -28,13 +27,13 @@ export class AccessRolRepository {
 
   async findAll() {
     try {
-      return AccessRol.findAll({ where: { deleted_at: null} });
+      return AccessRol.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       throw new AccessRolApplicationError(error.message);
     }
   }
 
-  async create(access: any) {
+  async create(access: NewAccessRolDto) {
     try {
       return AccessRol.create(access);
     } catch (error: any) {
