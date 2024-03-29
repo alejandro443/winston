@@ -1,0 +1,13 @@
+---
+- name: CONFIABLE
+  description: COMPRA Y NO HAY DEVOLUCIONES
+  code: CC
+  is_base: true
+- name: NO TAN CONFIABLE
+  description: COMPRA Y DEVUELVE EL PRODUCTO
+  code: CNTC
+  is_base: true
+- name: SIN CONFIANZA NINGUNA
+  description: NO HAY CONFIANZA EN ESTE CLIENTE
+  code: CSCN
+  is_base: true

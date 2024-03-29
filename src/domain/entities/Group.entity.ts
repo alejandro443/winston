@@ -41,6 +41,12 @@ export class Group extends Model<Group> {
     defaultValue: true,
   })
   declare status: boolean;
+  
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: true,
+  })
+  declare is_base: boolean;
 
   @HasOne(() => Client, 'group_id')
   declare client: Client;

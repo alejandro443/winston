@@ -1,0 +1,21 @@
+---
+- name: MUY BUENO
+  description: Cliente Muy Bueno
+  code: CMB
+  is_base: true
+- name: BUENO
+  description: Cliente Bueno
+  code: CB
+  is_base: true
+- name: NORMAL
+  description: Cliente normal
+  code: CN
+  is_base: true
+- name: MALO
+  description: Cliente malo
+  code: CM
+  is_base: true
+- name: MUY MALO
+  description: Cliente muy malo
+  code: CMM
+  is_base: true

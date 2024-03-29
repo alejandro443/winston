@@ -6,6 +6,7 @@ import { Access } from '../../../domain/entities/Access.entity';
 import { AccessRol } from '../../../domain/entities/AccessRol.entity';
 import { TypeClient } from '../../../domain/entities/TypeClient.entity';
 import { config } from 'dotenv';
+import { Classification } from '@src/domain/entities/Classification.entity';
 config();
 
 const logger = new Logger('Insert Data');
@@ -108,13 +109,36 @@ export class InserData {
         });
       });
 
-      console.log(access_roles_data);
-
       if (access_roles_data.length > 0) {
         await AccessRol.bulkCreate(access_roles_data);
         logger.message('Datos de access insertados exitosamente');
       } else {
         logger.message('No hay data para insertar para accesses');
+      }
+
+      // LEER Y CARGA DATOS DE TIPOS DE CLIENTES
+      logger.message('INSERTAR TYPES CLIENTS');
+      const classificationsData = await fsPromises.readFileSync(
+        __dirname + `/data/${this.pais}/classifications.yml`,
+        'utf8',
+      );
+      const classification = load(classificationsData) as Classification[];
+
+      const existingClassification = await Classification.findAll({
+        where: { id: classification.map((a) => a.id) },
+      });
+      const classificationsToInsert = classification.filter(
+        (a) =>
+          !existingClassification.some(
+            (existingClassification) => existingClassification.id === a.id,
+          ),
+      );
+
+      if (classificationsToInsert.length > 0) {
+        await Classification.bulkCreate(classificationsToInsert);
+        logger.message('Datos de access insertados exitosamente');
+      } else {
+        logger.message('No hay data para insertar para tipos de clientes');
       }
 
       logger.message('Datos insertados exitosamente');

@@ -42,6 +42,12 @@ export class TypeClient extends Model<TypeClient> {
   })
   declare status: boolean;
 
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: true,
+  })
+  declare is_base: boolean;
+
   @HasOne(() => Client)
   declare client: Client;
 

@@ -1,15 +1,15 @@
 import {
-  NewPersonDto,
-  UpdatePersonDto,
-} from 'src/core/shared/dto/Person/person_dto';
-import { Person } from 'src/domain/entities/Person.entity';
+  NewCompanyDto,
+  UpdateCompanyDto,
+} from 'src/core/shared/dto/Company/company_dto';
+import { Company } from 'src/domain/entities/Company.entity';
 
-export class PersonRepository {
+export class CompanyRepository {
   constructor() {}
 
   async findOne(main_identification: string) {
     try {
-      return Person.findOne({
+      return Company.findOne({
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
@@ -19,23 +19,23 @@ export class PersonRepository {
 
   async findAll() {
     try {
-      return Person.findAll({ where: { deleted_at: null } });
+      return Company.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async create(person: NewPersonDto | object ) {
+  async create(company: NewCompanyDto | object) {
     try {
-      return Person.create(person);
+      return Company.create(company);
     } catch (error: any) {
       return error;
     }
   }
 
-  async update(main_identification: string, person: UpdatePersonDto) {
+  async update(main_identification: string, company: UpdateCompanyDto) {
     try {
-      return Person.update(person, {
+      return Company.update(company, {
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
@@ -45,7 +45,7 @@ export class PersonRepository {
 
   async deleted(main_identification: string) {
     try {
-      return Person.destroy({
+      return Company.destroy({
         where: { main_identification: main_identification },
       });
     } catch (error: any) {

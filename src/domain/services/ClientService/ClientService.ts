@@ -1,9 +1,15 @@
 import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
+import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
+import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
 import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
 export class ClientService {
-  constructor(private repository?: ClientRepository) {
+  constructor(
+    private repository?: ClientRepository,
+    private repositoryPerson?: PersonRepository,
+    private repositoryCompany?: CompanyRepository,
+  ) {
     this.repository = new ClientRepository();
   }
 
@@ -25,10 +31,18 @@ export class ClientService {
 
   async createClient(client: NewClientDto) {
     try {
-      // TO DO: El segundo client.person_identification cambiarlo a el valor que identifica a la compañia
-      client.code = await GenerateCodeClient(
-        client.person_identification || client.person_identification,
-      );
+      let entity: any;
+      if(client.type_entity === 'company'){
+        entity = await this.repositoryCompany.create(client.entity);
+        client.company_id = entity.id;
+      }
+
+      if(client.type_entity === 'person'){
+        entity = await this.repositoryPerson.create(client.entity);
+        client.person_id = entity.id;
+      }
+
+      client.code = await GenerateCodeClient(entity.id);
       return this.repository?.create(client);
     } catch (error: any) {
       return error;
