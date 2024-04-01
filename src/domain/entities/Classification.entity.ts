@@ -47,9 +47,6 @@ export class Classification extends Model<Classification> {
   })
   declare is_base: boolean;
 
-  @HasMany(() => Client, { foreignKey: 'classification_id', sourceKey: 'id' })
-  declare userRoles: Client[];
-
   @CreatedAt
   declare created_at: Date;
 

@@ -11,6 +11,8 @@ export class ClientService {
     private repositoryCompany?: CompanyRepository,
   ) {
     this.repository = new ClientRepository();
+    this.repositoryPerson= new PersonRepository();
+    this.repositoryCompany= new CompanyRepository();
   }
 
   async getOneClient(code: string) {

@@ -4,8 +4,6 @@ import {
   ApiResponseProperty,
 } from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsObject, IsString } from 'class-validator';
-import { NewCompanyDto } from '../Company/company_dto';
-import { NewPersonDto } from '../Person/person_dto';
 
 export class ClientDto {
   @ApiProperty({
@@ -16,9 +14,7 @@ export class ClientDto {
   @IsString()
   declare type_entity: string;
 
-  @ApiResponseProperty({
-    type: Number,
-  })
+  @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'Id del cliente',
     type: Number,
@@ -33,6 +29,7 @@ export class ClientDto {
   @IsString()
   declare code?: string;
 
+  @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'ID del usuario asociado al cliente',
     type: Number,
@@ -40,6 +37,7 @@ export class ClientDto {
   @IsNumber()
   declare user_id?: number;
 
+  @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'Id de la persona asociada al cliente',
     type: Number,
@@ -47,6 +45,7 @@ export class ClientDto {
   @IsNumber()
   declare person_id?: number;
   
+  @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'Id de la empresa cliente asociada al registro.',
     type: Number,
@@ -56,24 +55,24 @@ export class ClientDto {
 
   @ApiProperty({
     description: 'Código del tipo de cliente',
-    type: String,
+    type: Number,
   })
-  @IsString()
-  declare type_client_code?: string;
+  @IsNumber()
+  declare type_client_id?: number;
 
   @ApiPropertyOptional({
     description: 'Código de clasificación del cliente',
-    type: String,
+    type: Number,
   })
-  @IsString()
-  declare classification_code?: string;
+  @IsNumber()
+  declare classification_id?: number;
 
   @ApiPropertyOptional({
     description: 'Código del grupo al que pertenece el cliente',
-    type: String,
+    type: Number,
   })
-  @IsString()
-  declare group_code?: string;
+  @IsNumber()
+  declare group_id?: number;
   
   @ApiPropertyOptional({
     description: 'Entidad de cliente.',

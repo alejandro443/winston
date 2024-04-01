@@ -6,7 +6,8 @@ import { Access } from '../../../domain/entities/Access.entity';
 import { AccessRol } from '../../../domain/entities/AccessRol.entity';
 import { TypeClient } from '../../../domain/entities/TypeClient.entity';
 import { config } from 'dotenv';
-import { Classification } from '@src/domain/entities/Classification.entity';
+import { Classification } from '../../../domain/entities/Classification.entity';
+import { Group } from '../../../domain/entities/Group.entity';
 config();
 
 const logger = new Logger('Insert Data');
@@ -136,6 +137,31 @@ export class InserData {
 
       if (classificationsToInsert.length > 0) {
         await Classification.bulkCreate(classificationsToInsert);
+        logger.message('Datos de access insertados exitosamente');
+      } else {
+        logger.message('No hay data para insertar para tipos de clientes');
+      }
+      
+      // LEER Y CARGA DATOS DE GRUPOS
+      logger.message('INSERTAR GROUPS');
+      const groupsData = await fsPromises.readFileSync(
+        __dirname + `/data/${this.pais}/classifications.yml`,
+        'utf8',
+      );
+      const group = load(groupsData) as Group[];
+
+      const existingGroup = await Group.findAll({
+        where: { id: group.map((a) => a.id) },
+      });
+      const groupsToInsert = group.filter(
+        (a) =>
+          !existingGroup.some(
+            (existingGroup) => existingGroup.id === a.id,
+          ),
+      );
+
+      if (groupsToInsert.length > 0) {
+        await Group.bulkCreate(groupsToInsert);
         logger.message('Datos de access insertados exitosamente');
       } else {
         logger.message('No hay data para insertar para tipos de clientes');

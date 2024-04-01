@@ -52,6 +52,7 @@ async function runSeedInsertData() {
     DeliveryPoint,
     Organization,
     CompanyArea,
+    Classification
   ]);
   const inser_data: any = new InserData();
   await inser_data.run();
