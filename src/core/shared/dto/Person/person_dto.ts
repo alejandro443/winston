@@ -52,7 +52,7 @@ export class PersonDto {
     type: String,
   })
   @IsString()
-  main_telephone?: string;
+  main_phone?: string;
 
   @ApiProperty({
     description: 'Teléfonos secundarios de la persona',
@@ -206,7 +206,7 @@ export class PersonDto {
     type: String,
   })
   @IsString()
-  main_document_type?: string;
+  type_identification?: string;
 
   @ApiProperty({
     description: 'Estado de la clasificación (Activo/Desactivado)',

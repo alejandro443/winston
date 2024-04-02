@@ -56,7 +56,7 @@ export class Person extends Model<Person> {
     type: DataType.STRING,
     unique: true,
   })
-  declare main_telephone: string;
+  declare main_phone: string;
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
@@ -168,7 +168,7 @@ export class Person extends Model<Person> {
     type: DataType.STRING,
     unique: true,
   })
-  declare main_document_type: string;
+  declare type_identification: string;
 
   // @Column({
   //   type: DataType.ARRAY(DataType.JSON),

@@ -1,6 +1,7 @@
 import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
 import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
 import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
+import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
 import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
@@ -34,17 +35,17 @@ export class ClientService {
   async createClient(client: NewClientDto) {
     try {
       let entity: any;
-      if(client.type_entity === 'company'){
+      if(client.type_entity === TypeEntity.COMPANY){
         entity = await this.repositoryCompany.create(client.entity);
         client.company_id = entity.id;
       }
 
-      if(client.type_entity === 'person'){
+      if(client.type_entity === TypeEntity.PERSON){
         entity = await this.repositoryPerson.create(client.entity);
         client.person_id = entity.id;
       }
 
-      client.code = await GenerateCodeClient(entity.id);
+      client.code = await GenerateCodeClient(entity.id, client.type_entity);
       return this.repository?.create(client);
     } catch (error: any) {
       return error;

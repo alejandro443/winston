@@ -13,7 +13,7 @@ export class PortfolioRepository {
           clients.person_id AS client_person, 
           clients.company_id AS client_company, 
           types_clients.name AS type_name, 
-          persons.main_telephone AS person_phone, 
+          persons.main_phone AS person_phone, 
           persons.main_identification AS person_identification, 
           CONCAT(persons.name, ' ', persons.lastname) AS person_names , 
           CONCAT(persons.direction, '/', persons.department) AS person_direction, 
