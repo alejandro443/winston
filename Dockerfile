@@ -54,4 +54,4 @@ COPY src/infraestructure/database/seed/data dist/infraestructure/database/seed/d
 
 USER $USER
 EXPOSE $PORT
-CMD ["dumb-init", "node", "dist/main.js"]
+CMD ["dumb-init", "node", "dist/main.js", "&&", "npm", "run", "seeds"]
