@@ -9,7 +9,13 @@ export class UpdateUserUseCase {
   async updateUser(code: any, user: UpdateUserDto) {
     try {
       const response: any = await this.userService?.updateUser(code, user);
-      return { ...response };
+      return { 
+        id: response.id,
+        user: response.user,
+        code: response.code,
+        status: response.statug,
+        consultant: response.consultant
+       };
     } catch (error: any) {
       return error;
     }
