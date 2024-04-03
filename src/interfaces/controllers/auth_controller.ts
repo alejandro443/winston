@@ -14,7 +14,7 @@ import {
 } from '@nestjs/swagger';
 import { AUTH_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-// import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
+import { AuthenticationApplication } from '@src/core/application/Authentication/AuthenticationApplication';
 import {
   LoginRequestDto,
   LoginResponseDto,
@@ -24,11 +24,12 @@ import { ApplicationCreatorFilter } from '../exception_filters/application.excep
 
 @ApiTags('Authentication')
 @Controller('/auth')
+@UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class AuthController {
   constructor(
     @Inject(AUTH_APPLICATION)
-    private application: any,
+    private application: AuthenticationApplication,
   ) {}
 
   @ApiBadRequestResponse({ description: 'Autenticación erroneo.' })
@@ -37,10 +38,9 @@ export class AuthController {
     type: LoginResponseDto,
   })
   @HttpCode(200)
-  @UseFilters(ApplicationCreatorFilter)
   @Post('/login')
   async Login(@Body() request: LoginRequestDto): Promise<LoginResponse> {
-    Log.info(`Login`);
+    Log.info(`Route - Login`);
 
     const user = await this.application.loginAuth(request);
     return {

@@ -5,11 +5,13 @@ config();
 export const GenerateToken = async (user: any, client: any) => {
   const processenv: any = process.env;
 
+  var code_client = client == undefined ? 'USRSNCLT' : client.code;
+
   const token = jwt.sign(
     {
       user_id: user.id,
       user_code: user.code,
-      client_code: client.code,
+      client_code: code_client,
       username: user.user,
       expires: new Date(
         new Date().getTime() +

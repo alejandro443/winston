@@ -9,6 +9,7 @@ import {
   BeforeCreate,
   HasMany,
   HasOne,
+  BeforeUpdate,
 } from 'sequelize-typescript';
 
 import * as bcrypt from 'bcrypt';
@@ -115,8 +116,9 @@ export class User extends Model<User> {
   @DeletedAt
   declare deleted_at: Date;
 
+  @BeforeUpdate
   @BeforeCreate
-  static async BeforeUpdateHook(usuario: User) {
+  static async BeforeHook(usuario: User) {
     try {
       if (usuario.changed('password')) {
         usuario.password = await bcrypt.hashSync(usuario.password, 10);

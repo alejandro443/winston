@@ -17,3 +17,21 @@
   alt:
   status:	true
   priority:	2
+- id:	3
+  father: 1
+  name:	Inicio
+  description: Inicio
+  url: '/Inicio'
+  icon: 
+  alt:
+  status:	true
+  priority:	1
+- id:	4
+  father: 2
+  name:	Ventas
+  description: Ventas
+  url: '/ventas'
+  icon: 
+  alt:
+  status:	true
+  priority:	1

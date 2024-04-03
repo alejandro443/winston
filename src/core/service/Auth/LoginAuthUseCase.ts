@@ -38,6 +38,7 @@ export class LoginAuthUseCase {
       }
 
       const rol_data = user_rol_data[0]['rol']['dataValues'];
+
       const access_data = await this.accessRolService?.getAccessRolByRol(
         rol_data.id,
       );
