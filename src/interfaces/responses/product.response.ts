@@ -10,7 +10,7 @@ export class ProductResponse extends AppResponse {
   data?: ProductDto;
 }
 
-export class ProductCategoriesResponse extends AppResponse {
+export class ProductsResponse extends AppResponse {
   @ApiProperty({
     type: [ProductDto],
     nullable: true,

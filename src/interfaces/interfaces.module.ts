@@ -14,6 +14,9 @@ import { PersonController } from './controllers/person_controller';
 import { OrganizationController } from './controllers/organization_controller';
 import { AccessController } from './controllers/access_controller';
 import { AccessRolController } from './controllers/access_rol_controller';
+import { ProductBrandController } from './controllers/product_brand_controller';
+import { ProductCategoryController } from './controllers/product_category_controller';
+import { ProductController } from './controllers/product_controller';
 
 @Module({
   controllers: [
@@ -32,6 +35,9 @@ import { AccessRolController } from './controllers/access_rol_controller';
     OrganizationController,
     AccessController,
     AccessRolController,
+    ProductBrandController,
+    ProductCategoryController,
+    ProductController
   ],
 })
 export class InterfacesModule {}

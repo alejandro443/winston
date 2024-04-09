@@ -16,35 +16,35 @@ import {
   ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { PRODUCT_CATEGORY_APPLICATION } from 'src/core/shared/constants/application.constants';
+import { PRODUCT_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-import { GetProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/get.product_category_dto';
-import { CreateProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/create.product_category_dto';
-import { ProductCategoryApplication } from 'src/core/application/ProductCategory/ProductCategoryApplication';
-import { ProductCategoriesResponse, ProductCategoryResponse } from '../responses/product_category.response';
+import { GetProductRequestDto } from '../request_dto/ProductDto/get.product_dto';
+import { CreateProductRequestDto } from '../request_dto/ProductDto/create.product_dto';
+import { ProductApplication } from 'src/core/application/Product/ProductApplication';
+import { ProductsResponse, ProductResponse } from '../responses/product.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
-@ApiTags('ProductCategory')
-@Controller('/product_category')
+@ApiTags('Product')
+@Controller('/product')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
-export class ProductCategoryController {
+export class ProductController {
   constructor(
-    @Inject(PRODUCT_CATEGORY_APPLICATION)
-    private application: ProductCategoryApplication,
+    @Inject(PRODUCT_APPLICATION)
+    private application: ProductApplication,
   ) {}
 
   @ApiBadRequestResponse({ description: 'Invalid product category code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: ProductCategoryResponse,
+    type: ProductResponse,
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllProductCategory(): Promise<ProductCategoriesResponse> {
+  async getAllProduct(): Promise<ProductsResponse> {
     Log.info(`(Get) Get all product categories`);
 
-    const product_categories = await this.application.getAllProductCategory();
+    const product_categories = await this.application.getAllProduct();
     return {
       status: 201,
       message: `Get all product categories`,
@@ -55,81 +55,81 @@ export class ProductCategoryController {
   @ApiBadRequestResponse({ description: 'Invalid product category code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: ProductCategoryResponse,
+    type: ProductResponse,
   })
   @HttpCode(201)
   @Get('/one/:code')
-  async getOneProductCategory(
-    @Param() request: GetProductCategoryRequestDto,
-  ): Promise<ProductCategoryResponse> {
+  async getOneProduct(
+    @Param() request: GetProductRequestDto,
+  ): Promise<ProductResponse> {
     Log.info(`(Get) Get product category code: ${request.id}`);
 
-    const product_category = await this.application.getOneProductCategory(request.id);
+    const product = await this.application.getOneProduct(request.id);
     return {
       status: 201,
-      message: `Product Category ${request.id} OK`,
-      data: product_category,
+      message: `Product  ${request.id} OK`,
+      data: product,
     };
   }
 
   @ApiBadRequestResponse({ description: 'Invalid product category code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
-    type: ProductCategoryResponse,
+    type: ProductResponse,
   })
   @HttpCode(201)
   @Post()
-  async createProductCategory(
-    @Body() request: CreateProductCategoryRequestDto,
-  ): Promise<ProductCategoryResponse> {
-    Log.info(`(POST) Create product_category`);
+  async createProduct(
+    @Body() request: CreateProductRequestDto,
+  ): Promise<ProductResponse> {
+    Log.info(`(POST) Create product`);
 
-    const product_category = await this.application.createProductCategory(request);
+    const product = await this.application.createProduct(request);
     return {
       status: 201,
-      message: `Product Category ${request.id} created OK`,
-      data: product_category,
+      message: `Product  ${request.code} created OK`,
+      data: product,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product_category code' })
+  @ApiBadRequestResponse({ description: 'Invalid product code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
-    type: ProductCategoryResponse,
+    type: ProductResponse,
   })
   @HttpCode(200)
   @Put('/update/:code')
-  async updateProductCategory(
-    @Param() params: GetProductCategoryRequestDto,
-    @Body() request: CreateProductCategoryRequestDto,
-  ): Promise<ProductCategoryResponse> {
-    Log.info(`(PUT) Put product_category`);
+  async updateProduct(
+    @Param() params: GetProductRequestDto,
+    @Body() request: CreateProductRequestDto,
+  ): Promise<ProductResponse> {
+    Log.info(`(PUT) Put product`);
 
-    const product_category = await this.application.updateProductCategory(params.id, request);
+    const product = await this.application.updateProduct(params.id, request);
     return {
       status: 200,
-      message: `Product Category updated.`,
-      data: product_category,
+      message: `Product  updated.`,
+      data: product,
     };
   }
 
   @ApiBadRequestResponse({ description: 'Invalid product category code' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
-    type: ProductCategoryResponse,
+    type: ProductResponse,
   })
   @HttpCode(200)
   @Delete('/delete/:code')
-  async deleteProductCategory(
-    @Param() params: GetProductCategoryRequestDto,
-  ): Promise<ProductCategoryResponse> {
+  async deleteProduct(
+    @Param() params: GetProductRequestDto,
+  ): Promise<ProductResponse> {
     Log.info(`(Delete) Delete product category ${params.id}`);
 
-    const product_category = await this.application.deleteProductCategory(params.id);
+    const product = await this.application.deleteProduct(params.id);
     return {
       status: 200,
-      message: `Product Category ${params.id} deleted.`,
-      data: product_category,
+      message: `Product  ${params.id} deleted.`,
+      data: product,
     };
   }
 }
