@@ -13,7 +13,7 @@ import {
   PERSON_APPLICATION,
   ORGANIZATION_APPLICATION,
   ACCESS_APPLICATION,
-  ACCESSROL_APPLICATION,
+  ACCESS_ROL_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -143,7 +143,7 @@ export class CoreModule {
     };
 
     const AccessRolApplicationProvider = {
-      provide: ACCESSROL_APPLICATION,
+      provide: ACCESS_ROL_APPLICATION,
       useFactory() {
         return new AccessRolApplicationService();
       },
@@ -184,7 +184,7 @@ export class CoreModule {
         PERSON_APPLICATION,
         ORGANIZATION_APPLICATION,
         ACCESS_APPLICATION,
-        ACCESSROL_APPLICATION,
+        ACCESS_ROL_APPLICATION,
       ],
     };
   }

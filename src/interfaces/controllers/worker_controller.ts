@@ -42,13 +42,13 @@ export class WorkerController {
   @HttpCode(201)
   @Get('/all')
   async getAllWorker(): Promise<WorkerResponse> {
-    Log.info(`(Get) Get all classifications`);
+    Log.info(`(Get) Get all workers`);
 
-    const classifications = await this.application.getAllWorker();
+    const workers = await this.application.getAllWorker();
     return {
       status: 201,
-      message: `Get all classifications`,
-      data: classifications,
+      message: `Get all workers`,
+      data: workers,
     };
   }
 
