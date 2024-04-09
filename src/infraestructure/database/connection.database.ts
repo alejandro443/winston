@@ -33,6 +33,7 @@ import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
 import { config } from 'dotenv';
 import { ProductCategory } from '@src/domain/entities/ProductCategory.entity';
 import { Product } from '@src/domain/entities/Product.entity';
+import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
 config();
 
 let configuration: any;
@@ -80,6 +81,7 @@ export const ConnectionProvider = [
         Organization,
         CompanyArea,
         ProductCategory,
+        ProductBrand,
         Product
       ]);
 
