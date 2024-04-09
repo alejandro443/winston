@@ -46,7 +46,7 @@ export class Client extends Model<Client> {
   })
   declare user_id: number;
 
-  @BelongsTo(() => User, 'id')
+  @BelongsTo(() => User, 'user_id')
   declare user: User;
 
   @Column({
@@ -55,7 +55,7 @@ export class Client extends Model<Client> {
   })
   declare person_id: number;
 
-  @BelongsTo(() => Person, 'id')
+  @BelongsTo(() => Person, 'person_id')
   declare person: Person;
 
   @Column({
@@ -64,7 +64,7 @@ export class Client extends Model<Client> {
   })
   declare company_id: number;
 
-  @BelongsTo(() => Company, 'id')
+  @BelongsTo(() => Company, 'company_id')
   declare company: Company;
 
   @ForeignKey(() => Classification)
@@ -74,7 +74,7 @@ export class Client extends Model<Client> {
   })
   declare classification_id: number;
 
-  @BelongsTo(() => Classification, 'id')
+  @BelongsTo(() => Classification, 'classification_id')
   declare classification: Classification;
 
   @Column({
@@ -83,7 +83,7 @@ export class Client extends Model<Client> {
   })
   declare group_id: number;
 
-  @BelongsTo(() => Group, 'id')
+  @BelongsTo(() => Group, 'group_id')
   declare group: Group;
 
   @ForeignKey(() => TypeClient)

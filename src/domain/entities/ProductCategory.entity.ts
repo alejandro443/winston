@@ -8,8 +8,8 @@ import {
   DeletedAt,
 } from 'sequelize-typescript';
 
-@Table({ tableName: 'classifications' })
-export class Classification extends Model<Classification> {
+@Table({ tableName: 'product_categories' })
+export class ProductCategory extends Model<ProductCategory> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -29,9 +29,13 @@ export class Classification extends Model<Classification> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: true,
   })
   declare code: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  declare image: string;
 
   @Column({
     type: DataType.BOOLEAN,

@@ -16,7 +16,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { ACCESSROL_APPLICATION } from 'src/core/shared/constants/application.constants';
+import { ACCESS_ROL_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetAccessRolRequestDto } from '../request_dto/AccessRolDto/get.access_rol_dto';
 import { CreateAccessRolRequestDto } from '../request_dto/AccessRolDto/create.access_rol_dto';
@@ -30,7 +30,7 @@ import { ApplicationCreatorFilter } from '../exception_filters/application.excep
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 export class AccessRolController {
   constructor(
-    @Inject(ACCESSROL_APPLICATION)
+    @Inject(ACCESS_ROL_APPLICATION)
     private application: AccessRolApplication,
   ) {}
 

@@ -6,10 +6,12 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasOne,
 } from 'sequelize-typescript';
+import { Client } from './Client.entity';
 
-@Table({ tableName: 'classifications' })
-export class Classification extends Model<Classification> {
+@Table({ tableName: 'types_clients' })
+export class TypeClient extends Model<TypeClient> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -30,6 +32,7 @@ export class Classification extends Model<Classification> {
   @Column({
     type: DataType.STRING,
     allowNull: true,
+    unique: true,
   })
   declare code: string;
 
@@ -38,12 +41,15 @@ export class Classification extends Model<Classification> {
     defaultValue: true,
   })
   declare status: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     allowNull: true,
   })
   declare is_base: boolean;
+
+  @HasOne(() => Client)
+  declare client: Client;
 
   @CreatedAt
   declare created_at: Date;

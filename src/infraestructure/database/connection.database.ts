@@ -31,6 +31,8 @@ import { DeliveryPoint } from '../../domain/entities/DeliveryPoint.entity';
 import { Organization } from '../../domain/entities/Organization.entity';
 import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
 import { config } from 'dotenv';
+import { ProductCategory } from '@src/domain/entities/ProductCategory.entity';
+import { Product } from '@src/domain/entities/Product.entity';
 config();
 
 let configuration: any;
@@ -77,6 +79,8 @@ export const ConnectionProvider = [
         DeliveryPoint,
         Organization,
         CompanyArea,
+        ProductCategory,
+        Product
       ]);
 
       await sequelize.sync({ alter: true });
