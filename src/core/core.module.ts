@@ -14,6 +14,9 @@ import {
   ORGANIZATION_APPLICATION,
   ACCESS_APPLICATION,
   ACCESS_ROL_APPLICATION,
+  PRODUCT_BRAND_APPLICATION,
+  PRODUCT_CATEGORY_APPLICATION,
+  PRODUCT_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -29,6 +32,9 @@ import { PersonApplicationService } from './service/Person/PersonApplicationServ
 import { OrganizationApplicationService } from './service/Organization/OrganizationApplicationService';
 import { AccessApplicationService } from './service/Access/AccessApplicationService';
 import { AccessRolApplicationService } from './service/AccessRol/AccessRolApplicationService';
+import { ProductBrandApplicationService } from './service/ProductBrand/ProductBrandApplicationService';
+import { ProductCategoryApplicationService } from './service/ProductCategory/ProductCategoryApplicationService';
+import { ProductApplicationService } from './service/Product/ProductApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -149,6 +155,27 @@ export class CoreModule {
       },
       inject: [],
     };
+    const ProductBrandApplicationProvider = {
+      provide: PRODUCT_BRAND_APPLICATION,
+      useFactory() {
+        return new ProductBrandApplicationService();
+      },
+      inject: [],
+    };
+    const ProductCategoryApplicationProvider = {
+      provide: PRODUCT_CATEGORY_APPLICATION,
+      useFactory() {
+        return new ProductCategoryApplicationService();
+      },
+      inject: [],
+    };
+    const ProductApplicationProvider = {
+      provide: PRODUCT_APPLICATION,
+      useFactory() {
+        return new ProductApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -169,6 +196,9 @@ export class CoreModule {
         OrganizationApplicationProvider,
         AccessApplicationProvider,
         AccessRolApplicationProvider,
+        ProductBrandApplicationProvider,
+        ProductCategoryApplicationProvider,
+        ProductApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -185,6 +215,9 @@ export class CoreModule {
         ORGANIZATION_APPLICATION,
         ACCESS_APPLICATION,
         ACCESS_ROL_APPLICATION,
+        PRODUCT_BRAND_APPLICATION,
+        PRODUCT_CATEGORY_APPLICATION,
+        PRODUCT_APPLICATION
       ],
     };
   }
