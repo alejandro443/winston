@@ -11,6 +11,7 @@ import {
   BelongsTo,
 } from 'sequelize-typescript';
 import { ProductCategory } from './ProductCategory.entity';
+import { ProductBrand } from './ProductBrand.entity';
 
 @Table({ tableName: 'products' })
 export class Product extends Model<Product> {
@@ -38,11 +39,13 @@ export class Product extends Model<Product> {
 
   @Column({
     type: DataType.STRING,
+    unique: true
   })
   declare sku: string;
 
   @Column({
     type: DataType.STRING,
+    unique: true
   })
   declare upc: string;
 
@@ -67,6 +70,15 @@ export class Product extends Model<Product> {
   })
   declare status: boolean;
 
+  @ForeignKey(() => ProductBrand)
+  @Column({
+    type: DataType.INTEGER,
+  })
+  declare product_brand_id: number;
+
+  @BelongsTo(() => ProductBrand, 'product_brand_id')
+  declare productBrand: ProductBrand;
+  
   @ForeignKey(() => ProductCategory)
   @Column({
     type: DataType.INTEGER,

@@ -8,8 +8,8 @@ import {
   DeletedAt,
 } from 'sequelize-typescript';
 
-@Table({ tableName: 'product_categories' })
-export class ProductCategory extends Model<ProductCategory> {
+@Table({ tableName: 'product_brands' })
+export class ProductBrand extends Model<ProductBrand> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -43,12 +43,6 @@ export class ProductCategory extends Model<ProductCategory> {
     defaultValue: true,
   })
   declare status: boolean;
-  
-  @Column({
-    type: DataType.BOOLEAN,
-    allowNull: true,
-  })
-  declare is_base: boolean;
 
   @CreatedAt
   declare created_at: Date;
