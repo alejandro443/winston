@@ -25,7 +25,7 @@ export class PersonRepository {
     }
   }
 
-  async create(person: NewPersonDto | object ) {
+  async create(person: NewPersonDto | object) {
     try {
       return Person.create(person);
     } catch (error: any) {

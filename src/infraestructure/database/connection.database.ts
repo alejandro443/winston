@@ -31,9 +31,14 @@ import { DeliveryPoint } from '../../domain/entities/DeliveryPoint.entity';
 import { Organization } from '../../domain/entities/Organization.entity';
 import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
 import { config } from 'dotenv';
-import { ProductCategory } from '@src/domain/entities/ProductCategory.entity';
-import { Product } from '@src/domain/entities/Product.entity';
-import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
+import { ProductCategory } from '../../domain/entities/ProductCategory.entity';
+import { Product } from '../../domain/entities/Product.entity';
+import { ProductBrand } from '../../domain/entities/ProductBrand.entity';
+import { Region } from '../../domain/entities/Region.entity';
+import { Country } from '../../domain/entities/Country.entity';
+import { Department } from '../../domain/entities/Department.entity';
+import { Province } from '../../domain/entities/Province.entity';
+import { District } from '../../domain/entities/District.entity';
 config();
 
 let configuration: any;
@@ -82,7 +87,12 @@ export const ConnectionProvider = [
         CompanyArea,
         ProductCategory,
         ProductBrand,
-        Product
+        Product,
+        Region,
+        Country,
+        Department,
+        Province,
+        District,
       ]);
 
       await sequelize.sync({ alter: true });

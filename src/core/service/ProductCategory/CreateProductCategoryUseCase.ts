@@ -9,7 +9,9 @@ export class CreateProductCategoryUseCase {
   async createProductCategory(product_category: NewProductCategoryDto) {
     try {
       const response: any =
-        await this.product_categoryService?.createProductCategory(product_category);
+        await this.product_categoryService?.createProductCategory(
+          product_category,
+        );
       return {
         id: response.id,
         code: response.code,

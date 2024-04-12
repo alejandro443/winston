@@ -17,6 +17,11 @@ import { AccessRolController } from './controllers/access_rol_controller';
 import { ProductBrandController } from './controllers/product_brand_controller';
 import { ProductCategoryController } from './controllers/product_category_controller';
 import { ProductController } from './controllers/product_controller';
+import { RegionController } from './controllers/region_controller';
+import { CountryController } from './controllers/country_controller';
+import { DepartmentController } from './controllers/department_controller';
+import { ProvinceController } from './controllers/province_controller';
+import { DistrictController } from './controllers/district_controller';
 
 @Module({
   controllers: [
@@ -37,7 +42,12 @@ import { ProductController } from './controllers/product_controller';
     AccessRolController,
     ProductBrandController,
     ProductCategoryController,
-    ProductController
+    ProductController,
+    RegionController,
+    CountryController,
+    DepartmentController,
+    ProvinceController,
+    DistrictController,
   ],
 })
 export class InterfacesModule {}

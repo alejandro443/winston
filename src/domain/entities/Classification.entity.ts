@@ -38,7 +38,7 @@ export class Classification extends Model<Classification> {
     defaultValue: true,
   })
   declare status: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     allowNull: true,

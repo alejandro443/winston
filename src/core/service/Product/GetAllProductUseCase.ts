@@ -7,8 +7,7 @@ export class GetAllProductUseCase {
 
   async getAllProduct() {
     try {
-      const response: any =
-        await this.productService?.getAllProduct();
+      const response: any = await this.productService?.getAllProduct();
 
       return response.map((product: any) => ({
         id: product.id,

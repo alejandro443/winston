@@ -45,7 +45,8 @@ export class ProductCategoryDto {
   declare image?: string;
 
   @ApiProperty({
-    description: 'Para poder reconocer si el registro es definido de base o no.',
+    description:
+      'Para poder reconocer si el registro es definido de base o no.',
     type: Boolean,
     default: false,
   })

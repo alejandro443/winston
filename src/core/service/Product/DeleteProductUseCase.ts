@@ -7,8 +7,7 @@ export class DeleteProductUseCase {
 
   async deleteProduct(id: number) {
     try {
-      const response: any =
-        await this.productService?.deleteProduct(id);
+      const response: any = await this.productService?.deleteProduct(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

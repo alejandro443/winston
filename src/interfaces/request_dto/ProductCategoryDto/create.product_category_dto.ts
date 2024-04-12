@@ -2,4 +2,5 @@ import { ProductCategoryDto } from '@src/core/shared/dto/ProductCategory/product
 
 export class CreateProductCategoryRequestDto
   extends ProductCategoryDto
-  implements Omit<ProductCategoryDto, 'id, created_at, updated_at, deleted_at'> {}
+  implements
+    Omit<ProductCategoryDto, 'id, created_at, updated_at, deleted_at'> {}

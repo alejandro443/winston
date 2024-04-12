@@ -22,7 +22,10 @@ export function GenerateSwaggerDocs(app: INestApplication) {
     );
   }
 
-  if (processenv.NODE_ENV == DEVELOPMENT || SWAGGER_ENVS.includes(processenv.NODE_ENV) ) {
+  if (
+    processenv.NODE_ENV == DEVELOPMENT ||
+    SWAGGER_ENVS.includes(processenv.NODE_ENV)
+  ) {
     const config = new DocumentBuilder()
       .setTitle('Fhyona Backend')
       .setDescription(

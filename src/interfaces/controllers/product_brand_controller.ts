@@ -21,7 +21,10 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetProductBrandRequestDto } from '../request_dto/ProductBrandDto/get.product_brand_dto';
 import { CreateProductBrandRequestDto } from '../request_dto/ProductBrandDto/create.product_brand_dto';
 import { ProductBrandApplication } from 'src/core/application/ProductBrand/ProductBrandApplication';
-import { ProductCategoriesResponse, ProductBrandResponse } from '../responses/product_brand.response';
+import {
+  ProductCategoriesResponse,
+  ProductBrandResponse,
+} from '../responses/product_brand.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 
 @ApiTags('ProductBrand')
@@ -105,7 +108,10 @@ export class ProductBrandController {
   ): Promise<ProductBrandResponse> {
     Log.info(`(PUT) Put product_brand`);
 
-    const product_brand = await this.application.updateProductBrand(params.id, request);
+    const product_brand = await this.application.updateProductBrand(
+      params.id,
+      request,
+    );
     return {
       status: 200,
       message: `Product Brand updated.`,

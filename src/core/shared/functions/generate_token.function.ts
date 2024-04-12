@@ -5,7 +5,7 @@ config();
 export const GenerateToken = async (user: any, client: any) => {
   const processenv: any = process.env;
 
-  var code_client = client == undefined ? 'USRSNCLT' : client.code;
+  const code_client = client == undefined ? 'USRSNCLT' : client.code;
 
   const token = jwt.sign(
     {

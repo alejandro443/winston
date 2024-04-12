@@ -8,8 +8,7 @@ export class CreateProductUseCase {
 
   async createProduct(product: NewProductDto) {
     try {
-      const response: any =
-        await this.productService?.createProduct(product);
+      const response: any = await this.productService?.createProduct(product);
       return {
         id: response.id,
         code: response.code,
