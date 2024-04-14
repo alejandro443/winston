@@ -29,7 +29,7 @@ export class ProductBrand extends Model<ProductBrand> {
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   declare code: string;
 

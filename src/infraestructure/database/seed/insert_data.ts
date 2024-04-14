@@ -11,6 +11,9 @@ import { Group } from '../../../domain/entities/Group.entity';
 import { User } from '../../../domain/entities/User.entity';
 import * as bcrypt from 'bcrypt';
 import { UserRol } from '../../../domain/entities/UserRol.entity';
+import { Region } from '../../../domain/entities/Region.entity';
+import { Country } from '../../../domain/entities/Country.entity';
+import { Department } from '../../../domain/entities/Department.entity';
 
 config();
 
@@ -57,9 +60,7 @@ async function createAccess(pais: string) {
   });
   const accessesToInsert = access.filter(
     (a) =>
-      !existingAccesses.some(
-        (existingAccess) => existingAccess.id === a.id,
-      ),
+      !existingAccesses.some((existingAccess) => existingAccess.id === a.id),
   );
 
   if (accessesToInsert.length > 0) {
@@ -95,7 +96,6 @@ async function createTypesClients(pais: string) {
   } else {
     logger.message('No hay data para insertar para tipos de clientes');
   }
-
 }
 
 async function createAccessesRoles() {
@@ -160,10 +160,7 @@ async function createGroups(pais: string) {
     where: { id: group.map((a) => a.id) },
   });
   const groupsToInsert = group.filter(
-    (a) =>
-      !existingGroup.some(
-        (existingGroup) => existingGroup.id === a.id,
-      ),
+    (a) => !existingGroup.some((existingGroup) => existingGroup.id === a.id),
   );
 
   if (groupsToInsert.length > 0) {
@@ -183,7 +180,9 @@ async function createUsers() {
   );
   const user = load(usersData) as User[];
 
-  const existingUser = await User.findAll({ where: { user: user.map((a) => a.user) } });
+  const existingUser = await User.findAll({
+    where: { user: user.map((a) => a.user) },
+  });
   const usersToInsert = user.filter(
     (a) => !existingUser.some((existingUser) => existingUser.user === a.user),
   );
@@ -193,9 +192,9 @@ async function createUsers() {
   });
 
   if (usersToInsert.length > 0) {
-    var createUser = await User.bulkCreate(usersToInsert);
+    const createUser = await User.bulkCreate(usersToInsert);
     logger.message('Usuarios creados exitosamente');
-    return createUser
+    return createUser;
   } else {
     throw new Error('No hay data para crear en los usuarios.');
   }
@@ -203,18 +202,104 @@ async function createUsers() {
 
 async function createUsersRoles(usuarios: any) {
   logger.message('CREAR USUARIOS CON SUS ROLES');
-  var userRolesCreate = await Promise.all(usuarios.map((user) => {
-    return {
-      rol_id: 1,
-      user_id: user.dataValues.id
-    }
-  }));
+  const userRolesCreate = await Promise.all(
+    usuarios.map((user) => {
+      return {
+        rol_id: 1,
+        user_id: user.dataValues.id,
+      };
+    }),
+  );
 
   if (userRolesCreate.length > 0) {
     await UserRol.bulkCreate(userRolesCreate);
     logger.message('Usuarios creados exitosamente');
   } else {
     logger.message('No hay data para insertar para los usuarios.');
+  }
+}
+
+async function createRegions() {
+  // LEER Y CARGA DATOS DE REGIONES
+  logger.message('INSERTAR REGIONES');
+  const regionsData = await fsPromises.readFileSync(
+    __dirname + `/data/system/regions.yml`,
+    'utf8',
+  );
+  const regions = load(regionsData) as Region[];
+
+  // Verificar si existen datos
+  const existingRegions = await Region.findAll({
+    where: { id: regions.map((region) => region.id) },
+  });
+  const regionToInsert = regions.filter(
+    (region) =>
+      !existingRegions.some(
+        (existingRegion) => existingRegion.id === region.id,
+      ),
+  );
+
+  if (regionToInsert.length > 0) {
+    await Region.bulkCreate(regionToInsert);
+    logger.message('Datos de regiones insertados exitosamente.');
+  } else {
+    logger.message('No hay data para insertar para regiones.');
+  }
+}
+
+async function createCountries() {
+  // LEER Y CARGA DATOS DE PAISES
+  logger.message('INSERTAR PAISES');
+  const countriesData = await fsPromises.readFileSync(
+    __dirname + `/data/system/countries.yml`,
+    'utf8',
+  );
+  const countries = load(countriesData) as Country[];
+
+  // Verificar si existen datos
+  const existingCountries = await Country.findAll({
+    where: { id: countries.map((country) => country.id) },
+  });
+  const countryToInsert = countries.filter(
+    (country) =>
+      !existingCountries.some(
+        (existingCountry) => existingCountry.id === country.id,
+      ),
+  );
+
+  if (countryToInsert.length > 0) {
+    await Country.bulkCreate(countryToInsert);
+    logger.message('Datos de paises insertados exitosamente.');
+  } else {
+    logger.message('No hay data para insertar para paises.');
+  }
+}
+
+async function createDepartments(pais: string) {
+  // LEER Y CARGA DATOS DE DEPARTAMENTOS
+  logger.message('INSERTAR DEPARTAMENTOS');
+  const departmentsData = await fsPromises.readFileSync(
+    __dirname + `/data/${pais}/departments.yml`,
+    'utf8',
+  );
+  const departments = load(departmentsData) as Department[];
+
+  // Verificar si existen datos
+  const existingDepartments = await Department.findAll({
+    where: { id: departments.map((department) => department.id) },
+  });
+  const departmentToInsert = departments.filter(
+    (department) =>
+      !existingDepartments.some(
+        (existingDepartment) => existingDepartment.id === department.id,
+      ),
+  );
+
+  if (departmentToInsert.length > 0) {
+    await Department.bulkCreate(departmentToInsert);
+    logger.message('Datos de departamentos insertados exitosamente.');
+  } else {
+    logger.message('No hay data para insertar para departamentos.');
   }
 }
 
@@ -228,17 +313,20 @@ export class InserData {
   async run(): Promise<boolean> {
     try {
       logger.initialize('COMENZAR INSERTAR DATA');
-      await createRoles()
-      await createAccess(this.pais)
-      await createTypesClients(this.pais)
-      await createAccessesRoles()
-      await createClassifications(this.pais)
-      await createGroups(this.pais)
+      await createRoles();
+      await createAccess(this.pais);
+      await createTypesClients(this.pais);
+      await createAccessesRoles();
+      await createClassifications(this.pais);
+      await createGroups(this.pais);
       await createUsers()
         .then((users) => createUsersRoles(users))
         .catch((error) => {
           logger.error(error);
-        })
+        });
+      await createRegions();
+      await createCountries();
+      await createDepartments(this.pais);
 
       logger.message('Datos insertados exitosamente');
       return true;

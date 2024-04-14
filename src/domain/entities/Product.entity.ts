@@ -6,7 +6,6 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasMany,
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
@@ -39,13 +38,13 @@ export class Product extends Model<Product> {
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   declare sku: string;
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   declare upc: string;
 
@@ -53,12 +52,12 @@ export class Product extends Model<Product> {
     type: DataType.FLOAT,
   })
   declare weight: number;
-  
+
   @Column({
     type: DataType.FLOAT,
   })
   declare height: number;
-  
+
   @Column({
     type: DataType.FLOAT,
   })
@@ -78,7 +77,7 @@ export class Product extends Model<Product> {
 
   @BelongsTo(() => ProductBrand, 'product_brand_id')
   declare productBrand: ProductBrand;
-  
+
   @ForeignKey(() => ProductCategory)
   @Column({
     type: DataType.INTEGER,

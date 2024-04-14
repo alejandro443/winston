@@ -1,5 +1,15 @@
-import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import {
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiResponseProperty,
+} from '@nestjs/swagger';
+import {
+  IsArray,
+  IsBoolean,
+  IsDateString,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class CompanyDto {
   @ApiResponseProperty()
@@ -16,14 +26,15 @@ export class CompanyDto {
   })
   @IsString()
   declare main_identification: string;
-  
+
   @ApiPropertyOptional({
-    description: 'Tipo de identificación registrado para el numero de identificación de la compañia.',
+    description:
+      'Tipo de identificación registrado para el numero de identificación de la compañia.',
     type: String,
   })
   @IsString()
   declare type_identification: string;
-  
+
   @ApiPropertyOptional({
     description: 'Nombre de la compañia.',
     type: String,
@@ -100,7 +111,7 @@ export class CompanyDto {
   })
   @IsString()
   declare province: string;
-  
+
   @ApiPropertyOptional({
     description: 'Distrito de la compañia.',
     type: String,
@@ -121,21 +132,21 @@ export class CompanyDto {
   })
   @IsArray()
   declare phones: [];
-  
+
   @ApiPropertyOptional({
     description: 'Arrays de direcciones secundarios de la compañia.',
     type: Array,
   })
   @IsArray()
   declare directions: [];
-  
+
   @ApiPropertyOptional({
     description: 'Arrays de emails secundarios de la compañia.',
     type: Array,
   })
   @IsArray()
   declare emails: [];
-  
+
   @ApiPropertyOptional({
     description: 'Estado del cliente compañia (Activo/Desactivado)',
     default: true,

@@ -7,8 +7,7 @@ export class GetOneProductUseCase {
 
   async getOneProduct(id: number) {
     try {
-      const response: any =
-        await this.product_brandService?.getOneProduct(id);
+      const response: any = await this.product_brandService?.getOneProduct(id);
       return {
         id: response.id,
         code: response.code,

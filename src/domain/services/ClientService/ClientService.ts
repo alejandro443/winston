@@ -12,8 +12,8 @@ export class ClientService {
     private repositoryCompany?: CompanyRepository,
   ) {
     this.repository = new ClientRepository();
-    this.repositoryPerson= new PersonRepository();
-    this.repositoryCompany= new CompanyRepository();
+    this.repositoryPerson = new PersonRepository();
+    this.repositoryCompany = new CompanyRepository();
   }
 
   async getOneClient(code: string) {
@@ -35,12 +35,12 @@ export class ClientService {
   async createClient(client: NewClientDto) {
     try {
       let entity: any;
-      if(client.type_entity === TypeEntity.COMPANY){
+      if (client.type_entity === TypeEntity.COMPANY) {
         entity = await this.repositoryCompany.create(client.entity);
         client.company_id = entity.id;
       }
 
-      if(client.type_entity === TypeEntity.PERSON){
+      if (client.type_entity === TypeEntity.PERSON) {
         entity = await this.repositoryPerson.create(client.entity);
         client.person_id = entity.id;
       }

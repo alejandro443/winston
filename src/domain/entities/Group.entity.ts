@@ -41,7 +41,7 @@ export class Group extends Model<Group> {
     defaultValue: true,
   })
   declare status: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     allowNull: true,

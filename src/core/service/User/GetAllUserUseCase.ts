@@ -14,7 +14,7 @@ export class GetAllUserUseCase {
         user: user.user,
         code: user.code,
         status: user.statug,
-        consultant: user.consultant
+        consultant: user.consultant,
       }));
     } catch (error: any) {
       return error;

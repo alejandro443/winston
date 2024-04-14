@@ -6,16 +6,12 @@ export class UpdateProductUseCase {
     this.productService = new ProductService();
   }
 
-  async updateProduct(
-    id: number,
-    product: UpdateProductDto,
-  ) {
+  async updateProduct(id: number, product: UpdateProductDto) {
     try {
-      const response: any =
-        await this.productService?.updateProduct(
-          id,
-          product,
-        );
+      const response: any = await this.productService?.updateProduct(
+        id,
+        product,
+      );
       return {
         id: response.id,
         code: response.code,

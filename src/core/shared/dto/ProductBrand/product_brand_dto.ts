@@ -64,5 +64,4 @@ export class DeleteProductBrandDto {
 export interface OneProductBrandDto extends ProductBrandDto {}
 export interface AllProductBrandDto extends ProductBrandDto {}
 export interface NewProductBrandDto extends Omit<ProductBrandDto, 'id'> {}
-export interface UpdateProductBrandDto
-  extends Omit<ProductBrandDto, 'id'> {}
+export interface UpdateProductBrandDto extends Omit<ProductBrandDto, 'id'> {}

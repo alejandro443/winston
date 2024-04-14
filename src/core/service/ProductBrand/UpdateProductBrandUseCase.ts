@@ -6,16 +6,12 @@ export class UpdateProductBrandUseCase {
     this.product_brandService = new ProductBrandService();
   }
 
-  async updateProductBrand(
-    id: number,
-    product_brand: UpdateProductBrandDto,
-  ) {
+  async updateProductBrand(id: number, product_brand: UpdateProductBrandDto) {
     try {
-      const response: any =
-        await this.product_brandService?.updateProductBrand(
-          id,
-          product_brand,
-        );
+      const response: any = await this.product_brandService?.updateProductBrand(
+        id,
+        product_brand,
+      );
       return {
         id: response.id,
         code: response.code,

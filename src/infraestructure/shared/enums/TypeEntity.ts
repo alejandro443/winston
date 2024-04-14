@@ -1,4 +1,4 @@
 export enum TypeEntity {
   PERSON = 'person',
-  COMPANY = 'company'
+  COMPANY = 'company',
 }

@@ -17,6 +17,11 @@ import {
   PRODUCT_BRAND_APPLICATION,
   PRODUCT_CATEGORY_APPLICATION,
   PRODUCT_APPLICATION,
+  REGION_APPLICATION,
+  COUNTRY_APPLICATION,
+  DEPARTMENT_APPLICATION,
+  PROVINCE_APPLICATION,
+  DISTRICT_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -35,6 +40,11 @@ import { AccessRolApplicationService } from './service/AccessRol/AccessRolApplic
 import { ProductBrandApplicationService } from './service/ProductBrand/ProductBrandApplicationService';
 import { ProductCategoryApplicationService } from './service/ProductCategory/ProductCategoryApplicationService';
 import { ProductApplicationService } from './service/Product/ProductApplicationService';
+import { RegionApplicationService } from './service/Region/RegionApplicationService';
+import { CountryApplicationService } from './service/Country/CountryApplicationService';
+import { DepartmentApplicationService } from './service/Department/DepartmentApplicationService';
+import { ProvinceApplicationService } from './service/Province/ProvinceApplicationService';
+import { DistrictApplicationService } from './service/District/DistrictApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -177,6 +187,46 @@ export class CoreModule {
       inject: [],
     };
 
+    const RegionApplicationProvider = {
+      provide: REGION_APPLICATION,
+      useFactory() {
+        return new RegionApplicationService();
+      },
+      inject: [],
+    };
+
+    const CountryApplicationProvider = {
+      provide: COUNTRY_APPLICATION,
+      useFactory() {
+        return new CountryApplicationService();
+      },
+      inject: [],
+    };
+
+    const DepartmentApplicationProvider = {
+      provide: DEPARTMENT_APPLICATION,
+      useFactory() {
+        return new DepartmentApplicationService();
+      },
+      inject: [],
+    };
+
+    const ProvinceApplicationProvider = {
+      provide: PROVINCE_APPLICATION,
+      useFactory() {
+        return new ProvinceApplicationService();
+      },
+      inject: [],
+    };
+
+    const DistrictApplicationProvider = {
+      provide: DISTRICT_APPLICATION,
+      useFactory() {
+        return new DistrictApplicationService();
+      },
+      inject: [],
+    };
+
     return {
       module: CoreModule,
       global: true,
@@ -198,7 +248,12 @@ export class CoreModule {
         AccessRolApplicationProvider,
         ProductBrandApplicationProvider,
         ProductCategoryApplicationProvider,
-        ProductApplicationProvider
+        ProductApplicationProvider,
+        RegionApplicationProvider,
+        CountryApplicationProvider,
+        DepartmentApplicationProvider,
+        ProvinceApplicationProvider,
+        DistrictApplicationProvider,
       ],
       exports: [
         AUTH_APPLICATION,
@@ -217,7 +272,12 @@ export class CoreModule {
         ACCESS_ROL_APPLICATION,
         PRODUCT_BRAND_APPLICATION,
         PRODUCT_CATEGORY_APPLICATION,
-        PRODUCT_APPLICATION
+        PRODUCT_APPLICATION,
+        REGION_APPLICATION,
+        COUNTRY_APPLICATION,
+        DEPARTMENT_APPLICATION,
+        PROVINCE_APPLICATION,
+        DISTRICT_APPLICATION,
       ],
     };
   }

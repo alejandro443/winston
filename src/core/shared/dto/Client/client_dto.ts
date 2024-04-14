@@ -3,13 +3,20 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsObject, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsDateString,
+  IsNumber,
+  IsObject,
+  IsString,
+} from 'class-validator';
 
 export class ClientDto {
   @ApiProperty({
-    description: 'Tipo de entidad a registrar en el cliente, Si es de tipo persona o tipo empresa',
+    description:
+      'Tipo de entidad a registrar en el cliente, Si es de tipo persona o tipo empresa',
     type: String,
-    enum: {company: 'company', person: 'person'}
+    enum: { company: 'company', person: 'person' },
   })
   @IsString()
   declare type_entity: string;
@@ -44,7 +51,7 @@ export class ClientDto {
   })
   @IsNumber()
   declare person_id?: number;
-  
+
   @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'Id de la empresa cliente asociada al registro.',
@@ -73,13 +80,13 @@ export class ClientDto {
   })
   @IsNumber()
   declare group_id?: number;
-  
+
   @ApiPropertyOptional({
     description: 'Entidad de cliente.',
     type: Object,
   })
   @IsObject()
-  declare entity?: {};
+  declare entity?: object;
 
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',
@@ -110,7 +117,5 @@ export class DeleteClientDto {
 
 export interface OneClientDto extends ClientDto {}
 export interface AllClientDto extends ClientDto {}
-export interface NewClientDto
-  extends Omit<ClientDto, 'id, created_at'> {}
-export interface UpdateClientDto
-  extends Omit<ClientDto, 'id, created_at'> {}
+export interface NewClientDto extends Omit<ClientDto, 'id, created_at'> {}
+export interface UpdateClientDto extends Omit<ClientDto, 'id, created_at'> {}
