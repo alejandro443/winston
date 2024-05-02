@@ -23,11 +23,13 @@ import { CreateProductBrandRequestDto } from '../request_dto/ProductBrandDto/cre
 import { ProductBrandApplication } from 'src/core/application/ProductBrand/ProductBrandApplication';
 import { ProductCategoriesResponse, ProductBrandResponse } from '../responses/product_brand.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('ProductBrand')
 @Controller('/product_brand')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class ProductBrandController {
   constructor(
     @Inject(PRODUCT_BRAND_APPLICATION)

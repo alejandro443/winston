@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -13,6 +14,7 @@ import {
 import {
   ApiBadRequestResponse,
   ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { Log } from '../../infraestructure/shared/log/Log';
@@ -22,10 +24,13 @@ import { RolApplication } from '../../core/application/Rol/RolApplication';
 import { RolResponse, RolesResponse } from '../responses/rol.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { GetRolRequestDto } from '../request_dto/RolDto/get.rol_dto';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Roles')
 @Controller('/rol')
 @UseFilters(ApplicationCreatorFilter)
+@ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class RolController {
   constructor(@Inject(ROL_APPLICATION) private application: RolApplication) {}
 
@@ -54,7 +59,9 @@ export class RolController {
   })
   @HttpCode(201)
   @Get('/one/:id')
-  async getOneRol(@Param() request: GetRolRequestDto): Promise<RolResponse> {
+  async getOneRol(
+    @Param('id', ParseIntPipe) request: GetRolRequestDto
+  ): Promise<RolResponse> {
     Log.info(`(Get) Get access id: ${request.id}`);
 
     const access = await this.application.getOneRol(request.id);
@@ -91,7 +98,7 @@ export class RolController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateRol(
-    @Param() params: GetRolRequestDto,
+    @Param('id', ParseIntPipe) params: GetRolRequestDto,
     @Body() request: CreateRolRequestDto,
   ): Promise<RolResponse> {
     Log.info(`(PUT) Put access`);
@@ -111,7 +118,9 @@ export class RolController {
   })
   @HttpCode(200)
   @Delete('/delete/:id')
-  async deleteRol(@Param() params: GetRolRequestDto): Promise<RolResponse> {
+  async deleteRol(
+    @Param('id', ParseIntPipe) params: GetRolRequestDto
+  ): Promise<RolResponse> {
     Log.info(`(Delete) Delete access ${params.id}`);
 
     const access = await this.application.deleteRol(params.id);

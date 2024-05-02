@@ -23,11 +23,13 @@ import { CreateTypeDocumentRequestDto } from '../request_dto/TypeDocumentDto/cre
 import { TypeDocumentApplication } from 'src/core/application/TypeDocument/TypeDocumentApplication';
 import { TypeDocumentResponse } from '../responses/type_document.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('TypeDocument')
 @Controller('/type_document')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class TypeDocumentController {
   constructor(
     @Inject(TYPE_DOCUMENT_APPLICATION)

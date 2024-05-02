@@ -24,11 +24,13 @@ import { ClientApplication } from 'src/core/application/Client/ClientApplication
 import { ClientResponse, ClientsResponse } from '../responses/client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { PortfolioResponse } from '../responses/client.response';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Client')
 @Controller('/client')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class ClientController {
   constructor(
     @Inject(CLIENT_APPLICATION)

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -24,11 +25,13 @@ import { UpdateOrganizationRequestDto } from '../request_dto/OrganizationDto/upd
 import { OrganizationApplication } from 'src/core/application/Organization/OrganizationApplication';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { OrganizationResponse } from '../responses/organization.response';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Organization')
 @Controller('/organization')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class OrganizationController {
   constructor(
     @Inject(ORGANIZATION_APPLICATION)
@@ -61,7 +64,7 @@ export class OrganizationController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneOrganization(
-    @Param() request: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) request: GetOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
     Log.info(`(Get) Get organization id: ${request.id}`);
 
@@ -101,7 +104,7 @@ export class OrganizationController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateOrganization(
-    @Param() params: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) params: GetOrganizationRequestDto,
     @Body() request: UpdateOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
     Log.info(`(PUT) Put organization`);
@@ -125,7 +128,7 @@ export class OrganizationController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteOrganization(
-    @Param() params: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) params: GetOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
     Log.info(`(Delete) Delete organization ${params.id}`);
 

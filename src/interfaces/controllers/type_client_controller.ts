@@ -23,11 +23,13 @@ import { CreateTypeClientRequestDto } from '../request_dto/TypeClientDto/create.
 import { TypeClientApplication } from 'src/core/application/TypeClient/TypeClientApplication';
 import { TypeClientResponse } from '../responses/type_client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('TypeClient')
 @Controller('/type_client')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class TypeClientController {
   constructor(
     @Inject(TYPE_CLIENT_APPLICATION)

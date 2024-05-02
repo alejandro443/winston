@@ -17,8 +17,17 @@ import { AccessRolController } from './controllers/access_rol_controller';
 import { ProductBrandController } from './controllers/product_brand_controller';
 import { ProductCategoryController } from './controllers/product_category_controller';
 import { ProductController } from './controllers/product_controller';
+import { JwtModule } from '@nestjs/jwt';
+import { jwtConstants } from '@src/infraestructure/persistence/constants/constants';
 
 @Module({
+  imports: [
+    JwtModule.register({
+      global: true,
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '1d' },
+    }),
+  ],
   controllers: [
     RootController,
     AuthController,
