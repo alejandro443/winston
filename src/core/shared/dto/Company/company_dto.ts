@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
 import { IsArray, IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
@@ -161,7 +162,7 @@ export class DeleteCompanyDto {
   declare deleted_at: Date;
 }
 
-export interface OneCompanyDto extends CompanyDto {}
-export interface AllCompanyDto extends CompanyDto {}
-export interface NewCompanyDto extends Omit<CompanyDto, 'id'> {}
-export interface UpdateCompanyDto extends Omit<CompanyDto, 'id'> {}
+export class OneCompanyDto extends PartialType(CompanyDto) { }
+export class AllCompanyDto extends PartialType(CompanyDto) { }
+export class NewCompanyDto extends OmitType(CompanyDto, ['id', 'created_at'] as const) { }
+export class UpdateCompanyDto extends OmitType(CompanyDto, ['id', 'created_at'] as const) { }

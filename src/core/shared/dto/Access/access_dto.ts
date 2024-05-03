@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -9,7 +10,7 @@ export class AccessDto {
   @ApiResponseProperty({
     type: Number,
   })
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Id del acceso',
     type: Number,
   })
@@ -92,7 +93,7 @@ export class DeleteAccessDto {
   deleted_at?: Date;
 }
 
-export interface OneAccessDto extends AccessDto {}
-export interface AllAccessDto extends AccessDto {}
-export interface NewAccessDto extends Omit<AccessDto, 'id'> {}
-export interface UpdateAccessDto extends Omit<AccessDto, 'id'> {}
+export class OneAccessDto extends PartialType(AccessDto) {}
+export class AllAccessDto extends PartialType(AccessDto) {}
+export class NewAccessDto extends OmitType(AccessDto, ['id'] as const) {}
+export class UpdateAccessDto extends OmitType(AccessDto, ['id'] as const) {}

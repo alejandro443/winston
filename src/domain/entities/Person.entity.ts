@@ -166,7 +166,6 @@ export class Person extends Model<Person> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
   })
   declare type_identification: string;
 

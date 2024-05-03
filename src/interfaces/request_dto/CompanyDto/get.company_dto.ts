@@ -1,3 +1,4 @@
+import { PickType } from '@nestjs/mapped-types';
 import { CompanyDto } from '@src/core/shared/dto/Company/company_dto';
 
-export type GetCompanyRequestDto = Pick<CompanyDto, 'id'>;
+export class GetCompanyRequestDto extends PickType(CompanyDto, ['id'] as const) { }

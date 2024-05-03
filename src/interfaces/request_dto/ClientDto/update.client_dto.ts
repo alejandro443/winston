@@ -1,3 +1,5 @@
+import { OmitType } from '@nestjs/mapped-types';
 import { ClientDto } from '@src/core/shared/dto/Client/client_dto';
 
-export type UpdateClientRequestDto = Omit<ClientDto, 'id'>;
+export class UpdateClientRequestDto extends
+  OmitType(ClientDto, ['id'] as const) { }

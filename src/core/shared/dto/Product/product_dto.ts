@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -51,6 +52,13 @@ export class ProductDto {
   })
   @IsBoolean()
   declare status?: boolean;
+
+  @ApiProperty({
+    description: 'Fecha de creación.',
+    type: Date,
+  })
+  @IsDateString()
+  declare created_at?: Date;
 }
 export class DeleteProductDto {
   @ApiProperty({
@@ -61,8 +69,7 @@ export class DeleteProductDto {
   declare deleted_at?: Date;
 }
 
-export interface OneProductDto extends ProductDto {}
-export interface AllProductDto extends ProductDto {}
-export interface NewProductDto extends Omit<ProductDto, 'id'> {}
-export interface UpdateProductDto
-  extends Omit<ProductDto, 'id'> {}
+export class OneProductDto extends PartialType(ProductDto) { }
+export class AllProductDto extends PartialType(ProductDto) { }
+export class NewProductDto extends OmitType(ProductDto, ['id', 'created_at'] as const) { }
+export class UpdateProductDto extends OmitType(ProductDto, ['id', 'created_at'] as const) { }

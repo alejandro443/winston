@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -69,8 +70,7 @@ export class DeleteProductCategoryDto {
   declare deleted_at?: Date;
 }
 
-export interface OneProductCategoryDto extends ProductCategoryDto {}
-export interface AllProductCategoryDto extends ProductCategoryDto {}
-export interface NewProductCategoryDto extends Omit<ProductCategoryDto, 'id'> {}
-export interface UpdateProductCategoryDto
-  extends Omit<ProductCategoryDto, 'id'> {}
+export class OneProductCategoryDto extends PartialType(ProductCategoryDto) { }
+export class AllProductCategoryDto extends PartialType(ProductCategoryDto) { }
+export class NewProductCategoryDto extends OmitType(ProductCategoryDto, ['id'] as const) { }
+export class UpdateProductCategoryDto extends OmitType(ProductCategoryDto, ['id'] as const) { }

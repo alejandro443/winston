@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -9,10 +10,10 @@ export class ClientDto {
   @ApiProperty({
     description: 'Tipo de entidad a registrar en el cliente, Si es de tipo persona o tipo empresa',
     type: String,
-    enum: {company: 'company', person: 'person'}
+    enum: { company: 'company', person: 'person' }
   })
   @IsString()
-  declare type_entity: string;
+  declare type_entity?: string;
 
   @ApiResponseProperty()
   @ApiPropertyOptional({
@@ -44,7 +45,7 @@ export class ClientDto {
   })
   @IsNumber()
   declare person_id?: number;
-  
+
   @ApiResponseProperty()
   @ApiPropertyOptional({
     description: 'Id de la empresa cliente asociada al registro.',
@@ -73,7 +74,7 @@ export class ClientDto {
   })
   @IsNumber()
   declare group_id?: number;
-  
+
   @ApiPropertyOptional({
     description: 'Entidad de cliente.',
     type: Object,
@@ -108,9 +109,7 @@ export class DeleteClientDto {
   declare deleted_at?: Date;
 }
 
-export interface OneClientDto extends ClientDto {}
-export interface AllClientDto extends ClientDto {}
-export interface NewClientDto
-  extends Omit<ClientDto, 'id, created_at'> {}
-export interface UpdateClientDto
-  extends Omit<ClientDto, 'id, created_at'> {}
+export class OneClientDto extends PartialType(ClientDto) { }
+export class AllClientDto extends PartialType(ClientDto) { }
+export class NewClientDto extends OmitType(ClientDto, ['id', 'created_at'] as const) { }
+export class UpdateClientDto extends OmitType(ClientDto, ['id', 'created_at'] as const) { }

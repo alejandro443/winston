@@ -21,6 +21,9 @@ export class CreatePersonUseCase {
             password: person.main_identification
           }
         )
+
+        console.log(responseUser)
+
       }
       return { ...response.dataValues };
     } catch (error: any) {

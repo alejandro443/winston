@@ -1,5 +1,7 @@
+import { OmitType } from '@nestjs/mapped-types';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, isNotIn } from 'class-validator';
+import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
+import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, isNotIn } from 'class-validator';
 
 export class PersonDto {
   @ApiProperty({
@@ -9,7 +11,6 @@ export class PersonDto {
   @ApiResponseProperty({
     type: Number,
   })
-  @IsOptional()
   @IsNumber()
   id?: number;
 
@@ -232,9 +233,10 @@ export class PersonDto {
   @ApiProperty({
     description: 'Tipo de documento principal de la persona',
     type: String,
+    enum: TypeDocuments
   })
-  @IsOptional()
-  @IsString()
+  @IsNotEmpty()
+  @IsEnum(TypeDocuments)
   type_identification?: string;
 
   @ApiProperty({
@@ -273,7 +275,7 @@ export class DeletePersonDto {
   deleted_at?: Date;
 }
 
-export interface OnePersonDto extends Omit<PersonDto, 'create_user'> {}
-export interface AllPersonDto extends Omit<PersonDto, 'create_user'> {}
-export interface NewPersonDto extends Omit<PersonDto, 'id'> {}
-export interface UpdatePersonDto extends Omit<PersonDto, 'id, create_user'> {}
+export class OnePersonDto extends OmitType(PersonDto, ['create_user'] as const) {}
+export class AllPersonDto extends OmitType(PersonDto, ['create_user'] as const) {}
+export class NewPersonDto extends OmitType(PersonDto, ['id'] as const) {}
+export class UpdatePersonDto extends OmitType(PersonDto, ['id','create_user'] as const) {}
