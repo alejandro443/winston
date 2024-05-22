@@ -37,16 +37,17 @@ export class ClientService {
       let entity: any;
       if(client.type_entity === TypeEntity.COMPANY){
         entity = await this.repositoryCompany.create(client.entity);
-        client.company_id = entity.id;
+        client.entity_id = entity.id;
       }
 
       if(client.type_entity === TypeEntity.PERSON){
         entity = await this.repositoryPerson.create(client.entity);
-        client.person_id = entity.id;
+        client.entity_id = entity.id;
       }
 
       client.code = await GenerateCodeClient(entity.id, client.type_entity);
-      return this.repository?.create(client);
+
+      return this.repository?.create(client, entity);
     } catch (error: any) {
       return error;
     }

@@ -7,6 +7,9 @@ import {
 } from '../persistence/constants/constants';
 import { DatabaseConfiguration } from '../shared/configurations/database.configuration';
 
+import { config } from 'dotenv';
+config();
+
 import { Rol } from '../../domain/entities/Rol.entity';
 import { AccessRol } from '../../domain/entities/AccessRol.entity';
 import { UserAccess } from '../../domain/entities/UserAccess.entity';
@@ -30,11 +33,9 @@ import { DeliveryMethod } from '../../domain/entities/DeliveryMethod.entity';
 import { DeliveryPoint } from '../../domain/entities/DeliveryPoint.entity';
 import { Organization } from '../../domain/entities/Organization.entity';
 import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
-import { config } from 'dotenv';
-import { ProductCategory } from '@src/domain/entities/ProductCategory.entity';
-import { Product } from '@src/domain/entities/Product.entity';
-import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
-config();
+import { ProductCategory } from '../../domain/entities/ProductCategory.entity';
+import { Product } from '../../domain/entities/Product.entity';
+import { ProductBrand } from '../../domain/entities/ProductBrand.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {

@@ -29,7 +29,7 @@ import { Auth } from '@src/core/decorators/auth.decorator';
 @Controller('/user')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
-@Auth()
+// @Auth()
 export class UserController {
   constructor(
     @Inject(USER_APPLICATION)

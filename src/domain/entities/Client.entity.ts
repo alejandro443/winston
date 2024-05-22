@@ -49,20 +49,31 @@ export class Client extends Model<Client> {
   @BelongsTo(() => User, 'user_id')
   declare user: User;
 
+  // @Column({
+  //   type: DataType.INTEGER,
+  //   allowNull: true,
+  // })
+  // declare person_id: number;
+
+  // @BelongsTo(() => Person, 'person_id')
+  // declare person: Person;
+
+  // @Column({
+  //   type: DataType.INTEGER,
+  //   allowNull: true,
+  // })
+  // declare company_id: number;
+
+  @ForeignKey(() => Person)
+  @ForeignKey(() => Company)
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  declare person_id: number;
+  entity_id: number;
 
   @BelongsTo(() => Person, 'person_id')
   declare person: Person;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: true,
-  })
-  declare company_id: number;
 
   @BelongsTo(() => Company, 'company_id')
   declare company: Company;

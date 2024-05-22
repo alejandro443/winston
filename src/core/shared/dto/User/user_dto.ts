@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UserDto {
   @ApiResponseProperty({
@@ -45,6 +45,7 @@ export class UserDto {
     default: false,
   })
   @IsString()
+  @IsOptional()
   consultant?: boolean;
 
   @ApiPropertyOptional({
@@ -53,6 +54,7 @@ export class UserDto {
     default: true,
   })
   @IsBoolean()
+  @IsOptional()
   status?: boolean;
 
   @ApiResponseProperty({

@@ -25,7 +25,7 @@ export class LoginAuthUseCase {
 
       if (!user_rol_data || user_rol_data.length === 0) {
         throw new AuthApplicationError(
-          '(Usuario) o contraseña incorrectos.',
+          'Usuario o contraseña incorrectos.',
           'BAD_REQUEST',
         );
       }
@@ -33,7 +33,7 @@ export class LoginAuthUseCase {
       const user_data = user_rol_data[0]['user']['dataValues'];
       if (!(await ValidatorPassword(password, user_data.password))) {
         throw new AuthApplicationError(
-          'Usuario o (contraseña) incorrectos.',
+          'Usuario o contraseña incorrectos.',
           'BAD_REQUEST',
         );
       }

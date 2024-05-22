@@ -89,7 +89,7 @@ export class ProductCategoryController {
     const product_category = await this.application.createProductCategory(request);
     return {
       status: 201,
-      message: `Product Category ${request.id} created OK`,
+      message: `Product Category ${request.name} created OK`,
       data: product_category,
     };
   }

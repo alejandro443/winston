@@ -40,19 +40,19 @@ export class ClientDto {
 
   @ApiResponseProperty()
   @ApiPropertyOptional({
-    description: 'Id de la persona asociada al cliente',
+    description: 'Id de la entidad asociada al cliente (Persona/Compañia)',
     type: Number,
   })
   @IsNumber()
-  declare person_id?: number;
+  declare entity_id?: number;
 
-  @ApiResponseProperty()
-  @ApiPropertyOptional({
-    description: 'Id de la empresa cliente asociada al registro.',
-    type: Number,
-  })
-  @IsNumber()
-  declare company_id?: number;
+  // @ApiResponseProperty()
+  // @ApiPropertyOptional({
+  //   description: 'Id de la empresa cliente asociada al registro.',
+  //   type: Number,
+  // })
+  // @IsNumber()
+  // declare company_id?: number;
 
   @ApiProperty({
     description: 'Código del tipo de cliente',

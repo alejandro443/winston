@@ -20,17 +20,20 @@ export class ClientRepository {
     }
   }
 
-  async create(worker: any) {
+  async create(client: any, object: any) {
     try {
-      return Client.create(worker);
+      const clientCreate: any = Client.create(client);
+      await clientCreate.$set(client.type_entity, object);
+      
+      return clientCreate;
     } catch (error: any) {
       return error;
     }
   }
 
-  async update(code: any, worker: UpdateClientDto) {
+  async update(code: any, client: UpdateClientDto) {
     try {
-      return Client.update(worker, { where: { code: code } });
+      return Client.update(client, { where: { code: code } });
     } catch (error: any) {
       return error;
     }

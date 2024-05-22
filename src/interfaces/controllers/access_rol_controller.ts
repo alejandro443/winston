@@ -90,7 +90,7 @@ export class AccessRolController {
     const access_rol = await this.application.createAccessRol(request);
     return {
       status: 201,
-      message: `AccessRol ${request.id} created OK`,
+      message: `AccessRol ${request.rol_id} created OK`,
       data: access_rol,
     };
   }
