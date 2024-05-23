@@ -2,8 +2,10 @@ import {
   ApiProperty,
   ApiPropertyOptional,
   ApiResponseProperty,
+  OmitType,
+  PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UserDto {
   @ApiResponseProperty({
@@ -43,6 +45,7 @@ export class UserDto {
     default: false,
   })
   @IsString()
+  @IsOptional()
   consultant?: boolean;
 
   @ApiPropertyOptional({
@@ -51,6 +54,7 @@ export class UserDto {
     default: true,
   })
   @IsBoolean()
+  @IsOptional()
   status?: boolean;
 
   @ApiResponseProperty({
@@ -72,7 +76,7 @@ export class DeleteUserDto {
   deleted_at?: Date;
 }
 
-export interface OneUserDto extends UserDto {}
-export interface AllUserDto extends UserDto {}
-export interface NewUserDto extends Omit<UserDto, 'id'> {}
-export interface UpdateUserDto extends Omit<UserDto, 'id'> {}
+export class OneUserDto extends PartialType(UserDto) { }
+export class AllUserDto extends PartialType(UserDto) { }
+export class NewUserDto extends OmitType(UserDto, ['id'] as const) { }
+export class UpdateUserDto extends OmitType(UserDto, ['id'] as const) { }

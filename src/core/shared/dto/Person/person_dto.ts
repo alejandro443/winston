@@ -1,5 +1,7 @@
+import { OmitType } from '@nestjs/mapped-types';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
+import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, isNotIn } from 'class-validator';
 
 export class PersonDto {
   @ApiProperty({
@@ -17,6 +19,7 @@ export class PersonDto {
     type: String,
   })
   @IsString()
+  @IsNotEmpty()
   name?: string;
 
   @ApiProperty({
@@ -24,6 +27,7 @@ export class PersonDto {
     type: String,
   })
   @IsString()
+  @IsNotEmpty()
   lastname?: string;
 
   @ApiProperty({
@@ -31,12 +35,14 @@ export class PersonDto {
     type: String,
   })
   @IsString()
+  @IsNotEmpty()
   main_identification?: string;
 
   @ApiProperty({
     description: 'Fecha de nacimiento de la persona',
     type: Date,
   })
+  @IsOptional()
   @IsDateString()
   birthdate?: Date;
 
@@ -44,13 +50,15 @@ export class PersonDto {
     description: 'Correo electrónico de la persona',
     type: String,
   })
-  @IsString()
+  @IsEmail()
+  @IsOptional()
   email?: string;
 
   @ApiProperty({
     description: 'Teléfono principal de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   main_phone?: string;
 
@@ -58,6 +66,7 @@ export class PersonDto {
     description: 'Teléfonos secundarios de la persona',
     type: [String],
   })
+  @IsOptional()
   @IsString()
   secondary_phone?: string[];
 
@@ -65,6 +74,7 @@ export class PersonDto {
     description: 'Género de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   gender?: string;
 
@@ -72,6 +82,7 @@ export class PersonDto {
     description: 'Estado civil de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   marital_status?: string;
 
@@ -79,6 +90,7 @@ export class PersonDto {
     description: 'Ocupación de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   occupation?: string;
 
@@ -86,6 +98,7 @@ export class PersonDto {
     description: 'Nacionalidad de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   nationality?: string;
 
@@ -93,6 +106,7 @@ export class PersonDto {
     description: 'País de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   country?: string;
 
@@ -100,6 +114,7 @@ export class PersonDto {
     description: 'Departamento de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   department?: string;
 
@@ -107,6 +122,7 @@ export class PersonDto {
     description: 'Provincia de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   province?: string;
 
@@ -114,6 +130,7 @@ export class PersonDto {
     description: 'Distrito de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   district?: string;
 
@@ -121,6 +138,7 @@ export class PersonDto {
     description: 'Dirección de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   direction?: string;
 
@@ -128,6 +146,7 @@ export class PersonDto {
     description: 'Ubigeo de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   ubigeo?: string;
 
@@ -135,6 +154,7 @@ export class PersonDto {
     description: 'Foto de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   photo?: string;
 
@@ -142,6 +162,7 @@ export class PersonDto {
     description: 'Estado de la persona (Activo/Inactivo)',
     type: Boolean,
   })
+  @IsOptional()
   @IsString()
   active?: boolean;
 
@@ -149,6 +170,7 @@ export class PersonDto {
     description: 'Nombre comercial de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   tradename?: string;
 
@@ -156,6 +178,7 @@ export class PersonDto {
     description: 'Condición de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   condition?: string;
 
@@ -163,6 +186,7 @@ export class PersonDto {
     description: 'Placa de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   plate?: string;
 
@@ -170,6 +194,7 @@ export class PersonDto {
     description: 'Licencia de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   licence?: string;
 
@@ -177,6 +202,7 @@ export class PersonDto {
     description: 'Profesión de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   profession?: string;
 
@@ -184,6 +210,7 @@ export class PersonDto {
     description: 'Denominación de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   denomination?: string;
 
@@ -191,6 +218,7 @@ export class PersonDto {
     description: 'Régimen matrimonial de la persona',
     type: String,
   })
+  @IsOptional()
   @IsString()
   married_regimen?: string;
 
@@ -198,14 +226,17 @@ export class PersonDto {
     description: 'ID de la pareja de la persona',
     type: Number,
   })
+  @IsOptional()
   @IsNumber()
   couple_id?: number;
 
   @ApiProperty({
     description: 'Tipo de documento principal de la persona',
     type: String,
+    enum: TypeDocuments
   })
-  @IsString()
+  @IsNotEmpty()
+  @IsEnum(TypeDocuments)
   type_identification?: string;
 
   @ApiProperty({
@@ -213,8 +244,26 @@ export class PersonDto {
     type: Boolean,
     default: true,
   })
+  @IsOptional()
   @IsBoolean()
   status?: boolean;
+  
+  @ApiProperty({
+    description: '¿Crear usuario y contraseña automaticamente?',
+    type: Boolean,
+    default: false,
+  })
+  @IsOptional()
+  @IsBoolean()
+  create_user?: boolean;
+
+  @ApiProperty({
+    description: 'Fecha de creacion',
+    type: Date,
+  })
+  @ApiResponseProperty()
+  @IsDateString()
+  created_at?: Date;
 }
 
 export class DeletePersonDto {
@@ -226,7 +275,7 @@ export class DeletePersonDto {
   deleted_at?: Date;
 }
 
-export interface OnePersonDto extends PersonDto {}
-export interface AllPersonDto extends PersonDto {}
-export interface NewPersonDto extends Omit<PersonDto, 'id'> {}
-export interface UpdatePersonDto extends Omit<PersonDto, 'id'> {}
+export class OnePersonDto extends OmitType(PersonDto, ['create_user'] as const) {}
+export class AllPersonDto extends OmitType(PersonDto, ['create_user'] as const) {}
+export class NewPersonDto extends OmitType(PersonDto, ['id'] as const) {}
+export class UpdatePersonDto extends OmitType(PersonDto, ['id','create_user'] as const) {}

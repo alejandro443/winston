@@ -1,8 +1,8 @@
 import { IsObject, IsString } from 'class-validator';
 import { UserDto } from '../User/user_dto';
+import { OmitType } from '@nestjs/mapped-types';
 
-export interface LoginDto
-  extends Omit<UserDto, 'id, code, consultant, status'> {}
+export class LoginDto extends OmitType(UserDto, ['id', 'code', 'consultant', 'status'] as const) {}
 
 export class LoginResponseDto {
   @IsString()

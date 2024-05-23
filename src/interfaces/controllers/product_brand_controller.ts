@@ -26,11 +26,13 @@ import {
   ProductBrandResponse,
 } from '../responses/product_brand.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('ProductBrand')
 @Controller('/product_brand')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class ProductBrandController {
   constructor(
     @Inject(PRODUCT_BRAND_APPLICATION)
@@ -90,7 +92,7 @@ export class ProductBrandController {
     const product_brand = await this.application.createProductBrand(request);
     return {
       status: 201,
-      message: `Product Brand ${request.id} created OK`,
+      message: `Product Brand ${request.name} created OK`,
       data: product_brand,
     };
   }

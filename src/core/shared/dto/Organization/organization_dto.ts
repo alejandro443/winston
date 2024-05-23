@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -311,14 +312,25 @@ export class OrganizationDto {
   })
   @IsNumber()
   amount_wholesale?: number;
+
+  @ApiProperty({
+    description: 'Fecha de creacion.',
+    type: Date,
+  })
+  @IsDateString()
+  created_at?: Date;
 }
 
 export class DeleteOrganizationDto {
+  @ApiProperty({
+    description: 'Fecha de eliminación',
+    type: Date,
+  })
   @IsDateString()
   deleted_at?: Date;
 }
 
-export interface OneOrganizationDto extends OrganizationDto {}
-export interface AllOrganizationDto extends OrganizationDto {}
-export interface NewOrganizationDto extends Omit<OrganizationDto, 'id'> {}
-export interface UpdateOrganizationDto extends Omit<OrganizationDto, 'id'> {}
+export class OneOrganizationDto extends PartialType(OrganizationDto) { }
+export class AllOrganizationDto extends PartialType(OrganizationDto) { }
+export class NewOrganizationDto extends OmitType(OrganizationDto, ['id', 'created_at'] as const) { }
+export class UpdateOrganizationDto extends OmitType(OrganizationDto, ['id', 'created_at'] as const) { }

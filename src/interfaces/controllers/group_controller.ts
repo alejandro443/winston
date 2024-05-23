@@ -23,11 +23,13 @@ import { CreateGroupRequestDto } from '../request_dto/GroupDto/create.group_dto'
 import { GroupApplication } from 'src/core/application/Group/GroupApplication';
 import { GroupResponse } from '../responses/group.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Group')
 @Controller('/group')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class GroupController {
   constructor(
     @Inject(GROUP_APPLICATION)

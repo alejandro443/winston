@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -23,11 +24,13 @@ import { CreateAccessRequestDto } from '../request_dto/AccessDto/create.access_d
 import { AccessApplication } from 'src/core/application/Access/AccessApplication';
 import { AccessResponse, AccessesResponse } from '../responses/access.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Access')
 @Controller('/access')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class AccessController {
   constructor(
     @Inject(ACCESS_APPLICATION)
@@ -60,7 +63,7 @@ export class AccessController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneAccess(
-    @Param() request: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) request: GetAccessRequestDto,
   ): Promise<AccessResponse> {
     Log.info(`(Get) Get access id: ${request.id}`);
 
@@ -100,7 +103,7 @@ export class AccessController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateAccess(
-    @Param() params: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) params: GetAccessRequestDto,
     @Body() request: CreateAccessRequestDto,
   ): Promise<AccessResponse> {
     Log.info(`(PUT) Put access`);
@@ -121,7 +124,7 @@ export class AccessController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteAccess(
-    @Param() params: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) params: GetAccessRequestDto,
   ): Promise<AccessResponse> {
     Log.info(`(Delete) Delete access ${params.id}`);
 

@@ -166,7 +166,6 @@ export class Person extends Model<Person> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
   })
   declare type_identification: string;
 
@@ -190,9 +189,6 @@ export class Person extends Model<Person> {
 
   @HasOne(() => Worker, { foreignKey: 'person_id', sourceKey: 'id' })
   declare worker: Worker;
-
-  @HasOne(() => Client, 'person_id')
-  declare client: Client;
 
   @HasMany(() => CompanyWorker, 'person_id')
   declare person: CompanyWorker[];

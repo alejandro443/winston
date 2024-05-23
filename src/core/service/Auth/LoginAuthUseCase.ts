@@ -4,6 +4,7 @@ import { AuthApplicationError } from '@src/core/shared/error/AuthApplicationErro
 import { GenerateToken } from '@src/core/shared/functions/generate_token.function';
 import { ClientService } from '@src/domain/services/ClientService/ClientService';
 import { AccessRolService } from '@src/domain/services/AccessRolService/AccessRolService';
+import { LoginRequestDto } from '@src/interfaces/request_dto/AuthDto/login.auth_dto';
 // import { LoginDto } from '@src/core/shared/dto/Authentication/authentication_dto';
 
 export class LoginAuthUseCase {
@@ -17,14 +18,14 @@ export class LoginAuthUseCase {
     this.clientService = new ClientService();
   }
 
-  async loginAuth(login: any) {
+  async loginAuth(login: LoginRequestDto) {
     try {
       const { user, password } = login;
       const user_rol_data = await this.userRolService?.getUserRolByUser(user);
 
       if (!user_rol_data || user_rol_data.length === 0) {
         throw new AuthApplicationError(
-          '(Usuario) o contraseña incorrectos.',
+          'Usuario o contraseña incorrectos.',
           'BAD_REQUEST',
         );
       }
@@ -32,7 +33,7 @@ export class LoginAuthUseCase {
       const user_data = user_rol_data[0]['user']['dataValues'];
       if (!(await ValidatorPassword(password, user_data.password))) {
         throw new AuthApplicationError(
-          'Usuario o (contraseña) incorrectos.',
+          'Usuario o contraseña incorrectos.',
           'BAD_REQUEST',
         );
       }

@@ -26,11 +26,13 @@ import {
   ProductCategoryResponse,
 } from '../responses/product_category.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('ProductCategory')
 @Controller('/product_category')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class ProductCategoryController {
   constructor(
     @Inject(PRODUCT_CATEGORY_APPLICATION)
@@ -93,7 +95,7 @@ export class ProductCategoryController {
       await this.application.createProductCategory(request);
     return {
       status: 201,
-      message: `Product Category ${request.id} created OK`,
+      message: `Product Category ${request.name} created OK`,
       data: product_category,
     };
   }

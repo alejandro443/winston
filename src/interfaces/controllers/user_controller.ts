@@ -23,11 +23,13 @@ import { CreateUserRequestDto } from '../request_dto/UserDto/create.user_dto';
 import { UserApplication } from 'src/core/application/User/UserApplication';
 import { UserResponse, UsersResponse } from '../responses/user.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('User')
 @Controller('/user')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+// @Auth()
 export class UserController {
   constructor(
     @Inject(USER_APPLICATION)

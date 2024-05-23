@@ -23,11 +23,13 @@ import { CreateWorkerRequestDto } from '../request_dto/WorkerDto/create.worker_d
 import { WorkerApplication } from 'src/core/application/Worker/WorkerApplication';
 import { WorkerResponse } from '../responses/worker.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Worker')
 @Controller('/worker')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class WorkerController {
   constructor(
     @Inject(WORKER_APPLICATION)

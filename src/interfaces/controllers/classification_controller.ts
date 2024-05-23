@@ -23,11 +23,13 @@ import { CreateClassificationRequestDto } from '../request_dto/ClassificationDto
 import { ClassificationApplication } from 'src/core/application/Classification/ClassificationApplication';
 import { ClassificationResponse } from '../responses/classification.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Classification')
 @Controller('/classification')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class ClassificationController {
   constructor(
     @Inject(CLASSIFICATION_APPLICATION)

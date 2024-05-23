@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -64,7 +65,7 @@ export class DeleteGroupDto {
   deleted_at?: Date;
 }
 
-export interface OneGroupDto extends GroupDto {}
-export interface AllGroupDto extends GroupDto {}
-export interface NewGroupDto extends Omit<GroupDto, 'id'> {}
-export interface UpdateGroupDto extends Omit<GroupDto, 'id'> {}
+export class OneGroupDto extends PartialType(GroupDto) { }
+export class AllGroupDto extends PartialType(GroupDto) { }
+export class NewGroupDto extends OmitType(GroupDto, ['id', 'created_at'] as const) { }
+export class UpdateGroupDto extends OmitType(GroupDto, ['id', 'created_at'] as const) { }

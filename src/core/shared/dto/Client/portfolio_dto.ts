@@ -73,6 +73,30 @@ export class PortfolioDto {
 
   @ApiResponseProperty()
   @ApiProperty({
+    description: 'Provincia de la dirección principal del cliente.',
+    type: String,
+  })
+  @IsString()
+  declare province: string;
+
+  @ApiResponseProperty()
+  @ApiProperty({
+    description: 'Distrito de la dirección principal del cliente.',
+    type: String,
+  })
+  @IsString()
+  declare district: string;
+
+  @ApiResponseProperty()
+  @ApiProperty({
+    description: 'Departamento de la dirección principal del cliente.',
+    type: String,
+  })
+  @IsString()
+  declare department: string;
+
+  @ApiResponseProperty()
+  @ApiProperty({
     description: 'Dirección de correo principal del cliente.',
     type: String,
   })

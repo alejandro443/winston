@@ -1,3 +1,4 @@
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -57,7 +58,7 @@ export class DeleteRolDto {
   deleted_at?: Date;
 }
 
-export interface OneRolDto extends RolDto {}
-export interface AllRolDto extends RolDto {}
-export interface NewRolDto extends Omit<RolDto, 'id'> {}
-export interface UpdateRolDto extends Omit<RolDto, 'id'> {}
+export class OneRolDto extends PartialType(RolDto) { }
+export class AllRolDto extends PartialType(RolDto) { }
+export class NewRolDto extends OmitType(RolDto, ['id'] as const) { }
+export class UpdateRolDto extends OmitType(RolDto, ['id'] as const) { }

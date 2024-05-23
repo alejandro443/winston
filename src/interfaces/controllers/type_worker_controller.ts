@@ -23,11 +23,13 @@ import { CreateTypeWorkerRequestDto } from '../request_dto/TypeWorkerDto/create.
 import { TypeWorkerApplication } from 'src/core/application/TypeWorker/TypeWorkerApplication';
 import { TypeWorkerResponse } from '../responses/type_worker.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('TypeWorker')
 @Controller('/type_worker')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class TypeWorkerController {
   constructor(
     @Inject(TYPE_WORKER_APPLICATION)

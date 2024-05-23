@@ -1,8 +1,8 @@
-export enum TypeDocument {
+export enum TypeDocuments {
   DNI = 'DNI',
   RUC = 'RUC',
   PASSPORT = 'PASAPORTE',
-  FOREIGNERCARD = 'CARNÉ DE EXTRANJERIA',
+  CE = 'CARNÉT DE EXTRANJERIA',
   LICENSE = 'LICENCIA DE CONDUCIR',
   IDENTITYCARD = 'CÉDULA DE IDENTIDAD',
 }

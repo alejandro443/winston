@@ -23,11 +23,13 @@ import { CreatePersonRequestDto } from '../request_dto/PersonDto/create.person_d
 import { PersonApplication } from 'src/core/application/Person/PersonApplication';
 import { PersonResponse } from '../responses/person.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('Person')
 @Controller('/person')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class PersonController {
   constructor(
     @Inject(PERSON_APPLICATION)

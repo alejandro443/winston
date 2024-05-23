@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import {
   NewCompanyDto,
   UpdateCompanyDto,
@@ -9,7 +10,7 @@ export class CompanyRepository {
 
   async findOne(main_identification: string) {
     try {
-      return Company.findOne({
+      return await Company.findOne({
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
@@ -19,7 +20,7 @@ export class CompanyRepository {
 
   async findAll() {
     try {
-      return Company.findAll({ where: { deleted_at: null } });
+      return await Company.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
       return error;
     }
@@ -27,15 +28,16 @@ export class CompanyRepository {
 
   async create(company: NewCompanyDto | object) {
     try {
-      return Company.create(company);
+      var data_company:any = await Company.create(company);
+      return data_company
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error)
     }
   }
 
   async update(main_identification: string, company: UpdateCompanyDto) {
     try {
-      return Company.update(company, {
+      return await Company.update(company, {
         where: { main_identification: main_identification },
       });
     } catch (error: any) {

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -23,11 +24,13 @@ import { CreateAccessRolRequestDto } from '../request_dto/AccessRolDto/create.ac
 import { AccessRolApplication } from 'src/core/application/AccessRol/AccessRolApplication';
 import { AccessRolResponse } from '../responses/access_rol.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
+import { Auth } from '@src/core/decorators/auth.decorator';
 
 @ApiTags('AccessRol')
 @Controller('/access_rol')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
+@Auth()
 export class AccessRolController {
   constructor(
     @Inject(ACCESS_ROL_APPLICATION)
@@ -60,7 +63,7 @@ export class AccessRolController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneAccessRol(
-    @Param() request: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) request: GetAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
     Log.info(`(Get) Get access_rol id: ${request.id}`);
 
@@ -87,7 +90,7 @@ export class AccessRolController {
     const access_rol = await this.application.createAccessRol(request);
     return {
       status: 201,
-      message: `AccessRol ${request.id} created OK`,
+      message: `AccessRol ${request.rol_id} created OK`,
       data: access_rol,
     };
   }
@@ -100,7 +103,7 @@ export class AccessRolController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateAccessRol(
-    @Param() params: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) params: GetAccessRolRequestDto,
     @Body() request: CreateAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
     Log.info(`(PUT) Put access_rol`);
@@ -124,7 +127,7 @@ export class AccessRolController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteAccessRol(
-    @Param() params: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) params: GetAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
     Log.info(`(Delete) Delete access_rol ${params.id}`);
 

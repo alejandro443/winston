@@ -7,6 +7,9 @@ import {
 } from '../persistence/constants/constants';
 import { DatabaseConfiguration } from '../shared/configurations/database.configuration';
 
+import { config } from 'dotenv';
+config();
+
 import { Rol } from '../../domain/entities/Rol.entity';
 import { AccessRol } from '../../domain/entities/AccessRol.entity';
 import { UserAccess } from '../../domain/entities/UserAccess.entity';
@@ -30,16 +33,15 @@ import { DeliveryMethod } from '../../domain/entities/DeliveryMethod.entity';
 import { DeliveryPoint } from '../../domain/entities/DeliveryPoint.entity';
 import { Organization } from '../../domain/entities/Organization.entity';
 import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
-import { config } from 'dotenv';
 import { ProductCategory } from '../../domain/entities/ProductCategory.entity';
 import { Product } from '../../domain/entities/Product.entity';
 import { ProductBrand } from '../../domain/entities/ProductBrand.entity';
+import { TypeChannel } from '../../domain/entities/TypeChannel.entity';
 import { Region } from '../../domain/entities/Region.entity';
 import { Country } from '../../domain/entities/Country.entity';
 import { Department } from '../../domain/entities/Department.entity';
 import { Province } from '../../domain/entities/Province.entity';
 import { District } from '../../domain/entities/District.entity';
-config();
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -88,6 +90,7 @@ export const ConnectionProvider = [
         ProductCategory,
         ProductBrand,
         Product,
+        TypeChannel,
         Region,
         Country,
         Department,
