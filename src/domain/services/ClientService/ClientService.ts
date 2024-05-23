@@ -13,8 +13,8 @@ export class ClientService {
     private repositoryCompany?: CompanyRepository,
   ) {
     this.repository = new ClientRepository();
-    this.repositoryPerson= new PersonRepository();
-    this.repositoryCompany= new CompanyRepository();
+    this.repositoryPerson = new PersonRepository();
+    this.repositoryCompany = new CompanyRepository();
   }
 
   async getOneClient(code: string) {
@@ -41,7 +41,7 @@ export class ClientService {
         client.entity_id = entity.id;
       }
 
-      if(client.type_entity === TypeEntity.PERSON){
+      if (client.type_entity === TypeEntity.PERSON) {
         entity = await this.repositoryPerson.create(client.entity);
         client.entity_id = entity.id;
       }

@@ -9,9 +9,7 @@ import { CreateProductUseCase } from './CreateProductUseCase';
 import { UpdateProductUseCase } from './UpdateProductUseCase';
 import { DeleteProductUseCase } from './DeleteProductUseCase';
 
-export class ProductApplicationService
-  implements ProductApplication
-{
+export class ProductApplicationService implements ProductApplication {
   constructor(
     private getOneUseCase?: GetOneProductUseCase,
     private getAllUseCase?: GetAllProductUseCase,
@@ -42,9 +40,7 @@ export class ProductApplicationService
     }
   }
 
-  async createProduct(
-    product: NewProductDto,
-  ): Promise<any> {
+  async createProduct(product: NewProductDto): Promise<any> {
     try {
       return this.createUseCase?.createProduct(product);
     } catch (error: any) {
@@ -52,10 +48,7 @@ export class ProductApplicationService
     }
   }
 
-  async updateProduct(
-    id: number,
-    product: UpdateProductDto,
-  ): Promise<any> {
+  async updateProduct(id: number, product: UpdateProductDto): Promise<any> {
     try {
       return this.updateUseCase?.updateProduct(id, product);
     } catch (error: any) {

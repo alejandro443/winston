@@ -58,7 +58,7 @@ export class AccessRolRepository {
   }
 
   async getAccessRolByRol(rol_id: number) {
-    console.log("getAccessRolByRol",rol_id)
+    console.log('getAccessRolByRol', rol_id);
     try {
       return await AccessRol.findAll({
         include: [

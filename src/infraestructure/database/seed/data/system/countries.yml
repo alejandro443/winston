@@ -1,0 +1,9 @@
+- id: 1
+  name: 'Perú'
+  code_ISO: 'PE'
+  currency: 'PEN (Sol)'
+  language: 'Spanish'
+  region_id: 1
+  phone_code: '+51'
+  tax_rate: 18.0
+  timezone: 'GMT-5'

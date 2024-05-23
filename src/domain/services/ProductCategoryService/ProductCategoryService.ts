@@ -30,7 +30,10 @@ export class ProductCategoryService {
     }
   }
 
-  async updateProductCategory(id: any, product_category: NewProductCategoryDto) {
+  async updateProductCategory(
+    id: any,
+    product_category: NewProductCategoryDto,
+  ) {
     try {
       return this.repository?.update(id, product_category);
     } catch (error: any) {

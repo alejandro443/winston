@@ -29,7 +29,7 @@ export class ProductCategory extends Model<ProductCategory> {
 
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   declare code: string;
 
@@ -43,7 +43,7 @@ export class ProductCategory extends Model<ProductCategory> {
     defaultValue: true,
   })
   declare status: boolean;
-  
+
   @Column({
     type: DataType.BOOLEAN,
     allowNull: true,

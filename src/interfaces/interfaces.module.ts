@@ -19,6 +19,11 @@ import { ProductCategoryController } from './controllers/product_category_contro
 import { ProductController } from './controllers/product_controller';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '@src/infraestructure/persistence/constants/constants';
+import { RegionController } from './controllers/region_controller';
+import { CountryController } from './controllers/country_controller';
+import { DepartmentController } from './controllers/department_controller';
+import { ProvinceController } from './controllers/province_controller';
+import { DistrictController } from './controllers/district_controller';
 
 @Module({
   imports: [
@@ -46,7 +51,12 @@ import { jwtConstants } from '@src/infraestructure/persistence/constants/constan
     AccessRolController,
     ProductBrandController,
     ProductCategoryController,
-    ProductController
+    ProductController,
+    RegionController,
+    CountryController,
+    DepartmentController,
+    ProvinceController,
+    DistrictController,
   ],
 })
 export class InterfacesModule {}

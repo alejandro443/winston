@@ -21,7 +21,10 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/get.product_category_dto';
 import { CreateProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/create.product_category_dto';
 import { ProductCategoryApplication } from 'src/core/application/ProductCategory/ProductCategoryApplication';
-import { ProductCategoriesResponse, ProductCategoryResponse } from '../responses/product_category.response';
+import {
+  ProductCategoriesResponse,
+  ProductCategoryResponse,
+} from '../responses/product_category.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
@@ -66,7 +69,9 @@ export class ProductCategoryController {
   ): Promise<ProductCategoryResponse> {
     Log.info(`(Get) Get product category code: ${request.id}`);
 
-    const product_category = await this.application.getOneProductCategory(request.id);
+    const product_category = await this.application.getOneProductCategory(
+      request.id,
+    );
     return {
       status: 201,
       message: `Product Category ${request.id} OK`,
@@ -86,7 +91,8 @@ export class ProductCategoryController {
   ): Promise<ProductCategoryResponse> {
     Log.info(`(POST) Create product_category`);
 
-    const product_category = await this.application.createProductCategory(request);
+    const product_category =
+      await this.application.createProductCategory(request);
     return {
       status: 201,
       message: `Product Category ${request.name} created OK`,
@@ -107,7 +113,10 @@ export class ProductCategoryController {
   ): Promise<ProductCategoryResponse> {
     Log.info(`(PUT) Put product_category`);
 
-    const product_category = await this.application.updateProductCategory(params.id, request);
+    const product_category = await this.application.updateProductCategory(
+      params.id,
+      request,
+    );
     return {
       status: 200,
       message: `Product Category updated.`,
@@ -127,7 +136,9 @@ export class ProductCategoryController {
   ): Promise<ProductCategoryResponse> {
     Log.info(`(Delete) Delete product category ${params.id}`);
 
-    const product_category = await this.application.deleteProductCategory(params.id);
+    const product_category = await this.application.deleteProductCategory(
+      params.id,
+    );
     return {
       status: 200,
       message: `Product Category ${params.id} deleted.`,

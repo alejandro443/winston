@@ -8,7 +8,8 @@ import { IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } fro
 
 export class ClientDto {
   @ApiProperty({
-    description: 'Tipo de entidad a registrar en el cliente, Si es de tipo persona o tipo empresa',
+    description:
+      'Tipo de entidad a registrar en el cliente, Si es de tipo persona o tipo empresa',
     type: String,
     enum: { company: 'company', person: 'person' }
   })
@@ -82,7 +83,7 @@ export class ClientDto {
     type: Object,
   })
   @IsObject()
-  declare entity?: {};
+  declare entity?: object;
 
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',

@@ -1,0 +1,15 @@
+- id: 1
+  name: 'América del Sur'
+  description: 'Región que comprende los países de América del Sur.'
+- id: 2
+  name: 'América del Norte'
+  description: 'Región que comprende los países de América del Norte.'
+- id: 3
+  name: 'Europa'
+  description: 'Región que comprende los países de Europa.'
+- id: 4
+  name: 'Asia'
+  description: 'Región que comprende los países de Asia.'
+- id: 5
+  name: 'Oceanía'
+  description: 'Región que comprende los países de Oceanía.'

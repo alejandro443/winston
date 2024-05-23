@@ -9,9 +9,7 @@ import { CreateProductBrandUseCase } from './CreateProductBrandUseCase';
 import { UpdateProductBrandUseCase } from './UpdateProductBrandUseCase';
 import { DeleteProductBrandUseCase } from './DeleteProductBrandUseCase';
 
-export class ProductBrandApplicationService
-  implements ProductBrandApplication
-{
+export class ProductBrandApplicationService implements ProductBrandApplication {
   constructor(
     private getOneUseCase?: GetOneProductBrandUseCase,
     private getAllUseCase?: GetAllProductBrandUseCase,
@@ -42,9 +40,7 @@ export class ProductBrandApplicationService
     }
   }
 
-  async createProductBrand(
-    product_brand: NewProductBrandDto,
-  ): Promise<any> {
+  async createProductBrand(product_brand: NewProductBrandDto): Promise<any> {
     try {
       return this.createUseCase?.createProductBrand(product_brand);
     } catch (error: any) {
