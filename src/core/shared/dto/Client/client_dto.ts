@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsObject, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class ClientDto {
   @ApiProperty({
@@ -28,6 +28,7 @@ export class ClientDto {
     type: String,
   })
   @IsString()
+  @IsOptional()
   declare code?: string;
 
   @ApiResponseProperty()
@@ -36,6 +37,7 @@ export class ClientDto {
     type: Number,
   })
   @IsNumber()
+  @IsOptional()
   declare user_id?: number;
 
   @ApiResponseProperty()
@@ -44,22 +46,22 @@ export class ClientDto {
     type: Number,
   })
   @IsNumber()
+  @IsOptional()
   declare entity_id?: number;
 
-  // @ApiResponseProperty()
-  // @ApiPropertyOptional({
-  //   description: 'Id de la empresa cliente asociada al registro.',
-  //   type: Number,
-  // })
-  // @IsNumber()
-  // declare company_id?: number;
-
   @ApiProperty({
-    description: 'Código del tipo de cliente',
+    description: 'Id del tipo de cliente',
     type: Number,
   })
   @IsNumber()
   declare type_client_id?: number;
+  
+  @ApiProperty({
+    description: 'Id del tipo de canal de entrada',
+    type: Number,
+  })
+  @IsNumber()
+  declare type_channel_id?: number;
 
   @ApiPropertyOptional({
     description: 'Código de clasificación del cliente',
@@ -88,6 +90,7 @@ export class ClientDto {
     type: Boolean,
   })
   @IsBoolean()
+  @IsOptional()
   declare status?: boolean;
 
   @ApiResponseProperty({

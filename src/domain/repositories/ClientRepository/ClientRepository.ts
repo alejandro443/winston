@@ -23,6 +23,7 @@ export class ClientRepository {
   async create(client: any, object: any) {
     try {
       const clientCreate: any = Client.create(client);
+      console.log("repository",clientCreate)
       await clientCreate.$set(client.type_entity, object);
       
       return clientCreate;

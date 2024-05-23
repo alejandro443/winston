@@ -16,9 +16,12 @@ export class PortfolioService {
         if (client.client_person != null) {
           objectEntity = {
             type_entity: 'person',
-            channel: 'ESTO TODAVIA FALTA IMPLEMENTAR',
+            channel: client.channel_name,
             name: client.person_names,
             main_direction: client.person_direction,
+            province: client.province,
+            district: client.district,
+            department: client.department,
             main_email: client.person_email,
             main_identification: client.person_identification,
             main_phone: client.person_phone,
@@ -28,9 +31,12 @@ export class PortfolioService {
         if (client.client_company != null) {
           objectEntity = {
             type_entity: 'company',
-            channel: 'ESTO TODAVIA FALTA IMPLEMENTAR',
+            channel: client.channel_name,
             name: client.company_name,
             main_direction: client.company_direction,
+            province: client.province,
+            district: client.district,
+            department: client.department,
             main_email: client.company_email,
             main_identification: client.company_identification,
             main_phone: client.company_phone,

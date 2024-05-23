@@ -9,8 +9,10 @@ import {
   UpdatedAt,
   DeletedAt,
   HasMany,
+  HasOne,
 } from 'sequelize-typescript';
 import { CompanyWorker } from './CompanyWorker.entity';
+import { Client } from './Client.entity';
 
 @Table({ tableName: 'companies' })
 export class Company extends Model<Company> {

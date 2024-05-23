@@ -18,6 +18,7 @@ import { User } from './User.entity';
 import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
 import { ClientDeliveryMethod } from './ClientDeliveryMethod.entity';
 import { Company } from './Company.entity';
+import { TypeChannel } from './TypeChannel.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -49,21 +50,6 @@ export class Client extends Model<Client> {
   @BelongsTo(() => User, 'user_id')
   declare user: User;
 
-  // @Column({
-  //   type: DataType.INTEGER,
-  //   allowNull: true,
-  // })
-  // declare person_id: number;
-
-  // @BelongsTo(() => Person, 'person_id')
-  // declare person: Person;
-
-  // @Column({
-  //   type: DataType.INTEGER,
-  //   allowNull: true,
-  // })
-  // declare company_id: number;
-
   @ForeignKey(() => Person)
   @ForeignKey(() => Company)
   @Column({
@@ -72,11 +58,17 @@ export class Client extends Model<Client> {
   })
   entity_id: number;
 
-  @BelongsTo(() => Person, 'person_id')
+  @BelongsTo(() => Person, { foreignKey: 'entity_id', constraints: false })
   declare person: Person;
 
-  @BelongsTo(() => Company, 'company_id')
+  @BelongsTo(() => Company, { foreignKey: 'entity_id', constraints: false })
   declare company: Company;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  declare type_entity: string;
 
   @ForeignKey(() => Classification)
   @Column({
@@ -106,6 +98,16 @@ export class Client extends Model<Client> {
 
   @BelongsTo(() => TypeClient, 'type_client_id')
   declare typeClient: TypeClient;
+
+  @ForeignKey(() => TypeChannel)
+  @Column({
+    field: 'type_channel_id',
+    allowNull: false,
+  })
+  declare type_channel_id: number;
+
+  @BelongsTo(() => TypeChannel, 'type_channel_id')
+  declare typeChannel: TypeChannel;
 
   @HasMany(() => ClientDeliveryPoint, 'client_id')
   declare clientDeliveryPoints: ClientDeliveryPoint[];

@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
 import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
 import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
@@ -34,7 +35,7 @@ export class ClientService {
 
   async createClient(client: NewClientDto) {
     try {
-      let entity: any;
+      var entity: any;
       if(client.type_entity === TypeEntity.COMPANY){
         entity = await this.repositoryCompany.create(client.entity);
         client.entity_id = entity.id;
@@ -47,9 +48,10 @@ export class ClientService {
 
       client.code = await GenerateCodeClient(entity.id, client.type_entity);
 
+      console.log("service",client)
       return this.repository?.create(client, entity);
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error)
     }
   }
 

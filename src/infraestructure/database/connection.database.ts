@@ -36,6 +36,7 @@ import { CompanyArea } from '../../domain/entities/CompanyArea.entity';
 import { ProductCategory } from '../../domain/entities/ProductCategory.entity';
 import { Product } from '../../domain/entities/Product.entity';
 import { ProductBrand } from '../../domain/entities/ProductBrand.entity';
+import { TypeChannel } from '../../domain/entities/TypeChannel.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -83,7 +84,8 @@ export const ConnectionProvider = [
         CompanyArea,
         ProductCategory,
         ProductBrand,
-        Product
+        Product,
+        TypeChannel
       ]);
 
       await sequelize.sync({ alter: true });
