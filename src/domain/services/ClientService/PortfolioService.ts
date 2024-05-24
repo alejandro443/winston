@@ -10,44 +10,46 @@ export class PortfolioService {
       const portfolio_data: any = await this.repository?.portfolioClients();
 
       const portfolio_dto: any = portfolio_data.map((client_data: any) => {
-        const client: any = client_data.dataValues;
+        const client: any = client_data.toJSON();
         let objectEntity: object = {};
 
-        if (client.client_person != null) {
+        if (client.type_entity == 'person') {
           objectEntity = {
             type_entity: 'person',
-            channel: client.channel_name,
-            name: client.person_names,
-            main_direction: client.person_direction,
-            province: client.province,
-            district: client.district,
-            department: client.department,
-            main_email: client.person_email,
-            main_identification: client.person_identification,
-            main_phone: client.person_phone,
+            channel: client.typeChannel.name,
+            name: client.person.name,
+            lastname: client.person.lastname,
+            main_direction: client.person.direction,
+            province: client.person.province,
+            district: client.person.district,
+            department: client.person.department,
+            main_email: client.person.email,
+            main_identification: client.person.main_identification,
+            main_phone: client.person.main_phone,
           };
         }
 
-        if (client.client_company != null) {
+        if (client.type_entity == 'company') {
           objectEntity = {
             type_entity: 'company',
-            channel: client.channel_name,
-            name: client.company_name,
-            main_direction: client.company_direction,
-            province: client.province,
-            district: client.district,
-            department: client.department,
-            main_email: client.company_email,
-            main_identification: client.company_identification,
-            main_phone: client.company_phone,
+            channel: client.typeChannel.name,
+            name: client.company.name_company,
+            lastname: '',
+            main_direction: client.company.main_direction,
+            province: client.company.province,
+            district: client.company.district,
+            department: client.company.department,
+            main_email: client.company.main_email,
+            main_identification: client.company.main_identification,
+            main_phone: client.company.main_phone,
           };
         }
 
         return {
-          client_id: client.client_id,
-          client_code: client.client_code,
-          status: client.client_status,
-          type_client: client.type_name,
+          client_id: client.id,
+          client_code: client.code,
+          status: client.status,
+          type_client: client.typeClient.name,
           ...objectEntity,
         };
       });

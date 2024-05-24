@@ -48,7 +48,6 @@ export class ClientService {
 
       client.code = await GenerateCodeClient(entity.id, client.type_entity);
 
-      console.log("service",client)
       return this.repository?.create(client, entity);
     } catch (error: any) {
       throw new ClientApplicationError(error)

@@ -31,7 +31,7 @@ export class CompanyRepository {
       var data_company:any = await Company.create(company);
       return data_company
     } catch (error: any) {
-      throw new ClientApplicationError(error)
+      throw new ClientApplicationError(error.errors[0].message, 'INTERNAL_SERVER_ERROR')
     }
   }
 

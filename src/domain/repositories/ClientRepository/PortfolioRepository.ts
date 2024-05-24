@@ -1,3 +1,7 @@
+import { Company } from '@src/domain/entities/Company.entity';
+import { Person } from '@src/domain/entities/Person.entity';
+import { TypeChannel } from '@src/domain/entities/TypeChannel.entity';
+import { TypeClient } from '@src/domain/entities/TypeClient.entity';
 import { sequelize } from '@src/infraestructure/database/connection.database';
 import { Client } from 'src/domain/entities/Client.entity';
 
@@ -5,36 +9,15 @@ export class PortfolioRepository {
   constructor() {}
   async portfolioClients() {
     try {
-      return await sequelize.query(
-        `SELECT 
-          clients.id AS client_id, 
-          clients.code AS client_code, 
-          clients.status AS client_status, 
-          clients.person_id AS client_person, 
-          clients.company_id AS client_company, 
-          types_clients.name AS type_name,
-          types_channels.name AS channel_name,
-          persons.main_phone AS person_phone, 
-          persons.main_identification AS person_identification, 
-          CONCAT(persons.name, ' ', persons.lastname) AS person_names , 
-          CONCAT(persons.direction, '/', persons.department) AS person_direction, 
-          persons.email AS person_email, 
-          companies.main_identification AS company_identification,
-          companies.name_company AS company_name,
-          companies.main_phone AS company_phone,
-          companies.main_direction AS company_direction,
-          companies.main_email AS company_email
-        FROM clients
-        INNER JOIN types_clients ON clients.type_client_id = types_clients.id
-        INNER JOIN types_channels ON clients.channel_id = types_channels.id
-        LEFT JOIN persons ON clients.entity_id = persons.id
-        LEFT JOIN companies ON clients.entity_id = companies.id
-        WHERE clients.deleted_at IS NULL`,
-        {
-          model: Client,
-          mapToModel: true,
-        },
-      );
+      var data_client_porfolio: any = await Client.findAll({
+        include: [
+          {model: Person, required: false},
+          {model: Company, required: false},
+          {model: TypeClient, required: false},
+          {model: TypeChannel, required: false},
+        ]
+      })
+      return data_client_porfolio;
     } catch (error: any) {
       return error;
     }
