@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class ClientDto {
   @ApiProperty({
@@ -70,6 +70,13 @@ export class ClientDto {
   })
   @IsNumber()
   declare classification_id?: number;
+ 
+  @ApiPropertyOptional({
+    description: 'Id de la seccion comercial del cliente',
+    type: Number,
+  })
+  @IsNumber()
+  declare commercial_section_id?: number;
 
   @ApiPropertyOptional({
     description: 'Código del grupo al que pertenece el cliente',
@@ -84,6 +91,14 @@ export class ClientDto {
   })
   @IsObject()
   declare entity?: object;
+  
+  @ApiPropertyOptional({
+    description: 'Entidad de cliente.',
+    type: Array,
+  })
+  @IsArray()
+  @IsOptional()
+  declare manager_details?: Array<Object>;
 
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',

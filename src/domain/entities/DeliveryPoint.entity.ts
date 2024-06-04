@@ -36,6 +36,11 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
   declare direction: string;
 
   @Column({
+    type: DataType.STRING,
+  })
+  declare reference: string;
+
+  @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
   declare schedule: string[];

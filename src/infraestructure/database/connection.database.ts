@@ -42,6 +42,10 @@ import { Country } from '../../domain/entities/Country.entity';
 import { Department } from '../../domain/entities/Department.entity';
 import { Province } from '../../domain/entities/Province.entity';
 import { District } from '../../domain/entities/District.entity';
+import { CommercialSection } from '../../domain/entities/CommercialSection';
+import { MethodPayment } from '../../domain/entities/MethodPayment.entity';
+import { WayToPay } from '../../domain/entities/WayToPay.entity';
+import { IssuableDocument } from '../../domain/entities/IssuableDocument.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -96,6 +100,10 @@ export const ConnectionProvider = [
         Department,
         Province,
         District,
+        CommercialSection,
+        MethodPayment,
+        WayToPay,
+        IssuableDocument
       ]);
 
       await sequelize.sync({ alter: true });
