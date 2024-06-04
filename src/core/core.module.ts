@@ -230,7 +230,7 @@ export class CoreModule {
     };
     
     const IssuableDocumentApplicationProvider = {
-      provide: DISTRICT_APPLICATION,
+      provide: ISSUABLE_DOCUMENT_APPLICATION,
       useFactory() {
         return new IssuableDocumentApplicationService();
       },
