@@ -1,4 +1,6 @@
+import { PersonApplicationError } from '@src/core/shared/error/PersonApplicationError';
 import { GenerateRandomIdentificationPerson } from '@src/core/shared/functions/generate_identification_person.function';
+import { present } from '@src/infraestructure/library/my-lodash/present';
 import { NewPersonDto } from 'src/core/shared/dto/Person/person_dto';
 import { PersonRepository } from 'src/domain/repositories/PersonRepository/PersonRepository';
 
@@ -27,13 +29,16 @@ export class PersonService {
     try {
 
       person.main_identification = 
-        person.main_identification.length ? 
+        present(person.main_identification) ? 
           await GenerateRandomIdentificationPerson() : 
           person.main_identification;
 
-      return this.repository?.create(person);
+      var person_new: any = await this.repository?.create(person);
+
+      return person_new;
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new PersonApplicationError(error)
     }
   }
 

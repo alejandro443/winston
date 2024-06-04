@@ -37,7 +37,7 @@ export class Company extends Model<Company> {
   @Column({
     type: DataType.STRING,
   })
-  declare name_company: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,

@@ -88,11 +88,13 @@ export class ClientController {
     Log.info(`(POST) Create client`);
 
     const client = await this.application.createClient(request);
-    return {
-      status: 201,
-      message: `Client ${request.code} created OK`,
-      data: client,
-    };
+    if(client){
+      return {
+        status: 201,
+        message: `Client ${request.code} created OK`,
+        data: client,
+      };
+    }
   }
 
   @ApiBadRequestResponse({ description: 'Invalid client code' })

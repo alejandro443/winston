@@ -33,7 +33,7 @@ export class PortfolioService {
           objectEntity = {
             type_entity: 'company',
             channel: client.typeChannel.name,
-            name: client.company.name_company,
+            name: client.company.name,
             lastname: '',
             main_direction: client.company.main_direction,
             province: client.company.province,

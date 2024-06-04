@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { GenerateSwaggerDocs } from './infraestructure/shared/swagger/generate-swagger-docs';
 import { ValidationPipe } from '@nestjs/common';
+import { ApplicationCreatorFilter } from './interfaces/exception_filters/application.exception_filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +13,8 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  app.useGlobalFilters(new ApplicationCreatorFilter());
   GenerateSwaggerDocs(app);
 
   await app.listen(5555);

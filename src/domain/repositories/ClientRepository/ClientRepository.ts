@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { Client } from 'src/domain/entities/Client.entity';
 
@@ -22,13 +23,11 @@ export class ClientRepository {
 
   async create(client: any, object: any) {
     try {
-      const clientCreate: any = Client.create(client);
-      console.log("client repository",clientCreate)
+      const clientCreate: any = await Client.create(client);
       await clientCreate.$set(client.type_entity, object);
-      
       return clientCreate;
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

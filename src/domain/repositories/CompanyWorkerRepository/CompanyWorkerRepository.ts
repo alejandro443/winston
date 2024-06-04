@@ -1,3 +1,4 @@
+import { CompanyWorkerApplicationError } from '@src/core/shared/error/CompanyWorkerApplicationError';
 import { CompanyWorker } from 'src/domain/entities/CompanyWorker.entity';
 
 export class CompanyWorkerRepository {
@@ -19,17 +20,19 @@ export class CompanyWorkerRepository {
     }
   }
 
-  async create(CompanyWorker: any) {
+  async create(company_worker: any) {
     try {
-      return CompanyWorker.create(CompanyWorker);
+      var company_new: any = await CompanyWorker.create(company_worker);
+      return company_new;
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new CompanyWorkerApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
-  async update(id: any, CompanyWorker: any) {
+  async update(id: any, company_worker: any) {
     try {
-      return CompanyWorker.update(CompanyWorker, { where: { id: id } });
+      return CompanyWorker.update(company_worker, { where: { id: id } });
     } catch (error: any) {
       return error;
     }

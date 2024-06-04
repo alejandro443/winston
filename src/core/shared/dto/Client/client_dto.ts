@@ -86,19 +86,51 @@ export class ClientDto {
   declare group_id?: number;
 
   @ApiPropertyOptional({
-    description: 'Entidad de cliente.',
-    type: Object,
+    description: 'Id de metodo de pago.',
+    type: Number,
   })
-  @IsObject()
-  declare entity?: object;
+  @IsNumber()
+  @IsOptional()
+  declare method_payment_id?: number;
   
   @ApiPropertyOptional({
-    description: 'Entidad de cliente.',
+    description: 'Id de forma de pago.',
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  declare way_to_pay_id?: number;
+
+  @ApiPropertyOptional({
+    description: 'Array de ids de documentos.',
+    type: Array,
+  })
+  @IsArray()
+  @IsOptional()
+  declare issuable_documents_ids?: Array<number>;
+
+  @ApiPropertyOptional({
+    description: 'Array de encargados.',
     type: Array,
   })
   @IsArray()
   @IsOptional()
   declare manager_details?: Array<Object>;
+  
+  @ApiPropertyOptional({
+    description: 'Array de puntos de entrega.',
+    type: Array,
+  })
+  @IsArray()
+  @IsOptional()
+  declare delivery_data?: Array<Object>;
+
+  @ApiPropertyOptional({
+    description: 'Entidad de cliente.',
+    type: Object,
+  })
+  @IsObject()
+  declare entity?: object;
 
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',

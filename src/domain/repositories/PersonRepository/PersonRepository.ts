@@ -1,3 +1,4 @@
+import { PersonApplicationError } from '@src/core/shared/error/PersonApplicationError';
 import {
   NewPersonDto,
   UpdatePersonDto,
@@ -27,9 +28,11 @@ export class PersonRepository {
 
   async create(person: NewPersonDto | object) {
     try {
-      return Person.create(person);
+      var person_data: any = await Person.create(person);
+      return person_data;
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new PersonApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

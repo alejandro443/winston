@@ -1,3 +1,4 @@
+import { CompanyWorkerApplicationError } from '@src/core/shared/error/CompanyWorkerApplicationError';
 import { CompanyWorkerRepository } from 'src/domain/repositories/CompanyWorkerRepository/CompanyWorkerRepository';
 
 export class CompanyWorkerService {
@@ -23,9 +24,10 @@ export class CompanyWorkerService {
 
   async createCompanyWorker(company_worker: any) {
     try {
-      return this.repository?.create(company_worker);
+      var company_worker_new: any = await this.repository?.create(company_worker);
+      return company_worker_new;
     } catch (error: any) {
-      return error;
+      throw new CompanyWorkerApplicationError(error)
     }
   }
 

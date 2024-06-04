@@ -7,8 +7,11 @@ import {
   UpdatedAt,
   DeletedAt,
   HasMany,
+  ForeignKey,
+  BelongsTo,
 } from 'sequelize-typescript';
 import { ClientDeliveryPoint } from './ClientDeliveryPoint.entity';
+import { Person } from './Person.entity';
 
 @Table({ tableName: 'delivery_points' })
 export class DeliveryPoint extends Model<DeliveryPoint> {
@@ -38,6 +41,11 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
   @Column({
     type: DataType.STRING,
   })
+  declare location: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
   declare reference: string;
 
   @Column({
@@ -50,6 +58,16 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
     defaultValue: false,
   })
   declare notification: boolean;
+
+  @ForeignKey(() => Person)
+  @Column({
+    field: 'responsible_id',
+    allowNull: true,
+  })
+  declare responsible_id: number;
+
+  @BelongsTo(() => Person, 'responsible_id')
+  declare wayToPay: Person;
 
   @Column({
     type: DataType.BOOLEAN,

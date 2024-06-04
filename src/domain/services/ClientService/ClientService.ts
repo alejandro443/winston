@@ -36,6 +36,7 @@ export class ClientService {
   async createClient(client: NewClientDto) {
     try {
       var entity: any;
+    
       if(client.type_entity === TypeEntity.COMPANY){
         entity = await this.repositoryCompany.create(client.entity);
         client.entity_id = entity.id;
@@ -45,7 +46,6 @@ export class ClientService {
         entity = await this.repositoryPerson.create(client.entity);
         client.entity_id = entity.id;
       }
-
       client.code = await GenerateCodeClient(entity.id, client.type_entity);
 
       return this.repository?.create(client, entity);

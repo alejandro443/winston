@@ -31,7 +31,7 @@ export class CompanyDto {
     type: String,
   })
   @IsString()
-  declare name_company: string;
+  declare name: string;
 
   @ApiPropertyOptional({
     description: 'Numero de celular principal de la compañia.',
