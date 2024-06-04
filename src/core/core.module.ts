@@ -22,6 +22,7 @@ import {
   DEPARTMENT_APPLICATION,
   PROVINCE_APPLICATION,
   DISTRICT_APPLICATION,
+  ISSUABLE_DOCUMENT_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -45,6 +46,7 @@ import { CountryApplicationService } from './service/Country/CountryApplicationS
 import { DepartmentApplicationService } from './service/Department/DepartmentApplicationService';
 import { ProvinceApplicationService } from './service/Province/ProvinceApplicationService';
 import { DistrictApplicationService } from './service/District/DistrictApplicationService';
+import { IssuableDocumentApplicationService } from './service/IssuableDocument/IssuableDocumentApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -226,6 +228,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const IssuableDocumentApplicationProvider = {
+      provide: DISTRICT_APPLICATION,
+      useFactory() {
+        return new IssuableDocumentApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -254,6 +264,7 @@ export class CoreModule {
         DepartmentApplicationProvider,
         ProvinceApplicationProvider,
         DistrictApplicationProvider,
+        IssuableDocumentApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -278,6 +289,7 @@ export class CoreModule {
         DEPARTMENT_APPLICATION,
         PROVINCE_APPLICATION,
         DISTRICT_APPLICATION,
+        ISSUABLE_DOCUMENT_APPLICATION,
       ],
     };
   }

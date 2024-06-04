@@ -24,6 +24,7 @@ import { CountryController } from './controllers/country_controller';
 import { DepartmentController } from './controllers/department_controller';
 import { ProvinceController } from './controllers/province_controller';
 import { DistrictController } from './controllers/district_controller';
+import { IssuableDocumentController } from './controllers/issuable_document_controller';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { DistrictController } from './controllers/district_controller';
     DepartmentController,
     ProvinceController,
     DistrictController,
+    IssuableDocumentController,
   ],
 })
 export class InterfacesModule {}
