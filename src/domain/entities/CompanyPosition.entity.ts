@@ -35,19 +35,16 @@ export class CompanyPosition extends Model<CompanyPosition> {
   })
   declare description: string;
 
-  @Column({
-    type: DataType.ARRAY(DataType.STRING),
-  })
-  declare types: string[];
+  // @Column({
+  //   type: DataType.ARRAY(DataType.STRING),
+  // })
+  // declare types: string[];
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   declare status: boolean;
-
-  @HasMany(() => CompanyWorker, 'company_position_id')
-  declare companyWorker: CompanyWorker[];
 
   @CreatedAt
   declare created_at: Date;

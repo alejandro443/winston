@@ -23,6 +23,8 @@ import {
   PROVINCE_APPLICATION,
   DISTRICT_APPLICATION,
   ISSUABLE_DOCUMENT_APPLICATION,
+  TYPE_CHANNEL_APPLICATION,
+  COMPANY_POSITION_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -47,6 +49,8 @@ import { DepartmentApplicationService } from './service/Department/DepartmentApp
 import { ProvinceApplicationService } from './service/Province/ProvinceApplicationService';
 import { DistrictApplicationService } from './service/District/DistrictApplicationService';
 import { IssuableDocumentApplicationService } from './service/IssuableDocument/IssuableDocumentApplicationService';
+import { TypeChannelApplicationService } from './service/TypeChannel/TypeChannelApplicationService';
+import { CompanyPositionApplicationService } from './service/CompanyPosition/CompanyPositionApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -237,6 +241,22 @@ export class CoreModule {
       inject: [],
     };
 
+    const TypeChannelApplicationProvider = {
+      provide: TYPE_CHANNEL_APPLICATION,
+      useFactory() {
+        return new TypeChannelApplicationService();
+      },
+      inject: [],
+    };
+   
+    const CompanyPositionApplicationProvider = {
+      provide: COMPANY_POSITION_APPLICATION,
+      useFactory() {
+        return new CompanyPositionApplicationService();
+      },
+      inject: [],
+    };
+
     return {
       module: CoreModule,
       global: true,
@@ -264,7 +284,9 @@ export class CoreModule {
         DepartmentApplicationProvider,
         ProvinceApplicationProvider,
         DistrictApplicationProvider,
-        IssuableDocumentApplicationProvider
+        IssuableDocumentApplicationProvider,
+        TypeChannelApplicationProvider,
+        CompanyPositionApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -290,6 +312,8 @@ export class CoreModule {
         PROVINCE_APPLICATION,
         DISTRICT_APPLICATION,
         ISSUABLE_DOCUMENT_APPLICATION,
+        TYPE_CHANNEL_APPLICATION,
+        COMPANY_POSITION_APPLICATION,
       ],
     };
   }

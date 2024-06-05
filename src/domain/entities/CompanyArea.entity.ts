@@ -41,9 +41,6 @@ export class CompanyArea extends Model<CompanyArea> {
   })
   declare status: boolean;
 
-  @HasMany(() => CompanyWorker, 'company_area_id')
-  declare companyWorker: CompanyWorker[];
-
   @CreatedAt
   declare created_at: Date;
 
