@@ -25,6 +25,8 @@ import {
   ISSUABLE_DOCUMENT_APPLICATION,
   TYPE_CHANNEL_APPLICATION,
   COMPANY_POSITION_APPLICATION,
+  METHOD_PAYMENT_APPLICATION,
+  WAY_TO_PAY_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -51,6 +53,8 @@ import { DistrictApplicationService } from './service/District/DistrictApplicati
 import { IssuableDocumentApplicationService } from './service/IssuableDocument/IssuableDocumentApplicationService';
 import { TypeChannelApplicationService } from './service/TypeChannel/TypeChannelApplicationService';
 import { CompanyPositionApplicationService } from './service/CompanyPosition/CompanyPositionApplicationService';
+import { MethodPaymentApplicationService } from './service/MethodPayment/MethodPaymentApplicationService';
+import { WayToPayApplicationService } from './service/WayToPay/WayToPayApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -256,6 +260,22 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const MethodPaymentApplicationProvider = {
+      provide: METHOD_PAYMENT_APPLICATION,
+      useFactory() {
+        return new MethodPaymentApplicationService();
+      },
+      inject: [],
+    };
+    
+    const WayToPayApplicationProvider = {
+      provide: WAY_TO_PAY_APPLICATION,
+      useFactory() {
+        return new WayToPayApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -286,7 +306,9 @@ export class CoreModule {
         DistrictApplicationProvider,
         IssuableDocumentApplicationProvider,
         TypeChannelApplicationProvider,
-        CompanyPositionApplicationProvider
+        CompanyPositionApplicationProvider,
+        MethodPaymentApplicationProvider,
+        WayToPayApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -314,6 +336,8 @@ export class CoreModule {
         ISSUABLE_DOCUMENT_APPLICATION,
         TYPE_CHANNEL_APPLICATION,
         COMPANY_POSITION_APPLICATION,
+        METHOD_PAYMENT_APPLICATION,
+        WAY_TO_PAY_APPLICATION
       ],
     };
   }
