@@ -27,6 +27,7 @@ import {
   COMPANY_POSITION_APPLICATION,
   METHOD_PAYMENT_APPLICATION,
   WAY_TO_PAY_APPLICATION,
+  SUPPLY_TYPE_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -55,6 +56,7 @@ import { TypeChannelApplicationService } from './service/TypeChannel/TypeChannel
 import { CompanyPositionApplicationService } from './service/CompanyPosition/CompanyPositionApplicationService';
 import { MethodPaymentApplicationService } from './service/MethodPayment/MethodPaymentApplicationService';
 import { WayToPayApplicationService } from './service/WayToPay/WayToPayApplicationService';
+import { SupplyTypeApplicationService } from './service/SupplyType/SupplyTypeApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -276,6 +278,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const SupplyTypeApplicationProvider = {
+      provide: SUPPLY_TYPE_APPLICATION,
+      useFactory() {
+        return new SupplyTypeApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -308,7 +318,8 @@ export class CoreModule {
         TypeChannelApplicationProvider,
         CompanyPositionApplicationProvider,
         MethodPaymentApplicationProvider,
-        WayToPayApplicationProvider
+        WayToPayApplicationProvider,
+        SupplyTypeApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -337,7 +348,8 @@ export class CoreModule {
         TYPE_CHANNEL_APPLICATION,
         COMPANY_POSITION_APPLICATION,
         METHOD_PAYMENT_APPLICATION,
-        WAY_TO_PAY_APPLICATION
+        WAY_TO_PAY_APPLICATION,
+        SUPPLY_TYPE_APPLICATION
       ],
     };
   }

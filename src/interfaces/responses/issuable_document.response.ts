@@ -10,7 +10,7 @@ export class IssuableDocumentResponse extends AppResponse {
   data?: object;
 }
 
-export class TypesWorkersResponse extends AppResponse {
+export class IssuableDocumentsResponse extends AppResponse {
   @ApiProperty({
     type: [IssuableDocumentDto],
     nullable: true,

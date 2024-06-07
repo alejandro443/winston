@@ -10,7 +10,7 @@ export class WayToPayResponse extends AppResponse {
   data?: object;
 }
 
-export class TypesChannelsResponse extends AppResponse {
+export class WayToPaysResponse extends AppResponse {
   @ApiProperty({
     type: [WayToPayDto],
     nullable: true,

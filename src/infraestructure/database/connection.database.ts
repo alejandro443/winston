@@ -46,6 +46,7 @@ import { CommercialSection } from '../../domain/entities/CommercialSection';
 import { MethodPayment } from '../../domain/entities/MethodPayment.entity';
 import { WayToPay } from '../../domain/entities/WayToPay.entity';
 import { IssuableDocument } from '../../domain/entities/IssuableDocument.entity';
+import { SupplyType } from '../../domain/entities/SupplyType.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -103,7 +104,8 @@ export const ConnectionProvider = [
         CommercialSection,
         MethodPayment,
         WayToPay,
-        IssuableDocument
+        IssuableDocument,
+        SupplyType
       ]);
 
       await sequelize.sync({ alter: true });
