@@ -28,7 +28,8 @@ import {
   METHOD_PAYMENT_APPLICATION,
   WAY_TO_PAY_APPLICATION,
   SUPPLY_TYPE_APPLICATION,
-  UNIT_MEASUREMENT_APPLICATION
+  UNIT_MEASUREMENT_APPLICATION,
+  SUPPLY_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -59,6 +60,7 @@ import { MethodPaymentApplicationService } from './service/MethodPayment/MethodP
 import { WayToPayApplicationService } from './service/WayToPay/WayToPayApplicationService';
 import { SupplyTypeApplicationService } from './service/SupplyType/SupplyTypeApplicationService';
 import { UnitMeasurementApplicationService } from './service/UnitMeasurement/UnitMeasurementApplicationService';
+import { SupplyApplicationService } from './service/Supply/SupplyTypeApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -297,6 +299,14 @@ export class CoreModule {
       inject: [],
     };
 
+    const SupplyApplicationProvider = {
+      provide: SUPPLY_APPLICATION,
+      useFactory() {
+        return new SupplyApplicationService();
+      },
+      inject: [],
+    };
+
     return {
       module: CoreModule,
       global: true,
@@ -330,7 +340,8 @@ export class CoreModule {
         MethodPaymentApplicationProvider,
         WayToPayApplicationProvider,
         SupplyTypeApplicationProvider,
-        UnitMeasurementApplicationProvider
+        UnitMeasurementApplicationProvider,
+        SupplyApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -361,7 +372,8 @@ export class CoreModule {
         METHOD_PAYMENT_APPLICATION,
         WAY_TO_PAY_APPLICATION,
         SUPPLY_TYPE_APPLICATION,
-        UNIT_MEASUREMENT_APPLICATION
+        UNIT_MEASUREMENT_APPLICATION,
+        SUPPLY_APPLICATION
       ],
     };
   }

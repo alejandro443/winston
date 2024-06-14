@@ -48,6 +48,7 @@ import { WayToPay } from '../../domain/entities/WayToPay.entity';
 import { IssuableDocument } from '../../domain/entities/IssuableDocument.entity';
 import { SupplyType } from '../../domain/entities/SupplyType.entity';
 import { UnitMeasurement } from '../../domain/entities/UnitMeasurement.entity';
+import { Supply } from '../../domain/entities/Supply.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -107,7 +108,8 @@ export const ConnectionProvider = [
         WayToPay,
         IssuableDocument,
         SupplyType,
-        UnitMeasurement
+        UnitMeasurement,
+        Supply
       ]);
 
       await sequelize.sync({ alter: true });
