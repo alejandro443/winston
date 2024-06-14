@@ -11,6 +11,7 @@ import {
 } from 'sequelize-typescript';
 import { ProductCategory } from './ProductCategory.entity';
 import { ProductBrand } from './ProductBrand.entity';
+import { UnitMeasurement } from './UnitMeasurement.entity';
 
 @Table({ tableName: 'products' })
 export class Product extends Model<Product> {
@@ -20,6 +21,12 @@ export class Product extends Model<Product> {
     autoIncrement: true,
   })
   declare id: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  declare code: string;
 
   @Column({
     type: DataType.STRING,
@@ -69,6 +76,23 @@ export class Product extends Model<Product> {
   })
   declare status: boolean;
 
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  declare to_sell: boolean;
+  
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  declare to_buy: boolean;
+
+  @Column({
+    type: DataType.INTEGER
+  })
+  declare alert_days: number;
+
   @ForeignKey(() => ProductBrand)
   @Column({
     type: DataType.INTEGER,
@@ -86,6 +110,16 @@ export class Product extends Model<Product> {
 
   @BelongsTo(() => ProductCategory, 'product_category_id')
   declare productCategory: ProductCategory;
+
+  @ForeignKey(() => UnitMeasurement)
+  @Column({
+    field: 'unit_measurement_id',
+    allowNull: true,
+  })
+  declare unit_measurement_id: number;
+
+  @BelongsTo(() => UnitMeasurement, 'unit_measurement_id')
+  declare unitMeasurement: UnitMeasurement;
 
   @CreatedAt
   declare created_at: Date;
