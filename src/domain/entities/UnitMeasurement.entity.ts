@@ -55,9 +55,6 @@ export class UnitMeasurement extends Model<UnitMeasurement> {
   })
   declare status: boolean;
 
-  @HasOne(() => Worker)
-  declare worker: Worker;
-
   @CreatedAt
   declare created_at: Date;
 
