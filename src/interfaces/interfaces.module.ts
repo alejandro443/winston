@@ -25,6 +25,13 @@ import { DepartmentController } from './controllers/department_controller';
 import { ProvinceController } from './controllers/province_controller';
 import { DistrictController } from './controllers/district_controller';
 import { IssuableDocumentController } from './controllers/issuable_document_controller';
+import { TypeChannelController } from './controllers/type_channel_controller';
+import { CompanyPositionController } from './controllers/company_position_controller';
+import { MethodPaymentController } from './controllers/method_payment_controller';
+import { WayToPayController } from './controllers/way_to_pay_controller';
+import { SupplyTypeController } from './controllers/supply_type_controller';
+import { UnitMeasurementController } from './controllers/unit_measurement_controller';
+import { SupplyController } from './controllers/supply_controller';
 
 @Module({
   imports: [
@@ -59,6 +66,13 @@ import { IssuableDocumentController } from './controllers/issuable_document_cont
     ProvinceController,
     DistrictController,
     IssuableDocumentController,
+    TypeChannelController,
+    CompanyPositionController,
+    MethodPaymentController,
+    WayToPayController,
+    SupplyTypeController,
+    UnitMeasurementController,
+    SupplyController
   ],
 })
 export class InterfacesModule {}
