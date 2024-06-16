@@ -32,6 +32,7 @@ import { WayToPayController } from './controllers/way_to_pay_controller';
 import { SupplyTypeController } from './controllers/supply_type_controller';
 import { UnitMeasurementController } from './controllers/unit_measurement_controller';
 import { SupplyController } from './controllers/supply_controller';
+import { SkuListController } from './controllers/sku_list_controller';
 
 @Module({
   imports: [
@@ -72,7 +73,8 @@ import { SupplyController } from './controllers/supply_controller';
     WayToPayController,
     SupplyTypeController,
     UnitMeasurementController,
-    SupplyController
+    SupplyController,
+    SkuListController
   ],
 })
 export class InterfacesModule {}

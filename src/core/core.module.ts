@@ -29,7 +29,8 @@ import {
   WAY_TO_PAY_APPLICATION,
   SUPPLY_TYPE_APPLICATION,
   UNIT_MEASUREMENT_APPLICATION,
-  SUPPLY_APPLICATION
+  SUPPLY_APPLICATION,
+  SKU_LIST_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -60,7 +61,8 @@ import { MethodPaymentApplicationService } from './service/MethodPayment/MethodP
 import { WayToPayApplicationService } from './service/WayToPay/WayToPayApplicationService';
 import { SupplyTypeApplicationService } from './service/SupplyType/SupplyTypeApplicationService';
 import { UnitMeasurementApplicationService } from './service/UnitMeasurement/UnitMeasurementApplicationService';
-import { SupplyApplicationService } from './service/Supply/SupplyTypeApplicationService';
+import { SupplyApplicationService } from './service/Supply/SupplyApplicationService';
+import { SkuListApplicationService } from './service/SkuList/SkuListApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -306,6 +308,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const SkuListApplicationProvider = {
+      provide: SKU_LIST_APPLICATION,
+      useFactory() {
+        return new SkuListApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -341,7 +351,8 @@ export class CoreModule {
         WayToPayApplicationProvider,
         SupplyTypeApplicationProvider,
         UnitMeasurementApplicationProvider,
-        SupplyApplicationProvider
+        SupplyApplicationProvider,
+        SkuListApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -373,7 +384,8 @@ export class CoreModule {
         WAY_TO_PAY_APPLICATION,
         SUPPLY_TYPE_APPLICATION,
         UNIT_MEASUREMENT_APPLICATION,
-        SUPPLY_APPLICATION
+        SUPPLY_APPLICATION,
+        SKU_LIST_APPLICATION
       ],
     };
   }

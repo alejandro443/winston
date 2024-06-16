@@ -49,6 +49,7 @@ import { IssuableDocument } from '../../domain/entities/IssuableDocument.entity'
 import { SupplyType } from '../../domain/entities/SupplyType.entity';
 import { UnitMeasurement } from '../../domain/entities/UnitMeasurement.entity';
 import { Supply } from '../../domain/entities/Supply.entity';
+import { SkuList } from '../../domain/entities/SkuList.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -109,7 +110,8 @@ export const ConnectionProvider = [
         IssuableDocument,
         SupplyType,
         UnitMeasurement,
-        Supply
+        Supply,
+        SkuList
       ]);
 
       await sequelize.sync({ alter: true });
