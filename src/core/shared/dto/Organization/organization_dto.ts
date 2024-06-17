@@ -78,7 +78,7 @@ export class OrganizationDto {
     type: String,
   })
   @IsString()
-  email?: string;
+  main_email?: string;
 
   @ApiProperty({
     description: 'Teléfono uno de la organización',

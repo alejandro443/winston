@@ -52,7 +52,7 @@ export class PersonDto {
   })
   @IsEmail()
   @IsOptional()
-  email?: string;
+  main_email?: string;
 
   @ApiProperty({
     description: 'Teléfono principal de la persona',

@@ -50,7 +50,7 @@ export class Person extends Model<Person> {
     unique: true,
     validate: { isEmail: true },
   })
-  declare email: string;
+  declare main_email: string;
 
   @Column({
     type: DataType.STRING,

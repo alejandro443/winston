@@ -60,7 +60,7 @@ export class Organization extends Model<Organization> {
   @Column({
     type: DataType.STRING,
   })
-  declare email: string;
+  declare main_email: string;
 
   @Column({
     type: DataType.STRING,
