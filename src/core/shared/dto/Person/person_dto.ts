@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
 import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
 import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, isNotIn } from 'class-validator';

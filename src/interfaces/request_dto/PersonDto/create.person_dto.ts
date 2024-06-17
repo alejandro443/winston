@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { PersonDto } from 'src/core/shared/dto/Person/person_dto';
 
 export class CreatePersonRequestDto extends

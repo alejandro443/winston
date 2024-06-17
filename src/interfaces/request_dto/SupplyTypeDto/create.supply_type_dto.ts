@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { SupplyTypeDto } from '@src/core/shared/dto/SupplyType/supply_type_dto';
 
 export class CreateSupplyTypeRequestDto extends

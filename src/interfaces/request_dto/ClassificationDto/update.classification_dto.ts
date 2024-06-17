@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { ClassificationDto } from '@src/core/shared/dto/Classification/classification_dto';
 
 export class UpdateClassificationRequestDto extends

@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { OrganizationDto } from '@src/core/shared/dto/Organization/organization_dto';
 
 export class UpdateOrganizationRequestDto extends

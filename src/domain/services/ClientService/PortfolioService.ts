@@ -23,7 +23,7 @@ export class PortfolioService {
             province: client.person.province,
             district: client.person.district,
             department: client.person.department,
-            main_email: client.person.email,
+            main_email: client.person.main_email,
             main_identification: client.person.main_identification,
             main_phone: client.person.main_phone,
           };

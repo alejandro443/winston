@@ -1,4 +1,4 @@
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 import { WorkerDto } from '@src/core/shared/dto/Worker/worker_dto';
 
 export class UpdateWorkerRequestDto extends

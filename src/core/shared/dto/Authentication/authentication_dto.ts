@@ -1,6 +1,6 @@
 import { IsObject, IsString } from 'class-validator';
 import { UserDto } from '../User/user_dto';
-import { OmitType } from '@nestjs/mapped-types';
+import { OmitType } from '@nestjs/swagger';
 
 export class LoginDto extends OmitType(UserDto, ['id', 'code', 'consultant', 'status'] as const) {}
 
