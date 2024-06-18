@@ -32,9 +32,9 @@ export class WayToPayApplicationService implements WayToPayApplication {
     }
   }
 
-  async getOneWayToPay(way_to_pay_code: string): Promise<any> {
+  async getOneWayToPay(way_to_pay_id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneWayToPay(way_to_pay_code);
+      return this.getOneUseCase?.getOneWayToPay(way_to_pay_id);
     } catch (error: any) {
       return error;
     }
@@ -49,19 +49,19 @@ export class WayToPayApplicationService implements WayToPayApplication {
   }
 
   async updateWayToPay(
-    code: any,
+    id: any,
     way_to_pay: UpdateWayToPayDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateWayToPay(code, way_to_pay);
+      return this.updateUseCase?.updateWayToPay(id, way_to_pay);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteWayToPay(code: string) {
+  async deleteWayToPay(id: number) {
     try {
-      return this.deleteUseCase?.deleteWayToPay(code);
+      return this.deleteUseCase?.deleteWayToPay(id);
     } catch (error: any) {
       return error;
     }

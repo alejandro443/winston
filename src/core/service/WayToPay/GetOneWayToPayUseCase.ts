@@ -5,10 +5,10 @@ export class GetOneWayToPayUseCase {
     this.wayToPayService = new WayToPayService();
   }
 
-  async getOneWayToPay(code: string) {
+  async getOneWayToPay(id: number) {
     try {
       const response: any =
-        await this.wayToPayService?.getOneWayToPay(code);
+        await this.wayToPayService?.getOneWayToPay(id);
       return {
         id: response.id,
         code: response.code,

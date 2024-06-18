@@ -36,7 +36,7 @@ export class TypeClientController {
     private application: TypeClientApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid type_client code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeClientResponse,
@@ -54,27 +54,27 @@ export class TypeClientController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_client code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeClientResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneTypeClient(
     @Param() request: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
-    Log.info(`(Get) Get type_client code: ${request.code}`);
+    Log.info(`(Get) Get type_client id: ${request.id}`);
 
-    const type_client = await this.application.getOneTypeClient(request.code);
+    const type_client = await this.application.getOneTypeClient(request.id);
     return {
       status: 201,
-      message: `TypeClient ${request.code} OK`,
+      message: `TypeClient ${request.id} OK`,
       data: type_client,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_client code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: TypeClientResponse,
@@ -94,13 +94,13 @@ export class TypeClientController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_client code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: TypeClientResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateTypeClient(
     @Param() params: GetTypeClientRequestDto,
     @Body() request: CreateTypeClientRequestDto,
@@ -108,7 +108,7 @@ export class TypeClientController {
     Log.info(`(PUT) Put type_client`);
 
     const type_client = await this.application.updateTypeClient(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -118,22 +118,22 @@ export class TypeClientController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_client code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: TypeClientResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteTypeClient(
     @Param() params: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
-    Log.info(`(Delete) Delete type_client ${params.code}`);
+    Log.info(`(Delete) Delete type_client ${params.id}`);
 
-    const type_client = await this.application.deleteTypeClient(params.code);
+    const type_client = await this.application.deleteTypeClient(params.id);
     return {
       status: 200,
-      message: `TypeClient ${params.code} deleted.`,
+      message: `TypeClient ${params.id} deleted.`,
       data: type_client,
     };
   }

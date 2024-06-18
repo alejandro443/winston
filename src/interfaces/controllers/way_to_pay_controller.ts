@@ -36,7 +36,7 @@ export class WayToPayController {
     private application: WayToPayApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid way_to_pay code' })
+  @ApiBadRequestResponse({ description: 'Invalid way_to_pay id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: WayToPayResponse,
@@ -54,29 +54,29 @@ export class WayToPayController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid way_to_pay code' })
+  @ApiBadRequestResponse({ description: 'Invalid way_to_pay id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: WayToPayResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneWayToPay(
     @Param() request: GetWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
-    Log.info(`(Get) Get way_to_pay code: ${request.code}`);
+    Log.info(`(Get) Get way_to_pay id: ${request.id}`);
 
     const way_to_pay = await this.application.getOneWayToPay(
-      request.code,
+      request.id,
     );
     return {
       status: 201,
-      message: `WayToPay ${request.code} OK`,
+      message: `WayToPay ${request.id} OK`,
       data: way_to_pay,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid way_to_pay code' })
+  @ApiBadRequestResponse({ description: 'Invalid way_to_pay id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: WayToPayResponse,
@@ -96,13 +96,13 @@ export class WayToPayController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid way_to_pay code' })
+  @ApiBadRequestResponse({ description: 'Invalid way_to_pay id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: WayToPayResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateWayToPay(
     @Param() params: GetWayToPayRequestDto,
     @Body() request: CreateWayToPayRequestDto,
@@ -110,7 +110,7 @@ export class WayToPayController {
     Log.info(`(PUT) Put way_to_pay`);
 
     const way_to_pay = await this.application.updateWayToPay(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -120,24 +120,24 @@ export class WayToPayController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid way_to_pay code' })
+  @ApiBadRequestResponse({ description: 'Invalid way_to_pay id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: WayToPayResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteWayToPay(
     @Param() params: GetWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
-    Log.info(`(Delete) Delete way_to_pay ${params.code}`);
+    Log.info(`(Delete) Delete way_to_pay ${params.id}`);
 
     const way_to_pay = await this.application.deleteWayToPay(
-      params.code,
+      params.id,
     );
     return {
       status: 200,
-      message: `WayToPay ${params.code} deleted.`,
+      message: `WayToPay ${params.id} deleted.`,
       data: way_to_pay,
     };
   }

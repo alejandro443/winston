@@ -39,7 +39,7 @@ export class ProductController {
     private application: ProductApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  @ApiBadRequestResponse({ description: 'Invalid product category id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductResponse,
@@ -57,17 +57,17 @@ export class ProductController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  @ApiBadRequestResponse({ description: 'Invalid product category id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneProduct(
     @Param() request: GetProductRequestDto,
   ): Promise<ProductResponse> {
-    Log.info(`(Get) Get product category code: ${request.id}`);
+    Log.info(`(Get) Get product category id: ${request.id}`);
 
     const product = await this.application.getOneProduct(request.id);
     return {
@@ -77,7 +77,7 @@ export class ProductController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  @ApiBadRequestResponse({ description: 'Invalid product category id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: ProductResponse,
@@ -92,18 +92,18 @@ export class ProductController {
     const product = await this.application.createProduct(request);
     return {
       status: 201,
-      message: `Product  ${request.code} created OK`,
+      message: `Product  ${request.id} created OK`,
       data: product,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product code' })
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: ProductResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateProduct(
     @Param() params: GetProductRequestDto,
     @Body() request: CreateProductRequestDto,
@@ -118,13 +118,13 @@ export class ProductController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  @ApiBadRequestResponse({ description: 'Invalid product category id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: ProductResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteProduct(
     @Param() params: GetProductRequestDto,
   ): Promise<ProductResponse> {

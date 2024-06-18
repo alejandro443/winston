@@ -7,11 +7,11 @@ import {
 
 export interface WayToPayApplication {
   getAllWayToPay(): Promise<Array<AllWayToPayDto>>;
-  getOneWayToPay(code: any): Promise<OneWayToPayDto>;
+  getOneWayToPay(id: number): Promise<OneWayToPayDto>;
   createWayToPay(way_to_pay: NewWayToPayDto): Promise<OneWayToPayDto>;
   updateWayToPay(
-    code: any,
+    id: number,
     way_to_pay: UpdateWayToPayDto,
   ): Promise<OneWayToPayDto>;
-  deleteWayToPay(code: any): any;
+  deleteWayToPay(id: number): any;
 }

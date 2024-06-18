@@ -36,7 +36,7 @@ export class TypeDocumentController {
     private application: TypeDocumentApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid type_document code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_document id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeDocumentResponse,
@@ -54,29 +54,29 @@ export class TypeDocumentController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_document code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_document id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeDocumentResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneTypeDocument(
     @Param() request: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
-    Log.info(`(Get) Get type_document code: ${request.code}`);
+    Log.info(`(Get) Get type_document id: ${request.id}`);
 
     const type_document = await this.application.getOneTypeDocument(
-      request.code,
+      request.id,
     );
     return {
       status: 201,
-      message: `TypeDocument ${request.code} OK`,
+      message: `TypeDocument ${request.id} OK`,
       data: type_document,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_document code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_document id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: TypeDocumentResponse,
@@ -96,13 +96,13 @@ export class TypeDocumentController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_document code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_document id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: TypeDocumentResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateTypeDocument(
     @Param() params: GetTypeDocumentRequestDto,
     @Body() request: CreateTypeDocumentRequestDto,
@@ -110,7 +110,7 @@ export class TypeDocumentController {
     Log.info(`(PUT) Put type_document`);
 
     const type_document = await this.application.updateTypeDocument(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -120,24 +120,24 @@ export class TypeDocumentController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_document code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_document id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: TypeDocumentResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteTypeDocument(
     @Param() params: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
-    Log.info(`(Delete) Delete type_document ${params.code}`);
+    Log.info(`(Delete) Delete type_document ${params.id}`);
 
     const type_document = await this.application.deleteTypeDocument(
-      params.code,
+      params.id,
     );
     return {
       status: 200,
-      message: `TypeDocument ${params.code} deleted.`,
+      message: `TypeDocument ${params.id} deleted.`,
       data: type_document,
     };
   }

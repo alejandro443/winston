@@ -36,7 +36,7 @@ export class TypeWorkerController {
     private application: TypeWorkerApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_worker id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeWorkerResponse,
@@ -54,27 +54,27 @@ export class TypeWorkerController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_worker id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: TypeWorkerResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneTypeWorker(
     @Param() request: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
-    Log.info(`(Get) Get type_worker code: ${request.code}`);
+    Log.info(`(Get) Get type_worker id: ${request.id}`);
 
-    const type_worker = await this.application.getOneTypeWorker(request.code);
+    const type_worker = await this.application.getOneTypeWorker(request.id);
     return {
       status: 201,
-      message: `TypeWorker ${request.code} OK`,
+      message: `TypeWorker ${request.id} OK`,
       data: type_worker,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_worker id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: TypeWorkerResponse,
@@ -94,13 +94,13 @@ export class TypeWorkerController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_worker id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: TypeWorkerResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateTypeWorker(
     @Param() params: GetTypeWorkerRequestDto,
     @Body() request: CreateTypeWorkerRequestDto,
@@ -108,7 +108,7 @@ export class TypeWorkerController {
     Log.info(`(PUT) Put type_worker`);
 
     const type_worker = await this.application.updateTypeWorker(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -118,22 +118,22 @@ export class TypeWorkerController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_worker code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_worker id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: TypeWorkerResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteTypeWorker(
     @Param() params: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
-    Log.info(`(Delete) Delete type_worker ${params.code}`);
+    Log.info(`(Delete) Delete type_worker ${params.id}`);
 
-    const type_worker = await this.application.deleteTypeWorker(params.code);
+    const type_worker = await this.application.deleteTypeWorker(params.id);
     return {
       status: 200,
-      message: `TypeWorker ${params.code} deleted.`,
+      message: `TypeWorker ${params.id} deleted.`,
       data: type_worker,
     };
   }

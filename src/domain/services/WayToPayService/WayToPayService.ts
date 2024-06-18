@@ -6,9 +6,9 @@ export class WayToPayService {
     this.repository = new WayToPayRepository();
   }
 
-  async getOneWayToPay(code: string) {
+  async getOneWayToPay(id: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id);
     } catch (error: any) {
       return error;
     }
@@ -30,17 +30,17 @@ export class WayToPayService {
     }
   }
 
-  async updateWayToPay(code: any, way_to_pay: NewWayToPayDto) {
+  async updateWayToPay(id: any, way_to_pay: NewWayToPayDto) {
     try {
-      return this.repository?.update(code, way_to_pay);
+      return this.repository?.update(id, way_to_pay);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteWayToPay(code: string) {
+  async deleteWayToPay(id: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id);
     } catch (error: any) {
       return error;
     }

@@ -36,7 +36,7 @@ export class UserController {
     private application: UserApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid user code' })
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
   @ApiCreatedResponse({
     description: 'The records has been successfully obtain.',
     type: UsersResponse,
@@ -54,25 +54,25 @@ export class UserController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid user code' })
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: UserResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneUser(@Param() request: GetUserRequestDto): Promise<UserResponse> {
-    Log.info(`(Get) Get user code: ${request.code}`);
+    Log.info(`(Get) Get user id: ${request.id}`);
 
-    const user = await this.application.getOneUser(request.code);
+    const user = await this.application.getOneUser(request.id);
     return {
       status: 201,
-      message: `User ${request.code} OK`,
+      message: `User ${request.id} OK`,
       data: user,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid user code' })
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: UserResponse,
@@ -92,20 +92,20 @@ export class UserController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid user code' })
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: UserResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateUser(
     @Param() params: GetUserRequestDto,
     @Body() request: CreateUserRequestDto,
   ): Promise<UserResponse> {
     Log.info(`(PUT) Put user`);
 
-    const user = await this.application.updateUser(params.code, request);
+    const user = await this.application.updateUser(params.id, request);
     return {
       status: 200,
       message: `User updated.`,
@@ -113,20 +113,20 @@ export class UserController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid user code' })
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: UserResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteUser(@Param() params: GetUserRequestDto): Promise<UserResponse> {
-    Log.info(`(Delete) Delete user ${params.code}`);
+    Log.info(`(Delete) Delete user ${params.id}`);
 
-    const user = await this.application.deleteUser(params.code);
+    const user = await this.application.deleteUser(params.id);
     return {
       status: 200,
-      message: `User ${params.code} deleted.`,
+      message: `User ${params.id} deleted.`,
       data: user,
     };
   }

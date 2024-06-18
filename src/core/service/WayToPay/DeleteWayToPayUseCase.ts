@@ -5,10 +5,10 @@ export class DeleteWayToPayUseCase {
     this.wayToPayService = new WayToPayService();
   }
 
-  async deleteWayToPay(code: string) {
+  async deleteWayToPay(id: number) {
     try {
       const response: any =
-        await this.wayToPayService?.deleteWayToPay(code);
+        await this.wayToPayService?.deleteWayToPay(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

@@ -37,7 +37,7 @@ export class ClientController {
     private application: ClientApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid client code' })
+  @ApiBadRequestResponse({ description: 'Invalid client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ClientResponse,
@@ -55,27 +55,27 @@ export class ClientController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid client code' })
+  @ApiBadRequestResponse({ description: 'Invalid client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ClientResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneClient(
     @Param() request: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Get) Get client code: ${request.code}`);
+    Log.info(`(Get) Get client id: ${request.id}`);
 
-    const client = await this.application.getOneClient(request.code);
+    const client = await this.application.getOneClient(request.id);
     return {
       status: 201,
-      message: `Client ${request.code} OK`,
+      message: `Client ${request.id} OK`,
       data: client,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid client code' })
+  @ApiBadRequestResponse({ description: 'Invalid client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: ClientResponse,
@@ -91,26 +91,26 @@ export class ClientController {
     if(client){
       return {
         status: 201,
-        message: `Client ${request.code} created OK`,
+        message: `Client ${request.id} created OK`,
         data: client,
       };
     }
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid client code' })
+  @ApiBadRequestResponse({ description: 'Invalid client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: ClientResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateClient(
     @Param() params: GetClientRequestDto,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
 
-    const client = await this.application.updateClient(params.code, request);
+    const client = await this.application.updateClient(params.id, request);
     return {
       status: 200,
       message: `Client updated.`,
@@ -118,22 +118,22 @@ export class ClientController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid client code' })
+  @ApiBadRequestResponse({ description: 'Invalid client id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: ClientResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteClient(
     @Param() params: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Delete) Delete client ${params.code}`);
+    Log.info(`(Delete) Delete client ${params.id}`);
 
-    const client = await this.application.deleteClient(params.code);
+    const client = await this.application.deleteClient(params.id);
     return {
       status: 200,
-      message: `Client ${params.code} deleted.`,
+      message: `Client ${params.id} deleted.`,
       data: client,
     };
   }
