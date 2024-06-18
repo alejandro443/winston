@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class TypeClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeClient(
-    @Param() request: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) request: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
     Log.info(`(Get) Get type_client id: ${request.id}`);
 
@@ -102,7 +103,7 @@ export class TypeClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeClient(
-    @Param() params: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeClientRequestDto,
     @Body() request: CreateTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
     Log.info(`(PUT) Put type_client`);
@@ -126,7 +127,7 @@ export class TypeClientController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeClient(
-    @Param() params: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
     Log.info(`(Delete) Delete type_client ${params.id}`);
 

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -73,7 +74,7 @@ export class CountryController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneCountry(
-    @Param() request: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) request: GetCountryRequestDto,
   ): Promise<CountryResponse> {
     Log.info(`(GET) Get country id: ${request.id}`);
     const country = await this.application.getOneCountry(request.id);
@@ -119,7 +120,7 @@ export class CountryController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateCountry(
-    @Param() params: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) params: GetCountryRequestDto,
     @Body() request: UpdateCountryRequestDto,
   ): Promise<CountryResponse> {
     Log.info(`(PUT) Put country`);
@@ -139,7 +140,7 @@ export class CountryController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteCountry(
-    @Param() params: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) params: GetCountryRequestDto,
   ): Promise<CountryResponse> {
     Log.info(`(DELETE) Delete country ${params.id}`);
     const country = await this.application.deleteCountry(params.id);

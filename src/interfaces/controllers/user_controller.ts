@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -61,7 +62,7 @@ export class UserController {
   })
   @HttpCode(201)
   @Get('/one/:id')
-  async getOneUser(@Param() request: GetUserRequestDto): Promise<UserResponse> {
+  async getOneUser(@Param('id', ParseIntPipe) request: GetUserRequestDto): Promise<UserResponse> {
     Log.info(`(Get) Get user id: ${request.id}`);
 
     const user = await this.application.getOneUser(request.id);
@@ -100,7 +101,7 @@ export class UserController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateUser(
-    @Param() params: GetUserRequestDto,
+    @Param('id', ParseIntPipe) params: GetUserRequestDto,
     @Body() request: CreateUserRequestDto,
   ): Promise<UserResponse> {
     Log.info(`(PUT) Put user`);
@@ -120,7 +121,7 @@ export class UserController {
   })
   @HttpCode(200)
   @Delete('/delete/:id')
-  async deleteUser(@Param() params: GetUserRequestDto): Promise<UserResponse> {
+  async deleteUser(@Param('id', ParseIntPipe) params: GetUserRequestDto): Promise<UserResponse> {
     Log.info(`(Delete) Delete user ${params.id}`);
 
     const user = await this.application.deleteUser(params.id);

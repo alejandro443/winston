@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -63,7 +64,7 @@ export class ClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneClient(
-    @Param() request: GetClientRequestDto,
+    @Param('id', ParseIntPipe) request: GetClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(Get) Get client id: ${request.id}`);
 
@@ -105,7 +106,7 @@ export class ClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateClient(
-    @Param() params: GetClientRequestDto,
+    @Param('id', ParseIntPipe) params: GetClientRequestDto,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
@@ -126,7 +127,7 @@ export class ClientController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteClient(
-    @Param() params: GetClientRequestDto,
+    @Param('id', ParseIntPipe) params: GetClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(Delete) Delete client ${params.id}`);
 

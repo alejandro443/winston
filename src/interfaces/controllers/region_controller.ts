@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -70,7 +71,7 @@ export class RegionController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneRegion(
-    @Param() request: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) request: GetRegionRequestDto,
   ): Promise<RegionResponse> {
     Log.info(`(GET) Get region id: ${request.id}`);
     const region = await this.application.getOneRegion(request.id);
@@ -116,7 +117,7 @@ export class RegionController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateRegion(
-    @Param() params: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) params: GetRegionRequestDto,
     @Body() request: UpdateRegionRequestDto,
   ): Promise<RegionResponse> {
     Log.info(`(PUT) Put region`);
@@ -136,7 +137,7 @@ export class RegionController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteRegion(
-    @Param() params: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) params: GetRegionRequestDto,
   ): Promise<RegionResponse> {
     Log.info(`(DELETE) Delete region ${params.id}`);
     const region = await this.application.deleteRegion(params.id);

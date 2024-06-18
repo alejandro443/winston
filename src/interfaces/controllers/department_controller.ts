@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -73,7 +74,7 @@ export class DepartmentController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneDepartment(
-    @Param() request: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) request: GetDepartmentRequestDto,
   ): Promise<DepartmentResponse> {
     Log.info(`(GET) Get department id: ${request.id}`);
     const department = await this.application.getOneDepartment(request.id);
@@ -119,7 +120,7 @@ export class DepartmentController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateDepartment(
-    @Param() params: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) params: GetDepartmentRequestDto,
     @Body() request: UpdateDepartmentRequestDto,
   ): Promise<DepartmentResponse> {
     Log.info(`(PUT) Put department`);
@@ -142,7 +143,7 @@ export class DepartmentController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteDepartment(
-    @Param() params: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) params: GetDepartmentRequestDto,
   ): Promise<DepartmentResponse> {
     Log.info(`(DELETE) Delete department ${params.id}`);
     const department = await this.application.deleteDepartment(params.id);

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class WayToPayController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneWayToPay(
-    @Param() request: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) request: GetWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
     Log.info(`(Get) Get way_to_pay id: ${request.id}`);
 
@@ -104,7 +105,7 @@ export class WayToPayController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateWayToPay(
-    @Param() params: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) params: GetWayToPayRequestDto,
     @Body() request: CreateWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
     Log.info(`(PUT) Put way_to_pay`);
@@ -128,7 +129,7 @@ export class WayToPayController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteWayToPay(
-    @Param() params: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) params: GetWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
     Log.info(`(Delete) Delete way_to_pay ${params.id}`);
 

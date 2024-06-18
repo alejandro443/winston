@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class TypeDocumentController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeDocument(
-    @Param() request: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) request: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
     Log.info(`(Get) Get type_document id: ${request.id}`);
 
@@ -104,7 +105,7 @@ export class TypeDocumentController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeDocument(
-    @Param() params: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeDocumentRequestDto,
     @Body() request: CreateTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
     Log.info(`(PUT) Put type_document`);
@@ -128,7 +129,7 @@ export class TypeDocumentController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeDocument(
-    @Param() params: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
     Log.info(`(Delete) Delete type_document ${params.id}`);
 

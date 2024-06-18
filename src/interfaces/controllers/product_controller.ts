@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -65,7 +66,7 @@ export class ProductController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneProduct(
-    @Param() request: GetProductRequestDto,
+    @Param('id', ParseIntPipe) request: GetProductRequestDto,
   ): Promise<ProductResponse> {
     Log.info(`(Get) Get product category id: ${request.id}`);
 
@@ -105,7 +106,7 @@ export class ProductController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateProduct(
-    @Param() params: GetProductRequestDto,
+    @Param('id', ParseIntPipe) params: GetProductRequestDto,
     @Body() request: CreateProductRequestDto,
   ): Promise<ProductResponse> {
     Log.info(`(PUT) Put product`);
@@ -126,7 +127,7 @@ export class ProductController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteProduct(
-    @Param() params: GetProductRequestDto,
+    @Param('id', ParseIntPipe) params: GetProductRequestDto,
   ): Promise<ProductResponse> {
     Log.info(`(Delete) Delete product category ${params.id}`);
 

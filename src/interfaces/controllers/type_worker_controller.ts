@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class TypeWorkerController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeWorker(
-    @Param() request: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) request: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
     Log.info(`(Get) Get type_worker id: ${request.id}`);
 
@@ -102,7 +103,7 @@ export class TypeWorkerController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeWorker(
-    @Param() params: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeWorkerRequestDto,
     @Body() request: CreateTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
     Log.info(`(PUT) Put type_worker`);
@@ -126,7 +127,7 @@ export class TypeWorkerController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeWorker(
-    @Param() params: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) params: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
     Log.info(`(Delete) Delete type_worker ${params.id}`);
 

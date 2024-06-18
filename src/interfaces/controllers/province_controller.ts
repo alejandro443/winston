@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -73,7 +74,7 @@ export class ProvinceController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneProvince(
-    @Param() request: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) request: GetProvinceRequestDto,
   ): Promise<ProvinceResponse> {
     Log.info(`(GET) Get province id: ${request.id}`);
     const province = await this.application.getOneProvince(request.id);
@@ -119,7 +120,7 @@ export class ProvinceController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateProvince(
-    @Param() params: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) params: GetProvinceRequestDto,
     @Body() request: UpdateProvinceRequestDto,
   ): Promise<ProvinceResponse> {
     Log.info(`(PUT) Put province`);
@@ -139,7 +140,7 @@ export class ProvinceController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteProvince(
-    @Param() params: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) params: GetProvinceRequestDto,
   ): Promise<ProvinceResponse> {
     Log.info(`(DELETE) Delete province ${params.id}`);
     const province = await this.application.deleteProvince(params.id);

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class SupplyController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneSupply(
-    @Param() request: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) request: GetSupplyRequestDto,
   ): Promise<SupplyResponse> {
     Log.info(`(Get) Get supply code: ${request.id}`);
 
@@ -102,7 +103,7 @@ export class SupplyController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateSupply(
-    @Param() params: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) params: GetSupplyRequestDto,
     @Body() request: CreateSupplyRequestDto,
   ): Promise<SupplyResponse> {
     Log.info(`(PUT) Put supply`);
@@ -126,7 +127,7 @@ export class SupplyController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteSupply(
-    @Param() params: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) params: GetSupplyRequestDto,
   ): Promise<SupplyResponse> {
     Log.info(`(Delete) Delete supply ${params.id}`);
 

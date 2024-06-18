@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -73,7 +74,7 @@ export class DistrictController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneDistrict(
-    @Param() request: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) request: GetDistrictRequestDto,
   ): Promise<DistrictResponse> {
     Log.info(`(GET) Get district id: ${request.id}`);
     const district = await this.application.getOneDistrict(request.id);
@@ -119,7 +120,7 @@ export class DistrictController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateDistrict(
-    @Param() params: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) params: GetDistrictRequestDto,
     @Body() request: UpdateDistrictRequestDto,
   ): Promise<DistrictResponse> {
     Log.info(`(PUT) Put district`);
@@ -139,7 +140,7 @@ export class DistrictController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteDistrict(
-    @Param() params: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) params: GetDistrictRequestDto,
   ): Promise<DistrictResponse> {
     Log.info(`(DELETE) Delete district ${params.id}`);
     const district = await this.application.deleteDistrict(params.id);

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -62,7 +63,7 @@ export class UnitMeasurementController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneUnitMeasurement(
-    @Param() request: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) request: GetUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
     Log.info(`(Get) Get unit_measurement code: ${request.id}`);
 
@@ -104,7 +105,7 @@ export class UnitMeasurementController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateUnitMeasurement(
-    @Param() params: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) params: GetUnitMeasurementRequestDto,
     @Body() request: CreateUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
     Log.info(`(PUT) Put unit_measurement`);
@@ -128,7 +129,7 @@ export class UnitMeasurementController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteUnitMeasurement(
-    @Param() params: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) params: GetUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
     Log.info(`(Delete) Delete unit_measurement ${params.id}`);
 
