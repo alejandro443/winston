@@ -23,7 +23,7 @@ export class UnitMeasurementRepository {
     }
   }
 
-  async create(unit_measurement: NewUnitMeasurementDto) {
+  async create(unit_measurement: any) {
     try {
       return UnitMeasurement.create(unit_measurement);
     } catch (error: any) {
@@ -31,7 +31,7 @@ export class UnitMeasurementRepository {
     }
   }
 
-  async update(id: number, unit_measurement: UpdateUnitMeasurementDto) {
+  async update(id: number, unit_measurement: any) {
     try {
       return UnitMeasurement.update(unit_measurement, { where: { id: id } });
     } catch (error: any) {
