@@ -16,7 +16,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { TYPE_DOCUMENT_APPLICATION } from 'src/core/shared/constants/application.constants';
+import { UNIT_MEASUREMENT_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetUnitMeasurementRequestDto } from '../request_dto/UnitMeasurementDto/get.unit_measurement_dto';
 import { CreateUnitMeasurementRequestDto } from '../request_dto/UnitMeasurementDto/create.unit_measurement_dto';
@@ -32,7 +32,7 @@ import { Auth } from '@src/core/decorators/auth.decorator';
 @Auth()
 export class UnitMeasurementController {
   constructor(
-    @Inject(TYPE_DOCUMENT_APPLICATION)
+    @Inject(UNIT_MEASUREMENT_APPLICATION)
     private application: UnitMeasurementApplication,
   ) {}
 
@@ -43,7 +43,7 @@ export class UnitMeasurementController {
   })
   @HttpCode(201)
   @Get('/all')
-  async getAllUnitMeasurement(): Promise<UnitMeasurementResponse> {
+  async getAllUnitMeasurementRequest(): Promise<UnitMeasurementResponse> {
     Log.info(`(Get) Get all unit_measurements`);
 
     const unit_measurements = await this.application.getAllUnitMeasurement();
