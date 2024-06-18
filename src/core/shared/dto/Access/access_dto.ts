@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class AccessDto {
   @ApiResponseProperty({
@@ -17,6 +17,7 @@ export class AccessDto {
   @IsNumber()
   id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'ID del padre',
     type: Number,
@@ -31,6 +32,7 @@ export class AccessDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del acceso',
     type: String,
@@ -45,6 +47,7 @@ export class AccessDto {
   @IsString()
   url?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Icono del acceso',
     type: String,
@@ -52,6 +55,7 @@ export class AccessDto {
   @IsString()
   icon?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Texto alternativo del icono',
     type: String,
@@ -59,6 +63,7 @@ export class AccessDto {
   @IsString()
   alt?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Prioridad del acceso',
     type: Number,
@@ -66,6 +71,7 @@ export class AccessDto {
   @IsNumber()
   priority?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del acceso (Activo/Inactivo)',
     type: Boolean,
@@ -77,6 +83,7 @@ export class AccessDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,
@@ -93,7 +100,7 @@ export class DeleteAccessDto {
   deleted_at?: Date;
 }
 
-export class OneAccessDto extends PartialType(AccessDto) {}
-export class AllAccessDto extends PartialType(AccessDto) {}
-export class NewAccessDto extends OmitType(AccessDto, ['id'] as const) {}
-export class UpdateAccessDto extends OmitType(AccessDto, ['id'] as const) {}
+export class OneAccessDto extends PartialType(AccessDto) { }
+export class AllAccessDto extends PartialType(AccessDto) { }
+export class NewAccessDto extends OmitType(AccessDto, ['id'] as const) { }
+export class UpdateAccessDto extends OmitType(AccessDto, ['id'] as const) { }

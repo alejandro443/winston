@@ -6,7 +6,7 @@ import {
   PartialType,
 } from '@nestjs/swagger';
 import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
-import { IsBoolean, IsDateString, IsEnum, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UnitMeasurementDto {
   @ApiResponseProperty({
@@ -19,6 +19,7 @@ export class UnitMeasurementDto {
   @IsNumber()
   id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del tipo de unidad de medida.',
     type: String,
@@ -26,6 +27,7 @@ export class UnitMeasurementDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Nombre del tipo de unidad de medida.',
     type: String,
@@ -33,20 +35,23 @@ export class UnitMeasurementDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Abreviacion del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   abbreviation?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Factor de conversión del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   convertion_factor?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tipo del tipo de unidad de medida.',
     enum: TypeUnitMeasurement,
@@ -54,6 +59,7 @@ export class UnitMeasurementDto {
   @IsEnum(TypeUnitMeasurement)
   type?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del tipo de unidad de medida (Activo/Inactivo)',
     type: Boolean,
@@ -65,6 +71,7 @@ export class UnitMeasurementDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

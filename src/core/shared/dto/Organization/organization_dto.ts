@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class OrganizationDto {
   @ApiProperty({
@@ -17,6 +17,7 @@ export class OrganizationDto {
   @IsNumber()
   id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Logo de la organización',
     type: String,
@@ -31,6 +32,7 @@ export class OrganizationDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Sector de la organización',
     type: String,
@@ -45,6 +47,7 @@ export class OrganizationDto {
   @IsString()
   ruc?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tipo de la organización',
     type: String,
@@ -52,6 +55,7 @@ export class OrganizationDto {
   @IsString()
   type?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Año de la organización',
     type: String,
@@ -59,6 +63,7 @@ export class OrganizationDto {
   @IsString()
   year?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Dirección de la organización',
     type: String,
@@ -66,6 +71,7 @@ export class OrganizationDto {
   @IsString()
   direction?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Página web de la organización',
     type: String,
@@ -73,6 +79,7 @@ export class OrganizationDto {
   @IsString()
   web_page?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Correo electrónico de la organización',
     type: String,
@@ -80,6 +87,7 @@ export class OrganizationDto {
   @IsString()
   main_email?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Teléfono uno de la organización',
     type: String,
@@ -87,6 +95,7 @@ export class OrganizationDto {
   @IsString()
   phone_one?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Teléfono dos de la organización',
     type: String,
@@ -94,6 +103,7 @@ export class OrganizationDto {
   @IsString()
   phone_two?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Teléfono tres de la organización',
     type: String,
@@ -101,6 +111,7 @@ export class OrganizationDto {
   @IsString()
   phone_three?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Representante legal de la organización',
     type: String,
@@ -108,6 +119,7 @@ export class OrganizationDto {
   @IsString()
   representative_legal?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description:
       'Correo electrónico del representante legal de la organización',
@@ -116,6 +128,7 @@ export class OrganizationDto {
   @IsString()
   representative_email?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Teléfono del representante legal de la organización',
     type: String,
@@ -123,6 +136,7 @@ export class OrganizationDto {
   @IsString()
   representative_phone?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Dirección del representante legal de la organización',
     type: String,
@@ -130,6 +144,7 @@ export class OrganizationDto {
   @IsString()
   representative_direction?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado de la organización',
     type: Boolean,
@@ -138,6 +153,7 @@ export class OrganizationDto {
   @IsBoolean()
   status?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Configuración en línea de la organización',
     type: Boolean,
@@ -145,6 +161,7 @@ export class OrganizationDto {
   @IsBoolean()
   config_online?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Caja abierta de la organización',
     type: Boolean,
@@ -152,6 +169,7 @@ export class OrganizationDto {
   @IsBoolean()
   open_cash?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Distrito de la organización',
     type: String,
@@ -159,6 +177,7 @@ export class OrganizationDto {
   @IsString()
   district?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Provincia de la organización',
     type: String,
@@ -166,6 +185,7 @@ export class OrganizationDto {
   @IsString()
   province?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Departamento de la organización',
     type: String,
@@ -173,6 +193,7 @@ export class OrganizationDto {
   @IsString()
   department?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Urbanización de la organización',
     type: String,
@@ -180,6 +201,7 @@ export class OrganizationDto {
   @IsString()
   urbanization?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Ubigeo de la organización',
     type: String,
@@ -187,6 +209,7 @@ export class OrganizationDto {
   @IsString()
   ubigeo?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'País de la organización',
     type: String,
@@ -201,6 +224,7 @@ export class OrganizationDto {
   @IsString()
   comercial_name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Exonerado de la organización',
     type: Boolean,
@@ -208,6 +232,7 @@ export class OrganizationDto {
   @IsBoolean()
   exonerated?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Instagram de la organización',
     type: Boolean,
@@ -215,6 +240,7 @@ export class OrganizationDto {
   @IsString()
   instagram?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Facebook de la organización',
     type: Boolean,
@@ -222,6 +248,7 @@ export class OrganizationDto {
   @IsString()
   facebook?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Youtube de la organización',
     type: Boolean,
@@ -229,6 +256,7 @@ export class OrganizationDto {
   @IsString()
   youtube?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Whatsapp de la organización',
     type: Boolean,
@@ -236,6 +264,7 @@ export class OrganizationDto {
   @IsString()
   whatsapp?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tiktok de la organización',
     type: Boolean,
@@ -243,6 +272,7 @@ export class OrganizationDto {
   @IsString()
   tiktok?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿Se puede editar precio?',
     type: Boolean,
@@ -250,6 +280,7 @@ export class OrganizationDto {
   @IsBoolean()
   edit_price?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene un footer?',
     type: Boolean,
@@ -257,6 +288,7 @@ export class OrganizationDto {
   @IsBoolean()
   footer?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene cuentas?',
     type: Boolean,
@@ -264,6 +296,7 @@ export class OrganizationDto {
   @IsBoolean()
   accounts?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Pie de pagina',
     type: Boolean,
@@ -271,6 +304,7 @@ export class OrganizationDto {
   @IsString()
   footer_description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización puede editar documentos?',
     type: Boolean,
@@ -278,6 +312,7 @@ export class OrganizationDto {
   @IsString()
   edit_documents?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene licencia?',
     type: Boolean,
@@ -285,6 +320,7 @@ export class OrganizationDto {
   @IsString()
   license?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene punto de venta?',
     type: Boolean,
@@ -292,6 +328,7 @@ export class OrganizationDto {
   @IsBoolean()
   point_sale?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene tienda online?',
     type: Boolean,
@@ -299,6 +336,7 @@ export class OrganizationDto {
   @IsBoolean()
   store_online?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene price_wholesale?',
     type: Boolean,
@@ -306,6 +344,7 @@ export class OrganizationDto {
   @IsBoolean()
   price_wholesale?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿La organización tiene amount_wholesale?',
     type: Boolean,
@@ -313,6 +352,7 @@ export class OrganizationDto {
   @IsNumber()
   amount_wholesale?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creacion.',
     type: Date,
@@ -322,6 +362,7 @@ export class OrganizationDto {
 }
 
 export class DeleteOrganizationDto {
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de eliminación',
     type: Date,

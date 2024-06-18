@@ -5,7 +5,7 @@ import {
   ApiResponseProperty,
 } from '@nestjs/swagger';
 import { createApiPropertyDecorator } from '@nestjs/swagger/dist/decorators/api-property.decorator';
-import { IsBoolean, IsDateString, IsNumber } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional } from 'class-validator';
 
 export class AccessRolDto {
   @ApiResponseProperty({
@@ -36,6 +36,7 @@ export class AccessRolDto {
   @IsNumber()
   access_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del registro',
     type: Number,
@@ -54,7 +55,7 @@ export class DeleteAccessRolDto {
   deleted_at?: Date;
 }
 
-export class OneAccessRolDto extends PartialType(AccessRolDto) {}
-export class AllAccessRolDto extends PartialType(AccessRolDto) {}
-export class NewAccessRolDto extends OmitType(AccessRolDto, ['id'] as const) {}
-export class UpdateAccessRolDto extends OmitType(AccessRolDto, ['id'] as const) {}
+export class OneAccessRolDto extends PartialType(AccessRolDto) { }
+export class AllAccessRolDto extends PartialType(AccessRolDto) { }
+export class NewAccessRolDto extends OmitType(AccessRolDto, ['id'] as const) { }
+export class UpdateAccessRolDto extends OmitType(AccessRolDto, ['id'] as const) { }

@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class SupplyTypeDto {
   @ApiResponseProperty({
@@ -25,6 +25,7 @@ export class SupplyTypeDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del tipo de suministro.',
     type: String,
@@ -32,6 +33,7 @@ export class SupplyTypeDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del tipo de suministro.',
     type: String,
@@ -39,6 +41,7 @@ export class SupplyTypeDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del tipo de suministro (Activo/Inactivo)',
     type: Boolean,
@@ -50,6 +53,7 @@ export class SupplyTypeDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

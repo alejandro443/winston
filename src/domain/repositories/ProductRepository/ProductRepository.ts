@@ -1,3 +1,4 @@
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 import {
   NewProductDto,
   UpdateProductDto,
@@ -11,7 +12,7 @@ export class ProductRepository {
     try {
       return Product.findOne({ where: { id: id } });
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
@@ -19,23 +20,25 @@ export class ProductRepository {
     try {
       return Product.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
   async create(product: NewProductDto) {
     try {
-      return Product.create(product);
+      const product_data: any = Product.create(product);
+      return product_data;
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
   async update(id: number, product: UpdateProductDto) {
     try {
-      return Product.update(product, { where: { id: id } });
+      const product_data: any = Product.update(product, { where: { id: id } });
+      return product_data;
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

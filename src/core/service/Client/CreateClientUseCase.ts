@@ -46,7 +46,7 @@ export class CreateClientUseCase {
     try {
       managers_data.forEach(async (entity: any) => {
         const response: any = await this.personService.createPerson(entity)
-        if (!response) throw new ClientApplicationError('Error en la creación de cliente > Manager.', 'INTERNAL_SERVER_ERROR');
+        if (!response) throw new ClientApplicationError('Error en la creación de cliente.', 'INTERNAL_SERVER_ERROR');
 
         var company_worker_data: any = {
           company_id: company_id,

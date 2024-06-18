@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProductDto {
   @ApiProperty({
@@ -17,6 +17,7 @@ export class ProductDto {
   @IsNumber()
   declare id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del producto',
     type: String,
@@ -31,6 +32,7 @@ export class ProductDto {
   @IsString()
   declare name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripcion del producto',
     type: String,
@@ -38,13 +40,15 @@ export class ProductDto {
   @IsString()
   declare description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Nombre del producto',
     type: String,
   })
   @IsString()
   declare image?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'SKU del producto',
     type: String,
@@ -53,7 +57,8 @@ export class ProductDto {
   })
   @IsString()
   declare sku?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'UPC del producto',
     type: String,
@@ -62,21 +67,24 @@ export class ProductDto {
   })
   @IsString()
   declare upc?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Ancho del producto',
     type: Number
   })
   @IsNumber()
   declare weight?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Alto del producto',
     type: Number
   })
   @IsNumber()
   declare height?: number;
- 
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Profundidad del producto',
     type: Number
@@ -84,6 +92,7 @@ export class ProductDto {
   @IsNumber()
   declare depth?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del producto (Activo/Desactivado)',
     default: true,
@@ -91,7 +100,8 @@ export class ProductDto {
   })
   @IsBoolean()
   declare status?: boolean;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿Se puede comprar?',
     default: false,
@@ -99,7 +109,8 @@ export class ProductDto {
   })
   @IsBoolean()
   declare to_sell?: boolean;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿Se puede vender?',
     default: false,
@@ -108,6 +119,7 @@ export class ProductDto {
   @IsBoolean()
   declare to_buy?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Numero de dias para alertas.',
     type: Number
@@ -115,6 +127,7 @@ export class ProductDto {
   @IsNumber()
   declare alert_days?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la marca de producto.',
     type: Number
@@ -122,6 +135,7 @@ export class ProductDto {
   @IsNumber()
   declare product_brand_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la categoria de producto.',
     type: Number
@@ -129,6 +143,7 @@ export class ProductDto {
   @IsNumber()
   declare product_category_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la unidad de medida.',
     type: Number
@@ -136,6 +151,7 @@ export class ProductDto {
   @IsNumber()
   declare unit_measurement_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación.',
     type: Date,

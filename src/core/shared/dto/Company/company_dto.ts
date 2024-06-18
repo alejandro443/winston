@@ -1,6 +1,6 @@
 import { OmitType, PartialType } from '@nestjs/swagger';
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CompanyDto {
   @ApiResponseProperty()
@@ -11,14 +11,14 @@ export class CompanyDto {
   @IsNumber()
   declare id: number;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Numero de identificación de la compañia.',
     type: String,
   })
   @IsString()
   declare main_identification: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description:
       'Tipo de identificación registrado para el numero de identificación de la compañia.',
     type: String,
@@ -26,13 +26,14 @@ export class CompanyDto {
   @IsString()
   declare type_identification: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Nombre de la compañia.',
     type: String,
   })
   @IsString()
   declare name: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Numero de celular principal de la compañia.',
     type: String,
@@ -40,6 +41,7 @@ export class CompanyDto {
   @IsString()
   declare main_phone: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Direccion email de la compañia.',
     type: String,
@@ -47,6 +49,7 @@ export class CompanyDto {
   @IsString()
   declare main_email: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Direccion url de la compañia.',
     type: String,
@@ -54,6 +57,7 @@ export class CompanyDto {
   @IsString()
   declare website_url: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Direccion principal de la compañia.',
     type: String,
@@ -61,6 +65,7 @@ export class CompanyDto {
   @IsString()
   declare main_direction: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tipo de compañia.',
     type: String,
@@ -68,6 +73,7 @@ export class CompanyDto {
   @IsString()
   declare type_company: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tipo de industria de la compañia.',
     type: String,
@@ -75,6 +81,7 @@ export class CompanyDto {
   @IsString()
   declare type_industry: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Ubigeo de la compañia.',
     type: String,
@@ -82,6 +89,7 @@ export class CompanyDto {
   @IsString()
   declare zip_code: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Pais de la compañia.',
     type: String,
@@ -89,6 +97,7 @@ export class CompanyDto {
   @IsString()
   declare country: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Departamento de la compañia.',
     type: String,
@@ -96,6 +105,7 @@ export class CompanyDto {
   @IsString()
   declare department: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Provincia de la compañia.',
     type: String,
@@ -103,6 +113,7 @@ export class CompanyDto {
   @IsString()
   declare province: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Distrito de la compañia.',
     type: String,
@@ -110,6 +121,7 @@ export class CompanyDto {
   @IsString()
   declare district: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de fundación de la compañia.',
     type: String,
@@ -117,6 +129,7 @@ export class CompanyDto {
   @IsDateString()
   declare foundation_date: Date;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Arrays de numeros de celulares secundarios de la compañia.',
     type: Array,
@@ -124,6 +137,7 @@ export class CompanyDto {
   @IsArray()
   declare phones: [];
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Arrays de direcciones secundarios de la compañia.',
     type: Array,
@@ -131,6 +145,7 @@ export class CompanyDto {
   @IsArray()
   declare directions: [];
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Arrays de emails secundarios de la compañia.',
     type: Array,
@@ -138,6 +153,7 @@ export class CompanyDto {
   @IsArray()
   declare emails: [];
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del cliente compañia (Activo/Desactivado)',
     default: true,
@@ -147,6 +163,7 @@ export class CompanyDto {
   declare status: boolean;
 
   @ApiResponseProperty()
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

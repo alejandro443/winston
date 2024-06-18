@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class RegionDto {
   @ApiResponseProperty({
@@ -19,6 +19,7 @@ export class RegionDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción de la región',
     type: String,
@@ -26,6 +27,7 @@ export class RegionDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado de la región (Activo/Inactivo)',
     type: Boolean,
@@ -44,7 +46,7 @@ export class DeleteRegionDto {
   deleted_at?: Date;
 }
 
-export interface AllRegionDto extends RegionDto {}
-export interface OneRegionDto extends RegionDto {}
-export interface NewRegionDto extends Omit<RegionDto, 'id'> {}
-export interface UpdateRegionDto extends Omit<RegionDto, 'id'> {}
+export interface AllRegionDto extends RegionDto { }
+export interface OneRegionDto extends RegionDto { }
+export interface NewRegionDto extends Omit<RegionDto, 'id'> { }
+export interface UpdateRegionDto extends Omit<RegionDto, 'id'> { }

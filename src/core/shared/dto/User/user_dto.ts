@@ -32,6 +32,7 @@ export class UserDto {
   @IsString()
   password?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Codigo de usuario.',
     type: String,
@@ -39,6 +40,7 @@ export class UserDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: '¿El usuario es consultor CUDESI?.',
     type: Boolean,
@@ -48,6 +50,7 @@ export class UserDto {
   @IsOptional()
   consultant?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del usuario(Activo/Desactivado).',
     type: Boolean,
@@ -60,6 +63,7 @@ export class UserDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

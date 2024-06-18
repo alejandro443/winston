@@ -4,7 +4,7 @@ import {
   ApiResponseProperty,
   OmitType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class SkuListDto {
   @ApiResponseProperty({
@@ -24,6 +24,7 @@ export class SkuListDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del SKU.',
     type: String,
@@ -37,7 +38,8 @@ export class SkuListDto {
   })
   @IsString()
   entity?: string;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del SKU (Activo/Inactivo)',
     type: Boolean,
@@ -49,6 +51,7 @@ export class SkuListDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProvinceDto {
   @ApiResponseProperty({
@@ -19,6 +19,7 @@ export class ProvinceDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código ubigeo de la provincia',
     type: String,
@@ -33,6 +34,7 @@ export class ProvinceDto {
   @IsNumber()
   department_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado de la provincia (Activo/Inactivo)',
     default: true,
@@ -51,7 +53,7 @@ export class DeleteProvinceDto {
   deleted_at?: Date;
 }
 
-export interface AllProvinceDto extends ProvinceDto {}
-export interface OneProvinceDto extends ProvinceDto {}
-export interface NewProvinceDto extends Omit<ProvinceDto, 'id'> {}
-export interface UpdateProvinceDto extends Omit<ProvinceDto, 'id'> {}
+export interface AllProvinceDto extends ProvinceDto { }
+export interface OneProvinceDto extends ProvinceDto { }
+export interface NewProvinceDto extends Omit<ProvinceDto, 'id'> { }
+export interface UpdateProvinceDto extends Omit<ProvinceDto, 'id'> { }

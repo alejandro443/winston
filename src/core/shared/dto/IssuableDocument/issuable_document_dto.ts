@@ -4,7 +4,7 @@ import {
   ApiResponseProperty,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class IssuableDocumentDto {
   @ApiResponseProperty({
@@ -24,6 +24,7 @@ export class IssuableDocumentDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del tipo de documento',
     type: String,
@@ -31,6 +32,7 @@ export class IssuableDocumentDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del tipo de documento',
     type: String,
@@ -38,6 +40,7 @@ export class IssuableDocumentDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del tipo de documento (Activo/Inactivo)',
     type: Boolean,
@@ -49,6 +52,7 @@ export class IssuableDocumentDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

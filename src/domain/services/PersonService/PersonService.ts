@@ -37,14 +37,14 @@ export class PersonService {
 
       return person_new;
     } catch (error: any) {
-      console.log(error)
       throw new PersonApplicationError(error)
     }
   }
 
   async updatePerson(main_identification: string, person: NewPersonDto) {
     try {
-      return this.repository?.update(main_identification, person);
+      const person_update: any = this.repository?.update(main_identification, person);
+      return person_update;
     } catch (error: any) {
       return error;
     }

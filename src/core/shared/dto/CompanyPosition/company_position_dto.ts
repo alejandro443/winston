@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CompanyPositionDto {
   @ApiResponseProperty({
@@ -25,6 +25,7 @@ export class CompanyPositionDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del tipo de posicion.',
     type: String,
@@ -32,6 +33,7 @@ export class CompanyPositionDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del tipo de posicion.',
     type: String,
@@ -39,6 +41,7 @@ export class CompanyPositionDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del tipo de posicion (Activo/Inactivo)',
     type: Boolean,
@@ -50,6 +53,7 @@ export class CompanyPositionDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

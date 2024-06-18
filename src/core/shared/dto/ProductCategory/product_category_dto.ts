@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProductCategoryDto {
   @ApiProperty({
@@ -24,6 +24,7 @@ export class ProductCategoryDto {
   @IsString()
   declare name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripcion de la categoria del producto',
     type: String,
@@ -31,6 +32,7 @@ export class ProductCategoryDto {
   @IsString()
   declare description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código de la categoria del producto',
     type: String,
@@ -38,6 +40,7 @@ export class ProductCategoryDto {
   @IsString()
   declare code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Nombre de la categoria del producto',
     type: String,
@@ -45,6 +48,7 @@ export class ProductCategoryDto {
   @IsString()
   declare image?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description:
       'Para poder reconocer si el registro es definido de base o no.',
@@ -54,6 +58,7 @@ export class ProductCategoryDto {
   @IsBoolean()
   declare is_base?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado de la categoria del producto (Activo/Desactivado)',
     default: true,

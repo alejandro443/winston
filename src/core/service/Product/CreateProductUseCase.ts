@@ -1,5 +1,6 @@
 import { ProductService } from 'src/domain/services/ProductService/ProductService';
 import { NewProductDto } from 'src/core/shared/dto/Product/product_dto';
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 
 export class CreateProductUseCase {
   constructor(private productService?: ProductService) {
@@ -18,7 +19,7 @@ export class CreateProductUseCase {
         status: response.status,
       };
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error)
     }
   }
 }

@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class SupplyDto {
   @ApiResponseProperty({
@@ -25,6 +25,7 @@ export class SupplyDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripción del tipo de suministro.',
     type: String,
@@ -32,6 +33,7 @@ export class SupplyDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del tipo de suministro.',
     type: String,
@@ -39,6 +41,7 @@ export class SupplyDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Imagen del tipo de suministro.',
     type: String,
@@ -46,6 +49,7 @@ export class SupplyDto {
   @IsString()
   image?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Se puede comprar.',
     type: Boolean,
@@ -53,7 +57,8 @@ export class SupplyDto {
   })
   @IsBoolean()
   to_sell?: boolean;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Se puede vender.',
     type: Boolean,
@@ -62,13 +67,15 @@ export class SupplyDto {
   @IsBoolean()
   to_buy?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Numero de Dias para alerta.',
     type: Number,
   })
   @IsNumber()
   alert_days?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del tipo de suministro (Activo/Inactivo)',
     type: Boolean,
@@ -77,6 +84,7 @@ export class SupplyDto {
   @IsBoolean()
   status?: boolean;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id del tipo de suministro.',
     type: Number,
@@ -84,6 +92,7 @@ export class SupplyDto {
   @IsNumber()
   supply_type_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la marca del suministro.',
     type: Number,
@@ -91,13 +100,15 @@ export class SupplyDto {
   @IsNumber()
   product_brand_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la categoria del suministro.',
     type: Number,
   })
   @IsNumber()
   product_category_id?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la unidad de medida del suministro.',
     type: Number,
@@ -108,6 +119,7 @@ export class SupplyDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

@@ -24,6 +24,7 @@ export class ClientDto {
   @IsNumber()
   declare id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del cliente',
     type: String,
@@ -33,6 +34,7 @@ export class ClientDto {
   declare code?: string;
 
   @ApiResponseProperty()
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'ID del usuario asociado al cliente',
     type: Number,
@@ -42,6 +44,7 @@ export class ClientDto {
   declare user_id?: number;
 
   @ApiResponseProperty()
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la entidad asociada al cliente (Persona/Compañia)',
     type: Number,
@@ -56,7 +59,7 @@ export class ClientDto {
   })
   @IsNumber()
   declare type_client_id?: number;
-  
+
   @ApiProperty({
     description: 'Id del tipo de canal de entrada',
     type: Number,
@@ -64,13 +67,15 @@ export class ClientDto {
   @IsNumber()
   declare type_channel_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código de clasificación del cliente',
     type: Number,
   })
   @IsNumber()
   declare classification_id?: number;
- 
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de la seccion comercial del cliente',
     type: Number,
@@ -78,6 +83,7 @@ export class ClientDto {
   @IsNumber()
   declare commercial_section_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código del grupo al que pertenece el cliente',
     type: Number,
@@ -85,6 +91,7 @@ export class ClientDto {
   @IsNumber()
   declare group_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de metodo de pago.',
     type: Number,
@@ -92,7 +99,8 @@ export class ClientDto {
   @IsNumber()
   @IsOptional()
   declare method_payment_id?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de forma de pago.',
     type: Number,
@@ -101,6 +109,7 @@ export class ClientDto {
   @IsOptional()
   declare way_to_pay_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de ids de documentos.',
     type: Array,
@@ -109,6 +118,7 @@ export class ClientDto {
   @IsOptional()
   declare issuable_documents_ids?: Array<number>;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de encargados.',
     type: Array,
@@ -116,7 +126,8 @@ export class ClientDto {
   @IsArray()
   @IsOptional()
   declare manager_details?: Array<Object>;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de puntos de entrega.',
     type: Array,
@@ -125,6 +136,7 @@ export class ClientDto {
   @IsOptional()
   declare delivery_data?: Array<Object>;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Entidad de cliente.',
     type: Object,
@@ -132,6 +144,7 @@ export class ClientDto {
   @IsObject()
   declare entity?: object;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',
     default: true,
@@ -144,6 +157,7 @@ export class ClientDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

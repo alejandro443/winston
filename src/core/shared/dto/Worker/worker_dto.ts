@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class WorkerDto {
   @ApiResponseProperty({
@@ -38,14 +38,16 @@ export class WorkerDto {
   })
   @IsNumber()
   person_id?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de usuario(opcional).',
     type: Number,
   })
   @IsNumber()
   user_id?: number;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del trabajador (Activo/Inactivo)',
     type: Boolean,
@@ -53,7 +55,8 @@ export class WorkerDto {
   })
   @IsBoolean()
   status?: boolean;
-  
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id del tipo de trabajador.',
     type: Number,
@@ -64,6 +67,7 @@ export class WorkerDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,

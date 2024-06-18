@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ClassificationDto {
   @ApiProperty({
@@ -24,6 +24,7 @@ export class ClassificationDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripcion de la clasificación',
     type: String,
@@ -31,6 +32,7 @@ export class ClassificationDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código de la clasificación',
     type: String,
@@ -38,6 +40,7 @@ export class ClassificationDto {
   @IsString()
   code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado de la clasificación (Activo/Desactivado)',
     default: true,
@@ -55,7 +58,7 @@ export class DeleteClassificationDto {
   deleted_at?: Date;
 }
 
-export class OneClassificationDto extends PartialType(ClassificationDto) {}
-export class AllClassificationDto extends PartialType(ClassificationDto) {}
-export class NewClassificationDto extends OmitType(ClassificationDto, ['id'] as const) {}
-export class UpdateClassificationDto extends OmitType(ClassificationDto, ['id'] as const) {}
+export class OneClassificationDto extends PartialType(ClassificationDto) { }
+export class AllClassificationDto extends PartialType(ClassificationDto) { }
+export class NewClassificationDto extends OmitType(ClassificationDto, ['id'] as const) { }
+export class UpdateClassificationDto extends OmitType(ClassificationDto, ['id'] as const) { }

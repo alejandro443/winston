@@ -3,7 +3,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CountryDto {
   @ApiResponseProperty({
@@ -23,6 +23,7 @@ export class CountryDto {
   @IsString()
   name?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código ISO del país',
     type: String,
@@ -30,6 +31,7 @@ export class CountryDto {
   @IsString()
   code_ISO?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Moneda del país',
     type: String,
@@ -37,6 +39,7 @@ export class CountryDto {
   @IsString()
   currency?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Idioma del país',
     type: String,
@@ -51,6 +54,7 @@ export class CountryDto {
   @IsNumber()
   region_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Código telefónico del país',
     type: String,
@@ -58,6 +62,7 @@ export class CountryDto {
   @IsString()
   phone_code?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Tasa de impuestos del país',
     type: Number,
@@ -65,6 +70,7 @@ export class CountryDto {
   @IsString()
   tax_rate?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Zona horaria del país',
     type: String,
@@ -72,6 +78,7 @@ export class CountryDto {
   @IsString()
   timezone?: string;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del país (Activo/Desactivo)',
     default: true,
@@ -90,7 +97,7 @@ export class DeleteCountryDto {
   deleted_at?: Date;
 }
 
-export interface AllCountryDto extends CountryDto {}
-export interface OneCountryDto extends CountryDto {}
-export interface NewCountryDto extends Omit<CountryDto, 'id'> {}
-export interface UpdateCountryDto extends Omit<CountryDto, 'id'> {}
+export interface AllCountryDto extends CountryDto { }
+export interface OneCountryDto extends CountryDto { }
+export interface NewCountryDto extends Omit<CountryDto, 'id'> { }
+export interface UpdateCountryDto extends Omit<CountryDto, 'id'> { }

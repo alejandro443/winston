@@ -1,3 +1,4 @@
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 import { GenerateCodeProduct, GenerateRandomCodeProduct } from '@src/core/shared/functions/generate_code_product.function';
 import { NewProductDto } from 'src/core/shared/dto/Product/product_dto';
 import { ProductRepository } from 'src/domain/repositories/ProductRepository/ProductRepository';
@@ -29,17 +30,19 @@ export class ProductService {
         ? await GenerateCodeProduct(product.code)
         : await GenerateRandomCodeProduct();
 
-      return this.repository?.create(product);
+      const product_new: any = this.repository?.create(product);
+      return product_new;
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error)
     }
   }
 
   async updateProduct(id: any, product: NewProductDto) {
     try {
-      return this.repository?.update(id, product);
+      const product_update: any = this.repository?.update(id, product);
+      return product_update;
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error)
     }
   }
 

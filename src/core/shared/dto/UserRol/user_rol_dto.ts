@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber } from 'class-validator';
+import { IsBoolean, IsDateString, IsNumber, IsOptional } from 'class-validator';
 
 export class UserRolDto {
   @ApiResponseProperty({
@@ -18,6 +18,7 @@ export class UserRolDto {
   @IsNumber()
   id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id del rol.',
     type: Number,
@@ -25,6 +26,7 @@ export class UserRolDto {
   @IsNumber()
   rol_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Id del usuario.',
     type: Number,
@@ -32,6 +34,7 @@ export class UserRolDto {
   @IsNumber()
   user_id?: number;
 
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del registro (Activo/Inactivo)',
     type: Boolean,
@@ -43,6 +46,7 @@ export class UserRolDto {
   @ApiResponseProperty({
     type: Date,
   })
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de creación',
     type: Date,
