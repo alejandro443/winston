@@ -5,7 +5,8 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
+import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
+import { IsBoolean, IsDateString, IsEnum, IsNumber, IsString } from 'class-validator';
 
 export class UnitMeasurementDto {
   @ApiResponseProperty({
@@ -48,9 +49,9 @@ export class UnitMeasurementDto {
   
   @ApiProperty({
     description: 'Tipo del tipo de unidad de medida.',
-    type: String,
+    enum: TypeUnitMeasurement,
   })
-  @IsString()
+  @IsEnum(TypeUnitMeasurement)
   type?: string;
 
   @ApiPropertyOptional({

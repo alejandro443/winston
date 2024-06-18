@@ -9,6 +9,7 @@ import {
   HasOne,
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
+import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
 
 @Table({ tableName: 'unit_measurements' })
 export class UnitMeasurement extends Model<UnitMeasurement> {
@@ -42,12 +43,13 @@ export class UnitMeasurement extends Model<UnitMeasurement> {
     allowNull: true,
   })
   declare convertion_factor: string;
-  
+
   @Column({
-    type: DataType.STRING,
-    allowNull: true,
+    type: DataType.ENUM,
+    values: Object.values(TypeUnitMeasurement),
+    allowNull: false,
   })
-  declare type: string;
+  declare type: TypeUnitMeasurement;
 
   @Column({
     type: DataType.BOOLEAN,
