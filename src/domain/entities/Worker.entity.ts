@@ -36,7 +36,7 @@ export class Worker extends Model<Worker> {
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
+    allowNull: false,
   })
   declare person_id: number;
 
@@ -44,7 +44,11 @@ export class Worker extends Model<Worker> {
   declare person: Person;
 
   @ForeignKey(() => TypeWorker)
-  @Column({ field: 'type_worker_id' })
+  @Column({ 
+    field: 'type_worker_id',
+    type: DataType.INTEGER,
+    allowNull: true,
+  })
   declare type_worker_id: number;
 
   @BelongsTo(() => TypeWorker, 'id')

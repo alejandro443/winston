@@ -24,14 +24,14 @@ export class GroupDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del grupo.',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código del grupo.',
     type: String,
     writeOnly: true,

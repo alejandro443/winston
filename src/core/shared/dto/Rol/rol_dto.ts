@@ -24,7 +24,7 @@ export class RolDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del rol',
     type: String,
   })

@@ -24,14 +24,14 @@ export class IssuableDocumentDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del tipo de documento',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código del tipo de documento',
     type: String,
   })

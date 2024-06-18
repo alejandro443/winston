@@ -17,7 +17,7 @@ export class AccessDto {
   @IsNumber()
   id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'ID del padre',
     type: Number,
   })
@@ -31,7 +31,7 @@ export class AccessDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del acceso',
     type: String,
   })
@@ -45,21 +45,21 @@ export class AccessDto {
   @IsString()
   url?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Icono del acceso',
     type: String,
   })
   @IsString()
   icon?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Texto alternativo del icono',
     type: String,
   })
   @IsString()
   alt?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Prioridad del acceso',
     type: Number,
   })

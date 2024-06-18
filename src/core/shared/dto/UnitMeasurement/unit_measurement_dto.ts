@@ -19,35 +19,35 @@ export class UnitMeasurementDto {
   @IsNumber()
   id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   code?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Nombre del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Abreviacion del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   abbreviation?: string;
   
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Factor de conversión del tipo de unidad de medida.',
     type: String,
   })
   @IsString()
   convertion_factor?: string;
   
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Tipo del tipo de unidad de medida.',
     enum: TypeUnitMeasurement,
   })

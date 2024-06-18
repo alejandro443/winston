@@ -1,7 +1,7 @@
-import { OmitType } from '@nestjs/swagger';
+import { ApiPropertyOptional, OmitType } from '@nestjs/swagger';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
 import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
-import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, isNotIn } from 'class-validator';
+import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class PersonDto {
   @ApiProperty({
@@ -38,195 +38,171 @@ export class PersonDto {
   @IsNotEmpty()
   main_identification?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Fecha de nacimiento de la persona',
     type: Date,
   })
-  @IsOptional()
   @IsDateString()
   birthdate?: Date;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Correo electrónico de la persona',
     type: String,
   })
   @IsEmail()
-  @IsOptional()
   main_email?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Teléfono principal de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   main_phone?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Teléfonos secundarios de la persona',
     type: [String],
   })
-  @IsOptional()
   @IsString()
   secondary_phone?: string[];
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Género de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   gender?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado civil de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   marital_status?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Ocupación de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   occupation?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Nacionalidad de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   nationality?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'País de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   country?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Departamento de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   department?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Provincia de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   province?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Distrito de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   district?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Dirección de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   direction?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Ubigeo de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   ubigeo?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Foto de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   photo?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado de la persona (Activo/Inactivo)',
     type: Boolean,
   })
-  @IsOptional()
   @IsString()
   active?: boolean;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Nombre comercial de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   tradename?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Condición de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   condition?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Placa de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   plate?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Licencia de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   licence?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Profesión de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   profession?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Denominación de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   denomination?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Régimen matrimonial de la persona',
     type: String,
   })
-  @IsOptional()
   @IsString()
   married_regimen?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'ID de la pareja de la persona',
     type: Number,
   })
-  @IsOptional()
   @IsNumber()
   couple_id?: number;
 
@@ -239,25 +215,23 @@ export class PersonDto {
   @IsEnum(TypeDocuments)
   type_identification?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado de la clasificación (Activo/Desactivado)',
     type: Boolean,
     default: true,
   })
-  @IsOptional()
   @IsBoolean()
   status?: boolean;
   
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: '¿Crear usuario y contraseña automaticamente?',
     type: Boolean,
     default: false,
   })
-  @IsOptional()
   @IsBoolean()
   create_user?: boolean;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Fecha de creacion',
     type: Date,
   })

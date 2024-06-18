@@ -5,10 +5,8 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt,
-  HasMany,
+  DeletedAt
 } from 'sequelize-typescript';
-import { CompanyWorker } from './CompanyWorker.entity';
 
 @Table({ tableName: 'company_areas' })
 export class CompanyArea extends Model<CompanyArea> {

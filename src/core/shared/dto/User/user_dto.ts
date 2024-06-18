@@ -18,14 +18,14 @@ export class UserDto {
   @IsNumber()
   id?: number;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Usuario.',
     type: String,
   })
   @IsString()
   user?: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Contraseña.',
     type: String,
   })

@@ -24,14 +24,14 @@ export class ClassificationDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripcion de la clasificación',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código de la clasificación',
     type: String,
   })

@@ -24,28 +24,28 @@ export class ProductCategoryDto {
   @IsString()
   declare name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripcion de la categoria del producto',
     type: String,
   })
   @IsString()
   declare description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código de la categoria del producto',
     type: String,
   })
   @IsString()
   declare code?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Nombre de la categoria del producto',
     type: String,
   })
   @IsString()
   declare image?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description:
       'Para poder reconocer si el registro es definido de base o no.',
     type: Boolean,

@@ -12,7 +12,6 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
-import { Client } from './Client.entity';
 import { CompanyWorker } from './CompanyWorker.entity';
 
 @Table({ tableName: 'persons' })

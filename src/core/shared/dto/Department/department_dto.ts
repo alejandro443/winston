@@ -1,4 +1,4 @@
-import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
 import { IsBoolean, IsDateString, IsNumber, IsString } from 'class-validator';
 
 export class DepartmentDto {
@@ -19,7 +19,7 @@ export class DepartmentDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código ubigeo del departamento',
     type: String,
   })
@@ -33,7 +33,7 @@ export class DepartmentDto {
   @IsNumber()
   country_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado del departamento (Activo/Inactivo)',
     default: true,
     type: Boolean,

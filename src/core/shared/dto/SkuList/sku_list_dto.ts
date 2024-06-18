@@ -24,7 +24,7 @@ export class SkuListDto {
   @IsString()
   code?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del SKU.',
     type: String,
   })

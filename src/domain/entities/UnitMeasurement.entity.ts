@@ -5,10 +5,8 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  DeletedAt,
-  HasOne,
+  DeletedAt
 } from 'sequelize-typescript';
-import { Worker } from './Worker.entity';
 import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
 
 @Table({ tableName: 'unit_measurements' })

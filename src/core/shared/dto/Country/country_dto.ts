@@ -23,21 +23,21 @@ export class CountryDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código ISO del país',
     type: String,
   })
   @IsString()
   code_ISO?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Moneda del país',
     type: String,
   })
   @IsString()
   currency?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Idioma del país',
     type: String,
   })
@@ -51,28 +51,28 @@ export class CountryDto {
   @IsNumber()
   region_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código telefónico del país',
     type: String,
   })
   @IsString()
   phone_code?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Tasa de impuestos del país',
     type: Number,
   })
   @IsString()
   tax_rate?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Zona horaria del país',
     type: String,
   })
   @IsString()
   timezone?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Estado del país (Activo/Desactivo)',
     default: true,
     type: Boolean,

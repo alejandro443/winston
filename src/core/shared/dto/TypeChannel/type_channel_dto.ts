@@ -25,14 +25,14 @@ export class TypeChannelDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del tipo de channel.',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código del tipo de channel.',
     type: String,
   })

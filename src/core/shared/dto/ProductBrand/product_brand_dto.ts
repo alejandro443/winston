@@ -24,21 +24,21 @@ export class ProductBrandDto {
   @IsString()
   declare name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripcion de la categoria del producto',
     type: String,
   })
   @IsString()
   declare description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código de la categoria del producto',
     type: String,
   })
   @IsString()
   declare code?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Nombre de la categoria del producto',
     type: String,
   })
@@ -53,8 +53,8 @@ export class ProductBrandDto {
   @IsBoolean()
   declare status?: boolean;
 
-  @ApiProperty({
-    description: 'Fecha de eliminación',
+  @ApiPropertyOptional({
+    description: 'Fecha de creación',
     type: Date,
   })
   @IsDateString()

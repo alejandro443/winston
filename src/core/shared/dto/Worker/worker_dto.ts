@@ -25,6 +25,27 @@ export class WorkerDto {
   @IsString()
   code?: string;
 
+  @ApiProperty({
+    description: 'Identification de la persona.',
+    type: String,
+  })
+  @IsString()
+  person_identification?: string;
+
+  @ApiProperty({
+    description: 'Id de persona del trabajador.',
+    type: String,
+  })
+  @IsNumber()
+  person_id?: number;
+  
+  @ApiPropertyOptional({
+    description: 'Id de usuario(opcional).',
+    type: Number,
+  })
+  @IsNumber()
+  user_id?: number;
+  
   @ApiPropertyOptional({
     description: 'Estado del trabajador (Activo/Inactivo)',
     type: Boolean,
@@ -32,41 +53,13 @@ export class WorkerDto {
   })
   @IsBoolean()
   status?: boolean;
-
+  
   @ApiPropertyOptional({
-    description: 'Id de usuario(opcional).',
-    type: String,
+    description: 'Id del tipo de trabajador.',
+    type: Number,
   })
   @IsNumber()
-  user_id?: number;
-
-  @ApiPropertyOptional({
-    description: 'Identification de la persona.',
-    type: String,
-  })
-  @IsString()
-  person_identification?: string;
-
-  @ApiPropertyOptional({
-    description: 'Código del tipo de trabajador.',
-    type: String,
-  })
-  @IsString()
-  type_worker_code?: string;
-
-  @ApiPropertyOptional({
-    description: 'Código de la clasificación del trabajador.',
-    type: String,
-  })
-  @IsString()
-  classification_code?: string;
-
-  @ApiPropertyOptional({
-    description: 'Código del grupo al que pertenece el trabajador.',
-    type: String,
-  })
-  @IsString()
-  group_code?: string;
+  type_worker_id?: number;
 
   @ApiResponseProperty({
     type: Date,

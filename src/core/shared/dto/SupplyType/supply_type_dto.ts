@@ -25,14 +25,14 @@ export class SupplyTypeDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Descripción del tipo de suministro.',
     type: String,
   })
   @IsString()
   description?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Código del tipo de suministro.',
     type: String,
   })
