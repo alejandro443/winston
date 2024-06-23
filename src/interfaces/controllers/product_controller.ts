@@ -7,6 +7,7 @@ import {
   Inject,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Put,
   UseFilters,
@@ -28,6 +29,7 @@ import {
 } from '../responses/product.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
+import { UpdateProductRequestDto } from '../request_dto/ProductDto/update.product_dto';
 
 @ApiTags('Product')
 @Controller('/product')
@@ -66,14 +68,14 @@ export class ProductController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneProduct(
-    @Param('id', ParseIntPipe) request: GetProductRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductRequestDto,
   ): Promise<ProductResponse> {
-    Log.info(`(Get) Get product category id: ${request.id}`);
+    Log.info(`(Get) Get product category id: ${id}`);
 
-    const product = await this.application.getOneProduct(request.id);
+    const product = await this.application.getOneProduct(id);
     return {
       status: 201,
-      message: `Product  ${request.id} OK`,
+      message: `Product ${id} OK`,
       data: product,
     };
   }
@@ -93,7 +95,7 @@ export class ProductController {
     const product = await this.application.createProduct(request);
     return {
       status: 201,
-      message: `Product  ${request.id} created OK`,
+      message: `Product ${product.id} created OK`,
       data: product,
     };
   }
@@ -106,15 +108,15 @@ export class ProductController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateProduct(
-    @Param('id', ParseIntPipe) params: GetProductRequestDto,
-    @Body() request: CreateProductRequestDto,
+    @Param('id', ParseIntPipe) id: UpdateProductRequestDto,
+    @Body() request: any,
   ): Promise<ProductResponse> {
     Log.info(`(PUT) Put product`);
 
-    const product = await this.application.updateProduct(params.id, request);
+    const product = await this.application.updateProduct(id, request);
     return {
       status: 200,
-      message: `Product  updated.`,
+      message: `Product ${id} updated.`,
       data: product,
     };
   }
@@ -127,14 +129,14 @@ export class ProductController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteProduct(
-    @Param('id', ParseIntPipe) params: GetProductRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductRequestDto,
   ): Promise<ProductResponse> {
-    Log.info(`(Delete) Delete product category ${params.id}`);
+    Log.info(`(Delete) Delete product category ${id}`);
 
-    const product = await this.application.deleteProduct(params.id);
+    const product = await this.application.deleteProduct(id);
     return {
       status: 200,
-      message: `Product  ${params.id} deleted.`,
+      message: `Product  ${id} deleted.`,
       data: product,
     };
   }

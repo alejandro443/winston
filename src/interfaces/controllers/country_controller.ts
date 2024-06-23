@@ -74,14 +74,14 @@ export class CountryController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneCountry(
-    @Param('id', ParseIntPipe) request: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<CountryResponse> {
-    Log.info(`(GET) Get country id: ${request.id}`);
-    const country = await this.application.getOneCountry(request.id);
+    Log.info(`(GET) Get country id: ${id}`);
+    const country = await this.application.getOneCountry(id);
     if (country.id != null) {
       return {
         status: 200,
-        message: `Country ${request.id} find.`,
+        message: `Country ${id} find.`,
         data: country,
       };
     } else {
@@ -120,11 +120,11 @@ export class CountryController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateCountry(
-    @Param('id', ParseIntPipe) params: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: UpdateCountryRequestDto,
   ): Promise<CountryResponse> {
     Log.info(`(PUT) Put country`);
-    const country = await this.application.updateCountry(params.id, request);
+    const country = await this.application.updateCountry(id, request);
     return {
       status: 200,
       message: `Country updated.`,
@@ -140,13 +140,13 @@ export class CountryController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteCountry(
-    @Param('id', ParseIntPipe) params: GetCountryRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<CountryResponse> {
-    Log.info(`(DELETE) Delete country ${params.id}`);
-    const country = await this.application.deleteCountry(params.id);
+    Log.info(`(DELETE) Delete country ${id}`);
+    const country = await this.application.deleteCountry(id);
     return {
       status: 200,
-      message: `Country ${params.id} deleted.`,
+      message: `Country ${id} deleted.`,
       data: country,
     };
   }

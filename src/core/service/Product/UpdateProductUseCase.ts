@@ -8,18 +8,8 @@ export class UpdateProductUseCase {
 
   async updateProduct(id: number, product: UpdateProductDto) {
     try {
-      const response: any = await this.productService?.updateProduct(
-        id,
-        product,
-      );
-      return {
-        id: response.id,
-        code: response.code,
-        name: response.name,
-        description: response.description,
-        image: response.image,
-        status: response.status,
-      };
+      const response: any = await this.productService?.updateProduct(id, product);
+      return response;
     } catch (error: any) {
       return error;
     }

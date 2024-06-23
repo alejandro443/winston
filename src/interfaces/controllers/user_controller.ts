@@ -62,13 +62,13 @@ export class UserController {
   })
   @HttpCode(201)
   @Get('/one/:id')
-  async getOneUser(@Param('id', ParseIntPipe) request: GetUserRequestDto): Promise<UserResponse> {
-    Log.info(`(Get) Get user id: ${request.id}`);
+  async getOneUser(@Param('id', ParseIntPipe) id: GetUserRequestDto): Promise<UserResponse> {
+    Log.info(`(Get) Get user id: ${id}`);
 
-    const user = await this.application.getOneUser(request.id);
+    const user = await this.application.getOneUser(id);
     return {
       status: 201,
-      message: `User ${request.id} OK`,
+      message: `User ${id} OK`,
       data: user,
     };
   }
@@ -101,12 +101,12 @@ export class UserController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateUser(
-    @Param('id', ParseIntPipe) params: GetUserRequestDto,
+    @Param('id', ParseIntPipe) id: GetUserRequestDto,
     @Body() request: CreateUserRequestDto,
   ): Promise<UserResponse> {
     Log.info(`(PUT) Put user`);
 
-    const user = await this.application.updateUser(params.id, request);
+    const user = await this.application.updateUser(id, request);
     return {
       status: 200,
       message: `User updated.`,
@@ -121,13 +121,13 @@ export class UserController {
   })
   @HttpCode(200)
   @Delete('/delete/:id')
-  async deleteUser(@Param('id', ParseIntPipe) params: GetUserRequestDto): Promise<UserResponse> {
-    Log.info(`(Delete) Delete user ${params.id}`);
+  async deleteUser(@Param('id', ParseIntPipe) id: GetUserRequestDto): Promise<UserResponse> {
+    Log.info(`(Delete) Delete user ${id}`);
 
-    const user = await this.application.deleteUser(params.id);
+    const user = await this.application.deleteUser(id);
     return {
       status: 200,
-      message: `User ${params.id} deleted.`,
+      message: `User ${id} deleted.`,
       data: user,
     };
   }

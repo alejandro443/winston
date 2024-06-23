@@ -63,16 +63,16 @@ export class WayToPayController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneWayToPay(
-    @Param('id', ParseIntPipe) request: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<WayToPayResponse> {
-    Log.info(`(Get) Get way_to_pay id: ${request.id}`);
+    Log.info(`(Get) Get way_to_pay id: ${id}`);
 
     const way_to_pay = await this.application.getOneWayToPay(
-      request.id,
+      id,
     );
     return {
       status: 201,
-      message: `WayToPay ${request.id} OK`,
+      message: `WayToPay ${id} OK`,
       data: way_to_pay,
     };
   }
@@ -105,13 +105,13 @@ export class WayToPayController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateWayToPay(
-    @Param('id', ParseIntPipe) params: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: CreateWayToPayRequestDto,
   ): Promise<WayToPayResponse> {
     Log.info(`(PUT) Put way_to_pay`);
 
     const way_to_pay = await this.application.updateWayToPay(
-      params.id,
+      id,
       request,
     );
     return {
@@ -129,16 +129,16 @@ export class WayToPayController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteWayToPay(
-    @Param('id', ParseIntPipe) params: GetWayToPayRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<WayToPayResponse> {
-    Log.info(`(Delete) Delete way_to_pay ${params.id}`);
+    Log.info(`(Delete) Delete way_to_pay ${id}`);
 
     const way_to_pay = await this.application.deleteWayToPay(
-      params.id,
+      id,
     );
     return {
       status: 200,
-      message: `WayToPay ${params.id} deleted.`,
+      message: `WayToPay ${id} deleted.`,
       data: way_to_pay,
     };
   }

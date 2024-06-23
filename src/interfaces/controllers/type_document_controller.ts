@@ -63,16 +63,16 @@ export class TypeDocumentController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeDocument(
-    @Param('id', ParseIntPipe) request: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
-    Log.info(`(Get) Get type_document id: ${request.id}`);
+    Log.info(`(Get) Get type_document id: ${id}`);
 
     const type_document = await this.application.getOneTypeDocument(
-      request.id,
+      id,
     );
     return {
       status: 201,
-      message: `TypeDocument ${request.id} OK`,
+      message: `TypeDocument ${id} OK`,
       data: type_document,
     };
   }
@@ -105,13 +105,13 @@ export class TypeDocumentController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeDocument(
-    @Param('id', ParseIntPipe) params: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeDocumentRequestDto,
     @Body() request: CreateTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
     Log.info(`(PUT) Put type_document`);
 
     const type_document = await this.application.updateTypeDocument(
-      params.id,
+      id,
       request,
     );
     return {
@@ -129,16 +129,16 @@ export class TypeDocumentController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeDocument(
-    @Param('id', ParseIntPipe) params: GetTypeDocumentRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeDocumentRequestDto,
   ): Promise<TypeDocumentResponse> {
-    Log.info(`(Delete) Delete type_document ${params.id}`);
+    Log.info(`(Delete) Delete type_document ${id}`);
 
     const type_document = await this.application.deleteTypeDocument(
-      params.id,
+      id,
     );
     return {
       status: 200,
-      message: `TypeDocument ${params.id} deleted.`,
+      message: `TypeDocument ${id} deleted.`,
       data: type_document,
     };
   }

@@ -4,17 +4,9 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProductDto {
-  @ApiProperty({
-    description: 'Id del producto',
-    type: String,
-  })
-  @ApiResponseProperty({
-    type: String,
-  })
-  @IsNumber()
   declare id?: number;
 
   @IsOptional()
@@ -27,7 +19,7 @@ export class ProductDto {
 
   @ApiProperty({
     description: 'Nombre del producto',
-    type: String,
+    type: String
   })
   @IsString()
   declare name?: string;

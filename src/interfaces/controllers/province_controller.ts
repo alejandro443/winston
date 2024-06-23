@@ -74,14 +74,14 @@ export class ProvinceController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneProvince(
-    @Param('id', ParseIntPipe) request: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<ProvinceResponse> {
-    Log.info(`(GET) Get province id: ${request.id}`);
-    const province = await this.application.getOneProvince(request.id);
+    Log.info(`(GET) Get province id: ${id}`);
+    const province = await this.application.getOneProvince(id);
     if (province.id != null) {
       return {
         status: 200,
-        message: `Province ${request.id} find.`,
+        message: `Province ${id} find.`,
         data: province,
       };
     } else {
@@ -120,11 +120,11 @@ export class ProvinceController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateProvince(
-    @Param('id', ParseIntPipe) params: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: UpdateProvinceRequestDto,
   ): Promise<ProvinceResponse> {
     Log.info(`(PUT) Put province`);
-    const province = await this.application.updateProvince(params.id, request);
+    const province = await this.application.updateProvince(id, request);
     return {
       status: 200,
       message: `Province updated.`,
@@ -140,13 +140,13 @@ export class ProvinceController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteProvince(
-    @Param('id', ParseIntPipe) params: GetProvinceRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<ProvinceResponse> {
-    Log.info(`(DELETE) Delete province ${params.id}`);
-    const province = await this.application.deleteProvince(params.id);
+    Log.info(`(DELETE) Delete province ${id}`);
+    const province = await this.application.deleteProvince(id);
     return {
       status: 200,
-      message: `Province ${params.id} deleted.`,
+      message: `Province ${id} deleted.`,
       data: province,
     };
   }

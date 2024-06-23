@@ -26,7 +26,7 @@ export class ProductRepository {
 
   async create(product: NewProductDto) {
     try {
-      const product_data: any = Product.create(product);
+      const product_data: any = await Product.create(product);
       return product_data;
     } catch (error: any) {
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
@@ -35,9 +35,10 @@ export class ProductRepository {
 
   async update(id: number, product: UpdateProductDto) {
     try {
-      const product_data: any = Product.update(product, { where: { id: id } });
+      const product_data: any = await Product.update(product, { where: { id: id }, returning: true });
       return product_data;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }

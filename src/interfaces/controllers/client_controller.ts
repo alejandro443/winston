@@ -64,14 +64,14 @@ export class ClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneClient(
-    @Param('id', ParseIntPipe) request: GetClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Get) Get client id: ${request.id}`);
+    Log.info(`(Get) Get client id: ${id}`);
 
-    const client = await this.application.getOneClient(request.id);
+    const client = await this.application.getOneClient(id);
     return {
       status: 201,
-      message: `Client ${request.id} OK`,
+      message: `Client ${id} OK`,
       data: client,
     };
   }
@@ -92,7 +92,7 @@ export class ClientController {
     if(client){
       return {
         status: 201,
-        message: `Client ${request.id} created OK`,
+        message: `Client ${client.id} created OK`,
         data: client,
       };
     }
@@ -106,12 +106,12 @@ export class ClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateClient(
-    @Param('id', ParseIntPipe) params: GetClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetClientRequestDto,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
 
-    const client = await this.application.updateClient(params.id, request);
+    const client = await this.application.updateClient(id, request);
     return {
       status: 200,
       message: `Client updated.`,
@@ -127,14 +127,14 @@ export class ClientController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteClient(
-    @Param('id', ParseIntPipe) params: GetClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Delete) Delete client ${params.id}`);
+    Log.info(`(Delete) Delete client ${id}`);
 
-    const client = await this.application.deleteClient(params.id);
+    const client = await this.application.deleteClient(id);
     return {
       status: 200,
-      message: `Client ${params.id} deleted.`,
+      message: `Client ${id} deleted.`,
       data: client,
     };
   }

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -39,7 +40,7 @@ export class ProductBrandController {
     private application: ProductBrandApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid product brand code' })
+  @ApiBadRequestResponse({ description: 'Invalid product brand id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductBrandResponse,
@@ -57,27 +58,27 @@ export class ProductBrandController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product brand code' })
+  @ApiBadRequestResponse({ description: 'Invalid product brand id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductBrandResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneProductBrand(
-    @Param() request: GetProductBrandRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductBrandRequestDto,
   ): Promise<ProductBrandResponse> {
-    Log.info(`(Get) Get product brand code: ${request.id}`);
+    Log.info(`(Get) Get product brand id: ${id}`);
 
-    const product_brand = await this.application.getOneProductBrand(request.id);
+    const product_brand = await this.application.getOneProductBrand(id);
     return {
       status: 201,
-      message: `Product Brand ${request.id} OK`,
+      message: `Product Brand ${id} OK`,
       data: product_brand,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product brand code' })
+  @ApiBadRequestResponse({ description: 'Invalid product brand id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: ProductBrandResponse,
@@ -97,21 +98,21 @@ export class ProductBrandController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product_brand code' })
+  @ApiBadRequestResponse({ description: 'Invalid product_brand id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: ProductBrandResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateProductBrand(
-    @Param() params: GetProductBrandRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductBrandRequestDto,
     @Body() request: CreateProductBrandRequestDto,
   ): Promise<ProductBrandResponse> {
     Log.info(`(PUT) Put product_brand`);
 
     const product_brand = await this.application.updateProductBrand(
-      params.id,
+      id,
       request,
     );
     return {
@@ -121,22 +122,22 @@ export class ProductBrandController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product brand code' })
+  @ApiBadRequestResponse({ description: 'Invalid product brand id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: ProductBrandResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteProductBrand(
-    @Param() params: GetProductBrandRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductBrandRequestDto,
   ): Promise<ProductBrandResponse> {
-    Log.info(`(Delete) Delete product brand ${params.id}`);
+    Log.info(`(Delete) Delete product brand ${id}`);
 
-    const product_brand = await this.application.deleteProductBrand(params.id);
+    const product_brand = await this.application.deleteProductBrand(id);
     return {
       status: 200,
-      message: `Product Brand ${params.id} deleted.`,
+      message: `Product Brand ${id} deleted.`,
       data: product_brand,
     };
   }

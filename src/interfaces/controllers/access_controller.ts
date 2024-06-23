@@ -63,14 +63,14 @@ export class AccessController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneAccess(
-    @Param('id', ParseIntPipe) request: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRequestDto,
   ): Promise<AccessResponse> {
-    Log.info(`(Get) Get access id: ${request.id}`);
+    Log.info(`(Get) Get access id: ${id}`);
 
-    const access = await this.application.getOneAccess(request.id);
+    const access = await this.application.getOneAccess(id);
     return {
       status: 201,
-      message: `Access ${request.id} OK`,
+      message: `Access ${id} OK`,
       data: access,
     };
   }
@@ -103,12 +103,12 @@ export class AccessController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateAccess(
-    @Param('id', ParseIntPipe) params: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRequestDto,
     @Body() request: CreateAccessRequestDto,
   ): Promise<AccessResponse> {
     Log.info(`(PUT) Put access`);
 
-    const access = await this.application.updateAccess(params.id, request);
+    const access = await this.application.updateAccess(id, request);
     return {
       status: 200,
       message: `Access updated.`,
@@ -124,14 +124,14 @@ export class AccessController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteAccess(
-    @Param('id', ParseIntPipe) params: GetAccessRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRequestDto,
   ): Promise<AccessResponse> {
-    Log.info(`(Delete) Delete access ${params.id}`);
+    Log.info(`(Delete) Delete access ${id}`);
 
-    const access = await this.application.deleteAccess(params.id);
+    const access = await this.application.deleteAccess(id);
     return {
       status: 200,
-      message: `Access ${params.id} deleted.`,
+      message: `Access ${id} deleted.`,
       data: access,
     };
   }

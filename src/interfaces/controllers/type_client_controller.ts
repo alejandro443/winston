@@ -63,14 +63,14 @@ export class TypeClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeClient(
-    @Param('id', ParseIntPipe) request: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
-    Log.info(`(Get) Get type_client id: ${request.id}`);
+    Log.info(`(Get) Get type_client id: ${id}`);
 
-    const type_client = await this.application.getOneTypeClient(request.id);
+    const type_client = await this.application.getOneTypeClient(id);
     return {
       status: 201,
-      message: `TypeClient ${request.id} OK`,
+      message: `TypeClient ${id} OK`,
       data: type_client,
     };
   }
@@ -103,13 +103,13 @@ export class TypeClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeClient(
-    @Param('id', ParseIntPipe) params: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeClientRequestDto,
     @Body() request: CreateTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
     Log.info(`(PUT) Put type_client`);
 
     const type_client = await this.application.updateTypeClient(
-      params.id,
+      id,
       request,
     );
     return {
@@ -127,14 +127,14 @@ export class TypeClientController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeClient(
-    @Param('id', ParseIntPipe) params: GetTypeClientRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeClientRequestDto,
   ): Promise<TypeClientResponse> {
-    Log.info(`(Delete) Delete type_client ${params.id}`);
+    Log.info(`(Delete) Delete type_client ${id}`);
 
-    const type_client = await this.application.deleteTypeClient(params.id);
+    const type_client = await this.application.deleteTypeClient(id);
     return {
       status: 200,
-      message: `TypeClient ${params.id} deleted.`,
+      message: `TypeClient ${id} deleted.`,
       data: type_client,
     };
   }

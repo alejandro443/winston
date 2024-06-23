@@ -64,14 +64,14 @@ export class OrganizationController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneOrganization(
-    @Param('id', ParseIntPipe) request: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) id: GetOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
-    Log.info(`(Get) Get organization id: ${request.id}`);
+    Log.info(`(Get) Get organization id: ${id}`);
 
-    const organization = await this.application.getOneOrganization(request.id);
+    const organization = await this.application.getOneOrganization(id);
     return {
       status: 201,
-      message: `Organization ${request.id} OK`,
+      message: `Organization ${id} OK`,
       data: organization,
     };
   }
@@ -104,13 +104,13 @@ export class OrganizationController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateOrganization(
-    @Param('id', ParseIntPipe) params: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) id: GetOrganizationRequestDto,
     @Body() request: UpdateOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
     Log.info(`(PUT) Put organization`);
 
     const organization = await this.application.updateOrganization(
-      params.id,
+      id,
       request,
     );
     return {
@@ -128,14 +128,14 @@ export class OrganizationController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteOrganization(
-    @Param('id', ParseIntPipe) params: GetOrganizationRequestDto,
+    @Param('id', ParseIntPipe) id: GetOrganizationRequestDto,
   ): Promise<OrganizationResponse> {
-    Log.info(`(Delete) Delete organization ${params.id}`);
+    Log.info(`(Delete) Delete organization ${id}`);
 
-    const organization = await this.application.deleteOrganization(params.id);
+    const organization = await this.application.deleteOrganization(id);
     return {
       status: 200,
-      message: `Organization ${params.id} deleted.`,
+      message: `Organization ${id} deleted.`,
       data: organization,
     };
   }

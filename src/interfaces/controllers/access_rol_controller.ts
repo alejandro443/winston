@@ -63,14 +63,14 @@ export class AccessRolController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneAccessRol(
-    @Param('id', ParseIntPipe) request: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
-    Log.info(`(Get) Get access_rol id: ${request.id}`);
+    Log.info(`(Get) Get access_rol id: ${id}`);
 
-    const access_rol = await this.application.getOneAccessRol(request.id);
+    const access_rol = await this.application.getOneAccessRol(id);
     return {
       status: 201,
-      message: `AccessRol ${request.id} OK`,
+      message: `AccessRol ${id} OK`,
       data: access_rol,
     };
   }
@@ -103,13 +103,13 @@ export class AccessRolController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateAccessRol(
-    @Param('id', ParseIntPipe) params: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRolRequestDto,
     @Body() request: CreateAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
     Log.info(`(PUT) Put access_rol`);
 
     const access_rol = await this.application.updateAccessRol(
-      params.id,
+      id,
       request,
     );
     return {
@@ -127,14 +127,14 @@ export class AccessRolController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteAccessRol(
-    @Param('id', ParseIntPipe) params: GetAccessRolRequestDto,
+    @Param('id', ParseIntPipe) id: GetAccessRolRequestDto,
   ): Promise<AccessRolResponse> {
-    Log.info(`(Delete) Delete access_rol ${params.id}`);
+    Log.info(`(Delete) Delete access_rol ${id}`);
 
-    const access_rol = await this.application.deleteAccessRol(params.id);
+    const access_rol = await this.application.deleteAccessRol(id);
     return {
       status: 200,
-      message: `AccessRol ${params.id} deleted.`,
+      message: `AccessRol ${id} deleted.`,
       data: access_rol,
     };
   }

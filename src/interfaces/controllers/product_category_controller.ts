@@ -6,6 +6,7 @@ import {
   HttpCode,
   Inject,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -63,18 +64,18 @@ export class ProductCategoryController {
     type: ProductCategoryResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneProductCategory(
-    @Param() request: GetProductCategoryRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductCategoryRequestDto,
   ): Promise<ProductCategoryResponse> {
-    Log.info(`(Get) Get product category code: ${request.id}`);
+    Log.info(`(Get) Get product category id: ${id}`);
 
     const product_category = await this.application.getOneProductCategory(
-      request.id,
+      id,
     );
     return {
       status: 201,
-      message: `Product Category ${request.id} OK`,
+      message: `Product Category ${id} OK`,
       data: product_category,
     };
   }
@@ -106,15 +107,15 @@ export class ProductCategoryController {
     type: ProductCategoryResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateProductCategory(
-    @Param() params: GetProductCategoryRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductCategoryRequestDto,
     @Body() request: CreateProductCategoryRequestDto,
   ): Promise<ProductCategoryResponse> {
     Log.info(`(PUT) Put product_category`);
 
     const product_category = await this.application.updateProductCategory(
-      params.id,
+      id,
       request,
     );
     return {
@@ -130,18 +131,18 @@ export class ProductCategoryController {
     type: ProductCategoryResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteProductCategory(
-    @Param() params: GetProductCategoryRequestDto,
+    @Param('id', ParseIntPipe) id: GetProductCategoryRequestDto,
   ): Promise<ProductCategoryResponse> {
-    Log.info(`(Delete) Delete product category ${params.id}`);
+    Log.info(`(Delete) Delete product category ${id}`);
 
     const product_category = await this.application.deleteProductCategory(
-      params.id,
+      id,
     );
     return {
       status: 200,
-      message: `Product Category ${params.id} deleted.`,
+      message: `Product Category ${id} deleted.`,
       data: product_category,
     };
   }

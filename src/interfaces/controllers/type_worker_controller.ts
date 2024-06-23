@@ -63,14 +63,14 @@ export class TypeWorkerController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneTypeWorker(
-    @Param('id', ParseIntPipe) request: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
-    Log.info(`(Get) Get type_worker id: ${request.id}`);
+    Log.info(`(Get) Get type_worker id: ${id}`);
 
-    const type_worker = await this.application.getOneTypeWorker(request.id);
+    const type_worker = await this.application.getOneTypeWorker(id);
     return {
       status: 201,
-      message: `TypeWorker ${request.id} OK`,
+      message: `TypeWorker ${id} OK`,
       data: type_worker,
     };
   }
@@ -103,13 +103,13 @@ export class TypeWorkerController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateTypeWorker(
-    @Param('id', ParseIntPipe) params: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeWorkerRequestDto,
     @Body() request: CreateTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
     Log.info(`(PUT) Put type_worker`);
 
     const type_worker = await this.application.updateTypeWorker(
-      params.id,
+      id,
       request,
     );
     return {
@@ -127,14 +127,14 @@ export class TypeWorkerController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteTypeWorker(
-    @Param('id', ParseIntPipe) params: GetTypeWorkerRequestDto,
+    @Param('id', ParseIntPipe) id: GetTypeWorkerRequestDto,
   ): Promise<TypeWorkerResponse> {
-    Log.info(`(Delete) Delete type_worker ${params.id}`);
+    Log.info(`(Delete) Delete type_worker ${id}`);
 
-    const type_worker = await this.application.deleteTypeWorker(params.id);
+    const type_worker = await this.application.deleteTypeWorker(id);
     return {
       status: 200,
-      message: `TypeWorker ${params.id} deleted.`,
+      message: `TypeWorker ${id} deleted.`,
       data: type_worker,
     };
   }

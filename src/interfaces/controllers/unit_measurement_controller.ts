@@ -63,16 +63,16 @@ export class UnitMeasurementController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneUnitMeasurement(
-    @Param('id', ParseIntPipe) request: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) id: GetUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
-    Log.info(`(Get) Get unit_measurement code: ${request.id}`);
+    Log.info(`(Get) Get unit_measurement code: ${id}`);
 
     const unit_measurement = await this.application.getOneUnitMeasurement(
-      request.id,
+      id,
     );
     return {
       status: 201,
-      message: `UnitMeasurement ${request.id} OK`,
+      message: `UnitMeasurement ${id} OK`,
       data: unit_measurement,
     };
   }
@@ -105,13 +105,13 @@ export class UnitMeasurementController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateUnitMeasurement(
-    @Param('id', ParseIntPipe) params: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) id: GetUnitMeasurementRequestDto,
     @Body() request: CreateUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
     Log.info(`(PUT) Put unit_measurement`);
 
     const unit_measurement = await this.application.updateUnitMeasurement(
-      params.id,
+      id,
       request,
     );
     return {
@@ -129,16 +129,16 @@ export class UnitMeasurementController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteUnitMeasurement(
-    @Param('id', ParseIntPipe) params: GetUnitMeasurementRequestDto,
+    @Param('id', ParseIntPipe) id: GetUnitMeasurementRequestDto,
   ): Promise<UnitMeasurementResponse> {
-    Log.info(`(Delete) Delete unit_measurement ${params.id}`);
+    Log.info(`(Delete) Delete unit_measurement ${id}`);
 
     const unit_measurement = await this.application.deleteUnitMeasurement(
-      params.id,
+      id,
     );
     return {
       status: 200,
-      message: `UnitMeasurement ${params.id} deleted.`,
+      message: `UnitMeasurement ${id} deleted.`,
       data: unit_measurement,
     };
   }

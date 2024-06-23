@@ -74,14 +74,14 @@ export class DistrictController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneDistrict(
-    @Param('id', ParseIntPipe) request: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<DistrictResponse> {
-    Log.info(`(GET) Get district id: ${request.id}`);
-    const district = await this.application.getOneDistrict(request.id);
+    Log.info(`(GET) Get district id: ${id}`);
+    const district = await this.application.getOneDistrict(id);
     if (district.id != null) {
       return {
         status: 200,
-        message: `District ${request.id} find.`,
+        message: `District ${id} find.`,
         data: district,
       };
     } else {
@@ -120,11 +120,11 @@ export class DistrictController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateDistrict(
-    @Param('id', ParseIntPipe) params: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: UpdateDistrictRequestDto,
   ): Promise<DistrictResponse> {
     Log.info(`(PUT) Put district`);
-    const district = await this.application.updateDistrict(params.id, request);
+    const district = await this.application.updateDistrict(id, request);
     return {
       status: 200,
       message: `District updated.`,
@@ -140,13 +140,13 @@ export class DistrictController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteDistrict(
-    @Param('id', ParseIntPipe) params: GetDistrictRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<DistrictResponse> {
-    Log.info(`(DELETE) Delete district ${params.id}`);
-    const district = await this.application.deleteDistrict(params.id);
+    Log.info(`(DELETE) Delete district ${id}`);
+    const district = await this.application.deleteDistrict(id);
     return {
       status: 200,
-      message: `District ${params.id} deleted.`,
+      message: `District ${id} deleted.`,
       data: district,
     };
   }

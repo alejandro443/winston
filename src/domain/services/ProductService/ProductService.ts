@@ -39,7 +39,7 @@ export class ProductService {
 
   async updateProduct(id: any, product: NewProductDto) {
     try {
-      const product_update: any = this.repository?.update(id, product);
+      const product_update: any = await this.repository?.update(id, product);
       return product_update;
     } catch (error: any) {
       throw new ProductApplicationError(error)

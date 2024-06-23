@@ -63,14 +63,14 @@ export class SupplyController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneSupply(
-    @Param('id', ParseIntPipe) request: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) id: GetSupplyRequestDto,
   ): Promise<SupplyResponse> {
-    Log.info(`(Get) Get supply code: ${request.id}`);
+    Log.info(`(Get) Get supply code: ${id}`);
 
-    const supply = await this.application.getOneSupply(request.id);
+    const supply = await this.application.getOneSupply(id);
     return {
       status: 201,
-      message: `Supply ${request.id} OK`,
+      message: `Supply ${id} OK`,
       data: supply,
     };
   }
@@ -103,13 +103,13 @@ export class SupplyController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateSupply(
-    @Param('id', ParseIntPipe) params: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) id: GetSupplyRequestDto,
     @Body() request: CreateSupplyRequestDto,
   ): Promise<SupplyResponse> {
     Log.info(`(PUT) Put supply`);
 
     const supply = await this.application.updateSupply(
-      params.id,
+      id,
       request,
     );
     return {
@@ -127,14 +127,14 @@ export class SupplyController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteSupply(
-    @Param('id', ParseIntPipe) params: GetSupplyRequestDto,
+    @Param('id', ParseIntPipe) id: GetSupplyRequestDto,
   ): Promise<SupplyResponse> {
-    Log.info(`(Delete) Delete supply ${params.id}`);
+    Log.info(`(Delete) Delete supply ${id}`);
 
-    const supply = await this.application.deleteSupply(params.id);
+    const supply = await this.application.deleteSupply(id);
     return {
       status: 200,
-      message: `Supply ${params.id} deleted.`,
+      message: `Supply ${id} deleted.`,
       data: supply,
     };
   }

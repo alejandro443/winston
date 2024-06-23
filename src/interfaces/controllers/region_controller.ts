@@ -71,14 +71,14 @@ export class RegionController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneRegion(
-    @Param('id', ParseIntPipe) request: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<RegionResponse> {
-    Log.info(`(GET) Get region id: ${request.id}`);
-    const region = await this.application.getOneRegion(request.id);
+    Log.info(`(GET) Get region id: ${id}`);
+    const region = await this.application.getOneRegion(id);
     if (region.id != null) {
       return {
         status: 200,
-        message: `Region ${request.id} find.`,
+        message: `Region ${id} find.`,
         data: region,
       };
     } else {
@@ -117,11 +117,11 @@ export class RegionController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateRegion(
-    @Param('id', ParseIntPipe) params: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: UpdateRegionRequestDto,
   ): Promise<RegionResponse> {
     Log.info(`(PUT) Put region`);
-    const region = await this.application.updateRegion(params.id, request);
+    const region = await this.application.updateRegion(id, request);
     return {
       status: 200,
       message: `Region updated.`,
@@ -137,13 +137,13 @@ export class RegionController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteRegion(
-    @Param('id', ParseIntPipe) params: GetRegionRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<RegionResponse> {
-    Log.info(`(DELETE) Delete region ${params.id}`);
-    const region = await this.application.deleteRegion(params.id);
+    Log.info(`(DELETE) Delete region ${id}`);
+    const region = await this.application.deleteRegion(id);
     return {
       status: 200,
-      message: `Region ${params.id} deleted.`,
+      message: `Region ${id} deleted.`,
       data: region,
     };
   }

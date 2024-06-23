@@ -74,14 +74,14 @@ export class DepartmentController {
   @HttpCode(200)
   @Get('/one/:id')
   async getOneDepartment(
-    @Param('id', ParseIntPipe) request: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<DepartmentResponse> {
-    Log.info(`(GET) Get department id: ${request.id}`);
-    const department = await this.application.getOneDepartment(request.id);
+    Log.info(`(GET) Get department id: ${id}`);
+    const department = await this.application.getOneDepartment(id);
     if (department.id != null) {
       return {
         status: 200,
-        message: `Department ${request.id} find.`,
+        message: `Department ${id} find.`,
         data: department,
       };
     } else {
@@ -120,12 +120,12 @@ export class DepartmentController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateDepartment(
-    @Param('id', ParseIntPipe) params: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) id: number,
     @Body() request: UpdateDepartmentRequestDto,
   ): Promise<DepartmentResponse> {
     Log.info(`(PUT) Put department`);
     const department = await this.application.updateDepartment(
-      params.id,
+      id,
       request,
     );
     return {
@@ -143,13 +143,13 @@ export class DepartmentController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteDepartment(
-    @Param('id', ParseIntPipe) params: GetDepartmentRequestDto,
+    @Param('id', ParseIntPipe) id: number,
   ): Promise<DepartmentResponse> {
-    Log.info(`(DELETE) Delete department ${params.id}`);
-    const department = await this.application.deleteDepartment(params.id);
+    Log.info(`(DELETE) Delete department ${id}`);
+    const department = await this.application.deleteDepartment(id);
     return {
       status: 200,
-      message: `Department ${params.id} deleted.`,
+      message: `Department ${id} deleted.`,
       data: department,
     };
   }
