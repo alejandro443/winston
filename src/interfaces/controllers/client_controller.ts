@@ -89,6 +89,7 @@ export class ClientController {
     Log.info(`(POST) Create client`);
 
     const client = await this.application.createClient(request);
+    console.log(client)
     if(client){
       return {
         status: 201,
