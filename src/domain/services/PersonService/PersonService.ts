@@ -29,7 +29,7 @@ export class PersonService {
     try {
 
       person.main_identification = 
-        present(person.main_identification) ? 
+        await present(person.main_identification) ? 
           await GenerateRandomIdentificationPerson() : 
           person.main_identification;
 
@@ -37,6 +37,7 @@ export class PersonService {
 
       return person_new;
     } catch (error: any) {
+      console.log(error)
       throw new PersonApplicationError(error)
     }
   }
