@@ -36,7 +36,7 @@ export class PersonRepository {
     }
   }
 
-  async update(main_identification: string, person: UpdatePersonDto) {
+  async update(main_identification: string, person: UpdatePersonDto | object) {
     try {
       return Person.update(person, {
         where: { main_identification: main_identification },

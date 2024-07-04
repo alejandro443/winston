@@ -33,7 +33,8 @@ export class ClientRepository {
 
   async update(code: any, client: UpdateClientDto) {
     try {
-      return Client.update(client, { where: { code: code } });
+      const clientUpdate: any = Client.update(client, { where: { code: code } });
+      return clientUpdate;
     } catch (error: any) {
       return error;
     }

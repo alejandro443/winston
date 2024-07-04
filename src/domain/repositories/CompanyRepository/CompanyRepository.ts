@@ -35,13 +35,13 @@ export class CompanyRepository {
     }
   }
 
-  async update(main_identification: string, company: UpdateCompanyDto) {
+  async update(main_identification: string, company: UpdateCompanyDto | object) {
     try {
       return await Company.update(company, {
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error.errors[0].message, 'INTERNAL_SERVER_ERROR')
     }
   }
 

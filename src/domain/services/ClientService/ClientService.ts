@@ -3,7 +3,7 @@ import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_cli
 import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
 import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
 import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
-import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
+import { NewClientDto, UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
 export class ClientService {
@@ -54,11 +54,22 @@ export class ClientService {
     }
   }
 
-  async updateClient(code: any, client: NewClientDto) {
+  async updateClient(code: any, client: UpdateClientDto) {
     try {
+      var entity: any;
+      if(client.type_entity === TypeEntity.COMPANY){
+        entity = await this.repositoryCompany.update(client.entity['main_identification'], client.entity);
+        client.entity_id = entity.id;
+      }
+
+      if (client.type_entity === TypeEntity.PERSON) {
+        entity = await this.repositoryPerson.update(client.entity['main_identification'], client.entity);
+        client.entity_id = entity.id;
+      }
+
       return this.repository?.update(code, client);
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error)
     }
   }
 

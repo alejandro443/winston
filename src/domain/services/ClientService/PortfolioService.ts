@@ -9,7 +9,7 @@ export class PortfolioService {
     try {
       const portfolio_data: any = await this.repository?.portfolioClients();
 
-      const portfolio_dto: any = portfolio_data.map((client_data: any) => {
+      const portfolio_dto: any = await portfolio_data.map((client_data: any) => {
         const client: any = client_data.toJSON();
         let objectEntity: object = {};
 
@@ -53,6 +53,7 @@ export class PortfolioService {
           ...objectEntity,
         };
       });
+
       return portfolio_dto;
     } catch (error: any) {
       return error;
