@@ -46,9 +46,17 @@ export class UserDto {
     type: Boolean,
     default: false,
   })
-  @IsString()
+  @IsBoolean()
   @IsOptional()
   consultant?: boolean;
+
+  @IsOptional()
+  @ApiProperty({
+    description: 'Id de rol asignado.',
+    type: Number
+  })
+  @IsNumber()
+  rol_id?: number;
 
   @IsOptional()
   @ApiPropertyOptional({
