@@ -9,7 +9,7 @@ export class GetAllAccessUseCase {
     try {
       const response: any = await this.accessService?.getAllAccess();
 
-      return response.map((access: any) => ({ ...access }));
+      return response.map((access: any) => ({ ...access.dataValues }));
     } catch (error: any) {
       return error;
     }
