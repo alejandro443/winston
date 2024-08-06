@@ -30,7 +30,8 @@ import {
   SUPPLY_TYPE_APPLICATION,
   UNIT_MEASUREMENT_APPLICATION,
   SUPPLY_APPLICATION,
-  SKU_LIST_APPLICATION
+  SKU_LIST_APPLICATION,
+  WORK_AREA_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -63,6 +64,7 @@ import { SupplyTypeApplicationService } from './service/SupplyType/SupplyTypeApp
 import { UnitMeasurementApplicationService } from './service/UnitMeasurement/UnitMeasurementApplicationService';
 import { SupplyApplicationService } from './service/Supply/SupplyApplicationService';
 import { SkuListApplicationService } from './service/SkuList/SkuListApplicationService';
+import { WorkAreaApplicationService } from './service/WorkArea/WorkAreaApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -316,6 +318,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const WorkAreaApplicationProvider = {
+      provide: WORK_AREA_APPLICATION,
+      useFactory() {
+        return new WorkAreaApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -352,7 +362,8 @@ export class CoreModule {
         SupplyTypeApplicationProvider,
         UnitMeasurementApplicationProvider,
         SupplyApplicationProvider,
-        SkuListApplicationProvider
+        SkuListApplicationProvider,
+        WorkAreaApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -385,7 +396,8 @@ export class CoreModule {
         SUPPLY_TYPE_APPLICATION,
         UNIT_MEASUREMENT_APPLICATION,
         SUPPLY_APPLICATION,
-        SKU_LIST_APPLICATION
+        SKU_LIST_APPLICATION,
+        WORK_AREA_APPLICATION
       ],
     };
   }

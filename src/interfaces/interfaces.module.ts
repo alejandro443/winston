@@ -33,6 +33,7 @@ import { SupplyTypeController } from './controllers/supply_type_controller';
 import { UnitMeasurementController } from './controllers/unit_measurement_controller';
 import { SupplyController } from './controllers/supply_controller';
 import { SkuListController } from './controllers/sku_list_controller';
+import { WorkAreaController } from './controllers/work_area_controller';
 
 @Module({
   imports: [
@@ -74,7 +75,8 @@ import { SkuListController } from './controllers/sku_list_controller';
     SupplyTypeController,
     UnitMeasurementController,
     SupplyController,
-    SkuListController
+    SkuListController,
+    WorkAreaController
   ],
 })
 export class InterfacesModule {}
