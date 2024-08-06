@@ -1,0 +1,25 @@
+---
+- option: LOGIN_LIMIT
+  value: 3
+  type_value: number
+- option: PASSWORD_BLACKLIST_ACTIVE
+  value: true
+  type_value: boolean
+- option: SEND_WELCOME_EMAIL_TO_CLIENT
+  value: false
+  type_value: boolean
+- option: SEND_BIRTHDAY_EMAIL_USER
+  value: false
+  type_value: boolean
+- option: MFA_ACTIVE
+  value: true
+  type_value: boolean
+- option: ENABLE_CASH_OPENING
+  value: true
+  type_value: boolean
+- option: ENABLE_WHOLESALE_PRICE
+  value: false
+  type_value: boolean
+- option: TAX_EXEMPT_STORE
+  value: false
+  type_value: boolean

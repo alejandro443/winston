@@ -95,6 +95,11 @@ export class User extends Model<User> {
   })
   declare recovery_token: string;
 
+  @Column({
+    type: DataType.TEXT,
+  })
+  declare creator: string;
+
   @HasMany(() => UserAccess, { foreignKey: 'user_id', sourceKey: 'id' })
   declare userAccesses: UserAccess[];
 

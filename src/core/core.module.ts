@@ -32,7 +32,8 @@ import {
   SUPPLY_APPLICATION,
   SKU_LIST_APPLICATION,
   WORK_AREA_APPLICATION,
-  OPERATION_APPLICATION
+  OPERATION_APPLICATION,
+  SETTING_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -67,6 +68,7 @@ import { SupplyApplicationService } from './service/Supply/SupplyApplicationServ
 import { SkuListApplicationService } from './service/SkuList/SkuListApplicationService';
 import { WorkAreaApplicationService } from './service/WorkArea/WorkAreaApplicationService';
 import { OperationApplicationService } from './service/Operation/OperationApplicationService';
+import { SettingApplicationService } from './service/Setting/SettingApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -336,6 +338,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const SettingApplicationProvider = {
+      provide: SETTING_APPLICATION,
+      useFactory() {
+        return new SettingApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -374,7 +384,8 @@ export class CoreModule {
         SupplyApplicationProvider,
         SkuListApplicationProvider,
         WorkAreaApplicationProvider,
-        OperationApplicationProvider
+        OperationApplicationProvider,
+        SettingApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -409,7 +420,8 @@ export class CoreModule {
         SUPPLY_APPLICATION,
         SKU_LIST_APPLICATION,
         WORK_AREA_APPLICATION,
-        OPERATION_APPLICATION
+        OPERATION_APPLICATION,
+        SETTING_APPLICATION
       ],
     };
   }

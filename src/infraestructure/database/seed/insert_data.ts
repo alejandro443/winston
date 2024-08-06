@@ -14,6 +14,7 @@ import { UserRol } from '../../../domain/entities/UserRol.entity';
 import { Region } from '../../../domain/entities/Region.entity';
 import { Country } from '../../../domain/entities/Country.entity';
 import { Department } from '../../../domain/entities/Department.entity';
+import { Function } from '../../../domain/entities/Function.entity';
 
 config();
 
@@ -200,19 +201,27 @@ async function createUsers() {
   }
 }
 
-async function createUsersRoles(usuarios: any) {
+async function createUsersRoles() {
   logger.message('CREAR USUARIOS CON SUS ROLES');
-  const userRolesCreate = await Promise.all(
-    usuarios.map((user) => {
-      return {
-        rol_id: 1,
-        user_id: user.dataValues.id,
-      };
-    }),
+  const userRolesData = await fsPromises.readFileSync(
+    __dirname + `/data/system/users_roles.yml`,
+    'utf8',
+  );
+  const userRoles = load(userRolesData) as UserRol[];
+
+  const existingUserRol = await UserRol.findAll({
+    where: { user_id: userRoles.map((a) => a.user_id) },
+  });
+
+  const userRolesToInsert = userRoles.filter(
+    (a) =>
+      !existingUserRol.some(
+        (existingUserRoles) => existingUserRoles.id === a.id,
+      ),
   );
 
-  if (userRolesCreate.length > 0) {
-    await UserRol.bulkCreate(userRolesCreate);
+  if (userRoles.length > 0) {
+    await UserRol.bulkCreate(userRolesToInsert);
     logger.message('Usuarios creados exitosamente');
   } else {
     logger.message('No hay data para insertar para los usuarios.');
@@ -303,6 +312,60 @@ async function createDepartments(pais: string) {
   }
 }
 
+async function createFunctions() {
+  // LEER Y CARGA DATOS DE FUNCIONES
+  logger.message('INSERTAR TIPOS DE CLIENTES');
+  const functionsData = await fsPromises.readFileSync(
+    __dirname + `/data/system/functions.yml`,
+    'utf8',
+  );
+  const functions = load(functionsData) as Function[];
+
+  const existingFunctions = await Function.findAll({
+    where: { id: functions.map((a) => a.id) },
+  });
+  const functionsToInsert = functions.filter(
+    (a) =>
+      !existingFunctions.some(
+        (existingFunction) => existingFunction.id === a.id,
+      ),
+  );
+
+  if (functionsToInsert.length > 0) {
+    await Function.bulkCreate(functionsToInsert);
+    logger.message('Datos de funciones insertados exitosamente');
+  } else {
+    logger.message('No hay data para insertar para funciones');
+  }
+}
+
+async function createRolesFunctions() {
+  logger.message('CREAR ROLES CON SUS FUNCIONES');
+  const userRolesData = await fsPromises.readFileSync(
+    __dirname + `/data/system/role_functions.yml`,
+    'utf8',
+  );
+  const userRoles = load(userRolesData) as UserRol[];
+
+  const existingUserRol = await UserRol.findAll({
+    where: { user_id: userRoles.map((a) => a.user_id) },
+  });
+
+  const userRolesToInsert = userRoles.filter(
+    (a) =>
+      !existingUserRol.some(
+        (existingUserRoles) => existingUserRoles.id === a.id,
+      ),
+  );
+
+  if (userRoles.length > 0) {
+    await UserRol.bulkCreate(userRolesToInsert);
+    logger.message('Usuarios creados exitosamente');
+  } else {
+    logger.message('No hay data para insertar para los usuarios.');
+  }
+}
+
 export class InserData {
   private pais: string;
 
@@ -319,14 +382,17 @@ export class InserData {
       await createAccessesRoles();
       await createClassifications(this.pais);
       await createGroups(this.pais);
-      await createUsers()
-        .then((users) => createUsersRoles(users))
-        .catch((error) => {
-          logger.error(error);
-        });
+      await createFunctions();
+      await createUsers();
+        // .then((users) => createUsersRoles(users))
+        // .catch((error) => {
+        //   logger.error(error);
+        // });
       await createRegions();
       await createCountries();
       await createDepartments(this.pais);
+      await createUsersRoles();
+      // await createRolesFunctions();
 
       logger.message('Datos insertados exitosamente');
       return true;

@@ -1,8 +1,7 @@
 ---
-- user: 'a_cudesi'
-  password: 'ADMIN@CUDESI@1412@2024'
-  consultant: true
-- user: 'admin'
-  password: 'administrator@2024'
-  consultant: false
-
+- user_id: 1
+  rol_id: 13
+  status: true
+- user_id: 2
+  rol_id: 1
+  status: true
