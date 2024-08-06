@@ -1,10 +1,14 @@
 ---
-- user: 'a_cudesi'
+- id: 1
+  user: 'a_cudesi'
   password: 'ADMIN@CUDESI@1412@2024'
   code: USR_1712073470053
   consultant: true
-- user: 'admin'
+  creator: system
+- id: 2
+  user: 'admin'
   password: 'administrator@2024'
   code: USR_1712073470054
   consultant: false
+  creator: system
 
