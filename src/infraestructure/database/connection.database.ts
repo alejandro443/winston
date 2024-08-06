@@ -51,6 +51,7 @@ import { UnitMeasurement } from '../../domain/entities/UnitMeasurement.entity';
 import { Supply } from '../../domain/entities/Supply.entity';
 import { SkuList } from '../../domain/entities/SkuList.entity';
 import { WorkArea } from '../../domain/entities/WorkArea.entity';
+import { Operation } from '../../domain/entities/Operation.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -113,7 +114,8 @@ export const ConnectionProvider = [
         UnitMeasurement,
         Supply,
         SkuList,
-        WorkArea
+        WorkArea,
+        Operation
       ]);
 
       await sequelize.sync({ alter: true });

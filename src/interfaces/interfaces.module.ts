@@ -34,6 +34,7 @@ import { UnitMeasurementController } from './controllers/unit_measurement_contro
 import { SupplyController } from './controllers/supply_controller';
 import { SkuListController } from './controllers/sku_list_controller';
 import { WorkAreaController } from './controllers/work_area_controller';
+import { OperationController } from './controllers/operation_controller';
 
 @Module({
   imports: [
@@ -76,7 +77,8 @@ import { WorkAreaController } from './controllers/work_area_controller';
     UnitMeasurementController,
     SupplyController,
     SkuListController,
-    WorkAreaController
+    WorkAreaController,
+    OperationController
   ],
 })
 export class InterfacesModule {}
