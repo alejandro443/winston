@@ -36,6 +36,11 @@ export class Product extends Model<Product> {
   @Column({
     type: DataType.STRING,
   })
+  declare tradename: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
   declare description: string;
 
   @Column({
@@ -92,6 +97,11 @@ export class Product extends Model<Product> {
     type: DataType.INTEGER
   })
   declare alert_days: number;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  declare tracing: string;
 
   @ForeignKey(() => ProductBrand)
   @Column({
