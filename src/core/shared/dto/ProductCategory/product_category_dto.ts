@@ -65,6 +65,16 @@ export class ProductCategoryDto {
   })
   @IsBoolean()
   declare is_base?: boolean;
+ 
+  @IsOptional()
+  @ApiPropertyOptional({
+    description:
+      'Para poder reconocer si el registro es padre de otra categoria.',
+    type: Boolean,
+    default: false,
+  })
+  @IsBoolean()
+  declare is_father?: boolean;
 
   @IsOptional()
   @ApiPropertyOptional({

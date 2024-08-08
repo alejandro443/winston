@@ -6,6 +6,7 @@ import {
 } from '@src/core/shared/dto/ProductCategory/product_category_dto';
 export interface ProductCategoryApplication {
   getAllProductCategory(): Promise<Array<AllProductCategoryDto>>;
+  getFathersProductCategory(): Promise<Array<AllProductCategoryDto>>;
   getOneProductCategory(id: any): Promise<OneProductCategoryDto>;
   createProductCategory(
     rol: NewProductCategoryDto,

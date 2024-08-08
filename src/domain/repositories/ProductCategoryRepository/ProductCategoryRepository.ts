@@ -9,7 +9,8 @@ export class ProductCategoryRepository {
 
   async findOne(id: number) {
     try {
-      return ProductCategory.findOne({ where: { id: id } });
+      var find_one: any = ProductCategory.findOne({ where: { id: id } });
+      return find_one;
     } catch (error: any) {
       return error;
     }
@@ -17,7 +18,20 @@ export class ProductCategoryRepository {
 
   async findAll() {
     try {
-      return ProductCategory.findAll({ where: { deleted_at: null } });
+      var find_all: any = ProductCategory.findAll({ where: { deleted_at: null } });
+      return find_all;
+    } catch (error: any) {
+      return error;
+    }
+  }
+  
+  async findAllFathers() {
+    try {
+      var find_fathers: any = ProductCategory.findAll({ where: { 
+        is_father: true,
+        deleted_at: null 
+      } });
+      return find_fathers;
     } catch (error: any) {
       return error;
     }

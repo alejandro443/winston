@@ -21,6 +21,14 @@ export class ProductCategoryService {
       return error;
     }
   }
+  
+  async getFathersProductCategory() {
+    try {
+      return this.repository?.findAllFathers();
+    } catch (error: any) {
+      return error;
+    }
+  }
 
   async createProductCategory(product_category: NewProductCategoryDto) {
     try {

@@ -54,6 +54,12 @@ export class ProductCategory extends Model<ProductCategory> {
     allowNull: true,
   })
   declare is_base: boolean;
+ 
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: false,
+  })
+  declare is_father: boolean;
 
   @CreatedAt
   declare created_at: Date;

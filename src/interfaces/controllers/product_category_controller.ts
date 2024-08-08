@@ -39,8 +39,8 @@ export class ProductCategoryController {
     @Inject(PRODUCT_CATEGORY_APPLICATION)
     private application: ProductCategoryApplication,
   ) {}
-
-  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  
+  @ApiBadRequestResponse({ description: 'Invalid product category.' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductCategoryResponse,
@@ -54,6 +54,24 @@ export class ProductCategoryController {
     return {
       status: 201,
       message: `Get all product categories`,
+      data: product_categories,
+    };
+  }
+  
+  @ApiBadRequestResponse({ description: 'Invalid product category.' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ProductCategoryResponse,
+  })
+  @HttpCode(201)
+  @Get('/fathers')
+  async getFathersProductCategory(): Promise<ProductCategoriesResponse> {
+    Log.info(`(Get) Get all father product categories`);
+
+    const product_categories = await this.application.getAllProductCategory();
+    return {
+      status: 201,
+      message: `Get all father product categories`,
       data: product_categories,
     };
   }
