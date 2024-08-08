@@ -8,6 +8,7 @@ import { GetAllProductCategoryUseCase } from './GetAllProductCategoryUseCase';
 import { CreateProductCategoryUseCase } from './CreateProductCategoryUseCase';
 import { UpdateProductCategoryUseCase } from './UpdateProductCategoryUseCase';
 import { DeleteProductCategoryUseCase } from './DeleteProductCategoryUseCase';
+import { GetFathersProductCategoryUseCase } from './GetFathersProductCategoryUseCase';
 
 export class ProductCategoryApplicationService
   implements ProductCategoryApplication
@@ -15,12 +16,14 @@ export class ProductCategoryApplicationService
   constructor(
     private getOneUseCase?: GetOneProductCategoryUseCase,
     private getAllUseCase?: GetAllProductCategoryUseCase,
+    private getFathersUseCase?: GetFathersProductCategoryUseCase,
     private createUseCase?: CreateProductCategoryUseCase,
     private updateUseCase?: UpdateProductCategoryUseCase,
     private deleteUseCase?: DeleteProductCategoryUseCase,
   ) {
     this.getOneUseCase = new GetOneProductCategoryUseCase();
     this.getAllUseCase = new GetAllProductCategoryUseCase();
+    this.getFathersUseCase = new GetFathersProductCategoryUseCase();
     this.createUseCase = new CreateProductCategoryUseCase();
     this.updateUseCase = new UpdateProductCategoryUseCase();
     this.deleteUseCase = new DeleteProductCategoryUseCase();
@@ -29,6 +32,14 @@ export class ProductCategoryApplicationService
   async getAllProductCategory() {
     try {
       return this.getAllUseCase?.getAllProductCategory();
+    } catch (error: any) {
+      return error;
+    }
+  }
+ 
+  async getFathersProductCategory() {
+    try {
+      return this.getFathersUseCase?.getFathersProductCategory();
     } catch (error: any) {
       return error;
     }
