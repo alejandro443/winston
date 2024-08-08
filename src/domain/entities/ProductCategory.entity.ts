@@ -51,13 +51,13 @@ export class ProductCategory extends Model<ProductCategory> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: true,
   })
   declare is_base: boolean;
  
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: false,
+    defaultValue: false,
   })
   declare is_father: boolean;
 
