@@ -24,6 +24,14 @@ export class ProductCategoryDto {
   @IsString()
   declare name?: string;
 
+  @ApiPropertyOptional({
+    description: 'Id del padre, este id es recursiva.',
+    type: Number,
+  })
+  @IsOptional()
+  @IsNumber()
+  declare father_id?: number;
+
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripcion de la categoria del producto',

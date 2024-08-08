@@ -18,6 +18,11 @@ export class ProductCategory extends Model<ProductCategory> {
   declare id: number;
 
   @Column({
+    type: DataType.INTEGER,
+  })
+  declare father_id: number;
+
+  @Column({
     type: DataType.STRING,
   })
   declare name: string;
