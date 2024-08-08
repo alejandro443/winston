@@ -42,7 +42,7 @@ export class CommercialSection extends Model<CommercialSection> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: false,
   })
   declare is_base: boolean;
 

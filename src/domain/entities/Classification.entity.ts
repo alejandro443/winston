@@ -41,7 +41,7 @@ export class Classification extends Model<Classification> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: false,
   })
   declare is_base: boolean;
 

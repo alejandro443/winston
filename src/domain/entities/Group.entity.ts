@@ -44,7 +44,7 @@ export class Group extends Model<Group> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: false,
   })
   declare is_base: boolean;
 

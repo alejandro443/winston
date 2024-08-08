@@ -42,7 +42,7 @@ export class WayToPay extends Model<WayToPay> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: false,
   })
   declare is_base: boolean;
 

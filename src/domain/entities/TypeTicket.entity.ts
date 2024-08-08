@@ -44,7 +44,7 @@ export class TypeClient extends Model<TypeClient> {
 
   @Column({
     type: DataType.BOOLEAN,
-    allowNull: true,
+    defaultValue: false,
   })
   declare is_base: boolean;
 
