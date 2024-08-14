@@ -16,7 +16,7 @@ export class PortfolioService {
         if (client.type_entity == 'person') {
           objectEntity = {
             type_entity: 'person',
-            channel: client.typeChannel.name,
+            channel: client.typeChannel ? client.typeChannel.name : '',
             name: client.person.name,
             lastname: client.person.lastname,
             main_direction: client.person.direction,
@@ -32,7 +32,7 @@ export class PortfolioService {
         if (client.type_entity == 'company') {
           objectEntity = {
             type_entity: 'company',
-            channel: client.typeChannel.name,
+            channel: client.typeChannel ? client.typeChannel.name : '',
             name: client.company.name,
             lastname: '',
             main_direction: client.company.main_direction,
