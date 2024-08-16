@@ -6,10 +6,10 @@ export class UpdateTypeWorkerUseCase {
     this.type_workerService = new TypeWorkerService();
   }
 
-  async updateTypeWorker(code: any, type_worker: UpdateTypeWorkerDto) {
+  async updateTypeWorker(id: number, type_worker: UpdateTypeWorkerDto) {
     try {
       const response: any = await this.type_workerService?.updateTypeWorker(
-        code,
+        id,
         type_worker,
       );
       return {

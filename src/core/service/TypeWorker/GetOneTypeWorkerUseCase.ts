@@ -5,10 +5,10 @@ export class GetOneTypeWorkerUseCase {
     this.type_workerService = new TypeWorkerService();
   }
 
-  async getOneTypeWorker(code: string) {
+  async getOneTypeWorker(id: number) {
     try {
       const response: any =
-        await this.type_workerService?.getOneTypeWorker(code);
+        await this.type_workerService?.getOneTypeWorker(id);
       return {
         id: response.id,
         code: response.code,

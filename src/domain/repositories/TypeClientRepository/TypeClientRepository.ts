@@ -7,9 +7,9 @@ import { TypeClient } from 'src/domain/entities/TypeClient.entity';
 export class TypeClientRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id: number) {
     try {
-      return TypeClient.findOne({ where: { code: code } });
+      return TypeClient.findOne({ where: { id: id } });
     } catch (error: any) {
       return error;
     }
@@ -31,17 +31,17 @@ export class TypeClientRepository {
     }
   }
 
-  async update(code: any, type_client: UpdateTypeClientDto) {
+  async update(id: any, type_client: UpdateTypeClientDto) {
     try {
-      return TypeClient.update(type_client, { where: { code: code } });
+      return TypeClient.update(type_client, { where: { id: id } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id: number) {
     try {
-      return TypeClient.destroy({ where: { code: code } });
+      return TypeClient.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }

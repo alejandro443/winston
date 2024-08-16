@@ -11,7 +11,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     username: processenv.DATABASE_USER_DEV,
     password: processenv.DATABASE_PASSWORD_DEV,
     host: processenv.DATABASE_HOST_DEV,
-    dialect: processenv.DATABASE_DIALECT_DEV,
+    dialect: 'postgres',
     dialectModule: require('pg'),
   },
   test: {
@@ -20,7 +20,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     username: processenv.DATABASE_USER_TEST,
     password: processenv.DATABASE_PASSWORD_TEST,
     host: processenv.DATABASE_HOST_TEST,
-    dialect: processenv.DATABASE_DIALECT_TEST,
+    dialect: 'postgres',
     dialectModule: require('pg'),
   },
   production: {
@@ -29,7 +29,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     username: processenv.DATABASE_USER_PROD,
     password: processenv.DATABASE_PASSWORD_PROD,
     host: processenv.DATABASE_HOST_PROD_PROD,
-    dialect: processenv.DATABASE_DIALECT_PROD,
+    dialect: 'postgres',
     dialectModule: require('pg'),
   },
 };
@@ -41,6 +41,7 @@ export default () => ({
     database: processenv.DATABASE_NAME,
     username: processenv.DATABASE_USER,
     password: processenv.DATABASE_PASSWORD,
-    dialect: processenv.DATABASE_DIALECT,
+    dialect: 'postgres',
+    dialectModule: require('pg'),
   },
 });

@@ -6,9 +6,9 @@ export class TypeClientService {
     this.repository = new TypeClientRepository();
   }
 
-  async getOneTypeClient(code: string) {
+  async getOneTypeClient(id: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id);
     } catch (error: any) {
       return error;
     }
@@ -30,17 +30,17 @@ export class TypeClientService {
     }
   }
 
-  async updateTypeClient(code: any, type_client: NewTypeClientDto) {
+  async updateTypeClient(id: any, type_client: NewTypeClientDto) {
     try {
-      return this.repository?.update(code, type_client);
+      return this.repository?.update(id, type_client);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeClient(code: string) {
+  async deleteTypeClient(id: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id);
     } catch (error: any) {
       return error;
     }

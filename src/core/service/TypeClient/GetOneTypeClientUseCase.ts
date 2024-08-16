@@ -5,10 +5,10 @@ export class GetOneTypeClientUseCase {
     this.classificationService = new TypeClientService();
   }
 
-  async getOneTypeClient(code: string) {
+  async getOneTypeClient(id: number) {
     try {
       const response: any =
-        await this.classificationService?.getOneTypeClient(code);
+        await this.classificationService?.getOneTypeClient(id);
       return {
         id: response.id,
         code: response.code,

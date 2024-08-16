@@ -49,19 +49,19 @@ export class TypeClientApplicationService implements TypeClientApplication {
   }
 
   async updateTypeClient(
-    code: any,
+    id: any,
     type_client: UpdateTypeClientDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateTypeClient(code, type_client);
+      return this.updateUseCase?.updateTypeClient(id, type_client);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeClient(code: string) {
+  async deleteTypeClient(id: number) {
     try {
-      return this.deleteUseCase?.deleteTypeClient(code);
+      return this.deleteUseCase?.deleteTypeClient(id);
     } catch (error: any) {
       return error;
     }

@@ -7,9 +7,9 @@ import { TypeWorker } from 'src/domain/entities/TypeWorker.entity';
 export class TypeWorkerRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id: number) {
     try {
-      return TypeWorker.findOne({ where: { code: code } });
+      return TypeWorker.findOne({ where: { id: id } });
     } catch (error: any) {
       return error;
     }
@@ -31,17 +31,17 @@ export class TypeWorkerRepository {
     }
   }
 
-  async update(code: any, type_worker: UpdateTypeWorkerDto) {
+  async update(id: any, type_worker: UpdateTypeWorkerDto) {
     try {
-      return TypeWorker.update(type_worker, { where: { code: code } });
+      return TypeWorker.update(type_worker, { where: { id: id } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id: number) {
     try {
-      return TypeWorker.destroy({ where: { code: code } });
+      return TypeWorker.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }

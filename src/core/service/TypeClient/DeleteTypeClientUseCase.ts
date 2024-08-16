@@ -5,10 +5,10 @@ export class DeleteTypeClientUseCase {
     this.type_clientService = new TypeClientService();
   }
 
-  async deleteTypeClient(code: string) {
+  async deleteTypeClient(id: number) {
     try {
       const response: any =
-        await this.type_clientService?.deleteTypeClient(code);
+        await this.type_clientService?.deleteTypeClient(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

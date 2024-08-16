@@ -7,11 +7,11 @@ import {
 
 export interface TypeClientApplication {
   getAllTypeClient(): Promise<Array<AllTypeClientDto>>;
-  getOneTypeClient(code: any): Promise<OneTypeClientDto>;
+  getOneTypeClient(id: any): Promise<OneTypeClientDto>;
   createTypeClient(type_client: NewTypeClientDto): Promise<OneTypeClientDto>;
   updateTypeClient(
-    code: any,
+    id: any,
     type_client: UpdateTypeClientDto,
   ): Promise<OneTypeClientDto>;
-  deleteTypeClient(code: any): any;
+  deleteTypeClient(id: any): any;
 }

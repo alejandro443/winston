@@ -5,10 +5,10 @@ export class DeleteTypeWorkerUseCase {
     this.type_workerService = new TypeWorkerService();
   }
 
-  async deleteTypeWorker(code: string) {
+  async deleteTypeWorker(id: number) {
     try {
       const response: any =
-        await this.type_workerService?.deleteTypeWorker(code);
+        await this.type_workerService?.deleteTypeWorker(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

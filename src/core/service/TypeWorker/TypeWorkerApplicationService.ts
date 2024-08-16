@@ -32,9 +32,9 @@ export class TypeWorkerApplicationService implements TypeWorkerApplication {
     }
   }
 
-  async getOneTypeWorker(type_worker_code: string): Promise<any> {
+  async getOneTypeWorker(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneTypeWorker(type_worker_code);
+      return this.getOneUseCase?.getOneTypeWorker(id);
     } catch (error: any) {
       return error;
     }
@@ -49,19 +49,19 @@ export class TypeWorkerApplicationService implements TypeWorkerApplication {
   }
 
   async updateTypeWorker(
-    code: any,
+    id: any,
     type_worker: UpdateTypeWorkerDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateTypeWorker(code, type_worker);
+      return this.updateUseCase?.updateTypeWorker(id, type_worker);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeWorker(code: string) {
+  async deleteTypeWorker(id: number) {
     try {
-      return this.deleteUseCase?.deleteTypeWorker(code);
+      return this.deleteUseCase?.deleteTypeWorker(id);
     } catch (error: any) {
       return error;
     }

@@ -23,7 +23,8 @@ export class AccessRepository {
 
   async create(access: any) {
     try {
-      return Access.create(access);
+      var create_data: any = await Access.create(access);
+      return create_data;
     } catch (error: any) {
       return error;
     }
@@ -31,7 +32,8 @@ export class AccessRepository {
 
   async update(id: number, access: UpdateAccessDto) {
     try {
-      return Access.update(access, { where: { id: id } });
+      var update_data: any = await Access.update(access, { where: { id: id } });
+      return update_data;
     } catch (error: any) {
       return error;
     }
@@ -39,7 +41,7 @@ export class AccessRepository {
 
   async deleted(id: number) {
     try {
-      return Access.destroy({ where: { id: id } });
+      return await Access.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }

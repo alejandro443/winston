@@ -6,9 +6,9 @@ export class TypeWorkerService {
     this.repository = new TypeWorkerRepository();
   }
 
-  async getOneTypeWorker(code: string) {
+  async getOneTypeWorker(id: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id);
     } catch (error: any) {
       return error;
     }
@@ -30,17 +30,17 @@ export class TypeWorkerService {
     }
   }
 
-  async updateTypeWorker(code: any, type_worker: NewTypeWorkerDto) {
+  async updateTypeWorker(id: any, type_worker: NewTypeWorkerDto) {
     try {
-      return this.repository?.update(code, type_worker);
+      return this.repository?.update(id, type_worker);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeWorker(code: string) {
+  async deleteTypeWorker(id: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id);
     } catch (error: any) {
       return error;
     }
