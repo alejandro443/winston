@@ -32,9 +32,9 @@ export class TypeClientApplicationService implements TypeClientApplication {
     }
   }
 
-  async getOneTypeClient(type_client_code: string): Promise<any> {
+  async getOneTypeClient(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneTypeClient(type_client_code);
+      return this.getOneUseCase?.getOneTypeClient(id);
     } catch (error: any) {
       return error;
     }
