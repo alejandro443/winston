@@ -7,7 +7,8 @@ export class PortfolioClientUseCase {
 
   async getPortfolioClient() {
     try {
-      return this.portfolioService?.getAllPortfolio();
+      var portfolio: any = await this.portfolioService?.getAllPortfolio();
+      return portfolio
     } catch (error: any) {
       return error;
     }

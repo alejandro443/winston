@@ -9,7 +9,7 @@ export class GetAllRolUseCase {
     try {
       const response: any = await this.rolService?.getAllRol();
 
-      return response.map((rol: any) => ({ ...rol }));
+      return response.map((rol: any) => ({ ...rol.dataValues }));
     } catch (error: any) {
       return error;
     }
