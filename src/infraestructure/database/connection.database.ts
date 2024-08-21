@@ -69,7 +69,20 @@ switch (process.env.NODE_ENV as any) {
   default:
     configuration = DatabaseConfiguration.development;
 }
-export const sequelize = new Sequelize(configuration);
+
+export let sequelize: Sequelize;
+
+try {
+  sequelize = new Sequelize(configuration);
+  sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+  }).catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
+  
+} catch (error) {
+  console.error('Error while setting up Sequelize:', error);
+}
 
 export const ConnectionProvider = [
   {

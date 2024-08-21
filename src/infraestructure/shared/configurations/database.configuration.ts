@@ -6,7 +6,7 @@ const processenv: any = process.env;
 
 export const DatabaseConfiguration: IDatabaseConfiguration = {
   development: {
-    port: parseInt(processenv.DATABASE_PORT, 10),
+    port: parseInt(processenv.DATABASE_PORT_DEV, 10),
     database: processenv.DATABASE_NAME_DEV,
     username: processenv.DATABASE_USER_DEV,
     password: processenv.DATABASE_PASSWORD_DEV,
@@ -28,7 +28,7 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     database: processenv.DATABASE_NAME_PROD,
     username: processenv.DATABASE_USER_PROD,
     password: processenv.DATABASE_PASSWORD_PROD,
-    host: processenv.DATABASE_HOST_PROD_PROD,
+    host: processenv.DATABASE_HOST_PROD,
     dialect: 'postgres',
     dialectModule: require('pg'),
   },
