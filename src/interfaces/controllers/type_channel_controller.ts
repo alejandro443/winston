@@ -60,16 +60,16 @@ export class TypeChannelController {
     type: TypeChannelResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneTypeChannel(
     @Param() request: GetTypeChannelRequestDto,
   ): Promise<TypeChannelResponse> {
-    Log.info(`(Get) Get type_channel code: ${request.code}`);
+    Log.info(`(Get) Get type_channel id: ${request.id}`);
 
-    const type_channel = await this.application.getOneTypeChannel(request.code);
+    const type_channel = await this.application.getOneTypeChannel(request.id);
     return {
       status: 201,
-      message: `TypeChannel ${request.code} OK`,
+      message: `TypeChannel ${request.id} OK`,
       data: type_channel,
     };
   }
@@ -100,7 +100,7 @@ export class TypeChannelController {
     type: TypeChannelResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateTypeChannel(
     @Param() params: GetTypeChannelRequestDto,
     @Body() request: CreateTypeChannelRequestDto,
@@ -108,7 +108,7 @@ export class TypeChannelController {
     Log.info(`(PUT) Put type_channel`);
 
     const type_channel = await this.application.updateTypeChannel(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -118,22 +118,22 @@ export class TypeChannelController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid type_channel code' })
+  @ApiBadRequestResponse({ description: 'Invalid type_channel id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: TypeChannelResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteTypeChannel(
     @Param() params: GetTypeChannelRequestDto,
   ): Promise<TypeChannelResponse> {
-    Log.info(`(Delete) Delete type_channel ${params.code}`);
+    Log.info(`(Delete) Delete type_channel ${params.id}`);
 
-    const type_channel = await this.application.deleteTypeChannel(params.code);
+    const type_channel = await this.application.deleteTypeChannel(params.id);
     return {
       status: 200,
-      message: `TypeChannel ${params.code} deleted.`,
+      message: `TypeChannel ${params.id} deleted.`,
       data: type_channel,
     };
   }

@@ -6,10 +6,10 @@ export class UpdateTypeChannelUseCase {
     this.type_channelService = new TypeChannelService();
   }
 
-  async updateTypeChannel(code: any, type_channel: UpdateTypeChannelDto) {
+  async updateTypeChannel(id: any, type_channel: UpdateTypeChannelDto) {
     try {
       const response: any = await this.type_channelService?.updateTypeChannel(
-        code,
+        id,
         type_channel,
       );
       return {

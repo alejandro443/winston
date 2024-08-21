@@ -6,9 +6,9 @@ export class TypeChannelService {
     this.repository = new TypeChannelRepository();
   }
 
-  async getOneTypeChannel(code: string) {
+  async getOneTypeChannel(id_type_channel: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id_type_channel);
     } catch (error: any) {
       return error;
     }
@@ -30,17 +30,17 @@ export class TypeChannelService {
     }
   }
 
-  async updateTypeChannel(code: any, type_channel: NewTypeChannelDto) {
+  async updateTypeChannel(id_type_channel: any, type_channel: NewTypeChannelDto) {
     try {
-      return this.repository?.update(code, type_channel);
+      return this.repository?.update(id_type_channel, type_channel);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeChannel(code: string) {
+  async deleteTypeChannel(id_type_channel: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id_type_channel);
     } catch (error: any) {
       return error;
     }

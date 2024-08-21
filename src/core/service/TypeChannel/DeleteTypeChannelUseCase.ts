@@ -5,10 +5,10 @@ export class DeleteTypeChannelUseCase {
     this.type_channelService = new TypeChannelService();
   }
 
-  async deleteTypeChannel(code: string) {
+  async deleteTypeChannel(id_type_channel: number) {
     try {
       const response: any =
-        await this.type_channelService?.deleteTypeChannel(code);
+        await this.type_channelService?.deleteTypeChannel(id_type_channel);
       return { id: response.id };
     } catch (error: any) {
       return error;

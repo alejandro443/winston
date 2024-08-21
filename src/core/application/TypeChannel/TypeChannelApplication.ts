@@ -7,11 +7,11 @@ import {
 
 export interface TypeChannelApplication {
   getAllTypeChannel(): Promise<Array<AllTypeChannelDto>>;
-  getOneTypeChannel(code: any): Promise<OneTypeChannelDto>;
+  getOneTypeChannel(id: any): Promise<OneTypeChannelDto>;
   createTypeChannel(type_channel: NewTypeChannelDto): Promise<OneTypeChannelDto>;
   updateTypeChannel(
-    code: any,
+    id: any,
     type_channel: UpdateTypeChannelDto,
   ): Promise<OneTypeChannelDto>;
-  deleteTypeChannel(code: any): any;
+  deleteTypeChannel(id: any): any;
 }

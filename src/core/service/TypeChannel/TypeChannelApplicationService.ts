@@ -32,9 +32,9 @@ export class TypeChannelApplicationService implements TypeChannelApplication {
     }
   }
 
-  async getOneTypeChannel(type_channel_code: string): Promise<any> {
+  async getOneTypeChannel(id_type_channel: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneTypeChannel(type_channel_code);
+      return this.getOneUseCase?.getOneTypeChannel(id_type_channel);
     } catch (error: any) {
       return error;
     }
@@ -49,19 +49,19 @@ export class TypeChannelApplicationService implements TypeChannelApplication {
   }
 
   async updateTypeChannel(
-    code: any,
+    id_type_channel: any,
     type_channel: UpdateTypeChannelDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateTypeChannel(code, type_channel);
+      return this.updateUseCase?.updateTypeChannel(id_type_channel, type_channel);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteTypeChannel(code: string) {
+  async deleteTypeChannel(id_type_channel: number) {
     try {
-      return this.deleteUseCase?.deleteTypeChannel(code);
+      return this.deleteUseCase?.deleteTypeChannel(id_type_channel);
     } catch (error: any) {
       return error;
     }

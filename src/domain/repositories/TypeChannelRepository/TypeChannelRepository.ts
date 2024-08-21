@@ -7,9 +7,9 @@ import { TypeChannel } from 'src/domain/entities/TypeChannel.entity';
 export class TypeChannelRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id_type_channel: number) {
     try {
-      return TypeChannel.findOne({ where: { code: code } });
+      return TypeChannel.findOne({ where: { id: id_type_channel } });
     } catch (error: any) {
       return error;
     }
@@ -31,17 +31,17 @@ export class TypeChannelRepository {
     }
   }
 
-  async update(code: any, type_channel: UpdateTypeChannelDto) {
+  async update(id_type_channel: any, type_channel: UpdateTypeChannelDto) {
     try {
-      return TypeChannel.update(type_channel, { where: { code: code } });
+      return TypeChannel.update(type_channel, { where: { id: id_type_channel } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id_type_channel: number) {
     try {
-      return TypeChannel.destroy({ where: { code: code } });
+      return TypeChannel.destroy({ where: { id: id_type_channel } });
     } catch (error: any) {
       return error;
     }

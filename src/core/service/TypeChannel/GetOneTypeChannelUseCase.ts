@@ -5,10 +5,10 @@ export class GetOneTypeChannelUseCase {
     this.typeChannelService = new TypeChannelService();
   }
 
-  async getOneTypeChannel(code: string) {
+  async getOneTypeChannel(id_type_channel: number) {
     try {
       const response: any =
-        await this.typeChannelService?.getOneTypeChannel(code);
+        await this.typeChannelService?.getOneTypeChannel(id_type_channel);
       return {
         id: response.id,
         code: response.code,
