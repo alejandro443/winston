@@ -36,6 +36,7 @@ import { SkuListController } from './controllers/sku_list_controller';
 import { WorkAreaController } from './controllers/work_area_controller';
 import { OperationController } from './controllers/operation_controller';
 import { SettingController } from './controllers/setting_controller';
+import { BusinessTurnController } from './controllers/business_turn_controller';
 
 @Module({
   imports: [
@@ -80,7 +81,8 @@ import { SettingController } from './controllers/setting_controller';
     SkuListController,
     WorkAreaController,
     OperationController,
-    SettingController
+    SettingController,
+    BusinessTurnController
   ],
 })
 export class InterfacesModule {}

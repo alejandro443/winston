@@ -54,6 +54,7 @@ import { WorkArea } from '../../domain/entities/WorkArea.entity';
 import { Operation } from '../../domain/entities/Operation.entity';
 import { Function } from '../../domain/entities/Function.entity';
 import { Setting } from '../../domain/entities/Setting.entity';
+import { BusinessTurn } from '../../domain/entities/BusinessTurn.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -132,7 +133,8 @@ export const ConnectionProvider = [
         WorkArea,
         Operation,
         Function,
-        Setting
+        Setting,
+        BusinessTurn
       ]);
 
       await sequelize.sync({ alter: true });

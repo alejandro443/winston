@@ -33,7 +33,8 @@ import {
   SKU_LIST_APPLICATION,
   WORK_AREA_APPLICATION,
   OPERATION_APPLICATION,
-  SETTING_APPLICATION
+  SETTING_APPLICATION,
+  BUSINESS_TURN_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -69,6 +70,7 @@ import { SkuListApplicationService } from './service/SkuList/SkuListApplicationS
 import { WorkAreaApplicationService } from './service/WorkArea/WorkAreaApplicationService';
 import { OperationApplicationService } from './service/Operation/OperationApplicationService';
 import { SettingApplicationService } from './service/Setting/SettingApplicationService';
+import { BusinessTurnApplicationService } from './service/BusinessTurn/BusinessTurnApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -346,6 +348,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const BusinessTurnApplicationProvider = {
+      provide: BUSINESS_TURN_APPLICATION,
+      useFactory() {
+        return new BusinessTurnApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -385,7 +395,8 @@ export class CoreModule {
         SkuListApplicationProvider,
         WorkAreaApplicationProvider,
         OperationApplicationProvider,
-        SettingApplicationProvider
+        SettingApplicationProvider,
+        BusinessTurnApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -421,7 +432,8 @@ export class CoreModule {
         SKU_LIST_APPLICATION,
         WORK_AREA_APPLICATION,
         OPERATION_APPLICATION,
-        SETTING_APPLICATION
+        SETTING_APPLICATION,
+        BUSINESS_TURN_APPLICATION
       ],
     };
   }
