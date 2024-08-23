@@ -8,7 +8,7 @@ import { GetAllZoneUseCase } from './GetAllZoneUseCase';
 import { CreateZoneUseCase } from './CreateZoneUseCase';
 import { UpdateZoneUseCase } from './UpdateZoneUseCase';
 import { DeleteZoneUseCase } from './DeleteZoneUseCase';
-import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
+import { ZoneApplicationError } from '@src/core/shared/error/ZoneApplicationError';
 
 export class ZoneApplicationService
   implements ZoneApplication
@@ -31,7 +31,7 @@ export class ZoneApplicationService
     try {
       return this.getAllUseCase?.getAllZone();
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 
@@ -39,7 +39,7 @@ export class ZoneApplicationService
     try {
       return this.getOneUseCase?.getOneZone(id_zone);
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 
@@ -49,7 +49,7 @@ export class ZoneApplicationService
     try {
       return this.createUseCase?.createZone(zone);
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 
@@ -60,7 +60,7 @@ export class ZoneApplicationService
     try {
       return this.updateUseCase?.updateZone(id_zone, zone);
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 
@@ -68,7 +68,7 @@ export class ZoneApplicationService
     try {
       return this.deleteUseCase?.deleteZone(id_zone);
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 }

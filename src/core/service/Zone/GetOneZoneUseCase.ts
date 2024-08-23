@@ -1,4 +1,4 @@
-import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
+import { ZoneApplicationError } from '@src/core/shared/error/ZoneApplicationError';
 import { ZoneService } from 'src/domain/services/ZoneService/ZoneService';
 
 export class GetOneZoneUseCase {
@@ -19,7 +19,7 @@ export class GetOneZoneUseCase {
         status: response.status
       };
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 }

@@ -1,6 +1,6 @@
 import { ZoneService } from 'src/domain/services/ZoneService/ZoneService';
 import { NewZoneDto } from 'src/core/shared/dto/Zone/zone_dto';
-import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
+import { ZoneApplicationError } from '@src/core/shared/error/ZoneApplicationError';
 
 export class CreateZoneUseCase {
   constructor(private zoneService?: ZoneService) {
@@ -20,7 +20,7 @@ export class CreateZoneUseCase {
         status: response.status
       };
     } catch (error: any) {
-      throw new AccessApplicationError(error);
+      throw new ZoneApplicationError(error);
     }
   }
 }
