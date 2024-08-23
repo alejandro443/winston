@@ -1,5 +1,5 @@
-import { PhonesMetadata } from '@src/infraestructure/shared/interfaces/PhonesMetadata';
-import { DocumentsMetadata } from 'src/infraestructure/shared/interfaces/DocumentsMetadata';
+import { PhonesMetadata } from '../../infraestructure/shared/interfaces/PhonesMetadata';
+import { DocumentsMetadata } from '../../infraestructure/shared/interfaces/DocumentsMetadata';
 import {
   Table,
   Column,
@@ -168,17 +168,17 @@ export class Person extends Model<Person> {
   })
   declare type_identification: string;
 
-  // @Column({
-  //   type: DataType.ARRAY(DataType.JSON),
-  //   allowNull: true
-  // })
-  // documents: [DocumentsMetadata];
+  @Column({
+    type: DataType.ARRAY(DataType.JSONB),
+    allowNull: true
+  })
+  documents: DocumentsMetadata[];
 
-  // @Column({
-  //   type: DataType.ARRAY(DataType.JSON),
-  //   allowNull: true
-  // })
-  // phones: [PhonesMetadata];
+  @Column({
+    type: DataType.ARRAY(DataType.JSONB),
+    allowNull: true
+  })
+  phones: PhonesMetadata[];
 
   @Column({
     type: DataType.BOOLEAN,

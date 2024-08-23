@@ -35,7 +35,8 @@ import {
   OPERATION_APPLICATION,
   SETTING_APPLICATION,
   BUSINESS_TURN_APPLICATION,
-  BUSINESS_SUBCATEGORY_APPLICATION
+  BUSINESS_SUBCATEGORY_APPLICATION,
+  ZONE_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -73,6 +74,7 @@ import { OperationApplicationService } from './service/Operation/OperationApplic
 import { SettingApplicationService } from './service/Setting/SettingApplicationService';
 import { BusinessTurnApplicationService } from './service/BusinessTurn/BusinessTurnApplicationService';
 import { BusinessSubcategoryApplicationService } from './service/BusinessSubcategory/BusinessSubcategoryApplicationService';
+import { ZoneApplicationService } from './service/Zone/ZoneApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -367,6 +369,14 @@ export class CoreModule {
       inject: [],
     };
 
+    const ZoneApplicationProvider = {
+      provide: ZONE_APPLICATION,
+      useFactory() {
+        return new ZoneApplicationService();
+      },
+      inject: [],
+    };
+
     return {
       module: CoreModule,
       global: true,
@@ -407,7 +417,8 @@ export class CoreModule {
         OperationApplicationProvider,
         SettingApplicationProvider,
         BusinessTurnApplicationProvider,
-        BusinessSubcategoryApplicationProvider
+        BusinessSubcategoryApplicationProvider,
+        ZoneApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -446,6 +457,7 @@ export class CoreModule {
         SETTING_APPLICATION,
         BUSINESS_TURN_APPLICATION,
         BUSINESS_SUBCATEGORY_APPLICATION,
+        ZONE_APPLICATION
       ],
     };
   }

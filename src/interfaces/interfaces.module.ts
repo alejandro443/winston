@@ -38,6 +38,7 @@ import { OperationController } from './controllers/operation_controller';
 import { SettingController } from './controllers/setting_controller';
 import { BusinessTurnController } from './controllers/business_turn_controller';
 import { BusinessSubcategoryController } from './controllers/business_subcategory_controller';
+import { ZoneController } from './controllers/zone_controller';
 
 @Module({
   imports: [
@@ -84,7 +85,8 @@ import { BusinessSubcategoryController } from './controllers/business_subcategor
     OperationController,
     SettingController,
     BusinessTurnController,
-    BusinessSubcategoryController
+    BusinessSubcategoryController,
+    ZoneController
   ],
 })
 export class InterfacesModule {}
