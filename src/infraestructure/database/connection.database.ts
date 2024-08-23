@@ -56,6 +56,7 @@ import { Function } from '../../domain/entities/Function.entity';
 import { Setting } from '../../domain/entities/Setting.entity';
 import { BusinessTurn } from '../../domain/entities/BusinessTurn.entity';
 import { BusinessSubcategory } from '../../domain/entities/BusinessSubcategory.entity';
+import { Zone } from '../../domain/entities/Zone.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -136,7 +137,8 @@ export const ConnectionProvider = [
         Function,
         Setting,
         BusinessTurn,
-        BusinessSubcategory
+        BusinessSubcategory,
+        Zone
       ]);
 
       await sequelize.sync({ alter: true });

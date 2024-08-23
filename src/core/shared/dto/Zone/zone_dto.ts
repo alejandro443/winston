@@ -4,7 +4,10 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { ArrayNotEmpty, ArrayUnique, IsArray, IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
+import { RelatedDistrictsMetaData } from '../../../../infraestructure/shared/interfaces/RelatedDistrictsMetaData';
+import { Type } from 'class-transformer';
+import { ArrayNotEmpty, ArrayUnique, IsArray, IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { RelatedDistrictsDto } from '../RelatedDistricts/related_districts_dto';
 
 export class ZoneDto {
   @ApiProperty({
@@ -21,27 +24,39 @@ export class ZoneDto {
     description: 'Nombre de la zona.',
     type: String,
   })
+  @IsNotEmpty()
   @IsString()
   name?: string;
 
   @IsOptional()
   @ApiPropertyOptional({
-    description: 'Descripcion de la zona.',
+    description: 'Referencia de la zona.',
     type: String,
   })
   @IsString()
-  description?: string;
+  reference?: string;
 
-  @IsOptional()
   @IsArray()
   @ArrayNotEmpty()
   @ArrayUnique()
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Dias de entregas.',
     type: [String],
   })
+  @IsNotEmpty()
   @IsString({ each: true })
-  tags?: string[];
+  delivery_days?: string[];
+
+  @IsArray()
+  @ArrayNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => RelatedDistrictsDto)
+  @ApiProperty({
+    description: 'Zonas de entrega con sus respectivos días y horas.',
+    type: [RelatedDistrictsDto],
+  })
+  @IsNotEmpty()
+  districts?: RelatedDistrictsMetaData[];
 
   @IsOptional()
   @ApiPropertyOptional({
@@ -51,6 +66,16 @@ export class ZoneDto {
   })
   @IsBoolean()
   status?: boolean;
+
+  @ApiResponseProperty({
+    type: Date,
+  })
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Fecha de creación',
+    type: Date,
+  })
+  created_at?: Date;
 }
 export class DeleteZoneDto {
   @ApiProperty({

@@ -1,3 +1,4 @@
+import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
 import { ZoneService } from 'src/domain/services/ZoneService/ZoneService';
 
 export class GetAllZoneUseCase {
@@ -11,14 +12,15 @@ export class GetAllZoneUseCase {
         await this.zoneService?.getAllZone();
 
       return response.map((zone: any) => ({
-        id: zone.id,
-        name: zone.name,
-        description: zone.description,
-        delivery_days: zone.delivery_days,
-        status: zone.status,
+        id: response.id,
+        name: response.name,
+        delivery_days: response.delivery_days,
+        districts: response.districts,
+        reference: response.reference,
+        status: response.status
       }));
     } catch (error: any) {
-      return error;
+      throw new AccessApplicationError(error);
     }
   }
 }

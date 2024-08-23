@@ -1,3 +1,4 @@
+import { RelatedDistrictsMetaData } from '../../infraestructure/shared/interfaces/RelatedDistrictsMetaData';
 import {
   Table,
   Column,
@@ -19,6 +20,7 @@ export class Zone extends Model<Zone> {
 
   @Column({
     type: DataType.STRING,
+    allowNull: false
   })
   declare name: string;
 
@@ -29,8 +31,15 @@ export class Zone extends Model<Zone> {
 
   @Column({
     type: DataType.ARRAY(DataType.STRING),
+    allowNull: false
   })
   declare delivery_days: string[];
+
+  @Column({
+    type: DataType.ARRAY(DataType.JSONB),
+    allowNull: false
+  })
+  declare districts: RelatedDistrictsMetaData[];
 
   @Column({
     type: DataType.BOOLEAN,

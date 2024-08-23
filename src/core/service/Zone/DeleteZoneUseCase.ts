@@ -1,3 +1,4 @@
+import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
 import { ZoneService } from 'src/domain/services/ZoneService/ZoneService';
 
 export class DeleteZoneUseCase {
@@ -11,7 +12,7 @@ export class DeleteZoneUseCase {
         await this.zoneService?.deleteZone(id_zone);
       return { id: response.id };
     } catch (error: any) {
-      return error;
+      throw new AccessApplicationError(error);
     }
   }
 }

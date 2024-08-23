@@ -1,3 +1,4 @@
+import { AccessApplicationError } from '@src/core/shared/error/AccessApplicationError';
 import { UpdateZoneDto } from 'src/core/shared/dto/Zone/zone_dto';
 import { ZoneService } from 'src/domain/services/ZoneService/ZoneService';
 
@@ -19,12 +20,13 @@ export class UpdateZoneUseCase {
       return {
         id: response.id,
         name: response.name,
-        description: response.description,
         delivery_days: response.delivery_days,
-        status: response.status,
+        districts: response.districts,
+        reference: response.reference,
+        status: response.status
       };
     } catch (error: any) {
-      return error;
+      throw new AccessApplicationError(error);
     }
   }
 }
