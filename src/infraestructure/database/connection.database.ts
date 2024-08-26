@@ -57,6 +57,7 @@ import { Setting } from '../../domain/entities/Setting.entity';
 import { BusinessTurn } from '../../domain/entities/BusinessTurn.entity';
 import { BusinessSubcategory } from '../../domain/entities/BusinessSubcategory.entity';
 import { Zone } from '../../domain/entities/Zone.entity';
+import { Ubigeo } from '@src/domain/entities/Ubigeo.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -138,7 +139,8 @@ export const ConnectionProvider = [
         Setting,
         BusinessTurn,
         BusinessSubcategory,
-        Zone
+        Zone,
+        Ubigeo
       ]);
 
       await sequelize.sync({ alter: true });

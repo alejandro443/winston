@@ -36,7 +36,8 @@ import {
   SETTING_APPLICATION,
   BUSINESS_TURN_APPLICATION,
   BUSINESS_SUBCATEGORY_APPLICATION,
-  ZONE_APPLICATION
+  ZONE_APPLICATION,
+  UBIGEO_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -75,6 +76,7 @@ import { SettingApplicationService } from './service/Setting/SettingApplicationS
 import { BusinessTurnApplicationService } from './service/BusinessTurn/BusinessTurnApplicationService';
 import { BusinessSubcategoryApplicationService } from './service/BusinessSubcategory/BusinessSubcategoryApplicationService';
 import { ZoneApplicationService } from './service/Zone/ZoneApplicationService';
+import { UbigeoApplicationService } from './service/Ubigeo/UbigeoApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -376,6 +378,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const UbigeoApplicationProvider = {
+      provide: UBIGEO_APPLICATION,
+      useFactory() {
+        return new UbigeoApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -418,7 +428,8 @@ export class CoreModule {
         SettingApplicationProvider,
         BusinessTurnApplicationProvider,
         BusinessSubcategoryApplicationProvider,
-        ZoneApplicationProvider
+        ZoneApplicationProvider,
+        UbigeoApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -457,7 +468,8 @@ export class CoreModule {
         SETTING_APPLICATION,
         BUSINESS_TURN_APPLICATION,
         BUSINESS_SUBCATEGORY_APPLICATION,
-        ZONE_APPLICATION
+        ZONE_APPLICATION,
+        UBIGEO_APPLICATION
       ],
     };
   }
