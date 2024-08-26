@@ -23,11 +23,6 @@ import { SearchRequestDto } from '../request_dto/UbigeoDto/get.ubigeo_dto';
 @Controller('/ubigeo')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server.' })
-@ApiCreatedResponse({
-  description: 'The record has been successfully obtain.',
-  type: UbigeosResponse,
-})
-@ApiBadGatewayResponse({ description: 'Invalid ubigeo.' })
 @Auth()
 export class UbigeoController {
   constructor(
@@ -35,6 +30,11 @@ export class UbigeoController {
     private application: UbigeoApplication,
   ) { }
 
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: UbigeosResponse,
+  })
+  @ApiBadGatewayResponse({ description: 'Invalid ubigeo.' })
   @HttpCode(201)
   @Get('/:searchTerm')
   async searchUbigeo(
