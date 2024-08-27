@@ -1,10 +1,11 @@
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { NewUserDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
+import { NewUserDto, NewUserWithPersonDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { GetOneUserUseCase } from './GetOneUserUseCase';
 import { GetAllUserUseCase } from './GetAllUserUseCase';
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { UpdateUserUseCase } from './UpdateUserUseCase';
 import { DeleteUserUseCase } from './DeleteUserUseCase';
+import { CreateUserWithRolUseCase } from './CreateUserWithPersonUseCase';
 
 export class UserApplicationService implements UserApplication {
   constructor(
@@ -13,12 +14,14 @@ export class UserApplicationService implements UserApplication {
     private createUseCase?: CreateUserUseCase,
     private updateUseCase?: UpdateUserUseCase,
     private deleteUseCase?: DeleteUserUseCase,
+    private createUserWithRolUseCase?: CreateUserWithRolUseCase,
   ) {
     this.getOneUseCase = new GetOneUserUseCase();
     this.getAllUseCase = new GetAllUserUseCase();
     this.createUseCase = new CreateUserUseCase();
     this.updateUseCase = new UpdateUserUseCase();
     this.deleteUseCase = new DeleteUserUseCase();
+    this.createUserWithRolUseCase = new CreateUserWithRolUseCase();
   }
 
   async getAllUser() {
@@ -56,6 +59,14 @@ export class UserApplicationService implements UserApplication {
   async deleteUser(code: string) {
     try {
       return this.deleteUseCase?.deleteUser(code);
+    } catch (error: any) {
+      return error;
+    }
+  }
+  
+  async createUserWithPerson(user: NewUserWithPersonDto): Promise<any> {
+    try {
+      return this.createUserWithRolUseCase?.createUserWithPassword(user);
     } catch (error: any) {
       return error;
     }

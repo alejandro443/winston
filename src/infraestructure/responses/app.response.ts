@@ -1,12 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AppResponse {
-  @ApiProperty()
+  @ApiProperty({ example: 0 })
   declare status: number;
-  @ApiProperty()
+
+  @ApiProperty({ example: 'string', nullable: true })
   statusText?: string;
-  @ApiProperty()
+
+  @ApiProperty({ example: 'string', nullable: true })
   message?: string;
-  @ApiProperty()
+
+  @ApiProperty({ example: 'string', nullable: true })
   customMessage?: string;
 }

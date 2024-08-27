@@ -28,7 +28,7 @@ export class PersonDto {
   })
   @IsString()
   @IsNotEmpty()
-  lastname?: string;
+  last_name?: string;
 
   @ApiProperty({
     description: 'Identificación principal de la persona',

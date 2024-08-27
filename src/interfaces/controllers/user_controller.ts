@@ -20,9 +20,9 @@ import {
 import { USER_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetUserRequestDto } from '../request_dto/UserDto/get.user_dto';
-import { CreateUserRequestDto } from '../request_dto/UserDto/create.user_dto';
+import { CreateUserRequestDto, CreateUserWithRolesRequestDto } from '../request_dto/UserDto/create.user_dto';
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { UserResponse, UsersResponse } from '../responses/user.response';
+import { UserResponse, UserWithPersonResponse, UsersResponse } from '../responses/user.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
@@ -30,7 +30,7 @@ import { Auth } from '@src/core/decorators/auth.decorator';
 @Controller('/user')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
-// @Auth()
+@Auth()
 export class UserController {
   constructor(
     @Inject(USER_APPLICATION)
@@ -79,8 +79,8 @@ export class UserController {
     type: UserResponse,
   })
   @HttpCode(201)
-  @Post()
-  async createUser(
+  @Post('/only_user')
+  async createEntityUser(
     @Body() request: CreateUserRequestDto,
   ): Promise<UserResponse> {
     Log.info(`(POST) Create user`);
@@ -128,6 +128,26 @@ export class UserController {
     return {
       status: 200,
       message: `User ${id} deleted.`,
+      data: user,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Invalid user id' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: UserWithPersonResponse,
+  })
+  @HttpCode(201)
+  @Post()
+  async createUserWithPerson(
+    @Body() request: CreateUserWithRolesRequestDto,
+  ): Promise<UserWithPersonResponse> {
+    Log.info(`(POST) Create user`);
+
+    const user = await this.application.createUser(request);
+    return {
+      status: 201,
+      message: `User ${request.user} created OK`,
       data: user,
     };
   }

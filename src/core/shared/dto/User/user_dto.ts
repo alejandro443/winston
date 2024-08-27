@@ -5,7 +5,9 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { PersonDto } from '../Person/person_dto';
+import { Type } from 'class-transformer';
 
 export class UserDto {
   @ApiResponseProperty({
@@ -50,13 +52,14 @@ export class UserDto {
   @IsOptional()
   consultant?: boolean;
 
-  @IsOptional()
   @ApiProperty({
-    description: 'Id de rol asignado.',
-    type: Number
+    description: 'Id de los roles asignados.',
+    type: [Number],
   })
-  @IsNumber()
-  rol_id?: number;
+  @IsOptional()
+  @IsArray()
+  @IsNumber({}, { each: true })
+  assigned_roles?: number[]
 
   @IsOptional()
   @ApiPropertyOptional({
@@ -92,3 +95,38 @@ export class OneUserDto extends PartialType(UserDto) { }
 export class AllUserDto extends PartialType(UserDto) { }
 export class NewUserDto extends OmitType(UserDto, ['id'] as const) { }
 export class UpdateUserDto extends OmitType(UserDto, ['id'] as const) { }
+export class NewUserWithPersonDto extends OmitType(UserDto, ['id'] as const) {
+  @ApiProperty({
+    description: 'Datos de persona.',
+    type: PersonDto,
+  })
+  @IsObject()
+  @ValidateNested()
+  @Type(() => PersonDto)
+  person?: PersonDto;
+
+  @ApiProperty({
+    description: 'Id de las zonas asignadas.',
+    type: [Number],
+  })
+  @IsArray()
+  @IsOptional()
+  @IsNumber({}, { each: true })
+  zones?: [];
+
+  @ApiProperty({
+    description: 'Id de la posicion del trabajador. (Aún no esta implementado)',
+    type: Number,
+  })
+  @IsOptional()
+  @IsNumber()
+  worker_position?: number;
+
+  @ApiProperty({
+    description: 'Id del tipo de trabajador.',
+    type: Number,
+  })
+  @IsOptional()
+  @IsNumber()
+  type_worker_id?: number
+}

@@ -17,6 +17,7 @@ import { UserAccess } from './UserAccess.entity';
 import { UserRol } from './UserRol.entity';
 import { Worker } from './Worker.entity';
 import { Client } from './Client.entity';
+import { v4 as uuidv4 } from 'uuid';
 
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
@@ -26,6 +27,14 @@ export class User extends Model<User> {
     autoIncrement: true,
   })
   declare id: number;
+
+  @Column({
+    type: DataType.UUID,
+    defaultValue: () => uuidv4(), // Generar UUID al crear el registro
+    allowNull: true,
+    unique: true,
+  })
+  declare crypto_uuid: string;
 
   @Column({
     type: DataType.TEXT,

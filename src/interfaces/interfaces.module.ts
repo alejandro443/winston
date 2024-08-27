@@ -40,6 +40,7 @@ import { BusinessTurnController } from './controllers/business_turn_controller';
 import { BusinessSubcategoryController } from './controllers/business_subcategory_controller';
 import { ZoneController } from './controllers/zone_controller';
 import { UbigeoController } from './controllers/ubigeo_controller';
+import { UploadController } from './controllers/upload_controller';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { UbigeoController } from './controllers/ubigeo_controller';
     }),
   ],
   controllers: [
+    UploadController,
     RootController,
     AuthController,
     RolController,

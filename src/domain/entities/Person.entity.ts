@@ -13,6 +13,7 @@ import {
 } from 'sequelize-typescript';
 import { Worker } from './Worker.entity';
 import { CompanyWorker } from './CompanyWorker.entity';
+import { v4 as uuidv4 } from 'uuid';
 
 @Table({ tableName: 'persons' })
 export class Person extends Model<Person> {
@@ -24,6 +25,14 @@ export class Person extends Model<Person> {
   declare id: number;
 
   @Column({
+    type: DataType.UUID,
+    defaultValue: () => uuidv4(), // Generar UUID al crear el registro
+    allowNull: true,
+    unique: true,
+  })
+  declare crypto_uuid: string;
+
+  @Column({
     type: DataType.STRING,
   })
   declare name: string;
@@ -31,7 +40,7 @@ export class Person extends Model<Person> {
   @Column({
     type: DataType.STRING,
   })
-  declare lastname: string;
+  declare last_name: string;
 
   @Column({
     type: DataType.STRING,
