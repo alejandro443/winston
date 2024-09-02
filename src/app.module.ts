@@ -11,7 +11,7 @@ import { join } from 'path';
     ConfigModule.forRoot({ isGlobal: true, cache: true }),
     ServeStaticModule.forRoot(
       {
-        rootPath: join(__dirname, 'public/images'),
+        rootPath: join('../', __dirname, 'public/images'),
         serveRoot: '/images/'
       }
     ),

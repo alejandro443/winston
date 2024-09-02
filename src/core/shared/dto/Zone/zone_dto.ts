@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { RelatedDistrictsMetaData } from '../../../../infraestructure/shared/interfaces/RelatedDistrictsMetaData';
+import { RelatedDistrictsMetaData } from '@src/infraestructure/shared/interfaces/RelatedDistrictsMetadata';
 import { Type } from 'class-transformer';
 import { ArrayNotEmpty, ArrayUnique, IsArray, IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { RelatedDistrictsDto } from '../RelatedDistricts/related_districts_dto';

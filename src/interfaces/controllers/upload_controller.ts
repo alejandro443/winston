@@ -21,7 +21,7 @@ export class UploadController {
   @ApiOperation({ summary: 'Subir una imagen' })
   @UseInterceptors(FileInterceptor('image', {
     storage: diskStorage({
-      destination: 'src/public/images',
+      destination: `../../../public/images`,
       filename: (req, file, cb) => {
         const randomName = uuidv4();
         cb(null, `${randomName}${extname(file.originalname)}`);
@@ -43,6 +43,7 @@ export class UploadController {
   })
   @ApiResponse({ status: 201, description: 'Imagen subida con éxito' })
   uploadFile(@UploadedFile() image: Express.Multer.File) {
+    console.log(image)
     return {
       message: 'Imagen subida con éxito',
       fileName: image.filename

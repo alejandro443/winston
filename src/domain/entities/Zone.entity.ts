@@ -1,4 +1,4 @@
-import { RelatedDistrictsMetaData } from '../../infraestructure/shared/interfaces/RelatedDistrictsMetaData';
+import { RelatedDistrictsMetaData } from '@src/infraestructure/shared/interfaces/RelatedDistrictsMetadata';
 import {
   Table,
   Column,

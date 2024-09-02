@@ -44,7 +44,7 @@ RUN npm run build && \
 
 FROM base AS production
 
-ENV NODE_ENV=production
+ENV NODE_ENV=test
 ENV USER=node
 
 COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
