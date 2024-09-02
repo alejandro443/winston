@@ -9,12 +9,12 @@ import { join } from 'path';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, cache: true }),
-    ServeStaticModule.forRoot(
-      {
-        rootPath: join('../', __dirname, 'public/images'),
-        serveRoot: '/images/'
-      }
-    ),
+    // ServeStaticModule.forRoot(
+    //   {
+    //     rootPath: join('../', __dirname, 'public/images'),
+    //     serveRoot: '/images/'
+    //   }
+    // ),
     InfraestructureModule,
     SharedModule,
     CoreModule.register({
