@@ -44,13 +44,22 @@ jobs:
           debug: true
           envs: GITHUB_USERNAME, GITHUB_TOKEN
           script: |
+            echo "rm -r /var/lib/docker/volumes/ServiceBackend/_data/dist"
             rm -r /var/lib/docker/volumes/ServiceBackend/_data/dist
+            echo "rm -r /var/lib/docker/volumes/ServiceBackend/_data/node_modules"
             rm -r /var/lib/docker/volumes/ServiceBackend/_data/node_modules
+            echo "docker stop ServiceBackend"
             docker stop ServiceBackend
+            echo "docker rm ServiceBackend"
             docker rm ServiceBackend
+            echo "docker rmi service_backend_fhyona:latest"
             docker rmi service_backend_fhyona:latest
+            echo "docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN"
             docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            echo "docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest"
             docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest
+            echo "docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest"
             docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest
+            echo "docker system prune -f"
             docker system prune -f
             docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ service_backend_fhyona
