@@ -77,6 +77,7 @@ switch (process.env.NODE_ENV as any) {
 export let sequelize: Sequelize;
 
 try {
+  console.log(configuration)
   sequelize = new Sequelize(configuration);
   sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
