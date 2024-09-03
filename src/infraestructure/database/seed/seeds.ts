@@ -30,6 +30,25 @@ import { Department } from '../../../domain/entities/Department.entity';
 import { Province } from '../../../domain/entities/Province.entity';
 import { District } from '../../../domain/entities/District.entity';
 import { ProductCategory } from '../../../domain/entities/ProductCategory.entity';
+import { ProductBrand } from '../../../domain/entities/ProductBrand.entity';
+import { Product } from '../../../domain/entities/Product.entity';
+import { TypeChannel } from '../../../domain/entities/TypeChannel.entity';
+import { CommercialSection } from '../../../domain/entities/CommercialSection';
+import { MethodPayment } from '../../../domain/entities/MethodPayment.entity';
+import { WayToPay } from '../../../domain/entities/WayToPay.entity';
+import { IssuableDocument } from '../../../domain/entities/IssuableDocument.entity';
+import { SupplyType } from '../../../domain/entities/SupplyType.entity';
+import { UnitMeasurement } from '../../../domain/entities/UnitMeasurement.entity';
+import { Ubigeo } from '../../../domain/entities/Ubigeo.entity';
+import { Zone } from '../../../domain/entities/Zone.entity';
+import { BusinessSubcategory } from '../../../domain/entities/BusinessSubcategory.entity';
+import { BusinessTurn } from '../../../domain/entities/BusinessTurn.entity';
+import { Setting } from '../../../domain/entities/Setting.entity';
+import { Operation } from '../../../domain/entities/Operation.entity';
+import { WorkArea } from '../../../domain/entities/WorkArea.entity';
+import { SkuList } from '../../../domain/entities/SkuList.entity';
+import { Supply } from '../../../domain/entities/Supply.entity';
+import { Function } from '../../../domain/entities/Function.entity';
 
 const logger = new Logger('Seeds');
 
@@ -58,13 +77,31 @@ async function runSeedInsertData() {
     DeliveryPoint,
     Organization,
     CompanyArea,
-    Classification,
+    ProductCategory,
+    ProductBrand,
+    Product,
+    TypeChannel,
     Region,
     Country,
     Department,
     Province,
     District,
-    ProductCategory,
+    CommercialSection,
+    MethodPayment,
+    WayToPay,
+    IssuableDocument,
+    SupplyType,
+    UnitMeasurement,
+    Supply,
+    SkuList,
+    WorkArea,
+    Operation,
+    Function,
+    Setting,
+    BusinessTurn,
+    BusinessSubcategory,
+    Zone,
+    Ubigeo
   ]);
   const inser_data: any = new InserData();
   await inser_data.run();

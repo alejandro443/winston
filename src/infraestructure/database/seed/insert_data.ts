@@ -15,6 +15,7 @@ import { Region } from '../../../domain/entities/Region.entity';
 import { Country } from '../../../domain/entities/Country.entity';
 import { Department } from '../../../domain/entities/Department.entity';
 import { Function } from '../../../domain/entities/Function.entity';
+import { Ubigeo } from '../../../domain/entities/Ubigeo.entity';
 
 config();
 
@@ -366,6 +367,29 @@ async function createRolesFunctions() {
   }
 }
 
+async function createUbigeos(pais: string) {
+  // LEER Y CARGA DATOS DE UBIGEOS
+  logger.message('INSERTAR UBIGEOS');
+  const ubigeosData = await fsPromises.readFileSync(
+    __dirname + `/data/${pais}/ubigeos.yml`,
+    'utf8',
+  );
+  const ubigeo = load(ubigeosData) as Ubigeo[];
+
+  const existingUbigeo = await Ubigeo.findAll({
+    where: { id: ubigeo.map((a) => a.id) },
+  });
+  const ubigeosToInsert = ubigeo.filter(
+    (a) => !existingUbigeo.some((existingUbigeo) => existingUbigeo.id === a.id),
+  );
+
+  if (ubigeosToInsert.length > 0) {
+    await Ubigeo.bulkCreate(ubigeosToInsert);
+    logger.message('Ubigeos insertados exitosamente');
+  } else {
+    logger.message('No hay data para insertar para tipos de clientes');
+  }
+}
 export class InserData {
   private pais: string;
 
@@ -382,7 +406,6 @@ export class InserData {
       await createAccessesRoles();
       await createClassifications(this.pais);
       await createGroups(this.pais);
-      await createFunctions();
       await createUsers();
         // .then((users) => createUsersRoles(users))
         // .catch((error) => {
@@ -392,6 +415,8 @@ export class InserData {
       await createCountries();
       await createDepartments(this.pais);
       await createUsersRoles();
+      await createUbigeos(this.pais);
+      // await createFunctions();
       // await createRolesFunctions();
 
       logger.message('Datos insertados exitosamente');
