@@ -1,0 +1,56 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:20
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and Publish to Github Packages Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: gersonmlb/service_backend_fhyona/service_backend_fhyona
+          registry: ghcr.io
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.GHCR_PAT }}
+          dockerfile: Dockerfile
+          tags: latest
+
+      - name: Deploy package to vps
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_USERNAME: ${{ secrets.USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          port: ${{ secrets.DEPLOY_PORT }}
+          username: ${{ secrets.DEPLOY_USER_SSH }}
+          key: ${{ secrets.DKPRSA8 }}
+          debug: true
+          envs: GITHUB_USERNAME, GITHUB_TOKEN
+          script: |
+            docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            rm -r /var/lib/docker/volumes/ServiceBackend/_data/dist/
+            rm -r /var/lib/docker/volumes/ServiceBackend/_data/node_modules
+            docker stop ServiceBackend
+            docker rm ServiceBackend
+            docker rmi service_backend_fhyona:latest
+            docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest
+            docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest
+            docker system prune -f
+            docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ service_backend_fhyona
