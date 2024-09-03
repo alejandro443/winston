@@ -19,21 +19,21 @@ export class UploadController {
   @Auth()
   @Post('/image')
   @ApiOperation({ summary: 'Subir una imagen' })
-  // @UseInterceptors(FileInterceptor('image', {
-  //   storage: diskStorage({
-  //     destination: `../../../public/images`,
-  //     filename: (req, file, cb) => {
-  //       const randomName = uuidv4();
-  //       cb(null, `${randomName}${extname(file.originalname)}`);
-  //     },
-  //   }),
-  //   fileFilter: (req, file, cb) => {
-  //     if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
-  //       return cb(new Error('Solo se permiten archivos de imagen estatica. [.jpg, .jpeg, .png]'), false);
-  //     }
-  //     cb(null, true);
-  //   },
-  // }))
+  @UseInterceptors(FileInterceptor('image', {
+    storage: diskStorage({
+      destination: `dist/public/images`,
+      filename: (req, file, cb) => {
+        const randomName = uuidv4();
+        cb(null, `${randomName}${extname(file.originalname)}`);
+      },
+    }),
+    fileFilter: (req, file, cb) => {
+      if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
+        return cb(new Error('Solo se permiten archivos de imagen estatica. [.jpg, .jpeg, .png]'), false);
+      }
+      cb(null, true);
+    },
+  }))
 
   @ApiConsumes('multipart/form-data')
   @ApiBody({
