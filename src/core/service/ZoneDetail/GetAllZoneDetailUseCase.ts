@@ -8,16 +8,17 @@ export class GetAllZoneDetailUseCase {
 
   async getAllZoneDetail() {
     try {
-      const response: any =
-        await this.zoneService?.getAllZoneDetail();
+      const response: any = await this.zoneService?.getAllZoneDetail();
+
+      console.log(response)
 
       return response.map((zone: any) => ({
-        id: response.id,
-        name: response.name,
-        delivery_days: response.delivery_days,
-        districts: response.districts,
-        reference: response.reference,
-        status: response.status
+        id: zone.id,
+        name: zone.name,
+        delivery_days: zone.delivery_days,
+        districts: zone.districts,
+        reference: zone.reference,
+        status: zone.status
       }));
     } catch (error: any) {
       throw new ZoneDetailApplicationError(error);

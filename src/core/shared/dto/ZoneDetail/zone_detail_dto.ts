@@ -1,4 +1,4 @@
-import { PartialType } from '@nestjs/swagger';
+import { OmitType, PartialType } from '@nestjs/swagger';
 import {
   ApiProperty,
   ApiResponseProperty,
@@ -36,3 +36,11 @@ export class ZoneDetailDto {
 }
 
 export class AllZoneDetailDto extends PartialType(ZoneDetailDto) { }
+
+export class NewZoneDetailDto { 
+  zone_id?: number;
+  client_id?: number;
+  user_id?: number;
+}
+
+export class UpdateZoneDetailDto extends OmitType(ZoneDetailDto, ['id'] as const) { }

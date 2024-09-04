@@ -1,3 +1,4 @@
+import { NewZoneDetailDto } from '@src/core/shared/dto/ZoneDetail/zone_detail_dto';
 import { ZoneDetailApplicationError } from '@src/core/shared/error/ZoneDetailApplicationError';
 import { Client } from '@src/domain/entities/Client.entity';
 import { User } from '@src/domain/entities/User.entity';
@@ -18,6 +19,14 @@ export class ZoneDetailRepository {
       });
 
       return data_zone_detail;
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async create(zone: NewZoneDetailDto) {
+    try {
+      return Zone.create(zone);
     } catch (error: any) {
       return error;
     }

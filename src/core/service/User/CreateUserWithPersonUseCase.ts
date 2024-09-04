@@ -3,18 +3,21 @@ import { NewUserDto, NewUserWithPersonDto } from 'src/core/shared/dto/User/user_
 import { UserRolService } from '@src/domain/services/UserRolService/UserRolService';
 import { PersonService } from '@src/domain/services/PersonService/PersonService';
 import { WorkerService } from '@src/domain/services/WorkerService/WorkerService';
+import { ZoneDetailService } from '@src/domain/services/ZoneDetailService/ZoneDetailService';
 
 export class CreateUserWithRolUseCase {
   constructor(
     private userService?: UserService,
     private userRolService?: UserRolService,
     private personService?: PersonService,
-    private workerService?: WorkerService
+    private workerService?: WorkerService,
+    private zoneDetailService?: ZoneDetailService,
   ) {
     this.userService = new UserService();
     this.userRolService = new UserRolService();
     this.personService = new PersonService();
     this.workerService = new WorkerService();
+    this.zoneDetailService = new ZoneDetailService();
   }
 
   async createUserWithPassword(user: NewUserWithPersonDto) {
@@ -41,6 +44,16 @@ export class CreateUserWithRolUseCase {
         user_id: user_data.id,
         type_worker_id: user.type_worker_id
       })
+
+      if(user.zones.length){
+        // The zone is created
+        user.zones.forEach(async (zone) => {
+          await this.zoneDetailService.createZoneDetail({
+            zone_id: zone,
+            user_id: user_data.id
+          })
+        })
+      }
 
       return {
         user_uuid: user_data.crypto_uuid,

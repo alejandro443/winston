@@ -12,12 +12,12 @@ export class GetAllZoneUseCase {
         await this.zoneService?.getAllZone();
 
       return response.map((zone: any) => ({
-        id: response.id,
-        name: response.name,
-        delivery_days: response.delivery_days,
-        districts: response.districts,
-        reference: response.reference,
-        status: response.status
+        id: zone.id,
+        name: zone.name,
+        delivery_days: zone.delivery_days,
+        districts: zone.districts,
+        reference: zone.reference,
+        status: zone.status
       }));
     } catch (error: any) {
       throw new ZoneApplicationError(error);
