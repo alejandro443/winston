@@ -6,6 +6,7 @@ import { CreateUserUseCase } from './CreateUserUseCase';
 import { UpdateUserUseCase } from './UpdateUserUseCase';
 import { DeleteUserUseCase } from './DeleteUserUseCase';
 import { CreateUserWithRolUseCase } from './CreateUserWithPersonUseCase';
+import { GetAllUserWithRolesUseCase } from './GetAllUserWithRolesUseCase';
 
 export class UserApplicationService implements UserApplication {
   constructor(
@@ -15,6 +16,8 @@ export class UserApplicationService implements UserApplication {
     private updateUseCase?: UpdateUserUseCase,
     private deleteUseCase?: DeleteUserUseCase,
     private createUserWithRolUseCase?: CreateUserWithRolUseCase,
+    private getAllWithRolesUseCase?: GetAllUserWithRolesUseCase,
+
   ) {
     this.getOneUseCase = new GetOneUserUseCase();
     this.getAllUseCase = new GetAllUserUseCase();
@@ -22,6 +25,7 @@ export class UserApplicationService implements UserApplication {
     this.updateUseCase = new UpdateUserUseCase();
     this.deleteUseCase = new DeleteUserUseCase();
     this.createUserWithRolUseCase = new CreateUserWithRolUseCase();
+    this.getAllWithRolesUseCase = new GetAllUserWithRolesUseCase();
   }
 
   async getAllUser() {
@@ -67,6 +71,14 @@ export class UserApplicationService implements UserApplication {
   async createUserWithPerson(user: NewUserWithPersonDto): Promise<any> {
     try {
       return this.createUserWithRolUseCase?.createUserWithPassword(user);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getAllUserWithRoles() {
+    try {
+      return await this.getAllWithRolesUseCase?.getAllUserWithRoles();
     } catch (error: any) {
       return error;
     }

@@ -9,7 +9,7 @@ export class GetAllAccessRolUseCase {
     try {
       const response: any = await this.accessService?.getAllAccessRol();
 
-      return response.map((access: any) => ({ ...access }));
+      return response.map((access: any) => ({ ...access.dataValues }));
     } catch (error: any) {
       return error;
     }

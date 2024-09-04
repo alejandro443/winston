@@ -8,6 +8,7 @@ import {
 
 export interface UserApplication {
   getAllUser(): Promise<Array<AllUserDto>>;
+  getAllUserWithRoles(): Promise<Array<AllUserDto>>;
   getOneUser(id: any): Promise<OneUserDto>;
   createUser(classification: NewUserDto): Promise<OneUserDto>;
   updateUser(id: any, classification: UpdateUserDto): Promise<OneUserDto>;

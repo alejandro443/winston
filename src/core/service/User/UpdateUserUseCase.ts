@@ -13,7 +13,7 @@ export class UpdateUserUseCase {
         id: response.id,
         user: response.user,
         code: response.code,
-        status: response.statug,
+        status: response.status,
         consultant: response.consultant,
       };
     } catch (error: any) {

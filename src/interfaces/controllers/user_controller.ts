@@ -151,4 +151,18 @@ export class UserController {
       data: user,
     };
   }
+  
+  @HttpCode(201)
+  @Get('/all_with_roles')
+  async getAllUserWithRoles(): Promise<UsersResponse> {
+    Log.info(`(Get) Get all users`);
+
+    const users = await this.application.getAllUserWithRoles();
+    return {
+      status: 201,
+      message: `Get all users`,
+      data: users,
+    };
+  }
+
 }

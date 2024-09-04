@@ -35,6 +35,25 @@ export class UserRolRepository {
     }
   }
 
+  async getUserWithRoles() {
+    try {
+      return UserRol.findAll({ 
+        include: [
+          {
+            model: Rol,
+            attributes: ['id', 'name'],
+          },
+          {
+            model: User,
+            attributes: ['id', 'user', 'code'],
+          },
+        ], 
+      where: { deleted_at: null } });
+    } catch (error: any) {
+      throw new UserRolApplicationError(error.message);
+    }
+  }
+
   async create(user: NewUserRolDto) {
     try {
       return UserRol.create(user);

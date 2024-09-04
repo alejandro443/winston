@@ -54,4 +54,13 @@ export class UserRolService {
       throw new UserRolApplicationError(error.message);
     }
   }
+  
+  async getUserWithRoles() {
+    try {
+      var getUserWithRoles: any = await this.repository?.getUserWithRoles();
+      return getUserWithRoles;
+    } catch (error: any) {
+      throw new UserRolApplicationError(error.message);
+    }
+  }
 }

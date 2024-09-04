@@ -91,4 +91,8 @@ export class CreateClientUseCase {
       throw new ClientApplicationError(error)
     }
   }
+
+  async CreateClientAgent(client_id: number, agent_id: number){
+    
+  }
 }
