@@ -9,10 +9,10 @@ import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-v
 export class ClassificationDto {
   @ApiProperty({
     description: 'Id de la clasificación',
-    type: String,
+    type: Number,
   })
   @ApiResponseProperty({
-    type: String,
+    type: Number,
   })
   @IsNumber()
   id?: number;

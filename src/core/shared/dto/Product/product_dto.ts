@@ -7,6 +7,14 @@ import {
 import { IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class ProductDto {
+  @ApiProperty({
+    description: 'Id del producto.',
+    type: Number,
+  })
+  @ApiResponseProperty({
+    type: Number,
+  })
+  @IsNumber()
   declare id?: number;
 
   @IsOptional()

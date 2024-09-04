@@ -12,10 +12,10 @@ import { RelatedDistrictsDto } from '../RelatedDistricts/related_districts_dto';
 export class ZoneDto {
   @ApiProperty({
     description: 'Id de la zona.',
-    type: String,
+    type: Number,
   })
   @ApiResponseProperty({
-    type: String,
+    type: Number,
   })
   @IsNumber()
   id?: number;

@@ -6,7 +6,10 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  ForeignKey,
+  BelongsTo,
 } from 'sequelize-typescript';
+import { BusinessTurn } from './BusinessTurn.entity';
 
 @Table({ tableName: 'business_subcategories' })
 export class BusinessSubcategory extends Model<BusinessSubcategory> {
@@ -31,6 +34,15 @@ export class BusinessSubcategory extends Model<BusinessSubcategory> {
     type: DataType.INTEGER,
   })
   declare id_business_turn: number;
+  @ForeignKey(() => BusinessTurn)
+  @Column({
+    field: 'business_turn',
+    allowNull: true,
+  })
+  declare business_turn_id: number | null;
+
+  @BelongsTo(() => BusinessTurn, 'id')
+  declare business_turn: BusinessTurn;
 
   @Column({
     type: DataType.STRING,
