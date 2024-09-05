@@ -52,7 +52,7 @@ import { Function } from '../../../domain/entities/Function.entity';
 
 const logger = new Logger('Seeds');
 
-async function runSeedInsertData() {
+async function runSeedInsertData(type, seed) {
   sequelize.addModels([
     Access,
     User,
@@ -104,10 +104,15 @@ async function runSeedInsertData() {
     Ubigeo
   ]);
   const inser_data: any = new InserData();
-  await inser_data.run();
+  console.log('runSeedInsertData',type, seed)
+  await inser_data.run(type, seed);
 }
 
-runSeedInsertData()
+const args = process.argv.slice(2);
+const type = args[0];
+const seed = args[1];
+
+runSeedInsertData(type, seed)
   .then(() => {
     logger.finalize('Seeds ejecutados exitosamente.');
   })
