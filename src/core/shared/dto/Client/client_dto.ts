@@ -112,11 +112,11 @@ export class ClientDto {
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de ids de documentos.',
-    type: [Object],
+    type: [Number],
   })
   @IsArray()
   @IsOptional()
-  declare issuable_documents_ids?:  Object[];
+  declare issuable_documents_ids?: number[];
 
   @IsOptional()
   @ApiPropertyOptional({
