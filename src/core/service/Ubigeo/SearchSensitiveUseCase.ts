@@ -10,7 +10,7 @@ export class SearchSensitiveUbigeoUseCase {
       const response: any =
         await this.ubigeoService?.searchSensitive(searchTerm);
 
-      return response.map((ubigeo: any) => ({ ...ubigeo }));
+      return response.map((ubigeo: any) => ({ ...ubigeo.dataValues }));
     } catch (error: any) {
       return error;
     }
