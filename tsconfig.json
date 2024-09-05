@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "tsBuildInfoFile": "./buildcache/tsconfig.tsbuildinfo",
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
