@@ -4,9 +4,8 @@ import { Op } from 'sequelize';
 export class UbigeoRepository {
   constructor() {}
 
-  async searchSensitive(searchTerm: string) {
-    const parsedTerm = parseFloat(searchTerm);
-
+  async searchSensitive(searchTerm: any) {
+    const parsedTerm = !isNaN(searchTerm) ? parseFloat(searchTerm) : null;
     try {
       return Ubigeo.findAll({
         where: {
