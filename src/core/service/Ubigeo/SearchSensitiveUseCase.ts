@@ -7,6 +7,7 @@ export class SearchSensitiveUbigeoUseCase {
 
   async searchSensitive(searchTerm: string) {
     try {
+      console.log('searchTerm service core', searchTerm)
       const response: any =
         await this.ubigeoService?.searchSensitive(searchTerm);
 

@@ -40,7 +40,8 @@ export class UbigeoController {
   async searchUbigeo(
     @Param('searchTerm') request: SearchRequestDto,
   ): Promise<UbigeosResponse> {
-    const ubigeo = await this.application.searchSensitive(request.searchTerm);
+    console.log('ubigeos', request)
+    const ubigeo = await this.application.searchSensitive(`${request}`.toUpperCase());
     return {
       status: 201,
       message: `Ubigeo OK`,

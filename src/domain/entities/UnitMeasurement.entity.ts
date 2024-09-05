@@ -7,7 +7,7 @@ import {
   UpdatedAt,
   DeletedAt
 } from 'sequelize-typescript';
-import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
+import { TypeUnitMeasurement } from '../../infraestructure/shared/enums/TypeUnitMeasurement';
 
 @Table({ tableName: 'unit_measurements' })
 export class UnitMeasurement extends Model<UnitMeasurement> {
