@@ -26,7 +26,7 @@ export class ZoneDetailRepository {
 
   async create(zone: NewZoneDetailDto) {
     try {
-      return Zone.create(zone);
+      return ZoneDetail.create(zone);
     } catch (error: any) {
       return error;
     }
