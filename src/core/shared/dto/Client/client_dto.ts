@@ -162,6 +162,15 @@ export class ClientDto {
 
   @IsOptional()
   @ApiPropertyOptional({
+    description: 'Id de la zona.',
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  declare zone_id?: number;
+
+  @IsOptional()
+  @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',
     default: true,
     type: Boolean,

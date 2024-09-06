@@ -25,14 +25,14 @@ export class ZoneDetailDto {
   zone?: ZoneDto;
 
   @ApiResponseProperty({
-    type: [ClientDto],
+    type: Number,
   })
-  clients?: ClientDto[];
+  clients?: number;
 
   @ApiResponseProperty({
-    type: [UserDto],
+    type: Array,
   })
-  users?: UserDto[];
+  users?: [];
 }
 
 export class AllZoneDetailDto extends PartialType(ZoneDetailDto) { }

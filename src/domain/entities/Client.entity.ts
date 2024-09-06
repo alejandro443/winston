@@ -24,6 +24,8 @@ import { MethodPayment } from './MethodPayment.entity';
 import { WayToPay } from './WayToPay.entity';
 import { BusinessTurn } from './BusinessTurn.entity';
 import { BusinessSubcategory } from './BusinessSubcategory.entity';
+import { ZoneDetail } from './ZoneDetail.entity';
+import { Zone } from './Zone.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -168,6 +170,17 @@ export class Client extends Model<Client> {
     type: DataType.ARRAY(DataType.INTEGER),
   })
   declare issuable_documents_ids: number[];
+
+  @ForeignKey(() => Zone)
+  @Column({
+    field: 'zone_id',
+    allowNull: true,
+    defaultValue: 1
+  })
+  declare zone_id: number;
+
+  @BelongsTo(() => Zone, 'id')
+  declare zone: Zone;
 
   @Column({
     type: DataType.BOOLEAN,
