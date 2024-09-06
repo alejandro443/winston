@@ -60,6 +60,7 @@ import { Zone } from '../../domain/entities/Zone.entity';
 import { Ubigeo } from '../../domain/entities/Ubigeo.entity';
 import { ZoneDetail } from '../../domain/entities/ZoneDetail.entity';
 import { Warehouse } from '../../domain/entities/Warehouse.entity';
+import { PointSale } from '../../domain/entities/PointSale.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -145,7 +146,8 @@ export const ConnectionProvider = [
         Zone,
         Ubigeo,
         ZoneDetail,
-        Warehouse
+        Warehouse,
+        PointSale
       ]);
 
       await sequelize.sync({ alter: true });
