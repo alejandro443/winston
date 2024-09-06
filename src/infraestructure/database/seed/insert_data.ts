@@ -397,25 +397,56 @@ export class InserData {
     this.pais = pais;
   }
 
-  async run(): Promise<boolean> {
+  async run(type = 'all', seed = ''): Promise<boolean> {
+    var functions = {
+      'roles': createRoles(),
+      'access': createAccess(this.pais),
+      'type_clients': createTypesClients(this.pais),
+      'access_roles': createAccessesRoles(),
+      'classification': createClassifications(this.pais),
+      'groups': createGroups(this.pais),
+      'users': createUsers(),
+      'regions': createRegions(),
+      'countries': createCountries(),
+      'departments': createDepartments(this.pais),
+      'user_roles': createUsersRoles(),
+      'ubigeos': createUbigeos(this.pais)
+    }
+
     try {
       logger.initialize('COMENZAR INSERTAR DATA');
-      await createRoles();
-      await createAccess(this.pais);
-      await createTypesClients(this.pais);
-      await createAccessesRoles();
-      await createClassifications(this.pais);
-      await createGroups(this.pais);
-      await createUsers();
+      switch (type) {
+        case 'all':
+          await Promise.all(
+            Object.entries(functions).map(async ([key, func]) => {
+              try {
+                await func;
+              } catch (error) {
+                console.error(`${key} failed:`, error);
+                return { [key]: 'failed' };
+              }
+            })
+          );
+          break;
+        case 'one':
+          if(seed in functions){
+            functions[seed]
+          }else {
+            console.log("No existe la funcion.");
+            process.exit(1);
+          }
+          break;
+        default:
+          console.log('Sin parametros.')
+          break;
+      }
+
+
+      // await createUsers();
         // .then((users) => createUsersRoles(users))
         // .catch((error) => {
         //   logger.error(error);
         // });
-      await createRegions();
-      await createCountries();
-      await createDepartments(this.pais);
-      await createUsersRoles();
-      await createUbigeos(this.pais);
       // await createFunctions();
       // await createRolesFunctions();
 

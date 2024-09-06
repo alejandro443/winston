@@ -5,7 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/swagger';
-import { TypeUnitMeasurement } from '@src/infraestructure/shared/enums/TypeUnitMeasurement';
+import { TypeUnitMeasurement } from '../../../../infraestructure/shared/enums/TypeUnitMeasurement';
 import { IsBoolean, IsDateString, IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UnitMeasurementDto {

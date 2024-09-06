@@ -6,6 +6,7 @@ import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
 import { CompanyWorkerService } from '@src/domain/services/CompanyWorkerService/CompanyWorkerService';
 import { DeliveryPointService } from '@src/domain/services/DeliveryPointService/DeliveryPointService';
 import { ClientDeliveryPointService } from '@src/domain/services/ClientDeliveryPointService/ClientDeliveryPointService';
+import { ZoneDetailService } from '@src/domain/services/ZoneDetailService/ZoneDetailService';
 
 export class CreateClientUseCase {
   constructor(
@@ -14,12 +15,14 @@ export class CreateClientUseCase {
     private companyWorkerService?: CompanyWorkerService,
     private deliveryPointService?: DeliveryPointService,
     private clientDeliveryPointService?: ClientDeliveryPointService,
+    private zoneDetailService?: ZoneDetailService
   ) {
     this.clientService = new ClientService();
     this.personService = new PersonService();
     this.companyWorkerService = new CompanyWorkerService();
     this.deliveryPointService = new DeliveryPointService();
     this.clientDeliveryPointService = new ClientDeliveryPointService();
+    this.zoneDetailService = new ZoneDetailService();
   }
 
   async createClient(client: NewClientDto) {
@@ -36,6 +39,13 @@ export class CreateClientUseCase {
       if (client.delivery_data.length) {
         await this.CreateDeliveryPoints(client.delivery_data, response.id);
       }
+
+      if(client.zone_id){
+        await this.CreateZoneDetail(response.id, client.zone_id)
+      } else {
+        await this.CreateZoneDetail(response.id)
+      }
+      
       return { ...response.dataValues };
     } catch (error: any) {
       throw new ClientApplicationError(error)
@@ -87,6 +97,17 @@ export class CreateClientUseCase {
           delivery_point_id: response_delivery_point.id
         })
       });
+    } catch (error) {
+      throw new ClientApplicationError(error)
+    }
+  }
+
+  async CreateZoneDetail(client_id: number, zone_id: number = 1){
+    try {
+      await this.zoneDetailService.createZoneDetail({
+        zone_id: zone_id,
+        client_id: client_id
+      })
     } catch (error) {
       throw new ClientApplicationError(error)
     }

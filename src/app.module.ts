@@ -5,6 +5,7 @@ import { SharedModule } from './infraestructure/shared/shared.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { InterfacesModule } from './interfaces/interfaces.module';
 
 @Module({
   imports: [
@@ -15,10 +16,10 @@ import { join } from 'path';
         serveRoot: '/images/'
       }
     ),
-    InfraestructureModule,
+    // InfraestructureModule,
     SharedModule,
     CoreModule.register({
-      modules: [InfraestructureModule],
+      modules: [InfraestructureModule, InterfacesModule],
     }),
   ],
 })

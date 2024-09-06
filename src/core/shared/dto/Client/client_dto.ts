@@ -112,29 +112,29 @@ export class ClientDto {
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de ids de documentos.',
-    type: Array,
+    type: [Number],
   })
   @IsArray()
   @IsOptional()
-  declare issuable_documents_ids?: Array<number>;
+  declare issuable_documents_ids?: number[];
 
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de encargados.',
-    type: Array,
+    type: [Object],
   })
   @IsArray()
   @IsOptional()
-  declare manager_details?: Array<Object>;
+  declare manager_details?: Object[];
 
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de puntos de entrega.',
-    type: Array,
+    type: [Object],
   })
   @IsArray()
   @IsOptional()
-  declare delivery_data?: Array<Object>;
+  declare delivery_data?: Object[];
 
   @IsOptional()
   @ApiPropertyOptional({
@@ -143,6 +143,31 @@ export class ClientDto {
   })
   @IsObject()
   declare entity?: object;
+
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Id de giro.',
+    type: Object,
+  })
+  @IsNumber()
+  declare business_turn_id?: number;
+ 
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Id de sub giro.',
+    type: Object,
+  })
+  @IsNumber()
+  declare business_subcategory_id?: number;
+
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Id de la zona.',
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  declare zone_id?: number;
 
   @IsOptional()
   @ApiPropertyOptional({

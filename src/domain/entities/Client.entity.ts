@@ -22,6 +22,10 @@ import { TypeChannel } from './TypeChannel.entity';
 import { CommercialSection } from './CommercialSection';
 import { MethodPayment } from './MethodPayment.entity';
 import { WayToPay } from './WayToPay.entity';
+import { BusinessTurn } from './BusinessTurn.entity';
+import { BusinessSubcategory } from './BusinessSubcategory.entity';
+import { ZoneDetail } from './ZoneDetail.entity';
+import { Zone } from './Zone.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -142,10 +146,41 @@ export class Client extends Model<Client> {
   @BelongsTo(() => WayToPay, 'way_to_pay_id')
   declare wayToPay: WayToPay;
 
+  @ForeignKey(() => BusinessTurn)
+  @Column({
+    field: 'business_turn_id',
+    allowNull: true,
+  })
+  declare business_turn_id: number;
+
+  @BelongsTo(() => BusinessTurn, 'business_turn_id')
+  declare businessTurn: BusinessTurn;
+  
+  @ForeignKey(() => BusinessSubcategory)
+  @Column({
+    field: 'business_subcategory_id',
+    allowNull: true,
+  })
+  declare business_subcategory_id: number;
+
+  @BelongsTo(() => BusinessSubcategory, 'business_subcategory_id')
+  declare businessSubcategory: BusinessSubcategory;
+
   @Column({
     type: DataType.ARRAY(DataType.INTEGER),
   })
   declare issuable_documents_ids: number[];
+
+  @ForeignKey(() => Zone)
+  @Column({
+    field: 'zone_id',
+    allowNull: true,
+    defaultValue: 1
+  })
+  declare zone_id: number;
+
+  @BelongsTo(() => Zone, 'id')
+  declare zone: Zone;
 
   @Column({
     type: DataType.BOOLEAN,

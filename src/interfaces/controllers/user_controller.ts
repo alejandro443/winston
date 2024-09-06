@@ -142,12 +142,12 @@ export class UserController {
   async createUserWithPerson(
     @Body() request: CreateUserWithRolesRequestDto,
   ): Promise<UserWithPersonResponse> {
-    Log.info(`(POST) Create user`);
+    Log.info(`(POST) Create user with person`);
 
-    const user = await this.application.createUser(request);
+    const user = await this.application.createUserWithPerson(request);
     return {
       status: 201,
-      message: `User ${request.user} created OK`,
+      message: `User with person: ${request.user} created OK`,
       data: user,
     };
   }

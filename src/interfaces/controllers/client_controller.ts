@@ -26,6 +26,7 @@ import { ClientResponse, ClientsResponse } from '../responses/client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { PortfolioResponse } from '../responses/client.response';
 import { Auth } from '@src/core/decorators/auth.decorator';
+import { UpdateClientRequestDto } from '../request_dto/ClientDto/update.client_dto';
 
 @ApiTags('Client')
 @Controller('/client')
@@ -107,7 +108,7 @@ export class ClientController {
   @HttpCode(200)
   @Put('/update/:code')
   async updateClient(
-    @Param('code') code: GetClientRequestDto,
+    @Param('code') code: UpdateClientRequestDto,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);

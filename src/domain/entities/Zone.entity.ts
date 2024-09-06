@@ -7,7 +7,9 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
+  HasMany,
 } from 'sequelize-typescript';
+import { ZoneDetail } from './ZoneDetail.entity';
 
 @Table({ tableName: 'zones' })
 export class Zone extends Model<Zone> {
@@ -40,6 +42,11 @@ export class Zone extends Model<Zone> {
     allowNull: false
   })
   declare districts: RelatedDistrictsMetaData[];
+
+  @Column({
+    type: DataType.STRING,
+  })
+  declare reference: string;
 
   @Column({
     type: DataType.BOOLEAN,

@@ -4,9 +4,8 @@ import { Op } from 'sequelize';
 export class UbigeoRepository {
   constructor() {}
 
-  async searchSensitive(searchTerm: string) {
-    const parsedTerm = parseFloat(searchTerm);
-
+  async searchSensitive(searchTerm: any) {
+    const parsedTerm = !isNaN(searchTerm) ? parseFloat(searchTerm) : null;
     try {
       return Ubigeo.findAll({
         where: {
@@ -19,18 +18,7 @@ export class UbigeoRepository {
             // Para columnas numéricas
             {
               [Op.or]: [
-                { ubigeo: { [Op.eq]: parsedTerm } },
-                { altitud: { [Op.eq]: parsedTerm } },
-                { latitud: { [Op.eq]: parsedTerm } },
-                { longitud: { [Op.eq]: parsedTerm } },
-              ],
-              [Op.and]: [
-                { [Op.or]: [
-                  { ubigeo: { [Op.is]: null } },
-                  { altitud: { [Op.is]: null } },
-                  { latitud: { [Op.is]: null } },
-                  { longitud: { [Op.is]: null } },
-                ] }
+                { ubigeo: { [Op.eq]: parsedTerm } }
               ]
             }
           ],

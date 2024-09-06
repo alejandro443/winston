@@ -1,8 +1,5 @@
 import { NewZoneDetailDto } from '@src/core/shared/dto/ZoneDetail/zone_detail_dto';
-import { ZoneDetailApplicationError } from '@src/core/shared/error/ZoneDetailApplicationError';
-import { Client } from '@src/domain/entities/Client.entity';
-import { User } from '@src/domain/entities/User.entity';
-import { Zone } from '@src/domain/entities/Zone.entity';
+import { sequelize } from '@src/infraestructure/database/connection.database';
 import { ZoneDetail } from 'src/domain/entities/ZoneDetail.entity';
 
 export class ZoneDetailRepository {
@@ -10,15 +7,39 @@ export class ZoneDetailRepository {
 
   async getAllZoneDetails() {
     try {
-      var data_zone_detail: any = ZoneDetail.findAll({
-        include: [
-          {model: Client, required: false},
-          {model: User, required: false},
-          {model: Zone, required: false}
-        ]
-      });
+      const query = `
+        SELECT
+          "ZoneDetail"."zone_id",
+          "Zone"."name",
+          "Zone"."delivery_days",
+          "Zone"."districts",
+          "Zone"."reference",
+          "Zone"."status",
+          "Zone"."created_at",
+          COUNT("ZoneDetail"."client_id") AS "clientCount",
+          COUNT("ZoneDetail"."user_id") AS "userCount",
+          STRING_AGG("User"."user", ', ') AS "userNames"
+        FROM
+          "zone_details" AS "ZoneDetail"
+        LEFT JOIN
+          "clients" AS "Client" ON "ZoneDetail"."client_id" = "Client"."id"
+        LEFT JOIN
+          "users" AS "User" ON "ZoneDetail"."user_id" = "User"."id"
+        LEFT JOIN
+          "zones" AS "Zone" ON "ZoneDetail"."zone_id" = "Zone"."id"
+        GROUP BY
+          "ZoneDetail"."zone_id",
+          "Zone"."name",
+          "Zone"."delivery_days",
+          "Zone"."districts",
+          "Zone"."created_at",
+          "Zone"."reference",
+          "Zone"."status";
+      `;
 
-      return data_zone_detail;
+      const [results, metadata] = await sequelize.query(query);
+
+      return results;
     } catch (error: any) {
       return error;
     }
@@ -26,7 +47,7 @@ export class ZoneDetailRepository {
 
   async create(zone: NewZoneDetailDto) {
     try {
-      return Zone.create(zone);
+      return ZoneDetail.create(zone);
     } catch (error: any) {
       return error;
     }
