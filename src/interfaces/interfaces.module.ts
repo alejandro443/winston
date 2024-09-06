@@ -42,6 +42,7 @@ import { ZoneController } from './controllers/zone_controller';
 import { UbigeoController } from './controllers/ubigeo_controller';
 import { UploadController } from './controllers/upload_controller';
 import { ZoneDetailController } from './controllers/zone_detail_controller';
+import { WarehouseController } from './controllers/warehouse_controller';
 
 @Module({
   imports: [
@@ -92,7 +93,8 @@ import { ZoneDetailController } from './controllers/zone_detail_controller';
     BusinessSubcategoryController,
     ZoneController,
     UbigeoController,
-    ZoneDetailController
+    ZoneDetailController,
+    WarehouseController
   ],
 })
 export class InterfacesModule {}

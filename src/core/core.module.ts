@@ -39,6 +39,7 @@ import {
   ZONE_APPLICATION,
   UBIGEO_APPLICATION,
   ZONE_DETAIL_APPLICATION,
+  WAREHOUSE_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -79,6 +80,7 @@ import { BusinessSubcategoryApplicationService } from './service/BusinessSubcate
 import { ZoneApplicationService } from './service/Zone/ZoneApplicationService';
 import { UbigeoApplicationService } from './service/Ubigeo/UbigeoApplicationService';
 import { ZoneDetailApplicationService } from './service/ZoneDetail/ZoneDetailApplicationService';
+import { WarehouseApplicationService } from './service/Warehouse/WarehouseApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -396,6 +398,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const WarehouseApplicationProvider = {
+      provide: WAREHOUSE_APPLICATION,
+      useFactory() {
+        return new WarehouseApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -440,7 +450,8 @@ export class CoreModule {
         BusinessSubcategoryApplicationProvider,
         ZoneApplicationProvider,
         UbigeoApplicationProvider,
-        ZoneDetailApplicationProvider
+        ZoneDetailApplicationProvider,
+        WarehouseApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -481,7 +492,8 @@ export class CoreModule {
         BUSINESS_SUBCATEGORY_APPLICATION,
         ZONE_APPLICATION,
         UBIGEO_APPLICATION,
-        ZONE_DETAIL_APPLICATION
+        ZONE_DETAIL_APPLICATION,
+        WAREHOUSE_APPLICATION,
       ],
     };
   }
