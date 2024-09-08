@@ -61,6 +61,8 @@ import { Ubigeo } from '../../domain/entities/Ubigeo.entity';
 import { ZoneDetail } from '../../domain/entities/ZoneDetail.entity';
 import { Warehouse } from '../../domain/entities/Warehouse.entity';
 import { PointSale } from '../../domain/entities/PointSale.entity';
+import { Sale } from '../../domain/entities/Sale.entity';
+import { SaleDetail } from '../../domain/entities/SaleDetail.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -80,7 +82,11 @@ switch (process.env.NODE_ENV as any) {
 export let sequelize: Sequelize;
 
 try {
-  console.log(configuration)
+  console.log({
+    port: configuration.port,
+    database: configuration.database,
+    host: configuration.host
+  })
   sequelize = new Sequelize(configuration);
   sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
@@ -147,7 +153,9 @@ export const ConnectionProvider = [
         Ubigeo,
         ZoneDetail,
         Warehouse,
-        PointSale
+        PointSale,
+        Sale,
+        SaleDetail
       ]);
 
       await sequelize.sync({ alter: true });
