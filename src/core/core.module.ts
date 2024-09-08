@@ -41,6 +41,7 @@ import {
   ZONE_DETAIL_APPLICATION,
   WAREHOUSE_APPLICATION,
   POINT_SALE_APPLICATION,
+  SALE_APPLICATION,
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -83,6 +84,7 @@ import { UbigeoApplicationService } from './service/Ubigeo/UbigeoApplicationServ
 import { ZoneDetailApplicationService } from './service/ZoneDetail/ZoneDetailApplicationService';
 import { WarehouseApplicationService } from './service/Warehouse/WarehouseApplicationService';
 import { PointSaleApplicationService } from './service/PointSale/PointSaleApplicationService';
+import { SaleApplicationService } from './service/Sale/SaleApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -413,6 +415,13 @@ export class CoreModule {
       provide: POINT_SALE_APPLICATION,
       useFactory() {
         return new PointSaleApplicationService();
+      }
+    };
+    
+    const SaleApplicationProvider = {
+      provide: SALE_APPLICATION,
+      useFactory() {
+        return new SaleApplicationService();
       },
       inject: [],
     };
@@ -462,7 +471,8 @@ export class CoreModule {
         UbigeoApplicationProvider,
         ZoneDetailApplicationProvider,
         WarehouseApplicationProvider,
-        PointSaleApplicationProvider
+        PointSaleApplicationProvider,
+        SaleApplicationProvider,
       ],
       exports: [
         AUTH_APPLICATION,
@@ -506,6 +516,7 @@ export class CoreModule {
         ZONE_DETAIL_APPLICATION,
         WAREHOUSE_APPLICATION,
         POINT_SALE_APPLICATION,
+        SALE_APPLICATION,
       ],
     };
   }
