@@ -32,9 +32,9 @@ export class MethodPaymentApplicationService implements MethodPaymentApplication
     }
   }
 
-  async getOneMethodPayment(method_payment_code: string): Promise<any> {
+  async getOneMethodPayment(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneMethodPayment(method_payment_code);
+      return this.getOneUseCase?.getOneMethodPayment(id);
     } catch (error: any) {
       return error;
     }
@@ -49,19 +49,19 @@ export class MethodPaymentApplicationService implements MethodPaymentApplication
   }
 
   async updateMethodPayment(
-    code: any,
+    id: number,
     method_payment: UpdateMethodPaymentDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateMethodPayment(code, method_payment);
+      return this.updateUseCase?.updateMethodPayment(id, method_payment);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteMethodPayment(code: string) {
+  async deleteMethodPayment(id: number) {
     try {
-      return this.deleteUseCase?.deleteMethodPayment(code);
+      return this.deleteUseCase?.deleteMethodPayment(id);
     } catch (error: any) {
       return error;
     }

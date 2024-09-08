@@ -6,10 +6,10 @@ export class UpdateMethodPaymentUseCase {
     this.method_paymentService = new MethodPaymentService();
   }
 
-  async updateMethodPayment(code: any, method_payment: UpdateMethodPaymentDto) {
+  async updateMethodPayment(id: number, method_payment: UpdateMethodPaymentDto) {
     try {
       const response: any = await this.method_paymentService?.updateMethodPayment(
-        code,
+        id,
         method_payment,
       );
       return {

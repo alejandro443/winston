@@ -36,7 +36,7 @@ export class MethodPaymentController {
     private application: MethodPaymentApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid method_payment code' })
+  @ApiBadRequestResponse({ description: 'Invalid method_payment id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: MethodPaymentResponse,
@@ -54,29 +54,29 @@ export class MethodPaymentController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid method_payment code' })
+  @ApiBadRequestResponse({ description: 'Invalid method_payment id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: MethodPaymentResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneMethodPayment(
     @Param() request: GetMethodPaymentRequestDto,
   ): Promise<MethodPaymentResponse> {
-    Log.info(`(Get) Get method_payment code: ${request.code}`);
+    Log.info(`(Get) Get method_payment id: ${request.id}`);
 
     const method_payment = await this.application.getOneMethodPayment(
-      request.code,
+      request.id,
     );
     return {
       status: 201,
-      message: `MethodPayment ${request.code} OK`,
+      message: `MethodPayment ${request.id} OK`,
       data: method_payment,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid method_payment code' })
+  @ApiBadRequestResponse({ description: 'Invalid method_payment id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: MethodPaymentResponse,
@@ -102,7 +102,7 @@ export class MethodPaymentController {
     type: MethodPaymentResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateMethodPayment(
     @Param() params: GetMethodPaymentRequestDto,
     @Body() request: CreateMethodPaymentRequestDto,
@@ -110,7 +110,7 @@ export class MethodPaymentController {
     Log.info(`(PUT) Put method_payment`);
 
     const method_payment = await this.application.updateMethodPayment(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -120,24 +120,24 @@ export class MethodPaymentController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid method_payment code' })
+  @ApiBadRequestResponse({ description: 'Invalid method_payment id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: MethodPaymentResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteMethodPayment(
     @Param() params: GetMethodPaymentRequestDto,
   ): Promise<MethodPaymentResponse> {
-    Log.info(`(Delete) Delete method_payment ${params.code}`);
+    Log.info(`(Delete) Delete method_payment ${params.id}`);
 
     const method_payment = await this.application.deleteMethodPayment(
-      params.code,
+      params.id,
     );
     return {
       status: 200,
-      message: `MethodPayment ${params.code} deleted.`,
+      message: `MethodPayment ${params.id} deleted.`,
       data: method_payment,
     };
   }

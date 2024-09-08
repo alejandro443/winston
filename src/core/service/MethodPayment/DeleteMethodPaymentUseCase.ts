@@ -5,10 +5,10 @@ export class DeleteMethodPaymentUseCase {
     this.methodPaymentService = new MethodPaymentService();
   }
 
-  async deleteMethodPayment(code: string) {
+  async deleteMethodPayment(id: number) {
     try {
       const response: any =
-        await this.methodPaymentService?.deleteMethodPayment(code);
+        await this.methodPaymentService?.deleteMethodPayment(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

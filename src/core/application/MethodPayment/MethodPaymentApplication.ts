@@ -7,11 +7,11 @@ import {
 
 export interface MethodPaymentApplication {
   getAllMethodPayment(): Promise<Array<AllMethodPaymentDto>>;
-  getOneMethodPayment(code: any): Promise<OneMethodPaymentDto>;
+  getOneMethodPayment(id: number): Promise<OneMethodPaymentDto>;
   createMethodPayment(method_payment: NewMethodPaymentDto): Promise<OneMethodPaymentDto>;
   updateMethodPayment(
-    code: any,
+    id: number,
     method_payment: UpdateMethodPaymentDto,
   ): Promise<OneMethodPaymentDto>;
-  deleteMethodPayment(code: any): any;
+  deleteMethodPayment(id: number): any;
 }

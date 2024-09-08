@@ -7,9 +7,9 @@ import { MethodPayment } from 'src/domain/entities/MethodPayment.entity';
 export class MethodPaymentRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id: number) {
     try {
-      return MethodPayment.findOne({ where: { code: code } });
+      return MethodPayment.findOne({ where: { id: id } });
     } catch (error: any) {
       return error;
     }
@@ -31,17 +31,17 @@ export class MethodPaymentRepository {
     }
   }
 
-  async update(code: any, method_payment: UpdateMethodPaymentDto) {
+  async update(id: number, method_payment: UpdateMethodPaymentDto) {
     try {
-      return MethodPayment.update(method_payment, { where: { code: code } });
+      return MethodPayment.update(method_payment, { where: { id: id } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id: number) {
     try {
-      return MethodPayment.destroy({ where: { code: code } });
+      return MethodPayment.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }

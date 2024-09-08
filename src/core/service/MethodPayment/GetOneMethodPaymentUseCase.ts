@@ -5,10 +5,10 @@ export class GetOneMethodPaymentUseCase {
     this.methodPaymentService = new MethodPaymentService();
   }
 
-  async getOneMethodPayment(code: string) {
+  async getOneMethodPayment(id: number) {
     try {
       const response: any =
-        await this.methodPaymentService?.getOneMethodPayment(code);
+        await this.methodPaymentService?.getOneMethodPayment(id);
       return {
         id: response.id,
         code: response.code,
