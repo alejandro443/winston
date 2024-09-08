@@ -28,6 +28,11 @@ export class PointSale extends Model<PointSale> {
   declare description: string;
 
   @Column({
+    type: DataType.INTEGER,
+  })
+  declare ubigeo: number;
+
+  @Column({
     type: DataType.STRING,
     allowNull: true,
   })
