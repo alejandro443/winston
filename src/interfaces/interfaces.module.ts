@@ -45,6 +45,7 @@ import { ZoneDetailController } from './controllers/zone_detail_controller';
 import { WarehouseController } from './controllers/warehouse_controller';
 import { PointSaleController } from './controllers/point_sale_controller';
 import { SaleController } from './controllers/sale_controller';
+import { PointSaleUserController } from './controllers/point_sale_user_controller';
 
 @Module({
   imports: [
@@ -98,7 +99,8 @@ import { SaleController } from './controllers/sale_controller';
     ZoneDetailController,
     WarehouseController,
     PointSaleController,
-    SaleController
+    SaleController,
+    PointSaleUserController
   ],
 })
 export class InterfacesModule {}
