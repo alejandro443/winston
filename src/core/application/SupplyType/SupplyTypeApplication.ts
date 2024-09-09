@@ -7,11 +7,11 @@ import {
 
 export interface SupplyTypeApplication {
   getAllSupplyType(): Promise<Array<AllSupplyTypeDto>>;
-  getOneSupplyType(code: any): Promise<OneSupplyTypeDto>;
+  getOneSupplyType(id: number): Promise<OneSupplyTypeDto>;
   createSupplyType(supply_type: NewSupplyTypeDto): Promise<OneSupplyTypeDto>;
   updateSupplyType(
-    code: any,
+    id: number,
     supply_type: UpdateSupplyTypeDto,
   ): Promise<OneSupplyTypeDto>;
-  deleteSupplyType(code: any): any;
+  deleteSupplyType(id: number): any;
 }

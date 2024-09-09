@@ -7,9 +7,9 @@ import { SupplyType } from 'src/domain/entities/SupplyType.entity';
 export class SupplyTypeRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id: number) {
     try {
-      return SupplyType.findOne({ where: { code: code } });
+      return SupplyType.findOne({ where: { id: id } });
     } catch (error: any) {
       return error;
     }
@@ -31,17 +31,17 @@ export class SupplyTypeRepository {
     }
   }
 
-  async update(code: any, supply_type: UpdateSupplyTypeDto) {
+  async update(id: any, supply_type: UpdateSupplyTypeDto) {
     try {
-      return SupplyType.update(supply_type, { where: { code: code } });
+      return SupplyType.update(supply_type, { where: { id: id } });
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id: number) {
     try {
-      return SupplyType.destroy({ where: { code: code } });
+      return SupplyType.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }

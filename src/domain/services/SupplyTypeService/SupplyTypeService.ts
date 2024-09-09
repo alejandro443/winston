@@ -6,9 +6,9 @@ export class SupplyTypeService {
     this.repository = new SupplyTypeRepository();
   }
 
-  async getOneSupplyType(code: string) {
+  async getOneSupplyType(id: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id);
     } catch (error: any) {
       return error;
     }
@@ -30,17 +30,17 @@ export class SupplyTypeService {
     }
   }
 
-  async updateSupplyType(code: any, supply_type: NewSupplyTypeDto) {
+  async updateSupplyType(id: any, supply_type: NewSupplyTypeDto) {
     try {
-      return this.repository?.update(code, supply_type);
+      return this.repository?.update(id, supply_type);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteSupplyType(code: string) {
+  async deleteSupplyType(id: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id);
     } catch (error: any) {
       return error;
     }

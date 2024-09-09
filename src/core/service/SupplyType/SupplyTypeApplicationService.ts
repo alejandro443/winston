@@ -32,9 +32,9 @@ export class SupplyTypeApplicationService implements SupplyTypeApplication {
     }
   }
 
-  async getOneSupplyType(supply_type_code: string): Promise<any> {
+  async getOneSupplyType(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneSupplyType(supply_type_code);
+      return this.getOneUseCase?.getOneSupplyType(id);
     } catch (error: any) {
       return error;
     }
@@ -49,19 +49,19 @@ export class SupplyTypeApplicationService implements SupplyTypeApplication {
   }
 
   async updateSupplyType(
-    code: any,
+    id: number,
     supply_type: UpdateSupplyTypeDto,
   ): Promise<any> {
     try {
-      return this.updateUseCase?.updateSupplyType(code, supply_type);
+      return this.updateUseCase?.updateSupplyType(id, supply_type);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteSupplyType(code: string) {
+  async deleteSupplyType(id: number) {
     try {
-      return this.deleteUseCase?.deleteSupplyType(code);
+      return this.deleteUseCase?.deleteSupplyType(id);
     } catch (error: any) {
       return error;
     }

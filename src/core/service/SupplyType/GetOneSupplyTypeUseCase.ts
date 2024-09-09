@@ -5,10 +5,10 @@ export class GetOneSupplyTypeUseCase {
     this.supplyTypeService = new SupplyTypeService();
   }
 
-  async getOneSupplyType(code: string) {
+  async getOneSupplyType(id: number) {
     try {
       const response: any =
-        await this.supplyTypeService?.getOneSupplyType(code);
+        await this.supplyTypeService?.getOneSupplyType(id);
       return {
         id: response.id,
         code: response.code,

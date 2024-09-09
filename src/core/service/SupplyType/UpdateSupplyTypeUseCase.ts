@@ -6,10 +6,10 @@ export class UpdateSupplyTypeUseCase {
     this.supplyTypeService = new SupplyTypeService();
   }
 
-  async updateSupplyType(code: any, supplyType: UpdateSupplyTypeDto) {
+  async updateSupplyType(id: number, supplyType: UpdateSupplyTypeDto) {
     try {
       const response: any = await this.supplyTypeService?.updateSupplyType(
-        code,
+        id,
         supplyType,
       );
       return {

@@ -36,7 +36,7 @@ export class SupplyTypeController {
     private application: SupplyTypeApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid supply_type code' })
+  @ApiBadRequestResponse({ description: 'Invalid supply_type id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: SupplyTypeResponse,
@@ -54,27 +54,27 @@ export class SupplyTypeController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid supply_type code' })
+  @ApiBadRequestResponse({ description: 'Invalid supply_type id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: SupplyTypeResponse,
   })
   @HttpCode(201)
-  @Get('/one/:code')
+  @Get('/one/:id')
   async getOneSupplyType(
     @Param() request: GetSupplyTypeRequestDto,
   ): Promise<SupplyTypeResponse> {
-    Log.info(`(Get) Get supply_type code: ${request.code}`);
+    Log.info(`(Get) Get supply_type id: ${request.id}`);
 
-    const supply_type = await this.application.getOneSupplyType(request.code);
+    const supply_type = await this.application.getOneSupplyType(request.id);
     return {
       status: 201,
-      message: `SupplyType ${request.code} OK`,
+      message: `SupplyType ${request.id} OK`,
       data: supply_type,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid supply_type code' })
+  @ApiBadRequestResponse({ description: 'Invalid supply_type id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: SupplyTypeResponse,
@@ -94,13 +94,13 @@ export class SupplyTypeController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid supply_type code' })
+  @ApiBadRequestResponse({ description: 'Invalid supply_type id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: SupplyTypeResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateSupplyType(
     @Param() params: GetSupplyTypeRequestDto,
     @Body() request: CreateSupplyTypeRequestDto,
@@ -108,7 +108,7 @@ export class SupplyTypeController {
     Log.info(`(PUT) Put supply_type`);
 
     const supply_type = await this.application.updateSupplyType(
-      params.code,
+      params.id,
       request,
     );
     return {
@@ -118,22 +118,22 @@ export class SupplyTypeController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid supply_type code' })
+  @ApiBadRequestResponse({ description: 'Invalid supply_type id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: SupplyTypeResponse,
   })
   @HttpCode(200)
-  @Delete('/delete/:code')
+  @Delete('/delete/:id')
   async deleteSupplyType(
     @Param() params: GetSupplyTypeRequestDto,
   ): Promise<SupplyTypeResponse> {
-    Log.info(`(Delete) Delete supply_type ${params.code}`);
+    Log.info(`(Delete) Delete supply_type ${params.id}`);
 
-    const supply_type = await this.application.deleteSupplyType(params.code);
+    const supply_type = await this.application.deleteSupplyType(params.id);
     return {
       status: 200,
-      message: `SupplyType ${params.code} deleted.`,
+      message: `SupplyType ${params.id} deleted.`,
       data: supply_type,
     };
   }
