@@ -26,6 +26,11 @@ export class Company extends Model<Company> {
     unique: true,
   })
   declare main_identification: string;
+  
+  @Column({
+    type: DataType.STRING,
+  })
+  declare condition: string;
 
   @Column({
     type: DataType.STRING,

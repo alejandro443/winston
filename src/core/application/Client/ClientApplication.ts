@@ -14,4 +14,5 @@ export interface ClientApplication {
   deleteClient(code: any): any;
 
   getPortfolioClient(): Promise<Array<PortfolioDto>>;
+  SearchByDocument(identification: any): any;
 }

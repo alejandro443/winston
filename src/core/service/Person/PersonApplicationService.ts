@@ -32,33 +32,33 @@ export class PersonApplicationService implements PersonApplication {
     }
   }
 
-  async getOnePerson(worker_code: string) {
+  async getOnePerson(identification: string) {
     try {
-      return this.getOneUseCase?.getOnePerson(worker_code);
+      return this.getOneUseCase?.getOnePerson(identification);
     } catch (error: any) {
       return error;
     }
   }
 
-  async createPerson(worker: NewPersonDto) {
+  async createPerson(body: NewPersonDto) {
     try {
-      return this.createUseCase?.createPerson(worker);
+      return this.createUseCase?.createPerson(body);
     } catch (error: any) {
       return error;
     }
   }
 
-  async updatePerson(code: any, worker: UpdatePersonDto) {
+  async updatePerson(identification: any, body: UpdatePersonDto) {
     try {
-      return this.updateUseCase?.updatePerson(code, worker);
+      return this.updateUseCase?.updatePerson(identification, body);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deletePerson(code: string) {
+  async deletePerson(identification: string) {
     try {
-      return this.deleteUseCase?.deletePerson(code);
+      return this.deleteUseCase?.deletePerson(identification);
     } catch (error: any) {
       return error;
     }

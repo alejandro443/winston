@@ -15,15 +15,12 @@ export class CreatePersonUseCase {
       if (!response) { throw new PersonApplicationError(undefined, 'INTERNAL_SERVER_ERROR') }
 
       if (person.create_user == true) {
-        const responseUser: any =  await this.userService.createUser(
+        await this.userService.createUser(
           {
             user: person.main_identification,
             password: person.main_identification
           }
         )
-
-        console.log(responseUser)
-
       }
       return { ...response.dataValues };
     } catch (error: any) {

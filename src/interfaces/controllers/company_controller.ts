@@ -12,7 +12,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { PERSON_APPLICATION } from 'src/core/shared/constants/application.constants';
+import { COMPANY_APPLICATION   } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { CreatePersonRequestDto } from '../request_dto/PersonDto/create.person_dto';
 import { PersonApplication } from 'src/core/application/Person/PersonApplication';
@@ -20,14 +20,15 @@ import { PersonResponse } from '../responses/person.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
+// Note: controlador no usado, esto esta en deshuso
 @ApiTags('Company')
 @Controller('/company')
 @UseFilters(ApplicationCreatorFilter)
 @ApiInternalServerErrorResponse({ description: 'Error server' })
 @Auth()
-export class PersonController {
+export class CompanyController {
   constructor(
-    @Inject(PERSON_APPLICATION)
+    @Inject(COMPANY_APPLICATION )
     private application: PersonApplication,
   ) {}
 
@@ -41,7 +42,7 @@ export class PersonController {
   async createPerson(
     @Body() request: CreatePersonRequestDto,
   ): Promise<PersonResponse> {
-    Log.info(`(POST) Create person`);
+    Log.info(`(POST) Create company`);
 
     const person = await this.application.createPerson(request);
     return {

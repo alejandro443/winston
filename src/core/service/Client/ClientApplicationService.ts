@@ -9,6 +9,7 @@ import { CreateClientUseCase } from './CreateClientUseCase';
 import { UpdateClientUseCase } from './UpdateClientUseCase';
 import { DeleteClientUseCase } from './DeleteClientUseCase';
 import { PortfolioClientUseCase } from './PortfolioClientUseCase';
+import { SearchByDocumentUseCase } from './SearchByDocumentUseCase';
 
 export class ClientApplicationService implements ClientApplication {
   constructor(
@@ -18,6 +19,7 @@ export class ClientApplicationService implements ClientApplication {
     private updateUseCase?: UpdateClientUseCase,
     private deleteUseCase?: DeleteClientUseCase,
     private portfolioUseCase?: PortfolioClientUseCase,
+    private searchByDocumentUseCase?: SearchByDocumentUseCase,
   ) {
     this.getOneUseCase = new GetOneClientUseCase();
     this.getAllUseCase = new GetAllClientUseCase();
@@ -25,6 +27,7 @@ export class ClientApplicationService implements ClientApplication {
     this.updateUseCase = new UpdateClientUseCase();
     this.deleteUseCase = new DeleteClientUseCase();
     this.portfolioUseCase = new PortfolioClientUseCase();
+    this.searchByDocumentUseCase = new SearchByDocumentUseCase();
   }
 
   async getAllClient() {
@@ -72,6 +75,21 @@ export class ClientApplicationService implements ClientApplication {
   async getPortfolioClient(): Promise<any> {
     try {
       return this.portfolioUseCase.getPortfolioClient();
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+
+  async SearchByDocument(identification: string) {
+    try {
+      if(identification.length == 8){
+        return this.searchByDocumentUseCase.SearchByDocumentReniec(identification);
+      }
+      
+      if(identification.length == 11){
+        return this.searchByDocumentUseCase.SearchByDocumentSunat(identification);
+      }
     } catch (error: any) {
       return error;
     }

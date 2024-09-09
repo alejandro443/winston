@@ -27,6 +27,7 @@ import { ApplicationCreatorFilter } from '../exception_filters/application.excep
 import { PortfolioResponse } from '../responses/client.response';
 import { Auth } from '@src/core/decorators/auth.decorator';
 import { UpdateClientRequestDto } from '../request_dto/ClientDto/update.client_dto';
+import { GetPersonRequestDto } from '../request_dto/PersonDto/get.person_dto';
 
 @ApiTags('Client')
 @Controller('/client')
@@ -157,6 +158,24 @@ export class ClientController {
       status: 201,
       message: `Get all clients`,
       data: clients,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Invalid person main_identification' })
+  @HttpCode(200)
+  @Get('/search_document/:main_identification')
+  async SearchByDocument(
+    @Param() params: GetPersonRequestDto,
+  ): Promise<any> {
+    Log.info(`(SearchByDocument) Search ${params.main_identification}`);
+
+    const client = await this.application.SearchByDocument(
+      params.main_identification,
+    );
+    return {
+      status: 200,
+      message: `Ok`,
+      data: client,
     };
   }
 }

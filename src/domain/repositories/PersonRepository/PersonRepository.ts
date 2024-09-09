@@ -14,7 +14,7 @@ export class PersonRepository {
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
-      return error;
+      throw new PersonApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

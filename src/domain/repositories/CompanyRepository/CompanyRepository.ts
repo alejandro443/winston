@@ -14,7 +14,7 @@ export class CompanyRepository {
         where: { main_identification: main_identification },
       });
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

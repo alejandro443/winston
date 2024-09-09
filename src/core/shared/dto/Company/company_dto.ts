@@ -32,7 +32,8 @@ export class CompanyDto {
   })
   @IsString()
   declare name: string;
-
+  
+  
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Numero de celular principal de la compañia.',
@@ -40,7 +41,7 @@ export class CompanyDto {
   })
   @IsString()
   declare main_phone: string;
-
+  
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Direccion email de la compañia.',
@@ -48,7 +49,7 @@ export class CompanyDto {
   })
   @IsString()
   declare main_email: string;
-
+  
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Direccion url de la compañia.',
@@ -56,6 +57,14 @@ export class CompanyDto {
   })
   @IsString()
   declare website_url: string;
+  
+  @ApiPropertyOptional({
+    description: 'Condición de la compañia.',
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  declare condition: string;
 
   @IsOptional()
   @ApiPropertyOptional({

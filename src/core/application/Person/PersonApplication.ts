@@ -7,11 +7,11 @@ import {
 
 export interface PersonApplication {
   getAllPerson(): Promise<Array<AllPersonDto>>;
-  getOnePerson(code: any): Promise<OnePersonDto>;
-  createPerson(classification: NewPersonDto): Promise<OnePersonDto>;
+  getOnePerson(identification: any): Promise<OnePersonDto>;
+  createPerson(body: NewPersonDto): Promise<OnePersonDto>;
   updatePerson(
-    code: any,
-    classification: UpdatePersonDto,
+    identification: any,
+    body: UpdatePersonDto,
   ): Promise<OnePersonDto>;
-  deletePerson(code: any): any;
+  deletePerson(identification: any): any;
 }
