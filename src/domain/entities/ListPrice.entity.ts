@@ -26,6 +26,30 @@ export class ListPrice extends Model<ListPrice> {
     type: DataType.STRING,
   })
   declare description: string;
+  
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  declare currency: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  declare symbol: string;
+
+  @Column({
+    type: DataType.FLOAT,
+    allowNull: true,
+  })
+  declare increase_percentage: number;
+  
+  @Column({
+    type: DataType.FLOAT,
+    allowNull: true,
+  })
+  declare reduce_percentage: number;
 
   @Column({
     type: DataType.STRING,

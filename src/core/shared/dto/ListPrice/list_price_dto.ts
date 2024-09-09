@@ -8,7 +8,7 @@ import { IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-v
 
 export class ListPriceDto {
   @ApiProperty({
-    description: 'Id del almacén',
+    description: 'Id de la lista de precios',
     type: Number,
   })
   @ApiResponseProperty({
@@ -18,7 +18,7 @@ export class ListPriceDto {
   id?: number;
 
   @ApiProperty({
-    description: 'Nombre del almacén',
+    description: 'Nombre de la lista de precios',
     type: String,
   })
   @IsString()
@@ -26,7 +26,7 @@ export class ListPriceDto {
 
   @IsOptional()
   @ApiPropertyOptional({
-    description: 'Descripcion del almacén',
+    description: 'Descripcion de la lista de precios',
     type: String,
   })
   @IsString()
@@ -34,7 +34,39 @@ export class ListPriceDto {
 
   @IsOptional()
   @ApiPropertyOptional({
-    description: 'Código del almacén',
+    description: 'Moneda de la lista de precio',
+    type: String,
+  })
+  @IsString()
+  currency?: string;
+
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Simbolo de la moneda',
+    type: String,
+  })
+  @IsString()
+  symbol?: string;
+  
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Porcentaje a aumentar en el precio original del producto. Nos ayudara al momento de registrar el precio de un producto, automaticamente, se registre el precio del producto aumentando el porcentaje del precio original del producto.',
+    type: Number,
+  })
+  @IsNumber()
+  increase_percentage?: number;
+  
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Porcentaje a reducir en el precio original del producto. Nos ayudara al momento de registrar el precio de un producto, automaticamente, se registre el precio del producto reduciendo el porcentaje del precio original del producto.',
+    type: Number,
+  })
+  @IsNumber()
+  reduce_percentage?: number;
+
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Código de la lista de precios',
     type: String,
   })
   @IsString()
@@ -42,7 +74,7 @@ export class ListPriceDto {
 
   @IsOptional()
   @ApiPropertyOptional({
-    description: 'Estado del almacén (Activo/Desactivado)',
+    description: 'Estado de la lista de precios (Activo/Desactivado)',
     default: true,
     type: Boolean,
   })

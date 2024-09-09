@@ -65,6 +65,7 @@ import { Sale } from '../../domain/entities/Sale.entity';
 import { SaleDetail } from '../../domain/entities/SaleDetail.entity';
 import { PointSaleUser } from '../../domain/entities/PointSaleUser.entity';
 import { ListPrice } from '../../domain/entities/ListPrice.entity';
+import { ListPriceProduct } from '../../domain/entities/ListPriceProduct.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -159,7 +160,8 @@ export const ConnectionProvider = [
         Sale,
         SaleDetail,
         PointSaleUser,
-        ListPrice
+        ListPrice,
+        ListPriceProduct
       ]);
 
       await sequelize.sync({ alter: true });
