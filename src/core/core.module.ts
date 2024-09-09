@@ -43,6 +43,7 @@ import {
   POINT_SALE_APPLICATION,
   SALE_APPLICATION,
   POINT_SALE_USER_APPLICATION,
+  LIST_PRICE_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -87,6 +88,7 @@ import { WarehouseApplicationService } from './service/Warehouse/WarehouseApplic
 import { PointSaleApplicationService } from './service/PointSale/PointSaleApplicationService';
 import { SaleApplicationService } from './service/Sale/SaleApplicationService';
 import { PointSaleUserApplicationService } from './service/PointSaleUser/PointSaleUserApplicationService';
+import { ListPriceApplicationService } from './service/ListPrices/ListPriceApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -435,6 +437,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const ListPriceApplicationProvider = {
+      provide: LIST_PRICE_APPLICATION,
+      useFactory() {
+        return new ListPriceApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -484,6 +494,7 @@ export class CoreModule {
         PointSaleApplicationProvider,
         SaleApplicationProvider,
         PointSaleUserApplicationProvider,
+        ListPriceApplicationProvider,
       ],
       exports: [
         AUTH_APPLICATION,
@@ -529,6 +540,7 @@ export class CoreModule {
         POINT_SALE_APPLICATION,
         SALE_APPLICATION,
         POINT_SALE_USER_APPLICATION,
+        LIST_PRICE_APPLICATION,
       ],
     };
   }

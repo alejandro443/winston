@@ -46,6 +46,7 @@ import { WarehouseController } from './controllers/warehouse_controller';
 import { PointSaleController } from './controllers/point_sale_controller';
 import { SaleController } from './controllers/sale_controller';
 import { PointSaleUserController } from './controllers/point_sale_user_controller';
+import { ListPriceController } from './controllers/list_price_controller';
 
 @Module({
   imports: [
@@ -100,7 +101,8 @@ import { PointSaleUserController } from './controllers/point_sale_user_controlle
     WarehouseController,
     PointSaleController,
     SaleController,
-    PointSaleUserController
+    PointSaleUserController,
+    ListPriceController
   ],
 })
 export class InterfacesModule {}
