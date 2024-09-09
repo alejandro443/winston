@@ -9,7 +9,7 @@ export class CreateUseCase {
   async createListPrice(body: NewDto) {
     try {
       const response: any =
-        await this.service?.createListPrice(body);
+        await this.service?.create(body);
       return {
         id: response.id,
         code: response.code,

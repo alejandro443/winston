@@ -8,7 +8,7 @@ export class DeleteUseCase {
   async deleteListPrice(id: number) {
     try {
       const response: any =
-        await this.service?.deleteListPrice(id);
+        await this.service?.delete(id);
       return { id: response.id };
     } catch (error: any) {
       return error;

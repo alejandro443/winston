@@ -8,7 +8,7 @@ export class GetAllUseCase {
   async getAllListPrice() {
     try {
       const response: any =
-        await this.service?.getAllListPrice();
+        await this.service?.getAll();
 
       return response.map((data: any) => ({
         id: data.dataValues.id,

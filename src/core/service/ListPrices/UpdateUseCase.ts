@@ -12,7 +12,7 @@ export class UpdateUseCase {
   ) {
     try {
       const response: any =
-        await this.service?.updateListPrice(
+        await this.service?.update(
           id,
           point_sale,
         );

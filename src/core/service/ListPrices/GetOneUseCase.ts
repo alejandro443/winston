@@ -8,7 +8,7 @@ export class GetOneUseCase {
   async getOneListPrice(id: number) {
     try {
       const response: any =
-        await this.service?.getOneListPrice(id);
+        await this.service?.getOne(id);
       return {
         id: response.id,
         code: response.code,

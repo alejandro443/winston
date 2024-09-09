@@ -6,7 +6,7 @@ export class ListPriceService {
     this.repository = new ListPriceRepository();
   }
 
-  async getOneListPrice(id: number) {
+  async getOne(id: number) {
     try {
       return this.repository?.findOne(id);
     } catch (error: any) {
@@ -14,7 +14,7 @@ export class ListPriceService {
     }
   }
 
-  async getAllListPrice() {
+  async getAll() {
     try {
       return this.repository?.findAll();
     } catch (error: any) {
@@ -22,7 +22,7 @@ export class ListPriceService {
     }
   }
 
-  async createListPrice(body: NewDto) {
+  async create(body: NewDto) {
     try {
       return this.repository?.create(body);
     } catch (error: any) {
@@ -30,7 +30,7 @@ export class ListPriceService {
     }
   }
 
-  async updateListPrice(id: number, body: NewDto) {
+  async update(id: number, body: NewDto) {
     try {
       return this.repository?.update(id, body);
     } catch (error: any) {
@@ -38,7 +38,7 @@ export class ListPriceService {
     }
   }
 
-  async deleteListPrice(id: number) {
+  async delete(id: number) {
     try {
       return this.repository?.deleted(id);
     } catch (error: any) {
