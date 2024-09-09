@@ -31,8 +31,7 @@ export class TypeClient extends Model<TypeClient> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: true,
-    unique: true,
+    allowNull: true
   })
   declare code: string;
 

@@ -1,41 +1,41 @@
 ---
 - name: 'PERSONA NATURAL'
   description: 'PERSONA NATURAL'
-  code: 'PNAT'
+  code: 'natural'
   status: true
   is_base: true
 - name: 'SOCIEDAD ANONIMA (S.A)'
   description: 'Mínimo: 2 || Máximo: Ilimitado'
-  code: 'SA'
+  code: 'juridico'
   status: true
   is_base: true
 - name: 'SOCIEDAD ANÓNIMA CERRADA (S.A.C)'
   description: 'Mínimo: 2 || Máximo: 20'
-  code: 'SAC'
+  code: 'juridico'
   status: true
   is_base: true
 - name: 'SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA (S.R.L)'
   description: 'Mínimo: 2 || Máximo: 20'
-  code: 'SRL'
+  code: 'juridico'
   status: true
   is_base: true
 - name: 'EMPRESARIO INDIVIDUAL DE RESPONSABILIDAD LIMITADA (E.I.R.L)'
   description: 'Minimo: 1 || Máximo: 1'
-  code: 'EIRL'
+  code: 'juridico'
   status: true
   is_base: true
 - name: 'SOCIEDAD ANÓNIMA ABIERTA (S.A.A)'
   description: 'Mínimo: 750 || Maximo: Ilimitado'
-  code: 'SAA'
-  status: true
-  is_base: true
-- name: 'PERSONA SIN DEFINIR'
-  description: 'PERSONA SIN DEFINIR'
-  code: 'PSDEF'
+  code: 'juridico'
   status: true
   is_base: true
 - name: 'PERSONA CON NEGOCIO'
   description: 'PERSONA CON NEGOCIO'
-  code: 'PCNEG'
+  code: 'negocio'
+  status: true
+  is_base: true
+- name: 'PERSONA SIN DEFINIR'
+  description: 'PERSONA SIN DEFINIR'
+  code: 
   status: true
   is_base: true
