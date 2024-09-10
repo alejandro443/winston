@@ -128,6 +128,12 @@ export class Company extends Model<Company> {
   @HasMany(() => CompanyWorker, 'company_id')
   declare companyWorker: CompanyWorker[];
 
+  @Column({
+    type: DataType.JSONB,
+    allowNull: true,
+  })
+  declare ubigeo: object;
+
   @CreatedAt
   declare created_at: Date;
 

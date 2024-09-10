@@ -26,6 +26,7 @@ import { BusinessTurn } from './BusinessTurn.entity';
 import { BusinessSubcategory } from './BusinessSubcategory.entity';
 import { ZoneDetail } from './ZoneDetail.entity';
 import { Zone } from './Zone.entity';
+import { ListPrice } from './ListPrice.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -181,6 +182,17 @@ export class Client extends Model<Client> {
 
   @BelongsTo(() => Zone, 'id')
   declare zone: Zone;
+
+  @ForeignKey(() => ListPrice)
+  @Column({
+    field: 'list_price',
+    allowNull: true,
+    defaultValue: 1
+  })
+  declare list_price: number;
+
+  @BelongsTo(() => ListPrice, 'id')
+  declare listPrice: ListPrice;
 
   @Column({
     type: DataType.BOOLEAN,

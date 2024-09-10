@@ -118,9 +118,10 @@ export class Person extends Model<Person> {
   declare direction: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.JSONB,
+    allowNull: true,
   })
-  declare ubigeo: string;
+  declare ubigeo: object;
 
   @Column({
     type: DataType.STRING,

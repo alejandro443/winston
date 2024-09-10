@@ -1,10 +1,13 @@
-import { OmitType, PartialType } from '@nestjs/swagger';
+import { OmitType, PartialType, getSchemaPath } from '@nestjs/swagger';
 import {
   ApiProperty,
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
 import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
+import { PersonDto } from '../Person/person_dto';
+import { CompanyDto } from '../Company/company_dto';
+import { PointSaleDto } from '../PointSale/point_sale_dto';
 
 export class ClientDto {
   @ApiProperty({
@@ -121,33 +124,32 @@ export class ClientDto {
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de encargados.',
-    type: [Object],
+    type: [PersonDto],
   })
   @IsArray()
   @IsOptional()
-  declare manager_details?: Object[];
+  declare manager_details?: PersonDto[];
 
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Array de puntos de entrega.',
-    type: [Object],
+    type: [PointSaleDto],
   })
   @IsArray()
   @IsOptional()
-  declare delivery_data?: Object[];
+  declare delivery_data?: PointSaleDto[];
 
-  @IsOptional()
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Entidad de cliente.',
-    type: Object,
+    oneOf: [{ $ref: getSchemaPath(PersonDto) }, { $ref: getSchemaPath(CompanyDto) }],
   })
   @IsObject()
-  declare entity?: object;
+  declare entity?: PersonDto | CompanyDto;
 
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de giro.',
-    type: Object,
+    type: Number,
   })
   @IsNumber()
   declare business_turn_id?: number;
@@ -155,7 +157,7 @@ export class ClientDto {
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Id de sub giro.',
-    type: Object,
+    type: Number,
   })
   @IsNumber()
   declare business_subcategory_id?: number;
@@ -168,6 +170,13 @@ export class ClientDto {
   @IsNumber()
   @IsOptional()
   declare zone_id?: number;
+
+  @ApiProperty({
+    description: 'Id de la lista de precio a la que va a pertenecer el cliente.',
+    type: Number,
+  })
+  @IsNumber()
+  declare price_list?: number;
 
   @IsOptional()
   @ApiPropertyOptional({

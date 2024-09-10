@@ -1,7 +1,7 @@
 import { ApiPropertyOptional, OmitType } from '@nestjs/swagger';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
 import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
-import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class PersonDto {
   @ApiProperty({
@@ -145,10 +145,10 @@ export class PersonDto {
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Ubigeo de la persona',
-    type: String,
+    type: Object,
   })
-  @IsString()
-  ubigeo?: string;
+  @IsObject()
+  ubigeo?: object;
 
   @IsOptional()
   @ApiPropertyOptional({
