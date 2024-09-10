@@ -1,4 +1,4 @@
-import { OmitType, PartialType, getSchemaPath } from '@nestjs/swagger';
+import { ApiExtraModels, OmitType, PartialType, getSchemaPath } from '@nestjs/swagger';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -9,6 +9,7 @@ import { PersonDto } from '../Person/person_dto';
 import { CompanyDto } from '../Company/company_dto';
 import { PointSaleDto } from '../PointSale/point_sale_dto';
 
+@ApiExtraModels(CompanyDto, PersonDto)
 export class ClientDto {
   @ApiProperty({
     description:

@@ -4,8 +4,6 @@ import {
   ApiResponseProperty,
 } from '@nestjs/swagger';
 import { IsNumber} from 'class-validator';
-import { ClientDto } from '../Client/client_dto';
-import { UserDto } from '../User/user_dto';
 import { ZoneDto } from '../Zone/zone_dto';
 
 export class ZoneDetailDto {
