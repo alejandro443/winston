@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ClientDto } from '@src/core/shared/dto/Client/client_dto';
 import { PortfolioDto } from '@src/core/shared/dto/Client/portfolio_dto';
+import { SearchByDocumentDto } from '@src/core/shared/dto/Client/search_by_document_dto';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
 
 export class ClientResponse extends AppResponse {
@@ -25,4 +26,12 @@ export class PortfolioResponse extends AppResponse {
     nullable: true,
   })
   data?: PortfolioDto[];
+}
+
+export class SearchByDocumentResponse extends AppResponse {
+  @ApiProperty({
+    type: SearchByDocumentDto,
+    nullable: true,
+  })
+  data?: SearchByDocumentDto;
 }

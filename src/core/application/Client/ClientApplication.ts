@@ -8,10 +8,10 @@ import {
 
 export interface ClientApplication {
   getAllClient(): Promise<Array<AllClientDto>>;
-  getOneClient(code: any): Promise<OneClientDto>;
+  getOneClient(id: number): Promise<OneClientDto>;
   createClient(client: NewClientDto): Promise<OneClientDto>;
-  updateClient(code: any, client: UpdateClientDto): Promise<OneClientDto>;
-  deleteClient(code: any): any;
+  updateClient(id: number, client: UpdateClientDto): Promise<OneClientDto>;
+  deleteClient(id: number): any;
 
   getPortfolioClient(): Promise<Array<PortfolioDto>>;
   SearchByDocument(identification: any): any;

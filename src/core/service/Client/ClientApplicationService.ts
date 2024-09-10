@@ -40,9 +40,9 @@ export class ClientApplicationService implements ClientApplication {
     }
   }
 
-  async getOneClient(client_code: string): Promise<any> {
+  async getOneClient(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneClient(client_code);
+      return this.getOneUseCase?.getOneClient(id);
     } catch (error: any) {
       return error;
     }
@@ -56,17 +56,17 @@ export class ClientApplicationService implements ClientApplication {
     }
   }
 
-  async updateClient(code: any, client: UpdateClientDto): Promise<any> {
+  async updateClient(id: number, client: UpdateClientDto): Promise<any> {
     try {
-      return this.updateUseCase?.updateClient(code, client);
+      return this.updateUseCase?.updateClient(id, client);
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleteClient(code: string) {
+  async deleteClient(id: number) {
     try {
-      return this.deleteUseCase?.deleteClient(code);
+      return this.deleteUseCase?.deleteClient(id);
     } catch (error: any) {
       return error;
     }
@@ -90,6 +90,8 @@ export class ClientApplicationService implements ClientApplication {
       if(identification.length == 11){
         return this.searchByDocumentUseCase.SearchByDocumentSunat(identification);
       }
+
+      return { message: "Longitud del documento no concuerda con nigun tipo de documento." }
     } catch (error: any) {
       return error;
     }

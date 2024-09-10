@@ -185,11 +185,11 @@ export class Client extends Model<Client> {
 
   @ForeignKey(() => ListPrice)
   @Column({
-    field: 'list_price',
+    field: 'list_price_id',
     allowNull: true,
     defaultValue: 1
   })
-  declare list_price: number;
+  declare list_price_id: number;
 
   @BelongsTo(() => ListPrice, 'id')
   declare listPrice: ListPrice;

@@ -5,9 +5,9 @@ export class GetOneClientUseCase {
     this.clientService = new ClientService();
   }
 
-  async getOneClient(code: string) {
+  async getOneClient(id: number) {
     try {
-      const response: any = await this.clientService?.getOneClient(code);
+      const response: any = await this.clientService?.getOneClient(id);
       return {
         id: response.id,
         code: response.code,

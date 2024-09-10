@@ -6,10 +6,10 @@ export class UpdateClientUseCase {
     this.clientService = new ClientService();
   }
 
-  async updateClient(code: any, client: UpdateClientDto) {
+  async updateClient(id: number, client: UpdateClientDto) {
     try {
       const response: any = await this.clientService?.updateClient(
-        code,
+        id,
         client,
       );
       return {

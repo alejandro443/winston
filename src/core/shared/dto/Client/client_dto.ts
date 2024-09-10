@@ -176,7 +176,7 @@ export class ClientDto {
     type: Number,
   })
   @IsNumber()
-  declare price_list?: number;
+  declare list_price_id?: number;
 
   @IsOptional()
   @ApiPropertyOptional({

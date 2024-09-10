@@ -17,9 +17,9 @@ export class ClientService {
     this.repositoryCompany = new CompanyRepository();
   }
 
-  async getOneClient(code: string) {
+  async getOneClient(id: number) {
     try {
-      return this.repository?.findOne(code);
+      return this.repository?.findOne(id);
     } catch (error: any) {
       return error;
     }
@@ -54,7 +54,7 @@ export class ClientService {
     }
   }
 
-  async updateClient(code: any, client: UpdateClientDto) {
+  async updateClient(id: number, client: UpdateClientDto) {
     try {
       var entity: any;
       if(client.type_entity === TypeEntity.COMPANY){
@@ -67,15 +67,15 @@ export class ClientService {
         client.entity_id = entity.id;
       }
 
-      return this.repository?.update(code, client);
+      return this.repository?.update(id, client);
     } catch (error: any) {
       throw new ClientApplicationError(error)
     }
   }
 
-  async deleteClient(code: string) {
+  async deleteClient(id: number) {
     try {
-      return this.repository?.deleted(code);
+      return this.repository?.deleted(id);
     } catch (error: any) {
       return error;
     }
@@ -84,6 +84,14 @@ export class ClientService {
   async getOneClientByUserId(user_id: number) {
     try {
       return this.repository?.findOneByUser(user_id);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getOneClientByIdEntity(id: number, type_entity: string) {
+    try {
+      return this.repository?.findOneClientByIdEntity(id, type_entity);
     } catch (error: any) {
       return error;
     }

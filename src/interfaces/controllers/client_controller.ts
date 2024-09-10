@@ -22,7 +22,7 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetClientRequestDto } from '../request_dto/ClientDto/get.client_dto';
 import { CreateClientRequestDto } from '../request_dto/ClientDto/create.client_dto';
 import { ClientApplication } from 'src/core/application/Client/ClientApplication';
-import { ClientResponse, ClientsResponse } from '../responses/client.response';
+import { ClientResponse, ClientsResponse, SearchByDocumentResponse } from '../responses/client.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { PortfolioResponse } from '../responses/client.response';
 import { Auth } from '@src/core/decorators/auth.decorator';
@@ -66,14 +66,14 @@ export class ClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneClient(
-    @Param('id', ParseIntPipe) id: GetClientRequestDto,
+    @Param('id', ParseIntPipe) param: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Get) Get client id: ${id}`);
+    Log.info(`(Get) Get client id: ${param.id}`);
 
-    const client = await this.application.getOneClient(id);
+    const client = await this.application.getOneClient(param.id);
     return {
       status: 201,
-      message: `Client ${id} OK`,
+      message: `Client ${param.id} OK`,
       data: client,
     };
   }
@@ -107,15 +107,14 @@ export class ClientController {
     type: ClientResponse,
   })
   @HttpCode(200)
-  @Put('/update/:code')
+  @Put('/update/:id')
   async updateClient(
-    @Param('code') code: UpdateClientRequestDto,
+    @Param('id', ParseIntPipe) param: UpdateClientRequestDto,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
-    // console.log(code)
 
-    const client = await this.application.updateClient(code, request);
+    const client = await this.application.updateClient(param.id, request);
     return {
       status: 200,
       message: `Client updated.`,
@@ -131,14 +130,14 @@ export class ClientController {
   @HttpCode(200)
   @Delete('/delete/:id')
   async deleteClient(
-    @Param('id', ParseIntPipe) id: GetClientRequestDto,
+    @Param('id', ParseIntPipe) param: GetClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(Delete) Delete client ${id}`);
+    Log.info(`(Delete) Delete client ${param.id}`);
 
-    const client = await this.application.deleteClient(id);
+    const client = await this.application.deleteClient(param.id);
     return {
       status: 200,
-      message: `Client ${id} deleted.`,
+      message: `Client ${param.id} deleted.`,
       data: client,
     };
   }
@@ -162,11 +161,15 @@ export class ClientController {
   }
 
   @ApiBadRequestResponse({ description: 'Invalid person main_identification' })
+  @ApiCreatedResponse({
+    description: 'Client successfully obtained.',
+    type: SearchByDocumentResponse,
+  })
   @HttpCode(200)
   @Get('/search_document/:main_identification')
   async SearchByDocument(
     @Param() params: GetPersonRequestDto,
-  ): Promise<any> {
+  ): Promise<SearchByDocumentResponse> {
     Log.info(`(SearchByDocument) Search ${params.main_identification}`);
 
     const client = await this.application.SearchByDocument(

@@ -5,9 +5,17 @@ import { Client } from 'src/domain/entities/Client.entity';
 export class ClientRepository {
   constructor() {}
 
-  async findOne(code: string) {
+  async findOne(id: number) {
     try {
-      return Client.findOne({ where: { code: code } });
+      return Client.findOne({ where: { id: id } });
+    } catch (error: any) {
+      return error;
+    }
+  }
+  
+  async findOneClientByIdEntity(id: number, type_entity: string) {
+    try {
+      return Client.findOne({ where: { entity_id: id, type_entity: type_entity } });
     } catch (error: any) {
       return error;
     }
@@ -31,18 +39,18 @@ export class ClientRepository {
     }
   }
 
-  async update(code: any, client: UpdateClientDto) {
+  async update(id: number, client: UpdateClientDto) {
     try {
-      const clientUpdate: any = Client.update(client, { where: { code: code } });
+      const clientUpdate: any = Client.update(client, { where: { id: id } });
       return clientUpdate;
     } catch (error: any) {
       return error;
     }
   }
 
-  async deleted(code: string) {
+  async deleted(id: number) {
     try {
-      return Client.destroy({ where: { code: code } });
+      return Client.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
     }
