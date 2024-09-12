@@ -7,7 +7,7 @@ import {
 export interface ProductApplication {
   getAllProduct(): Promise<Array<AllProductDto>>;
   getOneProduct(id: any): Promise<OneProductDto>;
-  createProduct(rol: NewProductDto): Promise<OneProductDto>;
-  updateProduct(id: any, rol: UpdateProductDto): Promise<OneProductDto>;
+  createProduct(product: NewProductDto): Promise<OneProductDto>;
+  updateProduct(id: any, product: UpdateProductDto): Promise<OneProductDto>;
   deleteProduct(id: any): any;
 }

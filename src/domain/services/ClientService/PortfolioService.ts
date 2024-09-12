@@ -17,8 +17,7 @@ export class PortfolioService {
           objectEntity = {
             type_entity: 'person',
             channel: client.typeChannel ? client.typeChannel.name : '',
-            name: client.person.name,
-            last_name: client.person.last_name,
+            name: client.person.name + ' ' + client.person.last_name,
             main_direction: client.person.direction,
             province: client.person.province,
             district: client.person.district,
@@ -33,8 +32,7 @@ export class PortfolioService {
           objectEntity = {
             type_entity: 'company',
             channel: client.typeChannel ? client.typeChannel.name : '',
-            name: client.company.name,
-            last_name: '',
+            name: client.person.name,
             main_direction: client.company.main_direction,
             province: client.company.province,
             district: client.company.district,
