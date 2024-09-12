@@ -23,7 +23,8 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   @ForeignKey(() => Product)
   @Column({
     field: 'product_id',
-    allowNull: true,
+    allowNull: false,
+    unique: true
   })
   declare product_id: number;
 
@@ -33,7 +34,8 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   @ForeignKey(() => ListPrice)
   @Column({
     field: 'list_price_id',
-    allowNull: true,
+    allowNull: false,
+    unique: false
   })
   declare list_price_id: number;
 
@@ -41,12 +43,12 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   declare listPrice: ListPrice;
 
   @Column({
-    type: DataType.FLOAT,
+    type: DataType.DECIMAL(10, 2),
   })
   declare unit_price: number;
 
   @Column({
-    type: DataType.FLOAT,
+    type: DataType.DECIMAL(10, 2)
   })
   declare package_price: number;
 

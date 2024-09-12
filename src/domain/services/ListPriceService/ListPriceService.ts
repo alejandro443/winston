@@ -45,4 +45,12 @@ export class ListPriceService {
       return error;
     }
   }
+
+  async getAllActives() {
+    try {
+      return this.repository?.findAllActives();
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

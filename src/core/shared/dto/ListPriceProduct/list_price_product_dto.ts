@@ -35,14 +35,14 @@ export class ListPriceProductDto {
     type: Number,
   })
   @IsNumber()
-  price_unit?: number;
+  unit_price?: number;
   
   @ApiProperty({
     description: 'Precio por paquete.',
     type: Number,
   })
   @IsNumber()
-  package_unit?: number;
+  package_price?: number;
   
 }
 export class DeleteListPriceProductDto {

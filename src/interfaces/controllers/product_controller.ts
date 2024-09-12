@@ -21,7 +21,7 @@ import {
 import { PRODUCT_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
 import { GetProductRequestDto } from '../request_dto/ProductDto/get.product_dto';
-import { CreateProductRequestDto } from '../request_dto/ProductDto/create.product_dto';
+import { CreateProductRequestDto, CreateProductWithListPriceRequestDto } from '../request_dto/ProductDto/create.product_dto';
 import { ProductApplication } from 'src/core/application/Product/ProductApplication';
 import {
   ProductsResponse,
@@ -88,7 +88,7 @@ export class ProductController {
   @HttpCode(201)
   @Post()
   async createProduct(
-    @Body() request: CreateProductRequestDto,
+    @Body() request: CreateProductWithListPriceRequestDto,
   ): Promise<ProductResponse> {
     Log.info(`(POST) Create product`);
 

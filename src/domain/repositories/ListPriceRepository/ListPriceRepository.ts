@@ -46,4 +46,12 @@ export class ListPriceRepository {
       return error;
     }
   }
+
+  async findAllActives() {
+    try {
+      return ListPrice.findAll({ where: { status: true, deleted_at: null } });
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

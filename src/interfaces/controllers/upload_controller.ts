@@ -5,12 +5,24 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiBody, ApiConsumes, ApiInternalServerErrorResponse, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiConsumes, ApiCreatedResponse, ApiInternalServerErrorResponse, ApiOperation, ApiResponse, ApiResponseProperty, ApiTags } from '@nestjs/swagger';
 import { Auth } from '@src/core/decorators/auth.decorator';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { ImageDto } from '../request_dto/UploadDto/image_dto';
+
+class ResponseCreatedImage {
+  @ApiResponseProperty({
+    type: String,
+  })
+  message?: String;
+
+  @ApiResponseProperty({
+    type: String,
+  })
+  fileName?: String
+}
 
 @ApiTags('Upload')
 @Controller('upload')
@@ -41,12 +53,12 @@ export class UploadController {
     required: true,
     type: ImageDto
   })
-  @ApiResponse({ status: 201, description: 'Imagen subida con éxito' })
+  @ApiResponse({ status: 201, description: 'Imagen subida con éxito', type: ResponseCreatedImage })
   uploadFile(@UploadedFile() image: Express.Multer.File) {
     console.log(image)
     return {
       message: 'Imagen subida con éxito',
-      fileName: image.filename
+      fileName: `http://161.132.48.196:3000/images/${image.filename}`
     };
   }
 }

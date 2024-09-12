@@ -8,6 +8,7 @@ import { GetAllUseCase } from './GetAllUseCase';
 import { CreateUseCase } from './CreateUseCase';
 import { UpdateUseCase } from './UpdateUseCase';
 import { DeleteUseCase } from './DeleteUseCase';
+import { GetUseCaseActives } from './GetUseCaseActives';
 
 export class ListPriceApplicationService
   implements ListPriceApplication
@@ -18,12 +19,14 @@ export class ListPriceApplicationService
     private createUseCase?: CreateUseCase,
     private updateUseCase?: UpdateUseCase,
     private deleteUseCase?: DeleteUseCase,
+    private getUseCaseActives?: GetUseCaseActives,
   ) {
     this.getOneUseCase = new GetOneUseCase();
     this.getAllUseCase = new GetAllUseCase();
     this.createUseCase = new CreateUseCase();
     this.updateUseCase = new UpdateUseCase();
     this.deleteUseCase = new DeleteUseCase();
+    this.getUseCaseActives = new GetUseCaseActives();
   }
 
   async getAllListPrice() {
@@ -66,6 +69,20 @@ export class ListPriceApplicationService
   async deleteListPrice(id: number) {
     try {
       return this.deleteUseCase?.deleteListPrice(id);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getListPriceActives(type: string) {
+    try {
+      if(type == "complete") {
+        return this.getUseCaseActives?.getListPriceActives();
+      }
+     
+      if(type == "count") {
+        return this.getUseCaseActives?.getListPriceActivesCount();
+      }
     } catch (error: any) {
       return error;
     }

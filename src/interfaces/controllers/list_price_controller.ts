@@ -23,7 +23,7 @@ import { ListPriceApplication } from 'src/core/application/ListPrice/ListPriceAp
 import { ListPriceResponse } from '../responses/list_price.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
-import { GetRequestDto } from '../request_dto/ListPriceDto/get_request_dto';
+import { GetRequestActivesDto, GetRequestDto } from '../request_dto/ListPriceDto/get_request_dto';
 
 @ApiTags('ListPrice')
 @Controller('/list_price')
@@ -138,6 +138,26 @@ export class ListPriceController {
     return {
       status: 200,
       message: `ListPrice ${params.id} deleted.`,
+      data: list_price,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Invalid type' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ListPriceResponse,
+  })
+  @HttpCode(201)
+  @Get('/actives/:type')
+  async getListPriceActives(
+    @Param() request: GetRequestActivesDto,
+  ): Promise<ListPriceResponse > {
+    Log.info(`(Get) Get list_price type: ${request.type}`);
+
+    const list_price = await this.application.getListPriceActives(request.type);
+    return {
+      status: 201,
+      message: `OK`,
       data: list_price,
     };
   }

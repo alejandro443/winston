@@ -16,4 +16,6 @@ export interface ListPriceApplication {
     data: UpdateDto,
   ): Promise<OneDto>;
   deleteListPrice(id: number): any;
+  getListPriceActives(type: String): any;
+
 }

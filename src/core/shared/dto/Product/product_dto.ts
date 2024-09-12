@@ -4,7 +4,7 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class ProductDto {
   @ApiProperty({
@@ -172,3 +172,39 @@ export class OneProductDto extends PartialType(ProductDto) { }
 export class AllProductDto extends PartialType(ProductDto) { }
 export class NewProductDto extends OmitType(ProductDto, ['id', 'created_at'] as const) { }
 export class UpdateProductDto extends OmitType(ProductDto, ['id', 'created_at'] as const) { }
+
+export class ProductListPrice {
+  @ApiProperty({
+    description: 'Id de la lista de precio.',
+    type: Number,
+  })
+  @IsNumber()
+  declare list_price_id?: number;
+
+  @ApiProperty({
+    description: 'Precio por unidad.',
+    type: Number,
+    format: 'float',
+    example: 7.99
+  })
+  @IsNumber({ allowInfinity: false, allowNaN: false }, { message: 'El precio por unidad debe ser un número válido.' })
+  declare unit_price?: number;
+  
+  @ApiProperty({
+    description: 'Precio por paquete.',
+    type: Number,
+    format: 'float',
+    example: 7.50
+  })
+  @IsNumber({ allowInfinity: false, allowNaN: false }, { message: 'El precio por paquete debe ser un número válido.' })
+  declare package_price?: number;
+}
+export class NewProductWithListPriceDto extends OmitType(ProductDto, ['id', 'created_at'] as const) {
+  @ApiProperty({
+    description: 'Listas de precios.',
+    type: [ProductListPrice],
+  })
+  @IsArray()
+  @IsObject({})
+  list_prices?: ProductListPrice[];
+}

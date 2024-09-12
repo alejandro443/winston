@@ -59,7 +59,7 @@ export class ListPrice extends Model<ListPrice> {
 
   @Column({
     type: DataType.BOOLEAN,
-    defaultValue: true,
+    defaultValue: false,
   })
   declare status: boolean;
 
