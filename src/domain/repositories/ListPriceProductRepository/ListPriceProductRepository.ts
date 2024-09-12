@@ -1,3 +1,7 @@
+import { ListPrice } from '@src/domain/entities/ListPrice.entity';
+import { Product } from '@src/domain/entities/Product.entity';
+import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
+import { Op } from 'sequelize';
 import {
   NewDto,
   UpdateDto,
@@ -42,6 +46,50 @@ export class ListPriceProductRepository {
   async deleted(id: number) {
     try {
       return ListPriceProduct.destroy({ where: { id: id } });
+    } catch (error: any) {
+      return error;
+    }
+  }
+  
+  async getAllByListPrice(products: Array<number>, list_price_id: number) {
+    try {
+      var list_price_product: any = await ListPriceProduct.findAll({ 
+        attributes: [
+          ['id', 'listPriceId'],
+          ['unit_price', 'unit_price'],
+          ['package_price', 'package_price']
+        ],
+        include: [
+          {
+            model: Product, 
+            required: true,
+            attributes: [
+              ['name', 'productName'],
+              ['description', 'productDesc'],
+              ['sku', 'productSKU'],
+              ['image', 'productImage']
+            ],
+            where: { to_sell: true},
+            include: [
+              { 
+                model: ProductBrand,
+                required: false,
+                attributes: [
+                  ['id', 'brandId'],
+                  ['name', 'brandName']
+                ]
+              }
+
+            ],
+          }
+        ],
+        where: { 
+          product_id: { [Op.in]: products },
+          list_price_id: list_price_id
+        },
+        raw: true
+      });
+      return list_price_product;
     } catch (error: any) {
       return error;
     }

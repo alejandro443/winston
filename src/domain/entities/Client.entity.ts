@@ -24,7 +24,6 @@ import { MethodPayment } from './MethodPayment.entity';
 import { WayToPay } from './WayToPay.entity';
 import { BusinessTurn } from './BusinessTurn.entity';
 import { BusinessSubcategory } from './BusinessSubcategory.entity';
-import { ZoneDetail } from './ZoneDetail.entity';
 import { Zone } from './Zone.entity';
 import { ListPrice } from './ListPrice.entity';
 

@@ -45,4 +45,12 @@ export class ListPriceProductService {
       return error;
     }
   }
+
+  async getByListPrice(product_ids: Array<number>, price_list_id: number) {
+    try {
+      return this.repository?.getAllByListPrice(product_ids, price_list_id);
+    } catch (error: any) {
+      return error;
+    } 
+  }
 }

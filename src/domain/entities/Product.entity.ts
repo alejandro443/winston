@@ -83,7 +83,7 @@ export class Product extends Model<Product> {
 
   @Column({
     type: DataType.BOOLEAN,
-    defaultValue: false,
+    defaultValue: true,
   })
   declare to_sell: boolean;
   

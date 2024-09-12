@@ -1,0 +1,6 @@
+---
+- id: 1
+  entity_id: 1
+  type_entity: person
+  list_price_id: 1
+  

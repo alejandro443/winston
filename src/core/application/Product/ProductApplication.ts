@@ -10,4 +10,7 @@ export interface ProductApplication {
   createProduct(product: NewProductDto): Promise<OneProductDto>;
   updateProduct(id: any, product: UpdateProductDto): Promise<OneProductDto>;
   deleteProduct(id: any): any;
+
+  getAllProductByCategoryAndListPrice(category_id: number, list_price_id: number): Promise<Array<AllProductDto>>;
+
 }

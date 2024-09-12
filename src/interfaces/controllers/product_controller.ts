@@ -20,7 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { PRODUCT_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-import { GetProductRequestDto } from '../request_dto/ProductDto/get.product_dto';
+import { GetProductByPriceListRequestDto, GetProductRequestDto } from '../request_dto/ProductDto/get.product_dto';
 import { CreateProductRequestDto, CreateProductWithListPriceRequestDto } from '../request_dto/ProductDto/create.product_dto';
 import { ProductApplication } from 'src/core/application/Product/ProductApplication';
 import {
@@ -42,7 +42,7 @@ export class ProductController {
     private application: ProductApplication,
   ) {}
 
-  @ApiBadRequestResponse({ description: 'Invalid product category id' })
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductResponse,
@@ -50,17 +50,17 @@ export class ProductController {
   @HttpCode(201)
   @Get('/all')
   async getAllProduct(): Promise<ProductsResponse> {
-    Log.info(`(Get) Get all product categories`);
+    Log.info(`(Get) Get all product`);
 
-    const product_categories = await this.application.getAllProduct();
+    const product = await this.application.getAllProduct();
     return {
       status: 201,
-      message: `Get all product categories`,
-      data: product_categories,
+      message: `Get all product`,
+      data: product,
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category id' })
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
     type: ProductResponse,
@@ -70,7 +70,7 @@ export class ProductController {
   async getOneProduct(
     @Param('id', ParseIntPipe) id: GetProductRequestDto,
   ): Promise<ProductResponse> {
-    Log.info(`(Get) Get product category id: ${id}`);
+    Log.info(`(Get) Get product id: ${id}`);
 
     const product = await this.application.getOneProduct(id);
     return {
@@ -80,7 +80,7 @@ export class ProductController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category id' })
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: ProductResponse,
@@ -121,7 +121,7 @@ export class ProductController {
     };
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid product category id' })
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully deleted.',
     type: ProductResponse,
@@ -131,7 +131,7 @@ export class ProductController {
   async deleteProduct(
     @Param('id', ParseIntPipe) id: GetProductRequestDto,
   ): Promise<ProductResponse> {
-    Log.info(`(Delete) Delete product category ${id}`);
+    Log.info(`(Delete) Delete product ${id}`);
 
     const product = await this.application.deleteProduct(id);
     return {
@@ -140,4 +140,25 @@ export class ProductController {
       data: product,
     };
   }
+
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ProductResponse,
+  })
+  @HttpCode(201)
+  @Get('/list_price')
+  async getAllProductByCategoryAndListPrice(
+    @Body() request: GetProductByPriceListRequestDto,
+  ): Promise<ProductsResponse> {
+    Log.info(`(Get) Get product id: ${request.list_price_id}`);
+
+    const product = await this.application.getAllProductByCategoryAndListPrice(request.category_id, request.list_price_id);
+    return {
+      status: 201,
+      message: `Ok`,
+      data: product,
+    };
+  }
+
 }

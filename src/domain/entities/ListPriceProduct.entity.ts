@@ -6,7 +6,8 @@ import {
   ForeignKey,
   BelongsTo,
   CreatedAt,
-  DeletedAt
+  DeletedAt,
+  Scopes
 } from 'sequelize-typescript';
 import { Product } from './Product.entity';
 import { ListPrice } from './ListPrice.entity';
@@ -28,7 +29,7 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   })
   declare product_id: number;
 
-  @BelongsTo(() => Product, 'id')
+  @BelongsTo(() => Product, 'product_id')
   declare product: Product;
 
   @ForeignKey(() => ListPrice)
@@ -39,7 +40,7 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   })
   declare list_price_id: number;
 
-  @BelongsTo(() => ListPrice, 'id')
+  @BelongsTo(() => ListPrice, 'list_price_id')
   declare listPrice: ListPrice;
 
   @Column({

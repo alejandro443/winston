@@ -38,7 +38,6 @@ export class ProductRepository {
       const product_data: any = await Product.update(product, { where: { id: id }, returning: true });
       return product_data;
     } catch (error: any) {
-      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
@@ -48,6 +47,18 @@ export class ProductRepository {
       return Product.destroy({ where: { id: id } });
     } catch (error: any) {
       return error;
+    }
+  }
+
+  async findAllByCategories(product_category_id: number) {
+    try {
+      return (await Product.findAll({ 
+        attributes: ['id'],
+        where: { product_category_id: product_category_id, deleted_at: null },
+        raw: true
+      })).map(product => product.id);
+    } catch (error: any) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 }

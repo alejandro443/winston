@@ -8,6 +8,8 @@ import {
   DeletedAt,
 } from 'sequelize-typescript';
 
+
+// Esta tabla es solo para las categorias de productos, no es una tabla intermedia entre productos y categorias
 @Table({ tableName: 'product_categories' })
 export class ProductCategory extends Model<ProductCategory> {
   @Column({

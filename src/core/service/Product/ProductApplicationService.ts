@@ -63,4 +63,12 @@ export class ProductApplicationService implements ProductApplication {
       return error;
     }
   }
+
+  async getAllProductByCategoryAndListPrice(category_id: number, list_price_id: number){
+    try {
+      return this.getAllUseCase?.getAllProductByCategoryAndListPrice(category_id, list_price_id);
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

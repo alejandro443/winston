@@ -53,4 +53,12 @@ export class ProductService {
       return error;
     }
   }
+  
+  async findAllByCategories(product_category_id: number) {
+    try {
+      return this.repository?.findAllByCategories(product_category_id);
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

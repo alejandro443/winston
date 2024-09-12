@@ -104,7 +104,6 @@ async function runSeedInsertData(type, seed) {
     Ubigeo
   ]);
   const inser_data: any = new InserData();
-  console.log('runSeedInsertData',type, seed)
   await inser_data.run(type, seed);
 }
 

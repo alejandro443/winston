@@ -1,0 +1,9 @@
+---
+- id: 1
+  name: Defecto
+  description: Es la lista de precios que sera por default en el sistema
+  code: DF001
+  increase_percentage: 0
+  reduce_percentage: 0
+  is_base: true
+  status: true
