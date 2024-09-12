@@ -1,3 +1,4 @@
+import { BusinessTurn } from '@src/domain/entities/BusinessTurn.entity';
 import { Company } from '@src/domain/entities/Company.entity';
 import { Person } from '@src/domain/entities/Person.entity';
 import { TypeChannel } from '@src/domain/entities/TypeChannel.entity';
@@ -14,6 +15,7 @@ export class PortfolioRepository {
           {model: Company, required: false},
           {model: TypeClient, required: false},
           {model: TypeChannel, required: false},
+          {model: BusinessTurn, required: false},
         ]
       })
       return data_client_porfolio;

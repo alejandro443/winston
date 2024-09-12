@@ -17,7 +17,8 @@ export class PortfolioService {
           objectEntity = {
             type_entity: 'person',
             channel: client.typeChannel ? client.typeChannel.name : '',
-            name: client.person.name + ' ' + client.person.last_name,
+            name: `${client.person.name} ${client.person.last_name}`,
+            last_name: client.person.last_name,
             main_direction: client.person.direction,
             province: client.person.province,
             district: client.person.district,
@@ -25,6 +26,7 @@ export class PortfolioService {
             main_email: client.person.main_email,
             main_identification: client.person.main_identification,
             main_phone: client.person.main_phone,
+            business_turn_name: client.businessTurn? client.businessTurn.name : '', 
           };
         }
 
@@ -32,7 +34,8 @@ export class PortfolioService {
           objectEntity = {
             type_entity: 'company',
             channel: client.typeChannel ? client.typeChannel.name : '',
-            name: client.person.name,
+            name: client.company.name,
+            last_name: '',
             main_direction: client.company.main_direction,
             province: client.company.province,
             district: client.company.district,
@@ -40,6 +43,7 @@ export class PortfolioService {
             main_email: client.company.main_email,
             main_identification: client.company.main_identification,
             main_phone: client.company.main_phone,
+            business_turn_name: client.businessTurn? client.businessTurn.name : '', 
           };
         }
 
