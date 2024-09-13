@@ -19,7 +19,7 @@ import {
 } from '@nestjs/swagger';
 import { PRODUCT_CATEGORY_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-import { GetProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/get.product_category_dto';
+import { GetProductCategoryRequestDto, SearchRequestDto } from '../request_dto/ProductCategoryDto/get.product_category_dto';
 import { CreateProductCategoryRequestDto } from '../request_dto/ProductCategoryDto/create.product_category_dto';
 import { ProductCategoryApplication } from 'src/core/application/ProductCategory/ProductCategoryApplication';
 import {
@@ -161,6 +161,26 @@ export class ProductCategoryController {
     return {
       status: 200,
       message: `Product Category ${id} deleted.`,
+      data: product_category,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Invalid product category code' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ProductCategoryResponse,
+  })
+  @HttpCode(201)
+  @Get('/search/:searchTerm')
+  async searchProductCategory(
+    @Param('searchTerm') request: SearchRequestDto,
+  ): Promise<ProductCategoriesResponse> {
+    Log.info(`(Get) search category ${request}`);
+
+    const product_category = await this.application.searchProductCategory(`${request}`);
+    return {
+      status: 200,
+      message: `Ok`,
       data: product_category,
     };
   }

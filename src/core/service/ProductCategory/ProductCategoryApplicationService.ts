@@ -9,6 +9,7 @@ import { CreateProductCategoryUseCase } from './CreateProductCategoryUseCase';
 import { UpdateProductCategoryUseCase } from './UpdateProductCategoryUseCase';
 import { DeleteProductCategoryUseCase } from './DeleteProductCategoryUseCase';
 import { GetFathersProductCategoryUseCase } from './GetFathersProductCategoryUseCase';
+import { SearchUseCase } from './SearchUseCase';
 
 export class ProductCategoryApplicationService
   implements ProductCategoryApplication
@@ -20,6 +21,7 @@ export class ProductCategoryApplicationService
     private createUseCase?: CreateProductCategoryUseCase,
     private updateUseCase?: UpdateProductCategoryUseCase,
     private deleteUseCase?: DeleteProductCategoryUseCase,
+    private searchUseCase?: SearchUseCase,
   ) {
     this.getOneUseCase = new GetOneProductCategoryUseCase();
     this.getAllUseCase = new GetAllProductCategoryUseCase();
@@ -27,6 +29,7 @@ export class ProductCategoryApplicationService
     this.createUseCase = new CreateProductCategoryUseCase();
     this.updateUseCase = new UpdateProductCategoryUseCase();
     this.deleteUseCase = new DeleteProductCategoryUseCase();
+    this.searchUseCase = new SearchUseCase();
   }
 
   async getAllProductCategory() {
@@ -77,6 +80,14 @@ export class ProductCategoryApplicationService
   async deleteProductCategory(id: number) {
     try {
       return this.deleteUseCase?.deleteProductCategory(id);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async searchProductCategory(searchTerm: string): Promise<any> {
+    try {
+      return this.searchUseCase?.SearchProductCategory(searchTerm);
     } catch (error: any) {
       return error;
     }

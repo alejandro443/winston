@@ -56,4 +56,12 @@ export class ProductCategoryService {
       return error;
     }
   }
+
+  async searchProductCategory(searchTerm: String) {
+    try {
+      return this.repository?.search(searchTerm);
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

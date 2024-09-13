@@ -16,4 +16,6 @@ export interface ProductCategoryApplication {
     rol: UpdateProductCategoryDto,
   ): Promise<OneProductCategoryDto>;
   deleteProductCategory(id: any): any;
+  searchProductCategory(searchTerm: string): Promise<Array<AllProductCategoryDto>>;
+
 }

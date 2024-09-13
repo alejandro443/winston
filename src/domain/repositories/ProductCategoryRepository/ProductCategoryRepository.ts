@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import {
   NewProductCategoryDto,
   UpdateProductCategoryDto,
@@ -20,6 +21,20 @@ export class ProductCategoryRepository {
     try {
       var find_all: any = ProductCategory.findAll({ where: { deleted_at: null } });
       return find_all;
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async search(searchTerm: String) {
+    try {
+      var search_data: any = ProductCategory.findAll({ 
+        where: { 
+          name: { [Op.iLike]: `%${searchTerm}%` },
+          deleted_at: null 
+        } 
+      });
+      return search_data;
     } catch (error: any) {
       return error;
     }

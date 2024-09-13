@@ -1,6 +1,5 @@
 import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 import { ListPriceProductService } from '@src/domain/services/ListPriceProductService/ListPriceProductService';
-import { ListPriceService } from '@src/domain/services/ListPriceService/ListPriceService';
 import { ProductService } from 'src/domain/services/ProductService/ProductService';
 
 export class GetAllProductUseCase {
