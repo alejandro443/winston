@@ -17,13 +17,20 @@ export class ClientService {
     this.repository = new ClientRepository();
     this.repositoryPerson = new PersonRepository();
     this.repositoryPortfolio = new PortfolioRepository();
+    this.repositoryCompany = new CompanyRepository();
   }
 
   async getOnePortfolioClient(client_id: number) {
     try {
-      return await this.repositoryPortfolio?.portfolioOneClient(client_id);
+      const data_client_porfolio: any = await this.repositoryPortfolio?.portfolioOneClient(client_id);
+
+      if (data_client_porfolio){
+        return new ClientApplicationError('No encontrado.', 'NOT_FOUND')
+      }
+
+      return data_client_porfolio;
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
@@ -61,7 +68,8 @@ export class ClientService {
 
       return this.repository?.create(client, entity);
     } catch (error: any) {
-      throw new ClientApplicationError(error)
+      console.log("ClientService Domain", error)
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

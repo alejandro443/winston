@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { BusinessTurn } from '@src/domain/entities/BusinessTurn.entity';
 import { Company } from '@src/domain/entities/Company.entity';
 import { IssuableDocument } from '@src/domain/entities/IssuableDocument.entity';
@@ -40,9 +41,10 @@ export class PortfolioRepository {
         ],
         where: {id: client_id}
       })
+
       return data_client_porfolio;
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 }

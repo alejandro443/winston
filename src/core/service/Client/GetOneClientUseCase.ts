@@ -19,8 +19,6 @@ export class GetOneClientUseCase {
   async getOnePortfolioClient(client_id: number) {
     try {
       const portfolio_one_data: any = await this.clientService?.getOnePortfolioClient(client_id);
-      console.log(portfolio_one_data)
-
       const portfolio_one_dto: any = await portfolio_one_data.map((client_data: any) => {
         const client: any = client_data.toJSON();
         let objectEntity: object = {};
