@@ -113,6 +113,14 @@ export class PortfolioDto {
 
   @ApiResponseProperty()
   @ApiProperty({
+    description: 'Nombre del giro de negocio.',
+    type: String,
+  })
+  @IsString()
+  declare business_turn_name: string;
+
+  @ApiResponseProperty()
+  @ApiProperty({
     description: 'Estado del cliente (Activo/Desactivado)',
     type: Boolean,
   })
