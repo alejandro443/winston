@@ -4,3 +4,7 @@ export function present(value: any): boolean {
     !(Array.isArray(value) && value.length === 0) &&
     !(typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 0);
 };
+
+export function digit_count(number: number): number {
+  return number.toString().length;
+};

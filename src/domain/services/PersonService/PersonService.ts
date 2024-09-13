@@ -1,6 +1,6 @@
 import { PersonApplicationError } from '@src/core/shared/error/PersonApplicationError';
 import { GenerateRandomIdentificationPerson } from '@src/core/shared/functions/generate_identification_person.function';
-import { present } from '@src/domain/libraries/my-lodash-present';
+import { present } from '@src/domain/libraries/my-lodash';
 import { NewPersonDto } from 'src/core/shared/dto/Person/person_dto';
 import { PersonRepository } from 'src/domain/repositories/PersonRepository/PersonRepository';
 

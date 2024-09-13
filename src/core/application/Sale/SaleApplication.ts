@@ -8,9 +8,7 @@ import {
 export interface SaleApplication {
   getAllSale(): Promise<Array<AllSaleDto>>;
   getOneSale(id: number): Promise<OneSaleDto>;
-  createSale(
-    body: NewSaleDto,
-  ): Promise<OneSaleDto>;
+  createSale(body: NewSaleDto ): Promise<OneSaleDto>;
   updateSale(
     id: number,
     body: UpdateSaleDto,

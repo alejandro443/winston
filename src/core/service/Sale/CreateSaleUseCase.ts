@@ -15,10 +15,14 @@ export class CreateSaleUseCase {
     try {
       const response: any = await this.saleService?.createSale(sale);
 
-      if(sale.products.length){
+      // TO DO [createSale]: Pasar esta logica de crear detalle de venta, pasarlo al a los servicios del dominio, 
+      // usando las transacciones para evitar errores de data huerfana cuando en algun punto de la logica se rompe 
+      // y no cumple con su registro
+
+      if(sale.products?.length){
         sale.products.map(async(product) => {
           await this.saleDetailService.createSaleDetail({
-            sale_id: response.dataValues.id,
+            sale_id: response.sale.dataValues.id,
             product_id: product.id,
             amount: product.amount,
             product_name: product.name,

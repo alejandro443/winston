@@ -1,15 +1,10 @@
 import {
   Body,
   Controller,
-  Delete,
   Get,
   HttpCode,
   Inject,
-  Param,
-  ParseIntPipe,
-  Patch,
   Post,
-  Put,
   UseFilters,
 } from '@nestjs/common';
 import {
@@ -20,7 +15,6 @@ import {
 } from '@nestjs/swagger';
 import { SALE_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { Log } from '../../infraestructure/shared/log/Log';
-import { GetSaleRequestDto } from '../request_dto/SaleDto/get.sale_dto';
 import { CreateSaleRequestDto } from '../request_dto/SaleDto/create.sale_dto';
 import { SaleApplication } from 'src/core/application/Sale/SaleApplication';
 import {
@@ -29,7 +23,6 @@ import {
 } from '../responses/sale.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
-import { UpdateSaleRequestDto } from '../request_dto/SaleDto/update.sale_dto';
 
 @ApiTags('Sale')
 @Controller('/sale')
@@ -55,7 +48,7 @@ export class SaleController {
     const sale = await this.application.getAllSale();
     return {
       status: 201,
-      message: `Get all sale`,
+      message: `Ok`,
       data: sale,
     };
   }
@@ -75,7 +68,7 @@ export class SaleController {
     const sale = await this.application.createSale(request);
     return {
       status: 201,
-      message: `Sale ${sale.id} created OK`,
+      message: `Ok`,
       data: sale,
     };
   }

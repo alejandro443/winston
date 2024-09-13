@@ -7,7 +7,8 @@ import {
   UpdatedAt,
   DeletedAt,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
+  HasOne
 } from 'sequelize-typescript';
 import { Client } from './Client.entity';
 import { User } from './User.entity';
@@ -15,6 +16,8 @@ import { IssuableDocument } from './IssuableDocument.entity';
 import { OrderTypes } from '../../infraestructure/shared/enums/OrderTypes';
 import { Warehouse } from './Warehouse.entity';
 import { PointSale } from './PointSale.entity';
+import { v4 as uuidv4 } from 'uuid';
+import { SaleDocument } from './SaleDocument.entity';
 
 @Table({ tableName: 'sales' })
 export class Sale extends Model<Sale> {
@@ -24,6 +27,14 @@ export class Sale extends Model<Sale> {
     autoIncrement: true,
   })
   declare id: number;
+
+  @Column({
+    type: DataType.UUID,
+    defaultValue: () => uuidv4(),
+    allowNull: true,
+    unique: true,
+  })
+  declare crypto_uuid: string;
 
   @ForeignKey(() => Client)
   @Column({
@@ -141,6 +152,10 @@ export class Sale extends Model<Sale> {
     type: DataType.DATE,
   })
   declare sale_date: Date;
+
+  // Relación uno a uno: una venta tiene un documento de venta
+  @HasOne(() => SaleDocument)
+  saleDocument: SaleDocument;
 
   @CreatedAt
   declare created_at: Date;

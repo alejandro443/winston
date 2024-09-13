@@ -7,9 +7,7 @@ import {
   CreatedAt,
   UpdatedAt,
   DeletedAt,
-  HasMany,
 } from 'sequelize-typescript';
-import { ZoneDetail } from './ZoneDetail.entity';
 
 @Table({ tableName: 'zones' })
 export class Zone extends Model<Zone> {

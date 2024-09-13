@@ -23,7 +23,11 @@ export class SaleService {
   }
 
   async createSale(body: NewSaleDto) {
-    return await this.repository?.create(body);
+    try {
+      return await this.repository?.create(body);
+    } catch (error: any) {
+      return error;
+    }
   }
 
   async updateSale(id: number, body: NewSaleDto) {

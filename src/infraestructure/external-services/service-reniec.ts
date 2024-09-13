@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 
-// TO DO: Realizar y hacer funcionar esto de acuerdo a las buenas practicas - Referencia de busqueda de TODO [TODO1]
+// TO DO: Realizar y hacer funcionar esto de acuerdo a las buenas practicas con injeccion de dependencias - Referencia de busqueda de TODO [TODO1]
 @Injectable()
 export class ReniecApiClient {
   private readonly apiUrl = 'https://api.apis.net.pe/v1/dni';

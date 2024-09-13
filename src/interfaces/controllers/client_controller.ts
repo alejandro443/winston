@@ -66,14 +66,14 @@ export class ClientController {
   @HttpCode(201)
   @Get('/one/:id')
   async getOneClient(
-    @Param('id', ParseIntPipe) param: GetClientRequestDto,
+    @Param('id', ParseIntPipe) param: number,
   ): Promise<ClientResponse> {
-    Log.info(`(Get) Get client id: ${param.id}`);
+    Log.info(`(Get) Get client id: ${param}`);
 
-    const client = await this.application.getOneClient(param.id);
+    const client = await this.application.getOneClient(param);
     return {
       status: 201,
-      message: `Client ${param.id} OK`,
+      message: `Client ${param} OK`,
       data: client,
     };
   }
