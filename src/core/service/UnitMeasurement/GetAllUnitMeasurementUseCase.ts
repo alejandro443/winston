@@ -10,13 +10,13 @@ export class GetAllUnitMeasurementUseCase {
       const response: any = await this.unitMeasurementService?.getAllUnitMeasurement();
 
       return response.map((unitMeasurement: any) => ({
-        id: response.id,
-        code: response.code,
-        name: response.name,
-        abbreviation: response.abbreviation,
-        status: response.status,
-        type: response.type,
-        convertion_factor: response.convertion_factor
+        id: unitMeasurement.id,
+        code: unitMeasurement.code,
+        name: unitMeasurement.name,
+        abbreviation: unitMeasurement.abbreviation,
+        status: unitMeasurement.status,
+        type: unitMeasurement.type,
+        convertion_factor: unitMeasurement.convertion_factor
       }));
     } catch (error: any) {
       return error;
