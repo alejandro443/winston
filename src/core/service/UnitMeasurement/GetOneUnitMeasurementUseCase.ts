@@ -13,8 +13,10 @@ export class GetOneUnitMeasurementUseCase {
         id: response.id,
         code: response.code,
         name: response.name,
-        description: response.description,
+        abbreviation: response.abbreviation,
         status: response.status,
+        type: response.type,
+        convertion_factor: response.convertion_factor
       };
     } catch (error: any) {
       return error;
