@@ -47,8 +47,6 @@ export class SaleRepository {
         transaction,
       });
 
-      console.log(financialSequence)
-
       if (!financialSequence) {
         throw new Error('Secuencia financiera no encontrada');
       }
@@ -84,6 +82,8 @@ export class SaleRepository {
       return { sale, saleDocument };
 
     } catch (error: any) {
+      // Rollback en caso de error
+      await transaction.rollback();
       return error;
     }
   }
