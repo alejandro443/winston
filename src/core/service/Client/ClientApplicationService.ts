@@ -42,7 +42,7 @@ export class ClientApplicationService implements ClientApplication {
 
   async getOneClient(id: number): Promise<any> {
     try {
-      return this.getOneUseCase?.getOneClient(id);
+      return this.getOneUseCase?.getOnePortfolioClient(id);
     } catch (error: any) {
       return error;
     }
@@ -79,7 +79,6 @@ export class ClientApplicationService implements ClientApplication {
       return error;
     }
   }
-
 
   async SearchByDocument(identification: string) {
     try {

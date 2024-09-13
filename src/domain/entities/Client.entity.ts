@@ -26,6 +26,7 @@ import { BusinessTurn } from './BusinessTurn.entity';
 import { BusinessSubcategory } from './BusinessSubcategory.entity';
 import { Zone } from './Zone.entity';
 import { ListPrice } from './ListPrice.entity';
+import { IssuableDocument } from './IssuableDocument.entity';
 
 @Table({ tableName: 'clients' })
 export class Client extends Model<Client> {
@@ -166,10 +167,16 @@ export class Client extends Model<Client> {
   @BelongsTo(() => BusinessSubcategory, 'business_subcategory_id')
   declare businessSubcategory: BusinessSubcategory;
 
+  @ForeignKey(() => IssuableDocument)
   @Column({
     type: DataType.ARRAY(DataType.INTEGER),
+    field: 'issuable_documents_ids',
+    allowNull: true,
   })
   declare issuable_documents_ids: number[];
+
+  @BelongsTo(() => IssuableDocument, 'id')
+  declare issuableDocument: IssuableDocument;
 
   @ForeignKey(() => Zone)
   @Column({

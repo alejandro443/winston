@@ -1,5 +1,6 @@
 import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_client.function';
+import { PortfolioRepository } from '@src/domain/repositories/ClientRepository/PortfolioRepository';
 import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
 import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
 import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
@@ -11,15 +12,25 @@ export class ClientService {
     private repository?: ClientRepository,
     private repositoryPerson?: PersonRepository,
     private repositoryCompany?: CompanyRepository,
+    private repositoryPortfolio?: PortfolioRepository,
   ) {
     this.repository = new ClientRepository();
     this.repositoryPerson = new PersonRepository();
-    this.repositoryCompany = new CompanyRepository();
+    this.repositoryPortfolio = new PortfolioRepository();
+  }
+
+  async getOnePortfolioClient(client_id: number) {
+    try {
+      return await this.repositoryPortfolio?.portfolioOneClient(client_id);
+    } catch (error: any) {
+      return error;
+    }
   }
 
   async getOneClient(id: number) {
     try {
       return this.repository?.findOne(id);
+
     } catch (error: any) {
       return error;
     }
