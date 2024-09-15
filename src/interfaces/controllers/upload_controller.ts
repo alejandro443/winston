@@ -58,7 +58,7 @@ export class UploadController {
     console.log(image)
     return {
       message: 'Imagen subida con éxito',
-      fileName: `http://161.132.48.196:3000/images/${image.filename}`
+      fileName: `http://161.132.48.196:5555/images/${image.filename}`
     };
   }
 }
