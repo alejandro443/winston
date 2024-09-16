@@ -23,6 +23,11 @@ export class ClientService {
   async getOnePortfolioClient(client_id: number) {
     try {
       const data_client_porfolio: any = await this.repositoryPortfolio?.portfolioOneClient(client_id);
+
+      if (!data_client_porfolio){
+        return new ClientApplicationError('No encontrado.', 'NOT_FOUND')
+      }
+
       return data_client_porfolio;
     } catch (error: any) {
       throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
