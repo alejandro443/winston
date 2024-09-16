@@ -13,5 +13,5 @@ export interface ProductApplication {
 
   getAllProductByCategoryAndListPrice(category_id: number, list_price_id: number): Promise<Array<AllProductDto>>;
   getOneProductWithPriceList(id: any): Promise<OneProductDto>;
-
+  updateProductWithPriceList(id: any, product: UpdateProductDto): Promise<OneProductDto>;
 }

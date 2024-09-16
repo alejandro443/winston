@@ -72,7 +72,8 @@ export class ProductService {
         const existingProduct = acc.find(p => p.id === item.product.id);
         if (existingProduct) {
           existingProduct.list_prices.push({
-            id: item.listPrice.id,
+            reference_update_id: item.id,
+            list_price_id: item.listPrice.id,
             name: item.listPrice.name,
             unit_price: parseFloat(item.unit_price),
             package_price: parseFloat(item.package_price)
@@ -99,7 +100,8 @@ export class ProductService {
             product_category_id: item.product.product_category_id,
             unit_measurement_id: item.product.unit_measurement_id,
             list_prices: [{
-              id: item.listPrice.id,
+              reference_update_id: item.id,
+              list_price_id: item.listPrice.id,
               name: item.listPrice.name,
               unit_price: parseFloat(item.unit_price),
               package_price: parseFloat(item.package_price)

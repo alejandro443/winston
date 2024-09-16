@@ -69,13 +69,21 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.getAllUseCase?.getAllProductByCategoryAndListPrice(category_id, list_price_id);
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 
   async getOneProductWithPriceList(id: number): Promise<any> {
     try {
       return this.getOneUseCase?.getOneProductWithPriceList(id);
+    } catch (error: any) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
+    }
+  }
+
+  async updateProductWithPriceList(id: number, product: UpdateProductDto): Promise<any> {
+    try {
+      return this.updateUseCase?.updateProductWithPriceList(id, product);
     } catch (error: any) {
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }

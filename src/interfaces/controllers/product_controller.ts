@@ -170,7 +170,7 @@ export class ProductController {
   @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: ProductResponse,
+    type: ProductWithListPricesResponse,
   })
   @HttpCode(201)
   @Get('/one_with_list_prices/:id')
@@ -191,4 +191,28 @@ export class ProductController {
     }
   }
 
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully updated.',
+    type: ProductResponse,
+  })
+  @HttpCode(200)
+  @Put('/update_with_price_list/:id')
+  async updateProductWithPriceList(
+    @Param('id', ParseIntPipe) productId: number,
+    @Body() request: UpdateProductRequestDto,
+  ): Promise<ProductResponse> {
+    Log.info(`(PUT) Put product`);
+
+    try {
+      const product = await this.application.updateProductWithPriceList(productId, request);
+      return {
+        status: 200,
+        message: `Product ${productId} updated.`,
+        data: product,
+      };
+    } catch (error) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
+    }
+  }
 }

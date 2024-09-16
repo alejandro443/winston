@@ -1,3 +1,4 @@
+import { ListPriceProductApplicationError } from '@src/core/shared/error/ListPriceProductApplicationError';
 import { NewDto, UpdateDto } from 'src/core/shared/dto/ListPriceProduct/list_price_product_dto';
 import { ListPriceProductRepository } from 'src/domain/repositories/ListPriceProductRepository/ListPriceProductRepository';
 
@@ -35,7 +36,7 @@ export class ListPriceProductService {
       const update_data: any = await this.repository?.update(id, body);
       return update_data;
     } catch (error: any) {
-      return error;
+      throw new ListPriceProductApplicationError(error)
     }
   }
 

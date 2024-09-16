@@ -4,7 +4,9 @@ import {
   ApiPropertyOptional,
   ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { extend } from 'joi';
 
 export class ProductDto {
   @ApiProperty({
@@ -199,6 +201,7 @@ export class ProductListPrice {
   @IsNumber({ allowInfinity: false, allowNaN: false }, { message: 'El precio por paquete debe ser un número válido.' })
   declare package_price?: number;
 }
+
 export class NewProductWithListPriceDto extends OmitType(ProductDto, ['id', 'created_at'] as const) {
   @ApiProperty({
     description: 'Listas de precios.',
@@ -209,12 +212,24 @@ export class NewProductWithListPriceDto extends OmitType(ProductDto, ['id', 'cre
   list_prices?: ProductListPrice[];
 }
 
+
+class ProductListPriceReferenceId extends ProductListPrice {
+  @ApiProperty({
+    description: 'Id de referencia con la cual se actualizara el precio del producto en lista de precio.',
+    type: Number,
+  })
+  @ValidateNested()
+  @IsNumber()
+  declare reference_update_id?: number;
+}
+
 export class ProductWithListPricesDto extends OmitType(ProductDto, ['created_at'] as const) {
   @ApiProperty({
     description: 'Listas de precios.',
-    type: [ProductListPrice],
+    type: [ProductListPriceReferenceId],
   })
   @IsArray()
   @IsObject({})
-  list_prices?: ProductListPrice[];
+  @Type(() => ProductListPriceReferenceId)
+  list_prices?: ProductListPriceReferenceId[];
 }
