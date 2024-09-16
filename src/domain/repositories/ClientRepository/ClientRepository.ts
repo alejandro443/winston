@@ -40,6 +40,7 @@ export class ClientRepository {
   }
 
   async update(id: number, client: UpdateClientDto) {
+    console.log("ClientRepository");
     try {
       const clientUpdate: any = Client.update(client, { where: { id: id } });
       return clientUpdate;

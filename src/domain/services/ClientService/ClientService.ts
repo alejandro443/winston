@@ -74,6 +74,7 @@ export class ClientService {
   }
 
   async updateClient(id: number, client: UpdateClientDto) {
+    console.log("ClientRepository");
     try {
       var entity: any;
       if(client.type_entity === TypeEntity.COMPANY){
