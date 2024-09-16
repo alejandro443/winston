@@ -87,6 +87,8 @@ export class ClientService {
         client.entity_id = entity.id;
       }
 
+      console.log(client)
+
       return await this.repository?.update(id, client);
     } catch (error: any) {
       throw new ClientApplicationError(error)
