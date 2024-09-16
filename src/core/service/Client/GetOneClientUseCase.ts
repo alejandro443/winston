@@ -21,8 +21,6 @@ export class GetOneClientUseCase {
     try {
       const portfolio_one_data: any = await this.clientService?.getOnePortfolioClient(client_id);
 
-      if(!portfolio_one_data?.length) { return new ClientApplicationError('No encontrado.', 'NOT_FOUND')}
-
       const portfolio_one_dto: any = await portfolio_one_data.map((client_data: any) => {
         const client: any = client_data.toJSON();
         let objectEntity: object = {};
