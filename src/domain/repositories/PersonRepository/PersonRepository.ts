@@ -60,7 +60,7 @@ export class PersonRepository {
       const update_data: any = await Person.update(person, { where: { id: id } });
       return update_data;
     } catch (error: any) {
-      return error;
+      throw new PersonApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 }

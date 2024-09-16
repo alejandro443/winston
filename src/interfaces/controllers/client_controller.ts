@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -28,6 +29,7 @@ import { PortfolioResponse } from '../responses/client.response';
 import { Auth } from '@src/core/decorators/auth.decorator';
 import { UpdateClientRequestDto } from '../request_dto/ClientDto/update.client_dto';
 import { GetPersonRequestDto } from '../request_dto/PersonDto/get.person_dto';
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 
 @ApiTags('Client')
 @Controller('/client')
@@ -101,7 +103,7 @@ export class ClientController {
     }
   }
 
-  @ApiBadRequestResponse({ description: 'Invalid client id' })
+  @ApiBadRequestResponse({ description: 'Invalid or bad request data.' })
   @ApiCreatedResponse({
     description: 'The record has been successfully updated.',
     type: ClientResponse,
@@ -109,17 +111,22 @@ export class ClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateClient(
-    @Param('id', ParseIntPipe) param: number,
+    @Param('id', ParseIntPipe) clientId: number,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
-    Log.info(`(PUT) Put client`);
+    Log.info(`(PUT) Update Client`);
 
-    const client = await this.application.updateClient(param, request);
-    return {
-      status: 200,
-      message: `Client updated.`,
-      data: client,
-    };
+    try {
+      const updatedClient = await this.application.updateClient(clientId, request);
+  
+      return {
+        status: 200,
+        message: 'Client updated successfully.',
+        data: updatedClient,
+      };
+    } catch (error) {
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR');
+    }
   }
 
   @ApiBadRequestResponse({ description: 'Invalid client id' })

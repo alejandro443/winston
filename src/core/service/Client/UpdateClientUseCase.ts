@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientService } from 'src/domain/services/ClientService/ClientService';
 
@@ -21,7 +22,7 @@ export class UpdateClientUseCase {
         type_client_code: response.type_client_code,
       };
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 }

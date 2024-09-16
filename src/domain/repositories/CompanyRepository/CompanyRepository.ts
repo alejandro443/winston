@@ -60,7 +60,7 @@ export class CompanyRepository {
       const data_update: any = await Company.update(company, { where: { id: id } });
       return data_update;
     } catch (error: any) {
-      throw new ClientApplicationError(error.errors[0].message, 'INTERNAL_SERVER_ERROR')
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 }
