@@ -26,10 +26,12 @@ import { ProductApplication } from 'src/core/application/Product/ProductApplicat
 import {
   ProductsResponse,
   ProductResponse,
+  ProductWithListPricesResponse,
 } from '../responses/product.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 import { UpdateProductRequestDto } from '../request_dto/ProductDto/update.product_dto';
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 
 @ApiTags('Product')
 @Controller('/product')
@@ -108,17 +110,21 @@ export class ProductController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateProduct(
-    @Param('id', ParseIntPipe) id: UpdateProductRequestDto,
-    @Body() request: any,
+    @Param('id', ParseIntPipe) productId: number,
+    @Body() request: UpdateProductRequestDto,
   ): Promise<ProductResponse> {
     Log.info(`(PUT) Put product`);
 
-    const product = await this.application.updateProduct(id, request);
-    return {
-      status: 200,
-      message: `Product ${id} updated.`,
-      data: product,
-    };
+    try {
+      const product = await this.application.updateProduct(productId, request);
+      return {
+        status: 200,
+        message: `Product ${productId} updated.`,
+        data: product,
+      };
+    } catch (error) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
+    }
   }
 
   @ApiBadRequestResponse({ description: 'Invalid product id' })
@@ -159,6 +165,30 @@ export class ProductController {
       message: `Ok`,
       data: product,
     };
+  }
+
+  @ApiBadRequestResponse({ description: 'Invalid product id' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ProductResponse,
+  })
+  @HttpCode(201)
+  @Get('/one_with_list_prices/:id')
+  async getOneProductWithPriceList(
+    @Param('id', ParseIntPipe) id: GetProductRequestDto,
+  ): Promise<ProductWithListPricesResponse> {
+    Log.info(`(Get) Get one_with_list_prices`);
+
+    try {
+      const product = await this.application.getOneProductWithPriceList(id);
+      return {
+        status: 201,
+        message: `Ok`,
+        data: product,
+      };
+    } catch (error) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
+    }
   }
 
 }

@@ -37,7 +37,8 @@ export class ListPriceProductRepository {
 
   async update(id: number, body: UpdateDto) {
     try {
-      return ListPriceProduct.update(body, { where: { id: id } });
+      const update_data: any = await ListPriceProduct.update(body, { where: { id: id } });
+      return update_data;
     } catch (error: any) {
       return error;
     }

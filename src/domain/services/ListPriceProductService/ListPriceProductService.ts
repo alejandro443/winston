@@ -1,4 +1,4 @@
-import { NewDto } from 'src/core/shared/dto/ListPriceProduct/list_price_product_dto';
+import { NewDto, UpdateDto } from 'src/core/shared/dto/ListPriceProduct/list_price_product_dto';
 import { ListPriceProductRepository } from 'src/domain/repositories/ListPriceProductRepository/ListPriceProductRepository';
 
 export class ListPriceProductService {
@@ -30,9 +30,10 @@ export class ListPriceProductService {
     }
   }
 
-  async update(id: number, body: NewDto) {
+  async update(id: number, body: UpdateDto) {
     try {
-      return this.repository?.update(id, body);
+      const update_data: any = await this.repository?.update(id, body);
+      return update_data;
     } catch (error: any) {
       return error;
     }

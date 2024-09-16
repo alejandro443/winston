@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
-import { ProductDto } from 'src/core/shared/dto/Product/product_dto';
+import { ProductDto, ProductWithListPricesDto } from 'src/core/shared/dto/Product/product_dto';
 
 export class ProductResponse extends AppResponse {
   @ApiProperty({
@@ -16,4 +16,12 @@ export class ProductsResponse extends AppResponse {
     nullable: true,
   })
   data?: ProductDto[];
+}
+
+export class ProductWithListPricesResponse extends AppResponse {
+  @ApiProperty({
+    type: ProductWithListPricesDto,
+    nullable: true,
+  })
+  data?: ProductWithListPricesDto;
 }

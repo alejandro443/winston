@@ -208,3 +208,13 @@ export class NewProductWithListPriceDto extends OmitType(ProductDto, ['id', 'cre
   @IsObject({})
   list_prices?: ProductListPrice[];
 }
+
+export class ProductWithListPricesDto extends OmitType(ProductDto, ['created_at'] as const) {
+  @ApiProperty({
+    description: 'Listas de precios.',
+    type: [ProductListPrice],
+  })
+  @IsArray()
+  @IsObject({})
+  list_prices?: ProductListPrice[];
+}

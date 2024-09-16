@@ -24,8 +24,7 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   @ForeignKey(() => Product)
   @Column({
     field: 'product_id',
-    allowNull: false,
-    unique: true
+    allowNull: false
   })
   declare product_id: number;
 
@@ -35,8 +34,7 @@ export class ListPriceProduct extends Model<ListPriceProduct> {
   @ForeignKey(() => ListPrice)
   @Column({
     field: 'list_price_id',
-    allowNull: false,
-    unique: false
+    allowNull: false
   })
   declare list_price_id: number;
 

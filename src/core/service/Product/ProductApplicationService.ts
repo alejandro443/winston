@@ -8,6 +8,7 @@ import { GetAllProductUseCase } from './GetAllProductUseCase';
 import { CreateProductUseCase } from './CreateProductUseCase';
 import { UpdateProductUseCase } from './UpdateProductUseCase';
 import { DeleteProductUseCase } from './DeleteProductUseCase';
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 
 export class ProductApplicationService implements ProductApplication {
   constructor(
@@ -69,6 +70,14 @@ export class ProductApplicationService implements ProductApplication {
       return this.getAllUseCase?.getAllProductByCategoryAndListPrice(category_id, list_price_id);
     } catch (error: any) {
       return error;
+    }
+  }
+
+  async getOneProductWithPriceList(id: number): Promise<any> {
+    try {
+      return this.getOneUseCase?.getOneProductWithPriceList(id);
+    } catch (error: any) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 }

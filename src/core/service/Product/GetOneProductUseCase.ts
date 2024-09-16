@@ -1,3 +1,4 @@
+import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 import { ProductService } from 'src/domain/services/ProductService/ProductService';
 
 export class GetOneProductUseCase {
@@ -18,6 +19,15 @@ export class GetOneProductUseCase {
       };
     } catch (error: any) {
       return error;
+    }
+  }
+  
+  async getOneProductWithPriceList(id: number) {
+    try {
+      const response: any = await this.service?.getOneProductWithPriceList(id);
+      return response;
+    } catch (error: any) {
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 }
