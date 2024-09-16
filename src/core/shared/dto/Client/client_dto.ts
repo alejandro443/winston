@@ -183,6 +183,7 @@ export class ClientDto {
     description: 'Id del Vendedor',
     type: Number,
   })
+  @IsOptional()
   @IsNumber()
   declare seller_id?: number;
 
