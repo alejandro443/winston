@@ -24,7 +24,7 @@ export class ClientService {
     try {
       const data_client_porfolio: any = await this.repositoryPortfolio?.portfolioOneClient(client_id);
 
-      if (data_client_porfolio){
+      if (!data_client_porfolio){
         return new ClientApplicationError('No encontrado.', 'NOT_FOUND')
       }
 
