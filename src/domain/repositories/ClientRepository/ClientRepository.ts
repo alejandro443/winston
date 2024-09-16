@@ -40,12 +40,11 @@ export class ClientRepository {
   }
 
   async update(id: number, client: UpdateClientDto) {
-    console.log("ClientRepository");
     try {
-      const clientUpdate: any = Client.update(client, { where: { id: id } });
+      const clientUpdate: any = await Client.update(client, { where: { id: id } });
       return clientUpdate;
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 

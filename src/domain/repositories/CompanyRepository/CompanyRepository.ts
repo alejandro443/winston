@@ -54,4 +54,13 @@ export class CompanyRepository {
       return error;
     }
   }
+
+  async updateFromClient(id: number, company: UpdateCompanyDto | object) {
+    try {
+      const data_update: any = await Company.update(company, { where: { id: id } });
+      return data_update;
+    } catch (error: any) {
+      throw new ClientApplicationError(error.errors[0].message, 'INTERNAL_SERVER_ERROR')
+    }
+  }
 }

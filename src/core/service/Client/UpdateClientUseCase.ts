@@ -7,8 +7,6 @@ export class UpdateClientUseCase {
   }
 
   async updateClient(id: number, client: UpdateClientDto) {
-    console.log("UpdateClientUseCase");
-
     try {
       const response: any = await this.clientService?.updateClient(
         id,

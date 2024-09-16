@@ -54,4 +54,13 @@ export class PersonRepository {
       return error;
     }
   }
+
+  async updateFromClient(id: number, person: UpdatePersonDto | object) {
+    try {
+      const update_data: any = await Person.update(person, { where: { id: id } });
+      return update_data;
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

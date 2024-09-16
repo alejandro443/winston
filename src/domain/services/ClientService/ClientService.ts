@@ -74,20 +74,17 @@ export class ClientService {
   }
 
   async updateClient(id: number, client: UpdateClientDto) {
-    console.log("ClientRepository");
     try {
       var entity: any;
       if(client.type_entity === TypeEntity.COMPANY){
-        entity = await this.repositoryCompany.update(client.entity['main_identification'], client.entity);
+        entity = await this.repositoryCompany.updateFromClient(client.entity['id'], client.entity);
         client.entity_id = entity.id;
       }
 
       if (client.type_entity === TypeEntity.PERSON) {
-        entity = await this.repositoryPerson.update(client.entity['main_identification'], client.entity);
+        entity = await this.repositoryPerson.updateFromClient(client.entity['id'], client.entity);
         client.entity_id = entity.id;
       }
-
-      console.log(client)
 
       return await this.repository?.update(id, client);
     } catch (error: any) {
