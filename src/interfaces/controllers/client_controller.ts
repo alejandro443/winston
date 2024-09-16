@@ -109,12 +109,12 @@ export class ClientController {
   @HttpCode(200)
   @Put('/update/:id')
   async updateClient(
-    @Param('id', ParseIntPipe) param: UpdateClientRequestDto,
+    @Param('id', ParseIntPipe) param: number,
     @Body() request: CreateClientRequestDto,
   ): Promise<ClientResponse> {
     Log.info(`(PUT) Put client`);
 
-    const client = await this.application.updateClient(param.id, request);
+    const client = await this.application.updateClient(param, request);
     return {
       status: 200,
       message: `Client updated.`,
