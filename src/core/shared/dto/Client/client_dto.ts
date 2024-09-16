@@ -179,6 +179,13 @@ export class ClientDto {
   @IsNumber()
   declare list_price_id?: number;
 
+  @ApiProperty({
+    description: 'Id del Vendedor',
+    type: Number,
+  })
+  @IsNumber()
+  declare seller_id?: number;
+
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Estado del cliente (Activo/Desactivado)',

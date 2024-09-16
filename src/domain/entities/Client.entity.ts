@@ -200,6 +200,16 @@ export class Client extends Model<Client> {
   @BelongsTo(() => ListPrice, 'id')
   declare listPrice: ListPrice;
 
+  @ForeignKey(() => User)
+  @Column({
+    field: 'seller_id',
+    allowNull: true
+  })
+  declare seller_id: number;
+
+  @BelongsTo(() => User, 'id')
+  declare seller: User;
+
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
