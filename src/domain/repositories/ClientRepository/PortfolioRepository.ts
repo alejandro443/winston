@@ -5,6 +5,7 @@ import { IssuableDocument } from '@src/domain/entities/IssuableDocument.entity';
 import { Person } from '@src/domain/entities/Person.entity';
 import { TypeChannel } from '@src/domain/entities/TypeChannel.entity';
 import { TypeClient } from '@src/domain/entities/TypeClient.entity';
+import { User } from '@src/domain/entities/User.entity';
 import { Zone } from '@src/domain/entities/Zone.entity';
 import { Client } from 'src/domain/entities/Client.entity';
 
@@ -37,7 +38,9 @@ export class PortfolioRepository {
           {model: TypeChannel, required: false},
           {model: BusinessTurn, required: false},
           {model: Zone, required: false},
-          {model: IssuableDocument, required: false}
+          {model: IssuableDocument, required: false},
+          { model: User, as: 'user', required: false },
+          { model: User, as: 'seller', required: false }
         ],
         where: {id: client_id}
       })

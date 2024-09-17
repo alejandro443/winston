@@ -46,6 +46,8 @@ export class GetOneClientUseCase {
             issuable_documents_ids: client.issuable_documents_ids,
             zone_id: client.zone_id,
             list_price_id: client.list_price_id,
+            seller_id: client.seller_id,
+            seller_user: client.seller_id ? client.seller.user : '',
             status: client.status,
             entity: {
               ...client.person
@@ -73,6 +75,8 @@ export class GetOneClientUseCase {
             zone_id: client.zone_id,
             list_price_id: client.list_price_id,
             status: client.status,
+            seller_id: client.seller_id,
+            seller_user: client.seller_id ? client.seller.user : '',
             entity: {
               ...client.company
             }

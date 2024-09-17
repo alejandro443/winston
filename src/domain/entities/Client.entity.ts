@@ -45,11 +45,12 @@ export class Client extends Model<Client> {
 
   @Column({
     type: DataType.INTEGER,
+    field: 'user_id',
     allowNull: true,
   })
   declare user_id: number;
 
-  @BelongsTo(() => User, 'user_id')
+  @BelongsTo(() => User, { foreignKey: 'user_id', as: 'user' })
   declare user: User;
 
   @ForeignKey(() => Person)
@@ -202,12 +203,13 @@ export class Client extends Model<Client> {
 
   @ForeignKey(() => User)
   @Column({
+    type: DataType.INTEGER,
     field: 'seller_id',
     allowNull: true
   })
   declare seller_id: number;
 
-  @BelongsTo(() => User, 'id')
+  @BelongsTo(() => User, { foreignKey: 'seller_id', as: 'seller' })
   declare seller: User;
 
   @Column({
