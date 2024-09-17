@@ -32,6 +32,7 @@ export class CreateProductUseCase {
         id: response.id,
         code: response.code,
         name: response.name,
+        trade_name: response.trade_name,
         description: response.description,
         image: response.image,
         status: response.status,

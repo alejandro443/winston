@@ -37,6 +37,14 @@ export class ProductDto {
   declare name?: string;
 
   @IsOptional()
+  @ApiProperty({
+    description: 'Nombre comercial del producto',
+    type: String
+  })
+  @IsString()
+  declare trade_name?: string;
+
+  @IsOptional()
   @ApiPropertyOptional({
     description: 'Descripcion del producto',
     type: String,

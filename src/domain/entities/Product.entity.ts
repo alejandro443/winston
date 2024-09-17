@@ -36,6 +36,11 @@ export class Product extends Model<Product> {
   @Column({
     type: DataType.STRING,
   })
+  declare trade_name: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
   declare tradename: string;
 
   @Column({

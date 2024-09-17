@@ -65,7 +65,7 @@ export class ListPriceProductRepository {
             model: Product, 
             required: true,
             attributes: [
-              ['name', 'productName'],
+              ['trade_name', 'productTradeName'],
               ['description', 'productDesc'],
               ['sku', 'productSKU'],
               ['image', 'productImage']
