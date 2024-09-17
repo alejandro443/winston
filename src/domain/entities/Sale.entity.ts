@@ -48,10 +48,10 @@ export class Sale extends Model<Sale> {
 
   @ForeignKey(() => User)
   @Column({
-    field: 'user_id',
+    field: 'sold_by',
     allowNull: false,
   })
-  declare user_id: number;
+  declare sold_by: number;
 
   @BelongsTo(() => User, 'id')
   declare user: User;
@@ -65,6 +65,8 @@ export class Sale extends Model<Sale> {
 
   @BelongsTo(() => IssuableDocument, 'id')
   declare issuableDocument: IssuableDocument;
+
+  declare seller_assigned: number;
 
   @Column({
     type: DataType.STRING,

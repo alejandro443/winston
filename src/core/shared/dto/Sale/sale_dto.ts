@@ -23,11 +23,18 @@ export class SaleDto {
   client_id?: number;
 
   @ApiProperty({
-    description: 'Id del usuario asociado.',
+    description: 'Id del que realiza la venta.',
     type: Number,
   })
   @IsNumber()
-  user_id?: number;
+  sold_by?: number;
+
+  @ApiProperty({
+    description: 'Id del que vendedor asignado al cliente.',
+    type: Number,
+  })
+  @IsNumber()
+  seller_asigned?: number;
 
   @ApiProperty({
     description: 'Id del punto de venta.',
