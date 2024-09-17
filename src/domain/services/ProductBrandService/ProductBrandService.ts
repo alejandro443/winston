@@ -1,3 +1,4 @@
+import { GenerateCodeProductBrand, GenerateRandomCodeProductBrand } from '@src/core/shared/functions/generate_code_product_brand.function';
 import { NewProductBrandDto } from 'src/core/shared/dto/ProductBrand/product_brand_dto';
 import { ProductBrandRepository } from 'src/domain/repositories/ProductBrandRepository/ProductBrandRepository';
 
@@ -22,17 +23,20 @@ export class ProductBrandService {
     }
   }
 
-  async createProductBrand(product_brand: NewProductBrandDto) {
+  async createProductBrand(body: NewProductBrandDto) {
     try {
-      return this.repository?.create(product_brand);
+      body.code = body.code
+        ? await GenerateCodeProductBrand(body.code)
+        : await GenerateRandomCodeProductBrand();
+      return this.repository?.create(body);
     } catch (error: any) {
       return error;
     }
   }
 
-  async updateProductBrand(id: any, product_brand: NewProductBrandDto) {
+  async updateProductBrand(id: any, body: NewProductBrandDto) {
     try {
-      return this.repository?.update(id, product_brand);
+      return this.repository?.update(id, body);
     } catch (error: any) {
       return error;
     }
