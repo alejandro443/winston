@@ -15,4 +15,6 @@ export interface UserApplication {
   deleteUser(id: any): any;
 
   createUserWithPerson(user: NewUserWithPersonDto): Promise<any>;
+  getAllUserSellers(): Promise<Array<AllUserDto>>;
+
 }

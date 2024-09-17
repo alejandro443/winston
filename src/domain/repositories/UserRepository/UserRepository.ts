@@ -1,3 +1,4 @@
+import { UserRol } from '@src/domain/entities/UserRol.entity';
 import { NewUserDto, UpdateUserDto } from 'src/core/shared/dto/User/user_dto';
 import { User } from 'src/domain/entities/User.entity';
 
@@ -47,6 +48,23 @@ export class UserRepository {
   async getUser(user: any) {
     try {
       return User.findOne({ where: { user: user } });
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async findByRol(rol_id: number) {
+    try {
+      const data: any =  await UserRol.findAll({ 
+        include: [
+          {model: User, required: true}
+        ],
+        where: { 
+          rol_id: rol_id,
+          deleted_at: null
+        } 
+      })
+      return data;
     } catch (error: any) {
       return error;
     }

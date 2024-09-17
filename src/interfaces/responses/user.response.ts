@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
 import { UserDto } from '@src/core/shared/dto/User/user_dto';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 class UserResponseDto implements Omit<UserDto, 'password'> {}
 class UserWithPersonResponseDto {
@@ -56,4 +56,31 @@ export class UsersResponse extends AppResponse {
     nullable: true,
   })
   data?: UserDto[];
+}
+
+
+
+// Sellers
+class SellersResponseDto {
+  @ApiProperty({
+    description: 'Id del usuario.',
+    type: Number,
+  })
+  @IsNumber()
+  id?: number;
+
+  @ApiProperty({
+    description: 'Usuario.',
+    type: String,
+  })
+  @IsString()
+  user?: string;
+}
+
+export class SellersResponse extends AppResponse {
+  @ApiProperty({
+    type: [SellersResponseDto],
+    nullable: true,
+  })
+  data?: SellersResponseDto[];
 }

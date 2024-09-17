@@ -8,8 +8,6 @@ export class GetAllUserWithRolesUseCase {
   async getAllUserWithRoles() {
     try {
       const response: any = await this.userRolService?.getUserWithRoles();
-      console.log(response.dataValues)
-
       return response.map((user: any) => ({rol: user.dataValues.rol, user: user.dataValues.user}));
     } catch (error: any) {
       return error;

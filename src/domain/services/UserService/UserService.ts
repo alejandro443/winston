@@ -2,6 +2,7 @@ import {
   GenerateCodeUser,
   GenerateRandomCodeUser,
 } from '@src/core/shared/functions/generate_code_user.function';
+import { Roles, RolesId } from '@src/infraestructure/shared/enums/Roles';
 import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
 import { UserRepository } from 'src/domain/repositories/UserRepository/UserRepository';
 
@@ -57,6 +58,15 @@ export class UserService {
   async getUser(user: string) {
     try {
       return this.repository?.getUser(user);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getAllUserSellers(rol_name: string) {
+    try {
+      const rol_id: number = RolesId[rol_name];
+      return this.repository?.findByRol(rol_id);
     } catch (error: any) {
       return error;
     }

@@ -14,6 +14,7 @@ export class GetOneUserUseCase {
         code: response.code,
         status: response.status,
         consultant: response.consultant,
+        is_base: response.is_base,
       };
     } catch (error: any) {
       return error;

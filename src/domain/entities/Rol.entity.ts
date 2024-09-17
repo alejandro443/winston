@@ -36,6 +36,12 @@ export class Rol extends Model<Rol> {
   })
   declare status: boolean;
 
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  declare is_base: boolean;
+
   @HasMany(() => AccessRol, { foreignKey: 'rol_id' })
   declare accessRoles: AccessRol[];
 

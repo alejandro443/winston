@@ -83,4 +83,12 @@ export class UserApplicationService implements UserApplication {
       return error;
     }
   }
+
+  async getAllUserSellers() {
+    try {
+      return this.getAllUseCase?.getAllUserSellers();
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

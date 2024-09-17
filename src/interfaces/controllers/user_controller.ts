@@ -22,7 +22,7 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetUserRequestDto } from '../request_dto/UserDto/get.user_dto';
 import { CreateUserRequestDto, CreateUserWithRolesRequestDto } from '../request_dto/UserDto/create.user_dto';
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { UserResponse, UserWithPersonResponse, UsersResponse } from '../responses/user.response';
+import { SellersResponse, UserResponse, UserWithPersonResponse, UsersResponse } from '../responses/user.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
@@ -152,17 +152,39 @@ export class UserController {
     };
   }
   
-  @HttpCode(201)
+  @ApiBadRequestResponse({ description: 'Error' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: UsersResponse,
+  })
+  @HttpCode(200)
   @Get('/all_with_roles')
   async getAllUserWithRoles(): Promise<UsersResponse> {
     Log.info(`(Get) Get all users`);
 
     const users = await this.application.getAllUserWithRoles();
     return {
-      status: 201,
+      status: 200,
       message: `Get all users`,
       data: users,
     };
   }
 
+  @ApiBadRequestResponse({ description: 'Error' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: SellersResponse,
+  })
+  @HttpCode(200)
+  @Get('/sellers')
+  async getAllSellers(): Promise<SellersResponse> {
+    Log.info(`(Get) Get sellers`);
+
+    const users = await this.application.getAllUserSellers();
+    return {
+      status: 200,
+      message: `Ok`,
+      data: users,
+    };
+  }
 }
