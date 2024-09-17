@@ -27,6 +27,7 @@ import {
   ProductsResponse,
   ProductResponse,
   ProductWithListPricesResponse,
+  ProductsWithPricesResponse,
 } from '../responses/product.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
@@ -150,13 +151,13 @@ export class ProductController {
   @ApiBadRequestResponse({ description: 'Invalid product id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: ProductResponse,
+    type: ProductsWithPricesResponse,
   })
   @HttpCode(201)
   @Get('/list_price')
   async getAllProductByCategoryAndListPrice(
     @Body() request: GetProductByPriceListRequestDto,
-  ): Promise<ProductsResponse> {
+  ): Promise<ProductsWithPricesResponse> {
     Log.info(`(Get) Get product id: ${request.list_price_id}`);
 
     const product = await this.application.getAllProductByCategoryAndListPrice(request.category_id, request.list_price_id);

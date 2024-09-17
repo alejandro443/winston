@@ -42,8 +42,8 @@ export class GetAllProductUseCase {
         image: product['product.productImage'],
         unit_price: product.unit_price,
         package_price: product.package_price,
-        brandId: product['product.productBrand.brandId'],
-        brandName: product['product.productBrand.brandName']
+        product_brand_id: product['product.productBrand.brandId'],
+        product_brand_name: product['product.productBrand.brandName']
       }));
     } catch (error: any) {
       return error;

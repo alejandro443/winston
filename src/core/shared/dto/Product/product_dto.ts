@@ -1,4 +1,4 @@
-import { OmitType, PartialType } from '@nestjs/swagger';
+import { OmitType, PartialType, PickType } from '@nestjs/swagger';
 import {
   ApiProperty,
   ApiPropertyOptional,
@@ -7,6 +7,8 @@ import {
 import { Type } from 'class-transformer';
 import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { extend } from 'joi';
+import { ListPriceProductDto } from '../ListPriceProduct/list_price_product_dto';
+import { ProductBrandDto } from '../ProductBrand/product_brand_dto';
 
 export class ProductDto {
   @ApiProperty({
