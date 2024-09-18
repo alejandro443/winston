@@ -55,7 +55,6 @@ export class UploadController {
   })
   @ApiResponse({ status: 201, description: 'Imagen subida con éxito', type: ResponseCreatedImage })
   uploadFile(@UploadedFile() image: Express.Multer.File) {
-    console.log(image)
     return {
       message: 'Imagen subida con éxito',
       fileName: `http://161.132.48.196:5555/images/${image.filename}`
