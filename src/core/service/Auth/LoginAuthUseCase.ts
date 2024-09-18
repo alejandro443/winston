@@ -40,12 +40,8 @@ export class LoginAuthUseCase {
 
       const rol_data = user_rol_data[0]['rol']['dataValues'];
 
-      const access_data = await this.accessRolService?.getAccessRolByRol(
-        rol_data.id,
-      );
-      const client_data = await this.clientService?.getOneClientByUserId(
-        user_data.id,
-      );
+      const access_data = await this.accessRolService?.getAccessRolByRol(rol_data.id);
+      const client_data = await this.clientService?.getOneClientByUserId(user_data.id);
 
       const token = await GenerateToken(user_data, client_data);
       return {

@@ -63,6 +63,12 @@ export class Worker extends Model<Worker> {
   @BelongsTo(() => User, 'id')
   declare user: User;
 
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  declare person_identification: string;
+
   @CreatedAt
   declare created_at: Date;
 
