@@ -153,8 +153,8 @@ export class ProductController {
     description: 'The record has been successfully obtain.',
     type: ProductsWithPricesResponse,
   })
-  @HttpCode(201)
-  @Get('/list_price')
+  @HttpCode(200)
+  @Post('/list_price')
   async getAllProductByCategoryAndListPrice(
     @Body() request: GetProductByPriceListRequestDto,
   ): Promise<ProductsWithPricesResponse> {
@@ -162,7 +162,7 @@ export class ProductController {
 
     const product = await this.application.getAllProductByCategoryAndListPrice(request.category_id, request.list_price_id);
     return {
-      status: 201,
+      status: 200,
       message: `Ok`,
       data: product,
     };
