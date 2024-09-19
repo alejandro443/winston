@@ -1,8 +1,10 @@
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty, OmitType, PartialType } from '@nestjs/swagger';
 import { OrderTypes } from '../../../../infraestructure/shared/enums/OrderTypes';
-import { IsString, IsNumber, IsOptional, IsDateString, IsEnum, IsNotEmpty, IsArray, ArrayNotEmpty, ValidateNested } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsDateString, IsEnum, IsNotEmpty, IsArray, ArrayNotEmpty, ValidateNested, IsObject } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ProductSaleDto } from '../ProductSale/product_sale_dto';
+import { SalesPaymentDto } from '../SalesPayment/sales_payment_dto';
+import { PaymentScheduleDto } from '../PaymentSchedule/payment_schedule_dto';
 
 export class SaleDto {
   @ApiProperty({
@@ -178,13 +180,26 @@ export class SaleDto {
   @IsArray()
   @ArrayNotEmpty()
   @ValidateNested({ each: true })
-  @Type(() => Object)
+  @Type(() => SalesPaymentDto)
   @ApiProperty({
     description: 'Abonos de la venta.',
-    type: [Object],
+    type: [SalesPaymentDto],
   })
   @IsNotEmpty()
-  sales_payment?: Object[];
+  @IsOptional()
+  sales_payment?: SalesPaymentDto[];
+  
+  @IsArray()
+  @ArrayNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => PaymentScheduleDto)
+  @ApiProperty({
+    description: 'Cronograma de pagos.',
+    type: [PaymentScheduleDto],
+  })
+  @IsNotEmpty()
+  @IsOptional()
+  payment_schedule?: PaymentScheduleDto[];
 
   @ApiPropertyOptional({
     description: 'Fecha de creación del registro.',

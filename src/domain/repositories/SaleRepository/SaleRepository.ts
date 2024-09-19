@@ -1,7 +1,15 @@
+import { Client } from '@src/domain/entities/Client.entity';
+import { Company } from '@src/domain/entities/Company.entity';
 import { FinancialSequence } from '@src/domain/entities/FinancialSequence.entity';
 import { IssuableDocument } from '@src/domain/entities/IssuableDocument.entity';
+import { PaymentSchedule } from '@src/domain/entities/PaymentSchedule.entity';
+import { Person } from '@src/domain/entities/Person.entity';
 import { SaleDocument } from '@src/domain/entities/SaleDocument.entity';
+import { SalePaymentSchedule } from '@src/domain/entities/SalePaymentSchedule.entity';
+import { SalesPayment } from '@src/domain/entities/SalesPayment.entity';
+import { User } from '@src/domain/entities/User.entity';
 import { SubmissionStatus } from '@src/infraestructure/shared/enums/SubmissionStatus';
+import { WayToPayId } from '@src/infraestructure/shared/enums/WayToPay';
 import {
   NewSaleDto,
   UpdateSaleDto,
@@ -69,12 +77,45 @@ export class SaleRepository {
       // 4. Crear el documento de venta asociado 
       const saleDocument = await SaleDocument.create({
         sale_id: sale.id,
+        issuance_date: body.sale_date,
         issuable_document_id: body.issuable_document_id,
         submission_status: SubmissionStatus.created,
         serie: financialSequence.serie,
         correlative: financialSequence.current_correlative,
         type_document: financialSequence.issuableDocument.name
       }, { transaction });
+
+      if(body.type_payment_id == WayToPayId.contado) {
+        // 5. Crear los abonos de la venta 
+        const sales_payment: any = body?.sales_payment;
+
+        const salesPaymentPromises = sales_payment.schedule.map((payment: any) => 
+          SalesPayment.create({ 
+            ...payment,
+            sale_id: sale.id
+          }, { transaction })
+        );
+
+        await Promise.all(salesPaymentPromises);
+      }
+
+      if(body.type_payment_id == WayToPayId.credito) {
+        // 5. Crear los cronograma de pagos
+        const payment_schedule: any = body?.payment_schedule;
+
+        const salePaymentSchedule: any = await SalePaymentSchedule.create({
+          sale_id: sale.id,
+          payment_first_date: payment_schedule[0].payment_date,
+          payment_last_date: payment_schedule[payment_schedule.length - 1].payment_date,
+          total_sale: body.total_sale,
+          number_quotas: payment_schedule.length
+        }, { transaction })
+
+        const payment_schedule_data: Array<Object> = body?.payment_schedule.map((quota: any) => ({sale_payment_schedule_id: salePaymentSchedule.id, ...quota}))
+
+        await PaymentSchedule.bulkCreate(payment_schedule_data, { transaction });
+      }
+
 
       // Confirmar la transacción
       await transaction.commit();
@@ -83,6 +124,7 @@ export class SaleRepository {
 
     } catch (error: any) {
       // Rollback en caso de error
+      console.log(error)
       await transaction.rollback();
       return error;
     }
@@ -100,6 +142,63 @@ export class SaleRepository {
     try {
       return Sale.destroy({ where: { id: id } });
     } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getAllReceivable( way_to_pay_id = 1, status = 'all', client = 'all', date = new Date()) {
+    try {
+      const data: any = await Sale.findAll({
+        include: [
+          { 
+            model: Client, 
+            required: true,
+            attributes: ['type_entity'],
+            include: [
+              { 
+                model: Person, 
+                required: false,
+                attributes: ['name', 'main_phone']
+              },
+              {
+                model: Company, 
+                required: false,
+                attributes: ['name', 'main_phone']
+              },
+              {
+                model: User, 
+                as: 'seller',
+                required: false,
+                attributes: ['user']
+              },
+            ] 
+          },
+          { 
+            model: SaleDocument, 
+            required: false,
+            attributes: ['type_document', 'serie', 'correlative', 'issuance_date']
+          },
+          { 
+            model: User, 
+            as: 'seller', 
+            required: false,
+            attributes: [['user', 'sale_assigned_seller']]
+          }
+        ],
+        attributes: ['total_sale', 'sale_date', 'paid'],
+        where: {
+          type_payment_id: way_to_pay_id,
+          paid: false,
+          // sale_date: date,
+          deleted_at: null
+        } 
+      });
+
+      // console.log(data);
+
+      return data;
+    } catch (error: any) {
+      console.log(error)
       return error;
     }
   }

@@ -70,4 +70,13 @@ export class SaleApplicationService
       return error;
     }
   }
+
+  async getAllReceivable() {
+    try {
+      return this.getAllUseCase?.getAllReceivable();
+    } catch (error: any) {
+      return error;
+    }
+  }
+
 }

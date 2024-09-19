@@ -58,6 +58,11 @@ export class SaleDocument extends Model<SaleDocument> {
   declare correlative: number;
 
   @Column({
+    type: DataType.DATE,
+  })
+  declare issuance_date: Date;
+
+  @Column({
     type: DataType.ENUM,
     values: Object.values(SubmissionStatus),
     allowNull: false

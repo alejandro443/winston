@@ -19,6 +19,7 @@ import { PointSale } from './PointSale.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { SaleDocument } from './SaleDocument.entity';
 import { WayToPay } from './WayToPay.entity';
+import { SalePaymentSchedule } from './SalePaymentSchedule.entity';
 
 @Table({ tableName: 'sales' })
 export class Sale extends Model<Sale> {
@@ -54,8 +55,8 @@ export class Sale extends Model<Sale> {
   })
   declare sold_by: number;
 
-  @BelongsTo(() => User, 'user_id')
-  declare user: User;
+  @BelongsTo(() => User, { foreignKey: 'user_id', as: 'soldBy' })
+  declare soldBy: User;
 
   @ForeignKey(() => IssuableDocument)
   @Column({
@@ -67,10 +68,15 @@ export class Sale extends Model<Sale> {
   @BelongsTo(() => IssuableDocument, 'issuable_document_id')
   declare issuableDocument: IssuableDocument;
 
+  @ForeignKey(() => User)
   @Column({
-    type: DataType.INTEGER,
+    field: 'seller_assigned',
+    allowNull: false,
   })
   declare seller_assigned: number;
+
+  @BelongsTo(() => User, { foreignKey: 'seller_assigned', as: 'seller' })
+  declare seller: User;
 
   @Column({
     type: DataType.STRING,
@@ -178,6 +184,9 @@ export class Sale extends Model<Sale> {
   // Relación uno a uno: una venta tiene un documento de venta
   @HasOne(() => SaleDocument)
   saleDocument: SaleDocument;
+
+  @HasOne(() => SalePaymentSchedule)
+  salePaymentSchedule: SalePaymentSchedule;
 
   @CreatedAt
   declare created_at: Date;

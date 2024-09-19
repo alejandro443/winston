@@ -11,15 +11,31 @@ export class GetAllSaleUseCase {
       const response: any =
         await this.saleService?.getAllSale();
 
-      return response.map((classification: any) => ({
-        id: classification.id,
-        type_payment: classification.type_payment,
-        currency: classification.currency,
-        currency_symbol: classification.currency_symbol,
-        note: classification.note,
-        order_type: OrderTypes[classification.order_type],
-        total: classification.total_sale
+      return response.map((sale: any) => ({
+        id: sale.id,
+        type_payment: sale.type_payment,
+        currency: sale.currency,
+        currency_symbol: sale.currency_symbol,
+        note: sale.note,
+        order_type: OrderTypes[sale.order_type],
+        total: sale.total_sale
       }));
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getAllReceivable() {
+    try {
+      const response: any = await this.saleService?.getAllReceivable();
+
+      const response_transformed: any = response.map((sale: any) => {
+        const sale_data: any = sale.toJSON();
+        let objectEntity: object = {};
+        console.log(sale_data)
+      });
+
+      return response_transformed;
     } catch (error: any) {
       return error;
     }
