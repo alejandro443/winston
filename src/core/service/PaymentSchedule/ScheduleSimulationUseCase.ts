@@ -2,7 +2,6 @@ const { v4: uuidv4 } = require('uuid');
 
 export class ScheduleSimulationUseCase {
   constructor() {}
-
   
   async simulation(body: any) {
     const period = {

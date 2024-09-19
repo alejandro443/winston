@@ -52,11 +52,19 @@ export class SaleDto {
   issuable_document_id?: number;
 
   @ApiProperty({
-    description: 'Tipo de pago utilizado.',
+    description: 'Tipo de pago utilizado. (Opcional)',
     type: String,
   })
   @IsString()
+  @IsOptional()
   type_payment?: string;
+
+  @ApiProperty({
+    description: 'Id del Tipo de pago utilizado. (WayToPay - Id)',
+    type: Number,
+  })
+  @IsString()
+  type_payment_id?: number;
 
   @ApiProperty({
     description: 'Moneda utilizada en la venta.',
@@ -166,6 +174,17 @@ export class SaleDto {
   })
   @IsNotEmpty()
   products?: ProductSaleDto[];
+
+  @IsArray()
+  @ArrayNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => Object)
+  @ApiProperty({
+    description: 'Abonos de la venta.',
+    type: [Object],
+  })
+  @IsNotEmpty()
+  sales_payment?: Object[];
 
   @ApiPropertyOptional({
     description: 'Fecha de creación del registro.',

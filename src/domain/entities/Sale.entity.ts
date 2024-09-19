@@ -18,6 +18,7 @@ import { Warehouse } from './Warehouse.entity';
 import { PointSale } from './PointSale.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { SaleDocument } from './SaleDocument.entity';
+import { WayToPay } from './WayToPay.entity';
 
 @Table({ tableName: 'sales' })
 export class Sale extends Model<Sale> {
@@ -43,7 +44,7 @@ export class Sale extends Model<Sale> {
   })
   declare client_id: number;
 
-  @BelongsTo(() => Client, 'id')
+  @BelongsTo(() => Client, 'client_id')
   declare client: Client;
 
   @ForeignKey(() => User)
@@ -53,7 +54,7 @@ export class Sale extends Model<Sale> {
   })
   declare sold_by: number;
 
-  @BelongsTo(() => User, 'id')
+  @BelongsTo(() => User, 'user_id')
   declare user: User;
 
   @ForeignKey(() => IssuableDocument)
@@ -63,15 +64,28 @@ export class Sale extends Model<Sale> {
   })
   declare issuable_document_id: number;
 
-  @BelongsTo(() => IssuableDocument, 'id')
+  @BelongsTo(() => IssuableDocument, 'issuable_document_id')
   declare issuableDocument: IssuableDocument;
 
+  @Column({
+    type: DataType.INTEGER,
+  })
   declare seller_assigned: number;
 
   @Column({
     type: DataType.STRING,
   })
   declare type_payment: string;
+
+  @ForeignKey(() => WayToPay)
+  @Column({
+    field: 'type_payment_id',
+    allowNull: true,
+  })
+  declare type_payment_id: number;
+
+  @BelongsTo(() => WayToPay, 'type_payment_id')
+  declare wayToPay: WayToPay;
   
   @Column({
     type: DataType.STRING,
@@ -90,7 +104,7 @@ export class Sale extends Model<Sale> {
   })
   declare origin_warehouse_id: number;
 
-  @BelongsTo(() => Warehouse, 'id')
+  @BelongsTo(() => Warehouse, 'origin_warehouse_id')
   declare warehouse: Warehouse;
 
   @ForeignKey(() => PointSale)
@@ -100,7 +114,7 @@ export class Sale extends Model<Sale> {
   })
   declare point_sale_id: number;
 
-  @BelongsTo(() => PointSale, 'id')
+  @BelongsTo(() => PointSale, 'point_sale_id')
   declare pointSale: PointSale;
 
   @Column({
@@ -154,6 +168,12 @@ export class Sale extends Model<Sale> {
     type: DataType.DATE,
   })
   declare sale_date: Date;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  declare paid: boolean;
 
   // Relación uno a uno: una venta tiene un documento de venta
   @HasOne(() => SaleDocument)

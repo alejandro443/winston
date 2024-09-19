@@ -43,7 +43,7 @@ export class SaleDocument extends Model<SaleDocument> {
   })
   declare issuable_document_id: number;
 
-  @BelongsTo(() => IssuableDocument, 'id')
+  @BelongsTo(() => IssuableDocument, 'issuable_document_id')
   declare issuableDocument: IssuableDocument;
 
   @Column({
