@@ -69,6 +69,9 @@ import { ListPriceProduct } from '../../domain/entities/ListPriceProduct.entity'
 import { ListPriceClient } from '../../domain/entities/ListPriceClient.entity';
 import { FinancialSequence } from '../../domain/entities/FinancialSequence.entity';
 import { SaleDocument } from '../../domain/entities/SaleDocument.entity';
+import { SalesPayment } from '../../domain/entities/SalesPayment.entity';
+import { SalePaymentSchedule } from '../../domain/entities/SalePaymentSchedule.entity';
+import { PaymentSchedule } from '../../domain/entities/PaymentSchedule.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -167,7 +170,10 @@ export const ConnectionProvider = [
         ListPriceProduct,
         ListPriceClient,
         FinancialSequence,
-        SaleDocument
+        SaleDocument,
+        SalesPayment,
+        PaymentSchedule,
+        SalePaymentSchedule
       ]);
 
       await sequelize.sync({ alter: true });
