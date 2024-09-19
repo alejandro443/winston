@@ -43,7 +43,8 @@ import {
   POINT_SALE_APPLICATION,
   SALE_APPLICATION,
   POINT_SALE_USER_APPLICATION,
-  LIST_PRICE_APPLICATION
+  LIST_PRICE_APPLICATION,
+  PAYMENT_SCHEDULE_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -89,6 +90,7 @@ import { PointSaleApplicationService } from './service/PointSale/PointSaleApplic
 import { SaleApplicationService } from './service/Sale/SaleApplicationService';
 import { PointSaleUserApplicationService } from './service/PointSaleUser/PointSaleUserApplicationService';
 import { ListPriceApplicationService } from './service/ListPrices/ListPriceApplicationService';
+import { PaymentScheduleApplicationService } from './service/PaymentSchedule/PaymentScheduleApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -446,6 +448,14 @@ export class CoreModule {
       inject: [],
     };
 
+    const PaymentScheduleApplicationProvider = {
+      provide: PAYMENT_SCHEDULE_APPLICATION,
+      useFactory() {
+        return new PaymentScheduleApplicationService();
+      },
+      inject: [],
+    };
+
     return {
       module: CoreModule,
       global: true,
@@ -495,6 +505,7 @@ export class CoreModule {
         SaleApplicationProvider,
         PointSaleUserApplicationProvider,
         ListPriceApplicationProvider,
+        PaymentScheduleApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -541,6 +552,7 @@ export class CoreModule {
         SALE_APPLICATION,
         POINT_SALE_USER_APPLICATION,
         LIST_PRICE_APPLICATION,
+        PAYMENT_SCHEDULE_APPLICATION,
       ],
     };
   }
