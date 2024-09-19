@@ -48,7 +48,7 @@ export class SaleService {
 
   async getAllReceivable() {
     try {
-      return this.repository?.getAllReceivable();
+      return "this.repository?.getAllReceivable();"
     } catch (error: any) {
       return error;
     }

@@ -83,11 +83,11 @@ export class SaleController {
   async getAllReceivable(): Promise<SalesResponse> {
     Log.info(`(Get) Get all sale`);
 
-    const sale = await this.application.getAllReceivable();
+    // const sale = await this.application.getAllReceivable();
     return {
       status: 201,
       message: `Ok`,
-      data: sale,
+      data: [],
     };
   }
 

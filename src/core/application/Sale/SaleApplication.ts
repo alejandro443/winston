@@ -14,4 +14,7 @@ export interface SaleApplication {
     body: UpdateSaleDto,
   ): Promise<OneSaleDto>;
   deleteSale(id: any): any;
+
+  getAllReceivable(): Promise<Array<AllSaleDto>>;
+
 }
