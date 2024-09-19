@@ -72,4 +72,23 @@ export class SaleController {
       data: sale,
     };
   }
+
+  @ApiBadRequestResponse({ description: 'Invalid sale id' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: SaleResponse,
+  })
+  @HttpCode(201)
+  @Get('/sales_receivable')
+  async getAllReceivable(): Promise<SalesResponse> {
+    Log.info(`(Get) Get all sale`);
+
+    const sale = await this.application.getAllReceivable();
+    return {
+      status: 201,
+      message: `Ok`,
+      data: sale,
+    };
+  }
+
 }

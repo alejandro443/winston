@@ -45,4 +45,12 @@ export class SaleService {
       return error;
     }
   }
+
+  async getAllReceivable() {
+    try {
+      return this.repository?.getAllReceivable();
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

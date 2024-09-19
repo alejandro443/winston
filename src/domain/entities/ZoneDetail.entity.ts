@@ -26,7 +26,7 @@ export class ZoneDetail extends Model<ZoneDetail> {
   })
   declare zone_id: number | null;
 
-  @BelongsTo(() => Zone, 'id')
+  @BelongsTo(() => Zone, 'zone_id')
   declare zone: Zone;
 
   @ForeignKey(() => Client)
@@ -36,7 +36,7 @@ export class ZoneDetail extends Model<ZoneDetail> {
   })
   declare client_id: number | null;
 
-  @BelongsTo(() => Client, 'id')
+  @BelongsTo(() => Client, 'client_id')
   declare client: Client;
 
   @ForeignKey(() => User)
@@ -46,6 +46,6 @@ export class ZoneDetail extends Model<ZoneDetail> {
   })
   declare user_id: number | null;
 
-  @BelongsTo(() => User, 'id')
+  @BelongsTo(() => User, 'user_id')
   declare user: User;
 }
