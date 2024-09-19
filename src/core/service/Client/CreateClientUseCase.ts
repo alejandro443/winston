@@ -40,11 +40,11 @@ export class CreateClientUseCase {
         await this.CreateDeliveryPoints(client.delivery_data, response.id);
       }
 
-      if(client.zone_id){
-        await this.CreateZoneDetail(response.id, client.zone_id)
-      } else {
-        await this.CreateZoneDetail(response.id)
-      }
+      // if(client.zone_id){
+      //   await this.CreateZoneDetail(response.id, client.zone_id)
+      // } else {
+      //   await this.CreateZoneDetail(response.id)
+      // }
       
       return { ...response.dataValues };
     } catch (error: any) {
