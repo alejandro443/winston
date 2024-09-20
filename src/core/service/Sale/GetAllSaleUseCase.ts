@@ -25,14 +25,33 @@ export class GetAllSaleUseCase {
     }
   }
 
-  async getAllReceivable() {
+  async getAllReceivable(filters: any) {
     try {
-      const response: any = await this.saleService?.getAllReceivable();
+
+      const endDate = new Date();
+      const startDate = new Date(endDate);
+      startDate.setDate(endDate.getDate() - 7);
+
+      filters.startDate = filters.startDate ? filters.startDate : startDate;
+      filters.endDate = filters.endDate ? filters.endDate : endDate;
+
+      const response: any = await this.saleService?.getAllReceivable(filters);
 
       const response_transformed: any = response.map((sale: any) => {
-        const sale_data: any = sale.toJSON();
-        let objectEntity: object = {};
-        console.log(sale_data)
+        return {
+          sale_paid: sale.paid,
+          sale_date: sale.sale_date,
+          client_name: sale.client.person.name,
+          client_phone: sale.client.person.main_phone,
+          type_document: sale.saleDocument.type_document,
+          document_serie: sale.saleDocument.serie + ' - ' + sale.saleDocument.correlative,
+          asssigned_seller: sale.client.seller.user,
+          payment_last_date: sale.salePaymentSchedule.payment_last_date,
+          total_sale: sale.total_sale,
+          balance_paid: sale.salePaymentSchedule.total_payments,
+          outstanding_balance: sale.total_sale - sale.salePaymentSchedule.total_payments,
+          number_quotas: sale.salePaymentSchedule.number_quotas
+        };
       });
 
       return response_transformed;

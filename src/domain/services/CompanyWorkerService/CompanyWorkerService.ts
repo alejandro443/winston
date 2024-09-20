@@ -57,9 +57,9 @@ export class CompanyWorkerService {
         return {
           company_worker_id: data_transform.id,
           company_position_id: data_transform.company_position_id,
-          company_position_name: data_transform.companyPosition.name,
+          company_position_name: data_transform?.companyPosition?.name,
           company_area_id: data_transform.company_area_id,
-          company_area_name: data_transform.companyArea.name,
+          company_area_name: data_transform?.companyArea?.name,
           receptionist: data_transform.person
         }
       })

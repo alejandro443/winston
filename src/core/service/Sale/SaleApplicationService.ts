@@ -71,9 +71,9 @@ export class SaleApplicationService
     }
   }
 
-  async getAllReceivable() {
+  async getAllReceivable(filters: any) {
     try {
-      return this.getAllUseCase?.getAllReceivable();
+      return this.getAllUseCase?.getAllReceivable(filters);
     } catch (error: any) {
       return error;
     }

@@ -1,3 +1,4 @@
+import { SaleApplicationError } from '@src/core/shared/error/SaleApplicationError';
 import { Client } from '@src/domain/entities/Client.entity';
 import { Company } from '@src/domain/entities/Company.entity';
 import { FinancialSequence } from '@src/domain/entities/FinancialSequence.entity';
@@ -10,6 +11,7 @@ import { SalesPayment } from '@src/domain/entities/SalesPayment.entity';
 import { User } from '@src/domain/entities/User.entity';
 import { SubmissionStatus } from '@src/infraestructure/shared/enums/SubmissionStatus';
 import { WayToPayId } from '@src/infraestructure/shared/enums/WayToPay';
+import { Op } from 'sequelize';
 import {
   NewSaleDto,
   UpdateSaleDto,
@@ -23,7 +25,7 @@ export class SaleRepository {
     try {
       return Sale.findOne({ where: { id: id } });
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -31,7 +33,7 @@ export class SaleRepository {
     try {
       return Sale.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -126,7 +128,7 @@ export class SaleRepository {
       // Rollback en caso de error
       console.log(error)
       await transaction.rollback();
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -134,7 +136,7 @@ export class SaleRepository {
     try {
       return Sale.update(body, { where: { id: id } });
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -142,12 +144,44 @@ export class SaleRepository {
     try {
       return Sale.destroy({ where: { id: id } });
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
-  async getAllReceivable( way_to_pay_id = 1, status = 'all', client = 'all', date = new Date()) {
+  async getAllReceivable(filters: any) {
     try {
+      const whereConditions: any = {
+        deleted_at: null,
+        type_payment_id: 2,
+      };
+  
+      if (filters?.status !== undefined) {
+        switch(filters.status){
+          case 'paid':
+            whereConditions.paid = true;
+            break;
+          case 'pending':
+            whereConditions.paid = false;
+            break;
+          default:
+            break;
+        }
+      }
+  
+      if (filters?.client) {
+        whereConditions['$Client.type_entity$'] = { [Op.iLike]: `%${filters.client}%` };
+      }
+  
+      if (filters?.startDate && filters?.endDate) {
+        whereConditions.sale_date = {
+          [Op.between]: [filters.startDate, filters.endDate],
+        };
+      } else if (filters?.startDate) {
+        whereConditions.sale_date = { [Op.gte]: filters.startDate };
+      } else if (filters?.endDate) {
+        whereConditions.sale_date = { [Op.lte]: filters.endDate };
+      }
+  
       const data: any = await Sale.findAll({
         include: [
           { 
@@ -183,23 +217,19 @@ export class SaleRepository {
             as: 'seller', 
             required: false,
             attributes: [['user', 'sale_assigned_seller']]
+          },
+          {
+            model: SalePaymentSchedule,
+            required: false
           }
         ],
         attributes: ['total_sale', 'sale_date', 'paid'],
-        where: {
-          type_payment_id: way_to_pay_id,
-          paid: false,
-          // sale_date: date,
-          deleted_at: null
-        } 
+        where: whereConditions,
       });
-
-      // console.log(data);
-
+ 
       return data;
     } catch (error: any) {
-      console.log(error)
-      return error;
+      throw new SaleApplicationError(error)
     }
   }
 }

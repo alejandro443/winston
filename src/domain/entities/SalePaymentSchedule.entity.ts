@@ -7,10 +7,12 @@ import {
   UpdatedAt,
   DeletedAt,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
+  HasOne
 } from 'sequelize-typescript';
 import { Sale } from './Sale.entity';
 import { v4 as uuidv4 } from 'uuid';
+import { PaymentSchedule } from './PaymentSchedule.entity';
 
 
 @Table({ tableName: 'sales_payment_schedules' })
@@ -51,9 +53,15 @@ export class SalePaymentSchedule extends Model<SalePaymentSchedule> {
   declare payment_last_date: Date;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare total_sale: number;
+
+  @Column({
+    type: DataType.FLOAT,
+    defaultValue: 0
+  })
+  declare total_payments: number;
 
   @Column({
     type: DataType.INTEGER,

@@ -1,3 +1,4 @@
+import { SaleApplicationError } from '@src/core/shared/error/SaleApplicationError';
 import { NewSaleDto } from 'src/core/shared/dto/Sale/sale_dto';
 import { SaleRepository } from 'src/domain/repositories/SaleRepository/SaleRepository';
 
@@ -10,7 +11,7 @@ export class SaleService {
     try {
       return this.repository?.findOne(id);
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -18,7 +19,7 @@ export class SaleService {
     try {
       return this.repository?.findAll();
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -26,7 +27,7 @@ export class SaleService {
     try {
       return await this.repository?.create(body);
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -34,7 +35,7 @@ export class SaleService {
     try {
       return this.repository?.update(id, body);
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -42,15 +43,15 @@ export class SaleService {
     try {
       return this.repository?.deleted(id);
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 
-  async getAllReceivable() {
+  async getAllReceivable(filters: object) {
     try {
-      return "this.repository?.getAllReceivable();"
+      return this.repository?.getAllReceivable(filters);
     } catch (error: any) {
-      return error;
+      throw new SaleApplicationError(error);
     }
   }
 }
