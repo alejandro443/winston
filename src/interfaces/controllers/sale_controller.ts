@@ -20,6 +20,7 @@ import { SaleApplication } from 'src/core/application/Sale/SaleApplication';
 import {
   SalesResponse,
   SaleResponse,
+  SalesReceivableResponse,
 } from '../responses/sale.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
@@ -77,14 +78,14 @@ export class SaleController {
   @ApiBadRequestResponse({ description: 'Invalid sale id' })
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: FiltersSalesRequestDto,
+    type: SalesReceivableResponse,
   })
   @HttpCode(201)
   @Post('/sales_receivable')
   async getAllReceivable(
     @Body() request: FiltersSalesRequestDto,
-  ): Promise<SalesResponse> {
-    Log.info(`(Get) Get all sale`);
+  ): Promise<SalesReceivableResponse> {
+    Log.info(`(Post) getAllReceivable`);
 
     const sale = await this.application.getAllReceivable(request);
     return {
@@ -93,5 +94,4 @@ export class SaleController {
       data: sale,
     };
   }
-
 }

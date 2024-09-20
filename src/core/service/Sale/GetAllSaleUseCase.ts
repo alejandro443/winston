@@ -39,6 +39,8 @@ export class GetAllSaleUseCase {
 
       const response_transformed: any = response.map((sale: any) => {
         return {
+          sale_id: sale.id,
+          sale_crypto_uuid: sale.crypto_uuid,
           sale_paid: sale.paid,
           sale_date: sale.sale_date,
           client_name: sale.client.person.name,

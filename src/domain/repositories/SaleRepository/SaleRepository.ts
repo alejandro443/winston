@@ -223,7 +223,7 @@ export class SaleRepository {
             required: false
           }
         ],
-        attributes: ['total_sale', 'sale_date', 'paid'],
+        attributes: ['id', 'crypto_uuid', 'total_sale', 'sale_date', 'paid'],
         where: whereConditions,
       });
  
