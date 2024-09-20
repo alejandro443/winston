@@ -44,7 +44,8 @@ import {
   SALE_APPLICATION,
   POINT_SALE_USER_APPLICATION,
   LIST_PRICE_APPLICATION,
-  PAYMENT_SCHEDULE_APPLICATION
+  PAYMENT_SCHEDULE_APPLICATION,
+  QUOTA_PAYMENT_APPLICATION
 } from './shared/constants/application.constants';
 import { RolApplicationService } from './service/Rol/RolApplicationService';
 import { ClassificationApplicationService } from './service/Classification/ClassificationApplicationService';
@@ -91,6 +92,7 @@ import { SaleApplicationService } from './service/Sale/SaleApplicationService';
 import { PointSaleUserApplicationService } from './service/PointSaleUser/PointSaleUserApplicationService';
 import { ListPriceApplicationService } from './service/ListPrices/ListPriceApplicationService';
 import { PaymentScheduleApplicationService } from './service/PaymentSchedule/PaymentScheduleApplicationService';
+import { QuotaPaymentApplicationService } from './service/QuotaPayment/QuotaPaymentApplicationService';
 
 export type CoreModuleOptions = {
   modules: Type[];
@@ -455,6 +457,14 @@ export class CoreModule {
       },
       inject: [],
     };
+    
+    const QuotaPaymentApplicationProvider = {
+      provide: QUOTA_PAYMENT_APPLICATION,
+      useFactory() {
+        return new QuotaPaymentApplicationService();
+      },
+      inject: [],
+    };
 
     return {
       module: CoreModule,
@@ -505,7 +515,8 @@ export class CoreModule {
         SaleApplicationProvider,
         PointSaleUserApplicationProvider,
         ListPriceApplicationProvider,
-        PaymentScheduleApplicationProvider
+        PaymentScheduleApplicationProvider,
+        QuotaPaymentApplicationProvider
       ],
       exports: [
         AUTH_APPLICATION,
@@ -553,6 +564,7 @@ export class CoreModule {
         POINT_SALE_USER_APPLICATION,
         LIST_PRICE_APPLICATION,
         PAYMENT_SCHEDULE_APPLICATION,
+        QUOTA_PAYMENT_APPLICATION,
       ],
     };
   }

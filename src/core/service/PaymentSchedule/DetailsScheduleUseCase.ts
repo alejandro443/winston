@@ -10,8 +10,6 @@ export class DetailsScheduleUseCase {
     try {
       const response: any = await this.paymentScheduleService?.ServiceFindAll(sale_id);
       const data_response: any = response.map((data: any) => {
-        console.log("details_schedule", data.sale)
-
         return {
           total_sale: data.sale.total_sale,
           seller: data.sale.seller.user,
@@ -21,10 +19,6 @@ export class DetailsScheduleUseCase {
         }
 
       });
-
-      console.log("data_response", data_response)
-
-
       return data_response;
     } catch (error: any) {
       throw new PaymentScheduleApplicationError(error);

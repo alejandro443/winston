@@ -58,6 +58,7 @@ export class SalePaymentSchedule extends Model<SalePaymentSchedule> {
   })
   declare total_sale: number;
 
+  // Total de pago acumulado
   @Column({
     type: DataType.FLOAT,
     defaultValue: 0

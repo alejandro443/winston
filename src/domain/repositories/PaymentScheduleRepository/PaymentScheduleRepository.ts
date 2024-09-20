@@ -11,7 +11,6 @@ export class PaymentScheduleRepository {
   constructor() {}
 
   async findAll(sale_id: number | string) {
-    console.log(sale_id)
     try {
       const data: any = await SalePaymentSchedule.findAll({
         include: [

@@ -72,6 +72,7 @@ import { SaleDocument } from '../../domain/entities/SaleDocument.entity';
 import { SalesPayment } from '../../domain/entities/SalesPayment.entity';
 import { SalePaymentSchedule } from '../../domain/entities/SalePaymentSchedule.entity';
 import { PaymentSchedule } from '../../domain/entities/PaymentSchedule.entity';
+import { QuotaPayment } from '../../domain/entities/QuotaPayment.entity';
 
 let configuration: any;
 switch (process.env.NODE_ENV as any) {
@@ -173,7 +174,8 @@ export const ConnectionProvider = [
         SaleDocument,
         SalesPayment,
         PaymentSchedule,
-        SalePaymentSchedule
+        SalePaymentSchedule,
+        QuotaPayment
       ]);
 
       await sequelize.sync({ alter: true });

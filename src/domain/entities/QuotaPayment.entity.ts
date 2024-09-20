@@ -9,12 +9,12 @@ import {
   ForeignKey,
   BelongsTo
 } from 'sequelize-typescript';
-import { Sale } from './Sale.entity';
+import { PaymentSchedule } from './PaymentSchedule.entity';
 import { User } from './User.entity';
 import { v4 as uuidv4 } from 'uuid';
 
-@Table({ tableName: 'sales_payments' })
-export class SalesPayment extends Model<SalesPayment> {
+@Table({ tableName: 'quota_payments' })
+export class QuotaPayment extends Model<QuotaPayment> {
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -55,20 +55,25 @@ export class SalesPayment extends Model<SalesPayment> {
   })
   declare payment_date: Date;
 
-  @ForeignKey(() => Sale)
   @Column({
-    field: 'sale_id',
+    type: DataType.STRING,
+  })
+  declare voucher_image: String;
+
+  @ForeignKey(() => PaymentSchedule)
+  @Column({
+    field: 'payment_schedule_id',
     allowNull: false,
   })
-  declare sale_id: number;
+  declare payment_schedule_id: number;
 
-  @BelongsTo(() => Sale, 'sale_id')
-  declare sale: Sale;
+  @BelongsTo(() => PaymentSchedule, 'payment_schedule_id')
+  declare paymentSchedule: PaymentSchedule;
 
   @ForeignKey(() => User)
   @Column({
     field: 'user_id',
-    allowNull: true,
+    allowNull: false,
   })
   declare user_id: number;
 

@@ -47,18 +47,22 @@ export class PaymentSchedule extends Model<PaymentSchedule> {
   })
   declare payment_date: Date;
 
+  // Total del pago de la quota
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT
   })
   declare payment_amount: number;
-
+  
+  // Total de pago acumulado
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
+    defaultValue: 0,
   })
   declare amount: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
+    defaultValue: 0,
   })
   declare residue: number;
 
