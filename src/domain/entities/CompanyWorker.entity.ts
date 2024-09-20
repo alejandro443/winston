@@ -30,7 +30,7 @@ export class CompanyWorker extends Model<CompanyWorker> {
   })
   declare company_id: number | null;
 
-  @BelongsTo(() => Company, 'id')
+  @BelongsTo(() => Company, 'company_id')
   declare company: Company;
 
   @ForeignKey(() => Person)
@@ -40,7 +40,7 @@ export class CompanyWorker extends Model<CompanyWorker> {
   })
   declare person_id: number | null;
 
-  @BelongsTo(() => Person, 'id')
+  @BelongsTo(() => Person, 'person_id')
   declare person: Person;
 
   @ForeignKey(() => CompanyPosition)
@@ -50,7 +50,7 @@ export class CompanyWorker extends Model<CompanyWorker> {
   })
   declare company_position_id: number | null;
 
-  @BelongsTo(() => CompanyPosition, 'id')
+  @BelongsTo(() => CompanyPosition, 'company_position_id')
   declare companyPosition: CompanyPosition;
 
   @ForeignKey(() => CompanyArea)
@@ -60,7 +60,7 @@ export class CompanyWorker extends Model<CompanyWorker> {
   })
   declare company_area_id: number | null;
 
-  @BelongsTo(() => CompanyArea, 'id')
+  @BelongsTo(() => CompanyArea, 'company_area_id')
   declare companyArea: CompanyArea;
 
   @Column({

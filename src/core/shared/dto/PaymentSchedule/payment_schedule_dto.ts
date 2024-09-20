@@ -70,6 +70,10 @@ export class PaymentScheduleDto {
     description: 'Residuo restante',
     type: Number,
   })
+  @ApiResponseProperty({
+    type: Number,
+  })
+  @IsOptional()
   @IsNumber()
   residue: number;
 
@@ -78,6 +82,10 @@ export class PaymentScheduleDto {
     type: Boolean,
     default: false,
   })
+  @ApiResponseProperty({
+    type: Number,
+  })
+  @IsOptional()
   @IsBoolean()
   done: boolean;
 

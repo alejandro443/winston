@@ -47,4 +47,27 @@ export class ClientDeliveryPointService {
       return error;
     }
   }
+
+  async getAllClientDeliveryPointByClient(client_id: number) {
+    try {
+      const data: any = await this.repository?.findAllById({client_id: client_id});
+      
+      const client_delivery_point_data: any = data.map((client_delivery_point: any)=> {
+        const data_transform: any = client_delivery_point.toJSON();
+
+        return {
+          id: data_transform.id,
+          client_id: data_transform.client_id,
+          delivery_point_id: data_transform.delivery_point_id,
+          status: data_transform.status,
+          delivery_point: data_transform.deliveryPoint
+        }
+      })
+
+      return client_delivery_point_data;
+
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

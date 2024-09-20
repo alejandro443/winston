@@ -1,3 +1,4 @@
+import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { PortfolioService } from 'src/domain/services/ClientService/PortfolioService';
 
 export class PortfolioClientUseCase {
@@ -10,7 +11,7 @@ export class PortfolioClientUseCase {
       var portfolio: any = await this.portfolioService?.getAllPortfolio();
       return portfolio
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error)
     }
   }
 }

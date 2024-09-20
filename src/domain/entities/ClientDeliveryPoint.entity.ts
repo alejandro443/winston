@@ -28,7 +28,7 @@ export class ClientDeliveryPoint extends Model<ClientDeliveryPoint> {
   })
   declare client_id: number;
 
-  @BelongsTo(() => Client, 'id')
+  @BelongsTo(() => Client, 'client_id')
   declare client: Client;
 
   @ForeignKey(() => DeliveryPoint)
@@ -38,7 +38,7 @@ export class ClientDeliveryPoint extends Model<ClientDeliveryPoint> {
   })
   declare delivery_point_id: number;
 
-  @BelongsTo(() => DeliveryPoint, 'id')
+  @BelongsTo(() => DeliveryPoint, 'delivery_point_id')
   declare deliveryPoint: DeliveryPoint;
 
   @Column({

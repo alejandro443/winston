@@ -89,10 +89,10 @@ export class CreateClientUseCase {
           responsible_id: response.id
         }
   
-        const response_delivery_point: any = this.deliveryPointService.createDeliveryPoint(delivery_point_new);
+        const response_delivery_point: any = await this.deliveryPointService.createDeliveryPoint(delivery_point_new);
         if (!response_delivery_point) throw new ClientApplicationError('Error en la creación de cliente > Punto de entrega.', 'INTERNAL_SERVER_ERROR');
   
-        this.clientDeliveryPointService.createClientDeliveryPoint({
+        await this.clientDeliveryPointService.createClientDeliveryPoint({
           client_id: client_id,
           delivery_point_id: response_delivery_point.id
         })

@@ -16,8 +16,7 @@ export class UpdatePointSaleUseCase {
           id,
           point_sale,
         );
-      
-        console.log(response)
+
       return {
         id: response.id,
         code: response.code,

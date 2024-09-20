@@ -20,6 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { SaleDocument } from './SaleDocument.entity';
 import { WayToPay } from './WayToPay.entity';
 import { SalePaymentSchedule } from './SalePaymentSchedule.entity';
+import { DeliveryPoint } from './DeliveryPoint.entity';
 
 @Table({ tableName: 'sales' })
 export class Sale extends Model<Sale> {
@@ -180,6 +181,16 @@ export class Sale extends Model<Sale> {
     defaultValue: false,
   })
   declare paid: boolean;
+
+  @ForeignKey(() => DeliveryPoint)
+  @Column({
+    field: 'delivery_point_id',
+    allowNull: true,
+  })
+  declare delivery_point_id: number;
+
+  @BelongsTo(() => DeliveryPoint, 'delivery_point_id')
+  declare deliveryPoint: DeliveryPoint;
 
   // Relación uno a uno: una venta tiene un documento de venta
   @HasOne(() => SaleDocument)

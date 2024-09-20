@@ -32,9 +32,8 @@ export class ClientApplicationService implements ClientApplication {
 
   async getAllClient() {
     try {
-      const asd: any = await this.getAllUseCase?.getAllClient();
-      console.log(asd);
-      return asd;
+      const data: any = await this.getAllUseCase?.getAllClient();
+      return data;
     } catch (error: any) {
       return error;
     }

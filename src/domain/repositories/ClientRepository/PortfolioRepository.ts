@@ -39,8 +39,8 @@ export class PortfolioRepository {
           {model: BusinessTurn, required: false},
           {model: Zone, required: false},
           {model: IssuableDocument, required: false},
-          { model: User, as: 'user', required: false },
-          { model: User, as: 'seller', required: false }
+          {model: User, as: 'user', required: false},
+          {model: User, as: 'seller', required: false},
         ],
         where: {id: client_id}
       })

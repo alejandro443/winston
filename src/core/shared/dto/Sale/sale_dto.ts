@@ -202,11 +202,21 @@ export class SaleDto {
   payment_schedule?: PaymentScheduleDto[];
 
   @ApiPropertyOptional({
+    description: 'Id del Punto de entrega.',
+    type: Number,
+  })
+  @IsNumber()
+  delivery_point_id?: number;
+
+  @ApiPropertyOptional({
     description: 'Fecha de creación del registro.',
     type: Date,
   })
   @IsOptional()
   @IsDateString()
+  @ApiResponseProperty({
+    type: Date,
+  })
   created_at?: Date;
 
   @ApiPropertyOptional({
@@ -215,11 +225,17 @@ export class SaleDto {
   })
   @IsOptional()
   @IsDateString()
+  @ApiResponseProperty({
+    type: Date,
+  })
   updated_at?: Date;
 
   @IsOptional()
   @ApiPropertyOptional({
     description: 'Fecha de eliminación (borrado lógico).',
+    type: Date,
+  })
+  @ApiResponseProperty({
     type: Date,
   })
   @IsDateString()

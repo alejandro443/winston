@@ -1,11 +1,17 @@
 import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
+import { ClientDeliveryPointService } from '@src/domain/services/ClientDeliveryPointService/ClientDeliveryPointService';
+import { CompanyWorkerService } from '@src/domain/services/CompanyWorkerService/CompanyWorkerService';
 import { ClientService } from 'src/domain/services/ClientService/ClientService';
 
 export class GetOneClientUseCase {
   constructor(
-    private clientService?: ClientService
+    private clientService?: ClientService,
+    private companyWorkerService?: CompanyWorkerService,
+    private clientDeliveryPoints?: ClientDeliveryPointService
   ) {
     this.clientService = new ClientService();
+    this.companyWorkerService = new CompanyWorkerService();
+    this.clientDeliveryPoints = new ClientDeliveryPointService()
   }
 
   async getOneClient(id: number) {
@@ -13,7 +19,7 @@ export class GetOneClientUseCase {
       const response: any = await this.clientService?.getOnePortfolioClient(id);
       return response
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error)
     }
   }
 
@@ -23,7 +29,9 @@ export class GetOneClientUseCase {
 
       if(!portfolio_one_data?.length) { return new ClientApplicationError('No encontrado.', 'NOT_FOUND')}
 
-      const portfolio_one_dto: any = await portfolio_one_data.map((client_data: any) => {
+      const delivery_points: any = await this.clientDeliveryPoints.getAllClientDeliveryPointByClient(client_id)
+
+      const portfolio_one_dto: any = portfolio_one_data.map(async (client_data: any) => {
         const client: any = client_data.toJSON();
         let objectEntity: object = {};
 
@@ -37,8 +45,8 @@ export class GetOneClientUseCase {
             classification_id: client.classification_id,
             group_id: client.group_id,
             type_client_id: client.type_client_id,
-            type_channel_id: 1,
-            commercial_section_id: 1,
+            type_channel_id: client.type_channel_id,
+            commercial_section_id: client.commercial_section_id,
             method_payment_id: client.method_payment_id,
             way_to_pay_id: client.way_to_pay_id,
             business_turn_id: client.business_turn_id,
@@ -51,11 +59,14 @@ export class GetOneClientUseCase {
             status: client.status,
             entity: {
               ...client.person
-            }
+            },
+            delivery_points: delivery_points
           };
         }
 
         if (client.type_entity == 'company') {
+          const company_worker: any = await this.companyWorkerService?.getAllCompanyWorkerByCompany(client_data.entity_id)
+
           objectEntity = {
             id: client.id,
             code: client.code,
@@ -65,8 +76,8 @@ export class GetOneClientUseCase {
             classification_id: client.classification_id,
             group_id: client.group_id,
             type_client_id: client.type_client_id,
-            type_channel_id: 1,
-            commercial_section_id: 1,
+            type_channel_id: client.type_channel_id,
+            commercial_section_id: client.commercial_section_id,
             method_payment_id: client.method_payment_id,
             way_to_pay_id: client.way_to_pay_id,
             business_turn_id: client.business_turn_id,
@@ -79,16 +90,20 @@ export class GetOneClientUseCase {
             seller_user: client.seller_id ? client.seller.user : '',
             entity: {
               ...client.company
-            }
+            },
+            managers: company_worker,
+            delivery_points: delivery_points
           };
         }
 
         return objectEntity;
       });
 
-      return portfolio_one_dto;
+      const data_response: any = await Promise.all(portfolio_one_dto);
+
+      return data_response;
     } catch (error: any) {
-      return error;
+      throw new ClientApplicationError(error);
     }
   }
 }
