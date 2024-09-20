@@ -8,7 +8,8 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
-  HasOne
+  HasOne,
+  HasMany
 } from 'sequelize-typescript';
 import { Sale } from './Sale.entity';
 import { v4 as uuidv4 } from 'uuid';
@@ -79,6 +80,9 @@ export class SalePaymentSchedule extends Model<SalePaymentSchedule> {
     defaultValue: true,
   })
   declare status: boolean;
+
+  @HasMany(() => PaymentSchedule)
+  declare paymentSchedule: PaymentSchedule[];
 
   @CreatedAt
   declare created_at: Date;

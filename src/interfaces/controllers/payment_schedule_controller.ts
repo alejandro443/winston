@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   Inject,
   Param,
@@ -41,6 +42,25 @@ export class PaymentScheduleController {
     @Body() body: any,
   ): Promise<any> {
     const ubigeo = await this.application.schedule_simulation(body);
+    return {
+      status: 200,
+      message: `Ok`,
+      data: ubigeo,
+    };
+  }
+
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: UbigeosResponse,
+  })
+  @ApiBadGatewayResponse({ description: 'Invalid Simulation.' })
+  @HttpCode(200)
+  @Get('/details_schedule/:sale_id')
+  async DetailsScheduleSimulation(
+    // TODO: El tipo del params, hacerlo correctamente
+    @Param() params: any,
+  ): Promise<any> {
+    const ubigeo = await this.application.details_schedule(params.sale_id);
     return {
       status: 200,
       message: `Ok`,

@@ -1,7 +1,8 @@
 import {
   UbigeoDto
 } from 'src/core/shared/dto/Ubigeo/ubigeo_dto';
-
 export interface PaymentScheduleApplication {
-  schedule_simulation(searchTerm: string): Promise<Array<UbigeoDto>>;
+  // TODO: Los tipo de respuesta que tendra la promesa, hacerlo correctamente.
+  schedule_simulation(searchTerm: string): Promise<Array<any>>;
+  details_schedule(sale_id: number | string): Promise<Array<any>>;
 }
