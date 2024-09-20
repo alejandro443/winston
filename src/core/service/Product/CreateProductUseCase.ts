@@ -18,7 +18,7 @@ export class CreateProductUseCase {
     try {
       if(product.list_prices){
         product.list_prices.map(async (price_list) => {
-          const list_id: any = price_list.list_price_id ? price_list.list_price_id : 1;
+          const list_id: any = price_list?.list_price_id ? price_list?.list_price_id : 1;
           await this.listPriceProductService?.create({
             list_price_id: list_id,
             product_id: response.id,

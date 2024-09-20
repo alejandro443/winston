@@ -32,7 +32,7 @@ export class SearchByDocumentUseCase {
           name: response.name,
           lastname: response.last_name,
           main_identification: response.main_identification,
-          list_price_id: data_client.list_price_id
+          list_price_id: data_client?.list_price_id
         }
       }else {
         // Referencia de TODO [TODO1]
@@ -70,7 +70,7 @@ export class SearchByDocumentUseCase {
           main_identification: response.main_identification,
           condition: response.condition,
           status: response.status,
-          list_price_id: data_client.list_price_id
+          list_price_id: data_client?.list_price_id
         }
       }else {
         const httpService: HttpService = new HttpService();
