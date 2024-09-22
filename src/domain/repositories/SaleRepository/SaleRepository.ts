@@ -238,46 +238,6 @@ export class SaleRepository {
 
   async findOneDetails(id: number) {
     try {
-      // const data: any = await SaleDetail.findAll({ 
-      //   include: [
-      //     { 
-      //       model: Sale, 
-      //       required: true,
-      //       include: [
-      //         { 
-      //           model: Client, 
-      //           required: false,
-      //           include: [
-      //             { 
-      //               model: Person, 
-      //               required: false,
-      //               attributes: ['main_phone', 'name']
-      //             },
-      //             { 
-      //               model: Company, 
-      //               required: false,
-      //               attributes: ['main_phone', 'name']
-      //             },
-      //           ],
-      //           attributes: ['type_entity']
-      //         },
-      //         {
-      //           model: SaleDocument,
-      //           required: true
-      //         }
-      //       ],
-      //       attributes: ['currency', 'currency_symbol', 'sale_date']
-      //     },
-      //     { 
-      //       model: Product, 
-      //       required: true,
-      //       attributes: ['name']
-      //     }
-      //   ],
-      //   where: { sale_id: id },
-      //   attributes: ['amount', 'product_price', 'product_subtotal', 'product_discount', 'product_total']
-      // });
-
       const data: any = await SaleDocument.findAll({
         include: [
           {
@@ -313,6 +273,18 @@ export class SaleRepository {
                 ],
                 attributes: ['type_entity']
               },
+              {
+                model: User,
+                required: true,
+                as: 'soldBy',
+                attributes: ['user']
+              },
+              {
+                model: User,
+                required: true,
+                as: 'seller',
+                attributes: ['user']
+              }
             ],
             attributes: ['currency', 'currency_symbol', 'sale_date', 'type_payment', 'note', 'order_type']
           },

@@ -22,6 +22,7 @@ import {
   SalesResponse,
   SaleResponse,
   SalesReceivableResponse,
+  SaleDetailsResponse,
 } from '../responses/sale.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
@@ -98,13 +99,13 @@ export class SaleController {
 
   @ApiCreatedResponse({
     description: 'The record has been successfully obtain.',
-    type: SaleResponse,
+    type: SaleDetailsResponse,
   })
   @HttpCode(200)
   @Get('/details/:sale_id')
   async getSaleDetail(
     @Param() params: any,
-  ): Promise<SalesResponse> {
+  ): Promise<SaleDetailsResponse> {
     Log.info(`(Get) Get all sale details.`);
 
     const sale = await this.application.getOneDetails(params.sale_id);

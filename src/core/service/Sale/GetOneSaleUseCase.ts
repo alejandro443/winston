@@ -32,6 +32,8 @@ export class GetOneSaleUseCase {
           submission_status: data_json.submission_status,
           currency: data_json.sale.currency,
           sale_date: data_json.sale.sale_date,
+          sold_by: data_json.sale.soldBy.user,
+          seller_assigned: data_json.sale.seller.user,
           products: data_json.sale.saleDetails.map((product)=>({
             amount: product.amount,
             product_price: product.product_price,
