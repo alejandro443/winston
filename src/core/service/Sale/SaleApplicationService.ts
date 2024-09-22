@@ -42,6 +42,14 @@ export class SaleApplicationService
     }
   }
 
+  async getOneDetails(id: number): Promise<any> {
+    try {
+      return this.getOneUseCase?.getOneDetails(id);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
   async createSale(
     body: NewSaleDto,
   ): Promise<any> {

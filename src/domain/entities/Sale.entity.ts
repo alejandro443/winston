@@ -8,7 +8,8 @@ import {
   DeletedAt,
   ForeignKey,
   BelongsTo,
-  HasOne
+  HasOne,
+  HasMany
 } from 'sequelize-typescript';
 import { Client } from './Client.entity';
 import { User } from './User.entity';
@@ -21,6 +22,7 @@ import { SaleDocument } from './SaleDocument.entity';
 import { WayToPay } from './WayToPay.entity';
 import { SalePaymentSchedule } from './SalePaymentSchedule.entity';
 import { DeliveryPoint } from './DeliveryPoint.entity';
+import { SaleDetail } from './SaleDetail.entity';
 
 @Table({ tableName: 'sales' })
 export class Sale extends Model<Sale> {
@@ -199,6 +201,10 @@ export class Sale extends Model<Sale> {
   @HasOne(() => SalePaymentSchedule)
   salePaymentSchedule: SalePaymentSchedule;
 
+  // Relación uno a muchos: una venta tiene muchos detalles
+  @HasMany(() => SaleDetail, { foreignKey: 'sale_id', as: 'saleDetails' })
+  saleDetails: SaleDetail[];
+  
   @CreatedAt
   declare created_at: Date;
 

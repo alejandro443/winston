@@ -26,11 +26,6 @@ export class QuotaPaymentRepository {
     try {
       const quota_payment = await QuotaPayment.create(body,{ transaction });
       const [rowsUpdated, [updateData]] = await PaymentSchedule.update(
-        // { 
-        //   amount: sequelize.literal(`amount + ${body.amount}`),
-        //   residue: sequelize.literal(`payment_amount - (amount + ${body.amount})`),
-        //   done: sequelize.literal(`CASE WHEN (payment_amount - (amount + ${body.amount})) = 0 THEN true ELSE false END`)
-        // }, 
         { 
           amount: sequelize.literal(`amount + ${body.amount}`),
           residue: sequelize.literal(`payment_amount - (amount + ${body.amount})`),

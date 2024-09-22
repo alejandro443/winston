@@ -16,5 +16,6 @@ export interface SaleApplication {
   deleteSale(id: any): any;
 
   getAllReceivable(filters: any): Promise<Array<AllSaleDto>>;
+  getOneDetails(sale_id: number): Promise<any>;
 
 }

@@ -5,6 +5,9 @@ import { FinancialSequence } from '@src/domain/entities/FinancialSequence.entity
 import { IssuableDocument } from '@src/domain/entities/IssuableDocument.entity';
 import { PaymentSchedule } from '@src/domain/entities/PaymentSchedule.entity';
 import { Person } from '@src/domain/entities/Person.entity';
+import { Product } from '@src/domain/entities/Product.entity';
+import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
+import { SaleDetail } from '@src/domain/entities/SaleDetail.entity';
 import { SaleDocument } from '@src/domain/entities/SaleDocument.entity';
 import { SalePaymentSchedule } from '@src/domain/entities/SalePaymentSchedule.entity';
 import { SalesPayment } from '@src/domain/entities/SalesPayment.entity';
@@ -19,7 +22,7 @@ import {
 import { Sale } from 'src/domain/entities/Sale.entity';
 
 export class SaleRepository {
-  constructor() {}
+  constructor() { }
 
   async findOne(id: number) {
     try {
@@ -48,12 +51,12 @@ export class SaleRepository {
       const financialSequence = await FinancialSequence.findOne({
         include: [
           {
-            model: IssuableDocument, 
+            model: IssuableDocument,
             required: true,
             attributes: ['name']
           }
         ],
-        where: { issuable_document_id: body.issuable_document_id},
+        where: { issuable_document_id: body.issuable_document_id },
         transaction,
       });
 
@@ -87,12 +90,12 @@ export class SaleRepository {
         type_document: financialSequence.issuableDocument.name
       }, { transaction });
 
-      if(body.type_payment_id == WayToPayId.contado) {
+      if (body.type_payment_id == WayToPayId.contado) {
         // 5. Crear los abonos de la venta 
         const sales_payment: any = body?.sales_payment;
 
-        const salesPaymentPromises = sales_payment.schedule.map((payment: any) => 
-          SalesPayment.create({ 
+        const salesPaymentPromises = sales_payment.schedule.map((payment: any) =>
+          SalesPayment.create({
             ...payment,
             sale_id: sale.id
           }, { transaction })
@@ -101,7 +104,7 @@ export class SaleRepository {
         await Promise.all(salesPaymentPromises);
       }
 
-      if(body.type_payment_id == WayToPayId.credito) {
+      if (body.type_payment_id == WayToPayId.credito) {
         // 5. Crear los cronograma de pagos
         const payment_schedule: any = body?.payment_schedule;
 
@@ -113,7 +116,7 @@ export class SaleRepository {
           number_quotas: payment_schedule.length
         }, { transaction })
 
-        const payment_schedule_data: Array<Object> = body?.payment_schedule.map((quota: any) => ({sale_payment_schedule_id: salePaymentSchedule.id, ...quota}))
+        const payment_schedule_data: Array<Object> = body?.payment_schedule.map((quota: any) => ({ sale_payment_schedule_id: salePaymentSchedule.id, ...quota }))
 
         await PaymentSchedule.bulkCreate(payment_schedule_data, { transaction });
       }
@@ -154,9 +157,9 @@ export class SaleRepository {
         deleted_at: null,
         type_payment_id: 2,
       };
-  
+
       if (filters?.status !== undefined) {
-        switch(filters.status){
+        switch (filters.status) {
           case 'paid':
             whereConditions.paid = true;
             break;
@@ -167,11 +170,11 @@ export class SaleRepository {
             break;
         }
       }
-  
+
       if (filters?.client) {
         whereConditions['$Client.type_entity$'] = { [Op.iLike]: `%${filters.client}%` };
       }
-  
+
       if (filters?.startDate && filters?.endDate) {
         whereConditions.sale_date = {
           [Op.between]: [filters.startDate, filters.endDate],
@@ -181,40 +184,40 @@ export class SaleRepository {
       } else if (filters?.endDate) {
         whereConditions.sale_date = { [Op.lte]: filters.endDate };
       }
-  
+
       const data: any = await Sale.findAll({
         include: [
-          { 
-            model: Client, 
+          {
+            model: Client,
             required: true,
             attributes: ['type_entity'],
             include: [
-              { 
-                model: Person, 
+              {
+                model: Person,
                 required: false,
                 attributes: ['name', 'main_phone']
               },
               {
-                model: Company, 
+                model: Company,
                 required: false,
                 attributes: ['name', 'main_phone']
               },
               {
-                model: User, 
+                model: User,
                 as: 'seller',
                 required: false,
                 attributes: ['user']
               },
-            ] 
+            ]
           },
-          { 
-            model: SaleDocument, 
+          {
+            model: SaleDocument,
             required: false,
             attributes: ['type_document', 'serie', 'correlative', 'issuance_date']
           },
-          { 
-            model: User, 
-            as: 'seller', 
+          {
+            model: User,
+            as: 'seller',
             required: false,
             attributes: [['user', 'sale_assigned_seller']]
           },
@@ -226,10 +229,102 @@ export class SaleRepository {
         attributes: ['id', 'crypto_uuid', 'total_sale', 'sale_date', 'paid'],
         where: whereConditions,
       });
- 
+
       return data;
     } catch (error: any) {
       throw new SaleApplicationError(error)
+    }
+  }
+
+  async findOneDetails(id: number) {
+    try {
+      // const data: any = await SaleDetail.findAll({ 
+      //   include: [
+      //     { 
+      //       model: Sale, 
+      //       required: true,
+      //       include: [
+      //         { 
+      //           model: Client, 
+      //           required: false,
+      //           include: [
+      //             { 
+      //               model: Person, 
+      //               required: false,
+      //               attributes: ['main_phone', 'name']
+      //             },
+      //             { 
+      //               model: Company, 
+      //               required: false,
+      //               attributes: ['main_phone', 'name']
+      //             },
+      //           ],
+      //           attributes: ['type_entity']
+      //         },
+      //         {
+      //           model: SaleDocument,
+      //           required: true
+      //         }
+      //       ],
+      //       attributes: ['currency', 'currency_symbol', 'sale_date']
+      //     },
+      //     { 
+      //       model: Product, 
+      //       required: true,
+      //       attributes: ['name']
+      //     }
+      //   ],
+      //   where: { sale_id: id },
+      //   attributes: ['amount', 'product_price', 'product_subtotal', 'product_discount', 'product_total']
+      // });
+
+      const data: any = await SaleDocument.findAll({
+        include: [
+          {
+            model: Sale,
+            required: true,
+            include: [
+              {
+                model: SaleDetail,
+                required: true,
+                include: [
+                  {
+                    model: Product,
+                    required: true,
+                    attributes: ['trade_name']
+                  }
+                ],
+                attributes: ['amount', 'product_price', 'product_subtotal', 'product_discount', 'product_total']
+              },
+              { 
+                model: Client, 
+                required: false,
+                include: [
+                  { 
+                    model: Person, 
+                    required: false,
+                    attributes: ['main_phone', 'name']
+                  },
+                  { 
+                    model: Company, 
+                    required: false,
+                    attributes: ['main_phone', 'name']
+                  },
+                ],
+                attributes: ['type_entity']
+              },
+            ],
+            attributes: ['currency', 'currency_symbol', 'sale_date', 'type_payment', 'note', 'order_type']
+          },
+        ],
+        where: { sale_id: id },
+        attributes: ['type_document', 'serie', 'correlative', 'submission_status']
+      })
+
+      return data;
+    } catch (error: any) {
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 }

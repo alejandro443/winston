@@ -41,11 +41,6 @@ export class Product extends Model<Product> {
   @Column({
     type: DataType.STRING,
   })
-  declare tradename: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
   declare description: string;
 
   @Column({

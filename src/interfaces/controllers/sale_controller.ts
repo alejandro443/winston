@@ -4,6 +4,7 @@ import {
   Get,
   HttpCode,
   Inject,
+  Param,
   Post,
   UseFilters,
 } from '@nestjs/common';
@@ -94,4 +95,24 @@ export class SaleController {
       data: sale,
     };
   }
+
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: SaleResponse,
+  })
+  @HttpCode(200)
+  @Get('/details/:sale_id')
+  async getSaleDetail(
+    @Param() params: any,
+  ): Promise<SalesResponse> {
+    Log.info(`(Get) Get all sale details.`);
+
+    const sale = await this.application.getOneDetails(params.sale_id);
+    return {
+      status: 200,
+      message: `Ok`,
+      data: sale,
+    };
+  }
+
 }

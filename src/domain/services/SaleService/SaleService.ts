@@ -54,4 +54,12 @@ export class SaleService {
       throw new SaleApplicationError(error);
     }
   }
+
+  async getOneDetailSale(id: number) {
+    try {
+      return this.repository?.findOneDetails(id);
+    } catch (error: any) {
+      throw new SaleApplicationError(error);
+    }
+  }
 }

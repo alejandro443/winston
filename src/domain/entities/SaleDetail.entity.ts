@@ -28,7 +28,7 @@ export class SaleDetail extends Model<SaleDetail> {
   })
   declare sale_id: number;
 
-  @BelongsTo(() => Sale, 'id')
+  @BelongsTo(() => Sale, 'sale_id')
   declare sale: Sale;
 
   @ForeignKey(() => Product)
@@ -38,7 +38,7 @@ export class SaleDetail extends Model<SaleDetail> {
   })
   declare product_id: number;
 
-  @BelongsTo(() => Product, 'id')
+  @BelongsTo(() => Product, 'product_id')
   declare product: Product;
 
   @Column({
@@ -52,22 +52,22 @@ export class SaleDetail extends Model<SaleDetail> {
   declare product_name: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare product_price: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare product_subtotal: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare product_discount: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare product_total: number;
 

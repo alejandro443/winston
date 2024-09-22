@@ -20,18 +20,17 @@ export class CreateSaleUseCase {
       // y no cumple con su registro
 
       if(sale.products?.length){
-        sale.products.map(async(product) => {
-          await this.saleDetailService.createSaleDetail({
-            sale_id: response.sale.dataValues.id,
-            product_id: product.id,
-            amount: product.amount,
-            product_name: product.name,
-            product_price: product.price,
-            product_subtotal: product.subtotal,
-            product_discount: product.discount,
-            product_total: product.total
-          })
-        })
+        const data_create: any = sale.products.map((product) => ({
+          sale_id: response.sale.dataValues.id,
+          product_id: product.id,
+          amount: product.amount,
+          product_name: product.name,
+          product_price: product.price,
+          product_subtotal: product.subtotal,
+          product_discount: product.discount,
+          product_total: product.total
+        }))
+        await this.saleDetailService.createSaleDetail(data_create)
       }
       return { id: response.id };
     } catch (error: any) {
