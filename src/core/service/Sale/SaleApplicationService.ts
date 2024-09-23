@@ -86,5 +86,13 @@ export class SaleApplicationService
       return error;
     }
   }
+  
+  async getElectronicReceipts() {
+    try {
+      return this.getAllUseCase?.getElectronicReceipts();
+    } catch (error: any) {
+      return error;
+    }
+  }
 
 }

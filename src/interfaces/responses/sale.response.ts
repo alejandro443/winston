@@ -1,8 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SaleDetailsDto } from '@src/core/shared/dto/Sale/sale_details_dto';
+import { SaleDetailsDto } from '@src/core/shared/dto/SaleDetail/sale_details_dto';
 import { SalesReceivableDto } from '@src/core/shared/dto/Sale/sales_receivable_dto';
 import { AppResponse } from '@src/infraestructure/responses/app.response';
 import { SaleDto } from 'src/core/shared/dto/Sale/sale_dto';
+import { ElectronicReceiptsDto } from '@src/core/shared/dto/SaleDetail/electronic_receipts_dto';
 
 export class SaleResponse extends AppResponse {
   @ApiProperty({
@@ -34,4 +35,12 @@ export class SaleDetailsResponse extends AppResponse {
     nullable: true,
   })
   data?: SaleDetailsDto;
+}
+
+export class ElectronicReceiptsResponse extends AppResponse {
+  @ApiProperty({
+    type: [ElectronicReceiptsDto],
+    nullable: true,
+  })
+  data?: ElectronicReceiptsDto[];
 }

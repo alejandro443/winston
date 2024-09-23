@@ -61,4 +61,37 @@ export class GetAllSaleUseCase {
       return error;
     }
   }
+
+  async getElectronicReceipts() {
+    try {
+      const response: any = await this.saleService?.getElectronicReceipts();
+
+      const response_data: any = response.map((data: any) => {
+        const data_json: any = data.toJSON();
+        var client = data_json.sale.client.type_entity == 'company' ?
+          data_json.sale.client.company :
+          data_json.sale.client.person;
+
+        return {
+          type_entity: data_json.sale.client.type_entity,
+          client_name: client?.name || '',
+          client_main_phone: client?.main_phone || '',
+          client_main_identification: client?.main_identification || '',
+          type_document: data_json.type_document,
+          voucher_number: `${data_json.serie} - ${data_json.correlative}`,
+          submission_status: data_json.submission_status,
+          currency: data_json.sale.currency,
+          sale_date: data_json.sale.sale_date,
+          issuance_date: data_json.issuance_date,
+          sold_by: data_json.sale.soldBy.user,
+          seller_assigned: data_json.sale.seller.user,
+          total_sale: data_json.sale.total_sale
+        }
+      })
+      return response_data;
+    } catch (error: any) {
+      console.log(error)
+      return error;
+    }
+  }
 }

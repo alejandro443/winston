@@ -23,6 +23,7 @@ import {
   SaleResponse,
   SalesReceivableResponse,
   SaleDetailsResponse,
+  ElectronicReceiptsResponse,
 } from '../responses/sale.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
@@ -109,6 +110,23 @@ export class SaleController {
     Log.info(`(Get) Get all sale details.`);
 
     const sale = await this.application.getOneDetails(params.sale_id);
+    return {
+      status: 200,
+      message: `Ok`,
+      data: sale,
+    };
+  }
+
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: ElectronicReceiptsResponse,
+  })
+  @HttpCode(200)
+  @Get('/electronic_receipts')
+  async getElectronicReceipts(): Promise<ElectronicReceiptsResponse> {
+    Log.info(`(Get) Get all electronic receipts.`);
+
+    const sale = await this.application.getElectronicReceipts();
     return {
       status: 200,
       message: `Ok`,

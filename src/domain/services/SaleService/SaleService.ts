@@ -1,10 +1,15 @@
 import { SaleApplicationError } from '@src/core/shared/error/SaleApplicationError';
+import { SaleDocumentRepository } from '@src/domain/repositories/SaleDocumentRepository/SaleDocumentRepository';
 import { NewSaleDto } from 'src/core/shared/dto/Sale/sale_dto';
 import { SaleRepository } from 'src/domain/repositories/SaleRepository/SaleRepository';
 
 export class SaleService {
-  constructor(private repository?: SaleRepository) {
+  constructor(
+    private repository?: SaleRepository,
+    private repositorySaleDocument?: SaleDocumentRepository
+  ) {
     this.repository = new SaleRepository();
+    this.repositorySaleDocument = new SaleDocumentRepository();
   }
 
   async getOneSale(id: number) {
@@ -54,12 +59,21 @@ export class SaleService {
       throw new SaleApplicationError(error);
     }
   }
-
+  
   async getOneDetailSale(id: number) {
     try {
-      return this.repository?.findOneDetails(id);
+      return this.repositorySaleDocument?.findOneWithSaleDetails(id);
     } catch (error: any) {
       throw new SaleApplicationError(error);
     }
   }
+  
+  async getElectronicReceipts() {
+    try {
+      return this.repositorySaleDocument?.getAll();
+    } catch (error: any) {
+      throw new SaleApplicationError(error);
+    }
+  }
+
 }

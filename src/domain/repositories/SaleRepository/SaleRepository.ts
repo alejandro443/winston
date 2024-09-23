@@ -5,9 +5,6 @@ import { FinancialSequence } from '@src/domain/entities/FinancialSequence.entity
 import { IssuableDocument } from '@src/domain/entities/IssuableDocument.entity';
 import { PaymentSchedule } from '@src/domain/entities/PaymentSchedule.entity';
 import { Person } from '@src/domain/entities/Person.entity';
-import { Product } from '@src/domain/entities/Product.entity';
-import { ProductBrand } from '@src/domain/entities/ProductBrand.entity';
-import { SaleDetail } from '@src/domain/entities/SaleDetail.entity';
 import { SaleDocument } from '@src/domain/entities/SaleDocument.entity';
 import { SalePaymentSchedule } from '@src/domain/entities/SalePaymentSchedule.entity';
 import { SalesPayment } from '@src/domain/entities/SalesPayment.entity';
@@ -233,70 +230,6 @@ export class SaleRepository {
       return data;
     } catch (error: any) {
       throw new SaleApplicationError(error)
-    }
-  }
-
-  async findOneDetails(id: number) {
-    try {
-      const data: any = await SaleDocument.findAll({
-        include: [
-          {
-            model: Sale,
-            required: true,
-            include: [
-              {
-                model: SaleDetail,
-                required: true,
-                include: [
-                  {
-                    model: Product,
-                    required: true,
-                    attributes: ['trade_name']
-                  }
-                ],
-                attributes: ['amount', 'product_price', 'product_subtotal', 'product_discount', 'product_total']
-              },
-              { 
-                model: Client, 
-                required: false,
-                include: [
-                  { 
-                    model: Person, 
-                    required: false,
-                    attributes: ['main_phone', 'name']
-                  },
-                  { 
-                    model: Company, 
-                    required: false,
-                    attributes: ['main_phone', 'name']
-                  },
-                ],
-                attributes: ['type_entity']
-              },
-              {
-                model: User,
-                required: true,
-                as: 'soldBy',
-                attributes: ['user']
-              },
-              {
-                model: User,
-                required: true,
-                as: 'seller',
-                attributes: ['user']
-              }
-            ],
-            attributes: ['currency', 'currency_symbol', 'sale_date', 'type_payment', 'note', 'order_type']
-          },
-        ],
-        where: { sale_id: id },
-        attributes: ['type_document', 'serie', 'correlative', 'submission_status']
-      })
-
-      return data;
-    } catch (error: any) {
-      console.log(error)
-      throw new SaleApplicationError(error);
     }
   }
 }
