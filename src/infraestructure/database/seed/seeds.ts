@@ -49,6 +49,7 @@ import { WorkArea } from '../../../domain/entities/WorkArea.entity';
 import { SkuList } from '../../../domain/entities/SkuList.entity';
 import { Supply } from '../../../domain/entities/Supply.entity';
 import { Function } from '../../../domain/entities/Function.entity';
+import { ListPrice } from '../../../domain/entities/ListPrice.entity';
 
 const logger = new Logger('Seeds');
 
@@ -101,7 +102,8 @@ async function runSeedInsertData(type, seed) {
     BusinessTurn,
     BusinessSubcategory,
     Zone,
-    Ubigeo
+    Ubigeo,
+    ListPrice
   ]);
   const inser_data: any = new InserData();
   await inser_data.run(type, seed);
