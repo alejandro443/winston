@@ -2,7 +2,7 @@ import * as fsPromises from 'fs';
 import { load } from 'js-yaml';
 import { Logger } from '../../shared/log/Logger';
 import { config } from 'dotenv';
-import { BusinessSubcategory } from '../../../domain/entities/BusinessSubCategory.entity';
+import { BusinessSubcategory } from '../../../domain/entities/BusinessSubcategory.entity';
 
 config();
 

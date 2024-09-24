@@ -512,8 +512,6 @@ export class InserData {
       'method_payment': (data) => createMethodPayments(data),
       'way_to_pay': (data) => createWayToPays(data),
       'company_positions': (data) => createCompanyPositions(data),
-
-
       'company_areas': (data) => createCompanyAreas(data),
       'business_turn': (data) => createBusinessTurns(data),
       'business_subcategory': (data) => createBusinessSubcategories(data),
