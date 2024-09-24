@@ -24,6 +24,10 @@ import { createTypesDocuments } from './types_documents.function';
 import { createPointSales } from './point_sales.function';
 import { createMethodPayments } from './method_payments.function';
 import { createWayToPays } from './way_to_pay.function';
+import { createCompanyPositions } from './company_positions.function';
+import { createCompanyAreas } from './company_areas.function';
+import { createBusinessTurns } from './business_turn.function';
+import { createBusinessSubcategories } from './business_subcategory.function';
 
 config();
 
@@ -507,6 +511,12 @@ export class InserData {
       'point_sale': (data) => createPointSales(data),
       'method_payment': (data) => createMethodPayments(data),
       'way_to_pay': (data) => createWayToPays(data),
+      'company_positions': (data) => createCompanyPositions(data),
+
+
+      'company_areas': (data) => createCompanyAreas(data),
+      'business_turn': (data) => createBusinessTurns(data),
+      'business_subcategory': (data) => createBusinessSubcategories(data),
     }
 
     try {

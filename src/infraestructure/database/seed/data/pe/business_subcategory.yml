@@ -1,0 +1,304 @@
+---
+- id: 1
+  code: BSC-AG001
+  name: Cultivo de Cereales (excepto arroz), Legumbres y Semillas Oleaginosas
+  description: Actividades agrícolas dedicadas al cultivo de trigo, maíz, soya, y otros cereales o semillas oleaginosas.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 2
+  code: BSC-AG002
+  name: Cría de Ganado Bovino
+  description: Actividades relacionadas con la cría de ganado vacuno para la producción de carne y leche.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 3
+  code: BSC-PE001
+  name: Pesca Marítima
+  description: Captura de peces y otros productos marinos en aguas marítimas, tanto para consumo directo como para la industria.
+  id_business_turn: 2
+  name_business_turn: Pesca y Acuicultura
+  is_base: true
+
+- id: 4
+  code: BSC-IN001
+  name: Fabricación de Productos Alimenticios
+  description: Transformación de materias primas como granos y carnes en productos alimenticios para consumo humano.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 5
+  code: BSC-IN002
+  name: Fabricación de Prendas de Vestir
+  description: Producción de ropa a partir de materiales textiles, cuero, o sintéticos.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 6
+  code: BSC-CO001
+  name: Comercio al por Mayor de Productos Alimenticios, Bebidas y Tabaco
+  description: Actividades de compra y venta de productos alimenticios y bebidas en grandes cantidades a distribuidores minoristas.
+  id_business_turn: 5
+  name_business_turn: Comercio al por mayor y al por menor
+  is_base: true
+
+- id: 7
+  code: BSC-CO002
+  name: Comercio al por Menor de Productos Farmacéuticos y Medicinas
+  description: Venta directa al consumidor de medicamentos, productos médicos, y otros suministros farmacéuticos.
+  id_business_turn: 5
+  name_business_turn: Comercio al por mayor y al por menor
+  is_base: true
+
+- id: 8
+  code: BSC-TR001
+  name: Transporte de Carga por Carretera
+  description: Servicio de transporte de mercancías y productos a nivel local o nacional utilizando vehículos de transporte terrestre.
+  id_business_turn: 6
+  name_business_turn: Transporte, Almacenamiento y Comunicaciones
+  is_base: true
+
+- id: 9
+  code: BSC-IN002
+  name: Desarrollo de Software
+  description: Actividades de creación, modificación y mantenimiento de aplicaciones de software y soluciones tecnológicas.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 10
+  code: BSC-SE001
+  name: Servicios Jurídicos
+  description: Provisión de servicios legales y asesoría jurídica a individuos y empresas.
+  id_business_turn: 13
+  name_business_turn: Otros Servicios Empresariales
+  is_base: true
+
+- id: 11
+  code: BSC-SE002
+  name: Consultoría Empresarial
+  description: Actividades de consultoría y asesoría en áreas de gestión empresarial, marketing, y desarrollo de negocios.
+  id_business_turn: 13
+  name_business_turn: Otros Servicios Empresariales
+  is_base: true
+
+- id: 12
+  code: BSC-CN001
+  name: Construcción de Edificios Residenciales
+  description: Actividades relacionadas con la edificación de viviendas unifamiliares y multifamiliares.
+  id_business_turn: 4
+  name_business_turn: Construcción
+  is_base: true
+
+- id: 13
+  code: BSC-CN002
+  name: Obras de Ingeniería Civil
+  description: Construcción de carreteras, puentes, túneles, y otras infraestructuras.
+  id_business_turn: 4
+  name_business_turn: Construcción
+  is_base: true
+
+- id: 14
+  code: BSC-HT001
+  name: Hoteles de Lujo
+  description: Provisión de alojamiento de alta gama con servicios premium.
+  id_business_turn: 7
+  name_business_turn: Hoteles y Restaurantes
+  is_base: true
+
+- id: 15
+  code: BSC-HT002
+  name: Restaurantes de Comida Rápida
+  description: Servicio de comida rápida para consumo en el lugar o para llevar.
+  id_business_turn: 7
+  name_business_turn: Hoteles y Restaurantes
+  is_base: true
+
+- id: 16
+  code: BSC-SF001
+  name: Bancos Comerciales
+  description: Instituciones financieras dedicadas a la captación de depósitos y la concesión de créditos.
+  id_business_turn: 8
+  name_business_turn: Servicios Financieros y Seguros
+  is_base: true
+
+- id: 17
+  code: BSC-SF002
+  name: Compañías de Seguros Generales
+  description: Provisión de seguros no relacionados con la vida, como seguros de automóviles o contra incendios.
+  id_business_turn: 8
+  name_business_turn: Servicios Financieros y Seguros
+  is_base: true
+
+- id: 18
+  code: BSC-RE001
+  name: Venta de Propiedades Inmobiliarias
+  description: Servicios relacionados con la compra y venta de propiedades residenciales y comerciales.
+  id_business_turn: 9
+  name_business_turn: Actividades Inmobiliarias y Alquileres
+  is_base: true
+
+- id: 19
+  code: BSC-RE002
+  name: Alquiler de Equipos Industriales
+  description: Alquiler de maquinaria y equipo especializado para uso en la industria y la construcción.
+  id_business_turn: 9
+  name_business_turn: Actividades Inmobiliarias y Alquileres
+  is_base: true
+
+- id: 20
+  code: BSC-ED001
+  name: Educación Primaria
+  description: Provisión de educación básica a nivel primario en instituciones públicas y privadas.
+  id_business_turn: 10
+  name_business_turn: Educación
+  is_base: true
+
+- id: 21
+  code: BSC-ED002
+  name: Educación Universitaria
+  description: Servicios educativos a nivel universitario en diversas disciplinas académicas.
+  id_business_turn: 10
+  name_business_turn: Educación
+  is_base: true
+
+- id: 22
+  code: BSC-SA001
+  name: Clínicas Privadas
+  description: Provisión de atención médica en instalaciones privadas, especializadas en diversas áreas de salud.
+  id_business_turn: 11
+  name_business_turn: Servicios de Salud
+  is_base: true
+
+- id: 23
+  code: BSC-SA002
+  name: Laboratorios Médicos
+  description: Servicios de análisis clínico, diagnóstico y pruebas de laboratorio para la atención médica.
+  id_business_turn: 11
+  name_business_turn: Servicios de Salud
+  is_base: true
+
+- id: 24
+  code: BSC-AR001
+  name: Producción de Espectáculos
+  description: Organización y producción de eventos artísticos como conciertos, obras de teatro y espectáculos en vivo.
+  id_business_turn: 12
+  name_business_turn: Actividades Artísticas y Recreativas
+  is_base: true
+
+- id: 25
+  code: BSC-AR002
+  name: Explotación de Casinos
+  description: Operación de casinos y otros establecimientos de juegos de azar y apuestas.
+  id_business_turn: 12
+  name_business_turn: Actividades Artísticas y Recreativas
+  is_base: true
+
+- id: 26
+  code: BSC-AG001
+  name: Cultivo de Cereales y Legumbres
+  description: Siembra y cosecha de cereales como trigo, maíz, arroz, y legumbres como frijoles y lentejas.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 27
+  code: BSC-AG002
+  name: Cultivo de Frutas y Hortalizas
+  description: Producción agrícola de frutas como manzanas, naranjas y plátanos, y hortalizas como tomates, papas y zanahorias.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 28
+  code: BSC-AG003
+  name: Ganadería de Bovinos para Producción de Carne
+  description: Cría y engorde de ganado bovino para la producción de carne de res.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 29
+  code: BSC-AG004
+  name: Producción de Productos Lácteos
+  description: Cría de vacas lecheras y procesamiento de leche para la producción de productos lácteos como queso, mantequilla y yogur.
+  id_business_turn: 1
+  name_business_turn: Agricultura y Ganadería
+  is_base: true
+
+- id: 30
+  code: BSC-PS001
+  name: Pesca Artesanal
+  description: Captura de peces y otros productos acuáticos utilizando métodos tradicionales a pequeña escala.
+  id_business_turn: 2
+  name_business_turn: Pesca y Acuicultura
+  is_base: true
+
+- id: 31
+  code: BSC-PS002
+  name: Acuicultura de Peces
+  description: Cría y cultivo de peces como tilapia y salmón en estanques o jaulas para su posterior comercialización.
+  id_business_turn: 2
+  name_business_turn: Pesca y Acuicultura
+  is_base: true
+
+- id: 32
+  code: BSC-PS003
+  name: Procesamiento de Pescados y Mariscos
+  description: Actividades de limpieza, fileteado y conservación de pescados y mariscos para la venta y distribución.
+  id_business_turn: 2
+  name_business_turn: Pesca y Acuicultura
+  is_base: true
+
+- id: 33
+  code: BSC-MF001
+  name: Producción de Alimentos Procesados
+  description: Transformación de materias primas como granos, carne y vegetales en productos alimenticios listos para el consumo, como conservas, salsas y productos enlatados.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 34
+  code: BSC-MF002
+  name: Procesamiento de Carnes
+  description: Actividades relacionadas con el despiece, empaque y procesamiento de carne de res, cerdo y aves de corral.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 35
+  code: BSC-MF003
+  name: Producción de Pan y Productos de Panadería
+  description: Fabricación de pan, galletas, pasteles y otros productos de panadería para su distribución y venta.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 36
+  code: BSC-MF004
+  name: Producción de Bebidas No Alcohólicas
+  description: Fabricación de refrescos, jugos, agua embotellada y otras bebidas sin alcohol.
+  id_business_turn: 3
+  name_business_turn: Industria Manufacturera
+  is_base: true
+
+- id: 37
+  code: BSC-CM001
+  name: Comercio de Productos Alimenticios al por Mayor
+  description: Distribución y venta al por mayor de productos alimenticios como granos, frutas, verduras y carne a tiendas y restaurantes.
+  id_business_turn: 5
+  name_business_turn: Comercio al por mayor y al por menor
+  is_base: true
+
+- id: 38
+  code: BSC-CM002
+  name: Comercio de Productos Alimenticios al por Menor
+  description: Venta directa al consumidor de productos alimenticios frescos y procesados en tiendas, supermercados y mercados.
+  id_business_turn: 5
+  name_business_turn: Comercio al por mayor y al por menor
+  is_base: true

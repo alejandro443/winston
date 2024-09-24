@@ -1,0 +1,247 @@
+---
+- id: 1
+  code: BST-AGGN
+  name: Agricultura y Ganadería
+  description: Actividades relacionadas con el cultivo de productos agrícolas y la crianza de animales para la producción de alimentos.
+  is_base: true
+
+- id: 2
+  code: BST-PSAC
+  name: Pesca y Acuicultura
+  description: Actividades dedicadas a la pesca artesanal e industrial, así como la producción de especies acuáticas.
+  is_base: true
+
+- id: 3
+  code: BST-MFIN
+  name: Industria Manufacturera
+  description: Proceso de transformación de materias primas en productos elaborados, incluyendo textiles, alimentos y maquinaria.
+  is_base: true
+
+- id: 4
+  code: BST-CNOB
+  name: Construcción
+  description: Obras de edificación y construcción de infraestructura, incluidas las instalaciones eléctricas, de agua y gas.
+  is_base: true
+
+- id: 5
+  code: BST-CMPR
+  name: Comercio al por mayor y al por menor
+  description: Actividades de compra y venta de productos como alimentos, ropa, vehículos y electrodomésticos.
+  is_base: true
+
+- id: 6
+  code: BST-TRAL
+  name: Transporte, Almacenamiento y Comunicaciones
+  description: Servicios de transporte terrestre, aéreo y marítimo, así como actividades de almacenamiento y telecomunicaciones.
+  is_base: true
+
+- id: 7
+  code: BST-HTRS
+  name: Hoteles y Restaurantes
+  description: Servicios de alojamiento y alimentación, que incluyen hoteles, restaurantes, bares y cafeterías.
+  is_base: true
+
+- id: 8
+  code: BST-SFSE
+  name: Servicios Financieros y Seguros
+  description: Actividades de intermediación financiera, bancos, cajas de ahorro, y servicios relacionados con seguros y fondos de pensiones.
+  is_base: true
+
+- id: 9
+  code: BST-IMAL
+  name: Actividades Inmobiliarias y Alquileres
+  description: Servicios relacionados con la compra, venta, alquiler y gestión de bienes inmuebles.
+  is_base: true
+
+- id: 10
+  code: BST-EDFM
+  name: Educación
+  description: Servicios educativos que incluyen colegios, universidades, y programas de capacitación técnica y profesional.
+  is_base: true
+
+- id: 11
+  code: BST-SLSA
+  name: Servicios de Salud
+  description: Actividades relacionadas con la atención médica, incluidas clínicas, hospitales, consultorios y laboratorios.
+  is_base: true
+
+- id: 12
+  code: BST-ARET
+  name: Actividades Artísticas y Recreativas
+  description: Servicios relacionados con el entretenimiento, incluyendo la producción de espectáculos y la operación de casinos y otros lugares de recreación.
+  is_base: true
+
+- id: 13
+  code: SE-OT
+  name: Otros Servicios Empresariales
+  description: Actividades de registro contable, preparación de estados financieros, auditoría y certificación, y preparación de declaraciones de ingresos para personas y empresas :contentReference[oaicite:0]{index=0}.
+  is_base: true
+
+- id: 14
+  code: SU-EL
+  name: Suministro de Electricidad, Gas, Vapor y Aire Acondicionado
+  description: Generación, transmisión y distribución de electricidad; producción y distribución de gas; y suministro de vapor y aire acondicionado.
+  is_base: true
+
+- id: 15
+  code: SU-AG
+  name: Suministro de Agua; Evacuación de Aguas Residuales, Gestión de Desechos y Descontaminación
+  description: Captación, tratamiento y distribución de agua; gestión de aguas residuales; y actividades de descontaminación y gestión de desechos.
+  is_base: true
+
+- id: 16
+  code: RE-VH
+  name: Reparación de Vehículos Automotores y Motocicletas
+  description: Mantenimiento y reparación de vehículos automotores y motocicletas, incluyendo la venta de partes y accesorios.
+  is_base: true
+
+- id: 17
+  code: AC-AL
+  name: Actividades de Alojamiento
+  description: Servicios de alojamiento temporal en hoteles, moteles, hostales y similares.
+  is_base: true
+
+- id: 18
+  code: AC-RE
+  name: Actividades de Restauración
+  description: Servicios de preparación y venta de alimentos y bebidas para consumo inmediato, como restaurantes, cafeterías y bares.
+  is_base: true
+
+- id: 19
+  code: TR-TE
+  name: Transporte Terrestre
+  description: Transporte de pasajeros y carga por carretera y ferrocarril.
+  is_base: true
+
+- id: 20
+  code: TR-AE
+  name: Transporte Aéreo
+  description: Transporte de pasajeros y carga por vía aérea.
+  is_base: true
+
+- id: 21
+  code: TR-MA
+  name: Transporte Marítimo
+  description: Transporte de pasajeros y carga por vía marítima.
+  is_base: true
+
+- id: 22
+  code: AL-MA
+  name: Almacenamiento y Depósito
+  description: Servicios de almacenamiento y depósito de bienes en almacenes generales y especializados.
+  is_base: true
+
+- id: 23
+  code: CO-TE
+  name: Comunicaciones y Telecomunicaciones
+  description: Servicios de transmisión de voz, datos, texto, sonido y video a través de redes de telecomunicaciones.
+  is_base: true
+
+- id: 24
+  code: SE-FI
+  name: Servicios Financieros
+  description: Actividades de intermediación financiera, como préstamos, depósitos, inversiones y otros servicios bancarios.
+  is_base: true
+
+- id: 25
+  code: SE-SE
+  name: Servicios de Seguros
+  description: Actividades relacionadas con la protección contra riesgos financieros y personales, incluyendo seguros de vida, salud, propiedad y responsabilidad civil.
+  is_base: true
+
+- id: 26
+  code: AC-IN
+  name: Actividades Inmobiliarias
+  description: Compra, venta, alquiler y gestión de bienes inmuebles, tanto residenciales como comerciales.
+  is_base: true
+
+- id: 27
+  code: AL-PR
+  name: Alquiler de Propiedades
+  description: Servicios de alquiler de bienes inmuebles, como apartamentos, casas, oficinas y locales comerciales.
+  is_base: true
+
+- id: 28
+  code: ED-PR
+  name: Educación Preescolar
+  description: Servicios educativos destinados a niños en edad preescolar.
+  is_base: true
+
+- id: 29
+  code: ED-BA
+  name: Educación Básica
+  description: Servicios educativos de nivel primario y secundario.
+  is_base: true
+
+- id: 30
+  code: ED-SU
+  name: Educación Superior
+  description: Servicios educativos de nivel universitario y técnico superior.
+  is_base: true
+
+- id: 31
+  code: SE-SA
+  name: Servicios de Salud
+  description: Actividades relacionadas con la atención médica, incluyendo hospitales, clínicas, consultorios y servicios de laboratorio.
+  is_base: true
+
+- id: 32
+  code: SE-OD
+  name: Servicios Odontológicos
+  description: Atención dental y servicios relacionados con la salud bucal.
+  is_base: true
+
+- id: 33
+  code: AR-ES
+  name: Artes, Entretenimiento y Recreación
+  description: Actividades relacionadas con las artes escénicas, visuales, musicales y otras formas de entretenimiento y recreación.
+  is_base: true
+
+- id: 34
+  code: CA-JU
+  name: Casinos y Juegos de Azar
+  description: Operación de casinos, salas de juego y otras actividades relacionadas con juegos de azar.
+  is_base: true
+
+- id: 35
+  code: SE-OT
+  name: Otros Servicios
+  description: Actividades de servicios no especificadas en otras categorías, incluyendo servicios personales, de limpieza, seguridad y otros.
+  is_base: true
+
+- id: 36
+  code: AD-PU
+  name: Administración Pública y Defensa; Seguridad Social Obligatoria
+  description: Actividades de la administración pública, defensa nacional y seguridad social obligatoria.
+  is_base: true
+
+- id: 37
+  code: OR-PO
+  name: Organizaciones Políticas, Sindicales y Religiosas
+  description: Actividades de organizaciones políticas, sindicales, religiosas y otras organizaciones de membresía.
+  is_base: true
+
+- id: 38
+  code: SE-PE
+  name: Servicios Personales
+  description: Actividades de servicios personales, como peluquerías, salones de belleza, gimnasios y otros.
+  is_base: true
+
+- id: 39
+  code: SE-LI
+  name: Servicios de Limpieza
+  description: Actividades de limpieza de edificios, oficinas, hogares y otros espacios.
+  is_base: true
+
+- id: 40
+  code: SE-SE
+  name: Servicios de Seguridad
+  description: Actividades de seguridad privada, vigilancia y protección.
+  is_base: true
+
+- id: 41
+  code: SE-OT
+  name: Otros Servicios No Especificados
+  description: Actividades de servicios que no se encuentran especificadas en otras categorías de la CIIU.
+  is_base: true
+

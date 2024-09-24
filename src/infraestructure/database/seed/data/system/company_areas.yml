@@ -1,0 +1,60 @@
+---
+- id: 1
+  code: AREA-AD
+  name: Alta Dirección
+  description: Encargada de la toma de decisiones estratégicas y la supervisión general de la empresa.
+
+- id: 2
+  code: AREA-FN
+  name: Finanzas
+  description: Responsable de la gestión financiera, contabilidad y análisis de costos.
+
+- id: 3
+  code: AREA-OP
+  name: Operaciones
+  description: Encargada de la supervisión de las operaciones diarias y la eficiencia de producción.
+
+- id: 4
+  code: AREA-PR
+  name: Producción
+  description: Responsable de la fabricación y procesamiento de alimentos.
+
+- id: 5
+  code: AREA-CL
+  name: Calidad
+  description: Encargada de asegurar que los productos cumplan con los estándares de calidad y normativas.
+
+- id: 6
+  code: AREA-ID
+  name: Investigación y Desarrollo (I+D)
+  description: Responsable de la creación y mejora de nuevos productos.
+
+- id: 7
+  code: AREA-LG
+  name: Logística
+  description: Encargada de la gestión de la cadena de suministro, almacenamiento y distribución.
+
+- id: 8
+  code: AREA-RH
+  name: Recursos Humanos
+  description: Responsable de la gestión del talento humano, capacitación y desarrollo organizacional.
+
+- id: 9
+  code: AREA-VT
+  name: Ventas
+  description: Encargada de la comercialización de productos y atención al cliente.
+
+- id: 10
+  code: AREA-MT
+  name: Mantenimiento
+  description: Responsable del mantenimiento y reparación de maquinaria y equipos.
+
+- id: 11
+  code: AREA-SG
+  name: Seguridad
+  description: Encargada de garantizar la seguridad laboral y la protección de las instalaciones.
+
+- id: 12
+  code: AREA-CB
+  name: Compras
+  description: Responsable de la adquisición de materias primas y suministros necesarios para la producción.

@@ -64,7 +64,6 @@ import { SalesPayment } from '../../../domain/entities/SalesPayment.entity';
 import { PaymentSchedule } from '../../../domain/entities/PaymentSchedule.entity';
 import { SalePaymentSchedule } from '../../../domain/entities/SalePaymentSchedule.entity';
 import { QuotaPayment } from '../../../domain/entities/QuotaPayment.entity';
-import { SubmissionStatus } from '../../shared/enums/SubmissionStatus';
 
 const logger = new Logger('Seeds');
 

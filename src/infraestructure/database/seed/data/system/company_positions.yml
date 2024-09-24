@@ -1,0 +1,250 @@
+---
+- id: 1
+  code: CP-CEO
+  name: Director Ejecutivo
+  description: Responsable de la dirección general de la empresa y toma de decisiones estratégicas.
+
+- id: 2
+  code: CP-CFO
+  name: Director Financiero
+  description: Encargado de la gestión financiera y planificación de recursos.
+
+- id: 3
+  code: CP-COO
+  name: Director de Operaciones
+  description: Responsable de la supervisión de las operaciones diarias y la eficiencia de producción.
+
+- id: 4
+  code: CP-PM
+  name: Gerente de Producción
+  description: Encargado de planificar y supervisar el proceso de producción de alimentos.
+
+- id: 5
+  code: CP-QA
+  name: Gerente de Calidad
+  description: Responsable de asegurar que los productos cumplan con los estándares de calidad y normativas.
+
+- id: 6
+  code: CP-RD
+  name: Gerente de Investigación y Desarrollo
+  description: Encargado de desarrollar nuevos productos y mejorar los existentes.
+
+- id: 7
+  code: CP-OP
+  name: Operador de Maquinaria
+  description: Responsable de operar y mantener la maquinaria utilizada en el procesamiento de alimentos.
+
+- id: 8
+  code: CP-PD
+  name: Supervisor de Producción
+  description: Encargado de supervisar el equipo de producción y asegurar el cumplimiento de los estándares.
+
+- id: 9
+  code: CP-SCM
+  name: Gerente de Cadena de Suministro
+  description: Responsable de la gestión de la logística, almacenamiento y distribución.
+
+- id: 10
+  code: CP-FS
+  name: Especialista en Seguridad Alimentaria
+  description: Encargado de garantizar la seguridad de los productos y el cumplimiento de normativas alimentarias.
+
+- id: 11
+  code: CP-ML
+  name: Coordinador de Maquila
+  description: Responsable de la gestión y coordinación de procesos de maquila para terceros.
+
+- id: 12
+  code: CP-PP
+  name: Planificador de Producción
+  description: Encargado de la planificación y programación de la producción en base a demanda.
+
+- id: 13
+  code: CP-LOG
+  name: Gerente de Logística
+  description: Responsable de la gestión de la logística y distribución de productos alimenticios.
+
+- id: 14
+  code: CP-HR
+  name: Especialista en Recursos Humanos
+  description: Encargado de la gestión del talento humano y desarrollo de personal en la planta.
+
+- id: 15
+  code: CP-CSR
+  name: Representante de Atención al Cliente
+  description: Responsable de atender consultas y quejas de clientes sobre productos.
+
+- id: 16
+  code: CP-SV
+  name: Supervisor de Ventas
+  description: Responsable de supervisar el equipo de ventas en el punto de venta y alcanzar objetivos comerciales.
+
+- id: 17
+  code: CP-VR
+  name: Vendedor de Punto de Venta
+  description: Encargado de atender a los clientes y realizar ventas en el establecimiento.
+
+- id: 18
+  code: CP-ALM
+  name: Encargado de Almacén
+  description: Responsable de la recepción, almacenamiento y distribución de productos en el almacén.
+
+- id: 19
+  code: CP-AP
+  name: Auxiliar de Almacén
+  description: Encargado de apoyar en las tareas de organización y manejo de inventarios en el almacén.
+
+- id: 20
+  code: CP-DS
+  name: Gerente de Distribución
+  description: Responsable de la planificación y ejecución de la distribución de productos a puntos de venta.
+
+- id: 21
+  code: CP-FA
+  name: Asistente de Facturación
+  description: Encargado de la gestión de documentos y facturación de ventas en el punto de venta.
+
+- id: 22
+  code: CP-MK
+  name: Coordinador de Merchandising
+  description: Responsable de la presentación y promoción de productos en el punto de venta.
+
+- id: 23
+  code: CP-PA
+  name: Promotor de Ventas
+  description: Encargado de promover productos en el punto de venta y aumentar las ventas.
+
+- id: 24
+  code: CP-RT
+  name: Responsable de Tienda
+  description: Encargado de la gestión general de la tienda, incluyendo personal y ventas.
+
+- id: 25
+  code: CP-DS2
+  name: Distribuidor
+  description: Responsable de la entrega de productos a puntos de venta y clientes.
+
+- id: 26
+  code: CP-IM
+  name: Inspector de Mercancías
+  description: Encargado de verificar la calidad y cantidad de productos recibidos en el almacén.
+
+- id: 27
+  code: CP-ET
+  name: Encargado de Transporte
+  description: Responsable de coordinar y supervisar el transporte de productos a clientes y puntos de venta.
+
+- id: 28
+  code: CP-IT
+  name: Técnico de Mantenimiento
+  description: Encargado del mantenimiento y reparación de maquinaria y equipos en planta y almacén.
+
+- id: 29
+  code: CP-PA2
+  name: Auxiliar de Punto de Venta
+  description: Encargado de apoyar en las actividades de atención al cliente y reposición de productos.
+
+- id: 30
+  code: CP-INV
+  name: Analista de Inventario
+  description: Responsable de la gestión y control de inventarios en almacén y punto de venta.
+
+- id: 31
+  code: CP-CP
+  name: Coordinador de Producción
+  description: Responsable de coordinar la producción diaria y asegurar el cumplimiento de los objetivos.
+
+- id: 32
+  code: CP-PL
+  name: Auxiliar de Limpieza
+  description: Encargado de mantener la limpieza y desinfección de las instalaciones de producción y almacén.
+
+- id: 33
+  code: CP-CT
+  name: Controlador de Tráfico
+  description: Responsable de coordinar el movimiento de mercancías dentro y fuera del almacén.
+
+- id: 34
+  code: CP-ETQ
+  name: Etiquetador
+  description: Encargado de etiquetar productos conforme a las normativas y estándares de la empresa.
+
+- id: 35
+  code: CP-PR
+  name: Responsable de Procesos
+  description: Encargado de optimizar y supervisar los procesos de producción y envasado.
+
+- id: 36
+  code: CP-CTO
+  name: Coordinador de Tecnología
+  description: Responsable de implementar y mantener tecnología en los procesos de producción.
+
+- id: 37
+  code: CP-OT
+  name: Operador de Transporte
+  description: Encargado de manejar vehículos de la empresa para la distribución de productos.
+
+- id: 38
+  code: CP-SD
+  name: Supervisor de Distribución
+  description: Responsable de supervisar y coordinar las actividades de distribución de productos.
+
+- id: 39
+  code: CP-FA2
+  name: Asistente de Almacén
+  description: Encargado de ayudar en la organización y control de inventarios en el almacén.
+
+- id: 40
+  code: CP-SR
+  name: Responsable de Seguridad
+  description: Encargado de garantizar la seguridad en las instalaciones de la empresa.
+
+- id: 41
+  code: CP-AC
+  name: Analista de Calidad
+  description: Encargado de realizar auditorías y controles de calidad en los procesos de producción.
+
+- id: 42
+  code: CP-CPM
+  name: Coordinador de Compras
+  description: Responsable de gestionar la compra de materias primas y suministros necesarios para la producción.
+
+- id: 43
+  code: CP-FA3
+  name: Asistente de Ventas
+  description: Encargado de apoyar en las actividades de ventas y atención al cliente en el punto de venta.
+
+- id: 44
+  code: CP-IM2
+  name: Inspector de Calidad
+  description: Responsable de verificar la calidad de los productos en diferentes etapas del proceso.
+
+- id: 45
+  code: CP-AP2
+  name: Auxiliar de Producción
+  description: Encargado de asistir en las diversas tareas relacionadas con la producción de alimentos.
+
+- id: 46
+  code: CP-MP
+  name: Maestro de Planta
+  description: Encargado de liderar al equipo de producción y asegurar el cumplimiento de los estándares.
+
+- id: 47
+  code: CP-CTO2
+  name: Chef de Producción
+  description: Responsable de la creación y supervisión de recetas y procesos de cocción.
+
+- id: 48
+  code: CP-TS
+  name: Técnico de Seguridad
+  description: Encargado de implementar políticas de seguridad y salud en el trabajo.
+
+- id: 49
+  code: CP-PLM
+  name: Planificador de Logística
+  description: Responsable de planificar y coordinar el transporte y distribución de productos.
+
+- id: 50
+  code: CP-SAO
+  name: Supervisor de Almacén y Operaciones
+  description: Encargado de supervisar las operaciones de almacén y asegurar la eficiencia en el manejo de inventarios.
