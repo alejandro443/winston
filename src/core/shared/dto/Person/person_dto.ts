@@ -1,6 +1,6 @@
 import { ApiPropertyOptional, OmitType } from '@nestjs/swagger';
 import { ApiProperty, ApiResponseProperty } from '@nestjs/swagger';
-import { TypeDocuments } from '@src/infraestructure/shared/enums/TypesDocuments';
+import { TypeDocuments } from '../../../../infraestructure/shared/enums/TypesDocuments';
 import { IsBoolean, IsDateString, IsEmail, IsEnum, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class PersonDto {

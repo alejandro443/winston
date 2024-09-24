@@ -1,4 +1,4 @@
-import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
+import { TypeEntity } from '../../../infraestructure/shared/enums/TypeEntity';
 
 export const GenerateCodeClient = async (
   identifier_person: any,

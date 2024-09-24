@@ -1,0 +1,52 @@
+---
+- id: 1
+  code: google
+  name: Google
+  description: google
+  status: true
+- id: 2
+  code: facebook
+  name: Facebook
+  description: Facebook
+  status: true
+- id: 3
+  code: newsletter
+  name: Newsletter
+  description: newsletter
+  status: true
+- id: 4
+  code: x
+  name: X (ex Twitter)
+  description: x - anteriormente twitter
+  status: true
+- id: 5
+  code: linkedin
+  name: Linkedin
+  description: linkedin
+  status: true
+- id: 6
+  code: instagram
+  name: Instagram
+  description: instagram
+  status: true
+- id: 7
+  code: cpc
+  name: Pago por clic
+  description: cpc
+  status: true
+- id: 8
+  code: email
+  name: Email
+  description: email
+  status: true
+- id: 9
+  code: social
+  name: Social
+  description: social
+  status: true
+- id: 10
+  code: referral
+  name: Referral
+  description: referral
+  status: true
+  

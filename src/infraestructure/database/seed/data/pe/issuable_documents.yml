@@ -1,0 +1,31 @@
+---
+- id: 1
+  name: Factura
+  description: Es el documento más común para registrar la venta de bienes o la prestación de servicios a una empresa o profesional que necesita sustentar gasto para crédito fiscal del IGV.
+  code: ISD-FAT
+  is_base: true
+- id: 2
+  name: Boleta de venta
+  description: Documento emitido cuando el comprador es un consumidor final que no requiere sustentar gasto para crédito fiscal o cuando la venta es menor a un monto específico.
+  code: ISD-BDT
+  is_base: true
+- id: 3
+  name: Guía de remisión
+  description: Documento utilizado para trasladar mercancías de un lugar a otro, ya sea entre empresas o para entregas a clientes.
+  code: ISD-GDR
+  is_base: true
+- id: 4
+  name: Nota de crédito
+  description: Documento que permite anular o reducir el monto de una factura o boleta emitida previamente por errores o devoluciones de productos.
+  code: ISD-NDC
+  is_base: true
+- id: 5
+  name: Nota de débito
+  description: Documento que permite aumentar el valor de una factura o boleta emitida previamente, debido a errores o cargos adicionales.
+  code: ISD-NDD
+  is_base: true
+- id: 6
+  name: Liquidación de compra
+  description: Documento emitido por un comprador registrado ante la SUNAT, cuando compra bienes a una persona no registrada en el RUC.
+  code: ISD-LDC
+  is_base: true

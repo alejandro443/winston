@@ -9,7 +9,7 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { SubmissionStatus } from '@src/infraestructure/shared/enums/SubmissionStatus';
+import { SubmissionStatus } from '../../infraestructure/shared/enums/SubmissionStatus';
 import { Sale } from './Sale.entity';
 import { IssuableDocument } from './IssuableDocument.entity';
 

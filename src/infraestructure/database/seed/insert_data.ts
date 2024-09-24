@@ -16,12 +16,19 @@ import { Country } from '../../../domain/entities/Country.entity';
 import { Department } from '../../../domain/entities/Department.entity';
 import { Function } from '../../../domain/entities/Function.entity';
 import { Ubigeo } from '../../../domain/entities/Ubigeo.entity';
+import { ListPrice } from '../../../domain/entities/ListPrice.entity';
+import { createTypesChannel } from './types_channel.function';
+import { createIssuableDocuments } from './issuable_documents.function';
+import { createPersons } from './persons.function';
 
 config();
 
 const logger = new Logger('Insert Data');
 
-async function createRoles() {
+async function createRoles({insert = false}) {
+  if(!insert){
+    return;
+  }
   // LEER Y CARGA DATOS DE ROLES
   logger.message('INSERTAR ROLES');
 
@@ -48,7 +55,11 @@ async function createRoles() {
   }
 }
 
-async function createAccess(pais: string) {
+async function createAccess({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE ACCESOS
   logger.message('INSERTAR ACCESOS');
   const accessData = await fsPromises.readFileSync(
@@ -69,11 +80,15 @@ async function createAccess(pais: string) {
     await Access.bulkCreate(accessesToInsert);
     logger.message('Datos de access insertados exitosamente');
   } else {
-    logger.message('No hay data para insertar para eccesos');
+    logger.message('No hay data para insertar para accesos');
   }
 }
 
-async function createTypesClients(pais: string) {
+async function createTypesClients({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE TIPOS DE CLIENTES
   logger.message('INSERTAR TIPOS DE CLIENTES');
   const typeClientsData = await fsPromises.readFileSync(
@@ -100,7 +115,11 @@ async function createTypesClients(pais: string) {
   }
 }
 
-async function createAccessesRoles() {
+async function createAccessesRoles({insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE ACCESS ROLES
   logger.message('INSERTAR ACCESS ROLES');
   const roles_ids = await Rol.findAll({ attributes: ['id'] });
@@ -122,7 +141,10 @@ async function createAccessesRoles() {
   }
 }
 
-async function createClassifications(pais: string) {
+async function createClassifications({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
   // LEER Y CARGA DATOS DE CLASIFICACIONES
   logger.message('INSERTAR CLASIFICACIONES');
   const classificationsData = await fsPromises.readFileSync(
@@ -145,11 +167,14 @@ async function createClassifications(pais: string) {
     await Classification.bulkCreate(classificationsToInsert);
     logger.message('Datos de access insertados exitosamente');
   } else {
-    logger.message('No hay data para insertar para tipos de clientes');
+    logger.message('No hay data para insertar clasificaciones');
   }
 }
 
-async function createGroups(pais: string) {
+async function createGroups({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
   // LEER Y CARGA DATOS DE GRUPOS
   logger.message('INSERTAR GROUPS');
   const groupsData = await fsPromises.readFileSync(
@@ -169,11 +194,14 @@ async function createGroups(pais: string) {
     await Group.bulkCreate(groupsToInsert);
     logger.message('Datos de access insertados exitosamente');
   } else {
-    logger.message('No hay data para insertar para tipos de clientes');
+    logger.message('No hay data para insertar para grupos');
   }
 }
 
-async function createUsers() {
+async function createUsers({insert = false}) {
+  if(!insert){
+    return;
+  }
   // LEER Y CREAR USUARIOS
   logger.message('CREAR USUARIOS');
   const usersData = await fsPromises.readFileSync(
@@ -202,7 +230,10 @@ async function createUsers() {
   }
 }
 
-async function createUsersRoles() {
+async function createUsersRoles({insert = false}) {
+  if(!insert){
+    return;
+  }
   logger.message('CREAR USUARIOS CON SUS ROLES');
   const userRolesData = await fsPromises.readFileSync(
     __dirname + `/data/system/users_roles.yml`,
@@ -229,7 +260,11 @@ async function createUsersRoles() {
   }
 }
 
-async function createRegions() {
+async function createRegions({insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE REGIONES
   logger.message('INSERTAR REGIONES');
   const regionsData = await fsPromises.readFileSync(
@@ -257,7 +292,11 @@ async function createRegions() {
   }
 }
 
-async function createCountries() {
+async function createCountries({insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE PAISES
   logger.message('INSERTAR PAISES');
   const countriesData = await fsPromises.readFileSync(
@@ -285,7 +324,11 @@ async function createCountries() {
   }
 }
 
-async function createDepartments(pais: string) {
+async function createDepartments({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE DEPARTAMENTOS
   logger.message('INSERTAR DEPARTAMENTOS');
   const departmentsData = await fsPromises.readFileSync(
@@ -313,7 +356,11 @@ async function createDepartments(pais: string) {
   }
 }
 
-async function createFunctions() {
+async function createFunctions({insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE FUNCIONES
   logger.message('INSERTAR TIPOS DE CLIENTES');
   const functionsData = await fsPromises.readFileSync(
@@ -340,7 +387,11 @@ async function createFunctions() {
   }
 }
 
-async function createRolesFunctions() {
+async function createRolesFunctions({insert = false}) {
+  if(!insert){
+    return;
+  }
+
   logger.message('CREAR ROLES CON SUS FUNCIONES');
   const userRolesData = await fsPromises.readFileSync(
     __dirname + `/data/system/role_functions.yml`,
@@ -367,7 +418,11 @@ async function createRolesFunctions() {
   }
 }
 
-async function createUbigeos(pais: string) {
+async function createUbigeos({pais = '', insert = false}) {
+  if(!insert){
+    return;
+  }
+
   // LEER Y CARGA DATOS DE UBIGEOS
   logger.message('INSERTAR UBIGEOS');
   const ubigeosData = await fsPromises.readFileSync(
@@ -387,9 +442,38 @@ async function createUbigeos(pais: string) {
     await Ubigeo.bulkCreate(ubigeosToInsert);
     logger.message('Ubigeos insertados exitosamente');
   } else {
-    logger.message('No hay data para insertar para tipos de clientes');
+    logger.message('No hay data para insertar para ubigeos');
   }
 }
+
+async function createListPrice({insert = false}) {
+  if(!insert){
+    return;
+  }
+
+  // LEER Y CARGA DATOS DE LISTAS DE PRECIOS
+  logger.message('INSERTAR LISTAS DE PRECIOS');
+  const listData = await fsPromises.readFileSync(
+    __dirname + `/data/system/list_price.yml`,
+    'utf8',
+  );
+  const listPrice = load(listData) as ListPrice[];
+
+  const existingListPrice = await ListPrice.findAll({
+    where: { id: listPrice.map((a) => a.id) },
+  });
+  const listPricesToInsert = listPrice.filter(
+    (a) => !existingListPrice.some((existingListPrice) => existingListPrice.id === a.id),
+  );
+
+  if (listPricesToInsert.length > 0) {
+    await ListPrice.bulkCreate(listPricesToInsert);
+    logger.message('Ubigeos insertados exitosamente');
+  } else {
+    logger.message('No hay data para insertar para listas de precios');
+  }
+}
+
 export class InserData {
   private pais: string;
 
@@ -399,18 +483,22 @@ export class InserData {
 
   async run(type = 'all', seed = ''): Promise<boolean> {
     var functions = {
-      'roles': createRoles(),
-      'access': createAccess(this.pais),
-      'type_clients': createTypesClients(this.pais),
-      'access_roles': createAccessesRoles(),
-      'classification': createClassifications(this.pais),
-      'groups': createGroups(this.pais),
-      'users': createUsers(),
-      'regions': createRegions(),
-      'countries': createCountries(),
-      'departments': createDepartments(this.pais),
-      'user_roles': createUsersRoles(),
-      'ubigeos': createUbigeos(this.pais)
+      'roles': (data) => createRoles(data),
+      'access': (data) => createAccess(data),
+      'type_clients': (data) => createTypesClients(data),
+      'access_roles': (data) => createAccessesRoles(data),
+      'classification': (data) => createClassifications(data),
+      'groups': (data) => createGroups(data),
+      'users': (data) => createUsers(data),
+      'regions': (data) => createRegions(data),
+      'countries': (data) => createCountries(data),
+      'departments': (data) => createDepartments(data),
+      'user_roles': (data) => createUsersRoles(data),
+      'ubigeos': (data) => createUbigeos(data),
+      'list_price': (data) => createListPrice(data),
+      'type_channel': (data) => createTypesChannel(data),
+      'issuable_document': (data) => createIssuableDocuments(data),
+      'person': (data) => createPersons(data),
     }
 
     try {
@@ -420,7 +508,7 @@ export class InserData {
           await Promise.all(
             Object.entries(functions).map(async ([key, func]) => {
               try {
-                await func;
+                await func({insert: true, pais: this.pais});
               } catch (error) {
                 console.error(`${key} failed:`, error);
                 return { [key]: 'failed' };
@@ -430,7 +518,7 @@ export class InserData {
           break;
         case 'one':
           if(seed in functions){
-            functions[seed]
+            functions[seed]({insert: true, pais: this.pais})
           }else {
             console.log("No existe la funcion.");
             process.exit(1);

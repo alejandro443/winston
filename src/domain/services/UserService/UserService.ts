@@ -2,7 +2,7 @@ import {
   GenerateCodeUser,
   GenerateRandomCodeUser,
 } from '@src/core/shared/functions/generate_code_user.function';
-import { Roles, RolesId } from '@src/infraestructure/shared/enums/Roles';
+import { RolesId } from '../../../infraestructure/shared/enums/Roles';
 import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
 import { UserRepository } from 'src/domain/repositories/UserRepository/UserRepository';
 

@@ -2,7 +2,7 @@ import { ClientService } from 'src/domain/services/ClientService/ClientService';
 import { NewClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientApplicationError } from '@src/core/shared/error/ClientApplicationError';
 import { PersonService } from '@src/domain/services/PersonService/PersonService';
-import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
+import { TypeEntity } from '../../../infraestructure/shared/enums/TypeEntity';
 import { CompanyWorkerService } from '@src/domain/services/CompanyWorkerService/CompanyWorkerService';
 import { DeliveryPointService } from '@src/domain/services/DeliveryPointService/DeliveryPointService';
 import { ClientDeliveryPointService } from '@src/domain/services/ClientDeliveryPointService/ClientDeliveryPointService';

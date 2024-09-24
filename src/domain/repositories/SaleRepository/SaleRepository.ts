@@ -9,8 +9,8 @@ import { SaleDocument } from '@src/domain/entities/SaleDocument.entity';
 import { SalePaymentSchedule } from '@src/domain/entities/SalePaymentSchedule.entity';
 import { SalesPayment } from '@src/domain/entities/SalesPayment.entity';
 import { User } from '@src/domain/entities/User.entity';
-import { SubmissionStatus } from '@src/infraestructure/shared/enums/SubmissionStatus';
-import { WayToPayId } from '@src/infraestructure/shared/enums/WayToPay';
+import { SubmissionStatus } from '../../../infraestructure/shared/enums/SubmissionStatus';
+import { WayToPayId } from '../../../infraestructure/shared/enums/WayToPay';
 import { Op } from 'sequelize';
 import {
   NewSaleDto,

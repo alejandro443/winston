@@ -1,4 +1,4 @@
-import { OrderTypes } from '@src/infraestructure/shared/enums/OrderTypes';
+import { OrderTypes } from '../../../infraestructure/shared/enums/OrderTypes';
 import { SaleService } from 'src/domain/services/SaleService/SaleService';
 
 export class GetAllSaleUseCase {
