@@ -1,0 +1,95 @@
+- id: 1
+  code: MP-CONTADO
+  name: Contado
+  description: Pago realizado al instante, sin financiamiento.
+  is_base: true
+
+- id: 2
+  code: MP-DINERO_EN_EFECTIVO
+  name: Dinero en Efectivo
+  description: Pago realizado con billetes o monedas.
+  is_base: true
+
+- id: 3
+  code: MP-TARJETA
+  name: Tarjeta
+  description: Pago realizado mediante tarjeta de crédito o débito.
+  is_base: true
+
+- id: 4
+  code: MP-TRANSFERENCIA
+  name: Transferencia
+  description: Pago realizado a través de transferencia bancaria.
+  is_base: true
+
+- id: 5
+  code: MP-DEPOSITO
+  name: Depósito Bancario
+  description: Pago realizado mediante depósito directo en la cuenta del beneficiario.
+  is_base: true
+
+- id: 6
+  code: MP-YAPE
+  name: Yape
+  description: Aplicación móvil popular en Perú para pagos instantáneos vinculada al Banco de Crédito del Perú (BCP).
+  is_base: true
+
+- id: 7
+  code: MP-PLIN
+  name: Plin
+  description: Aplicación móvil para pagos instantáneos entre bancos peruanos.
+  is_base: true
+
+- id: 8
+  code: MP-BILLETERA_ELECTRONICA
+  name: Billetera Electrónica (BIM)
+  description: Sistema de pagos móviles utilizado principalmente por personas no bancarizadas en Perú.
+  is_base: true
+
+- id: 9
+  code: MP-PAGOEFECTIVO
+  name: PagoEfectivo
+  description: Plataforma peruana que permite pagar a través de bancos o agentes con un código de pago.
+  is_base: true
+
+- id: 10
+  code: MP-PAYPAL
+  name: PayPal
+  description: Servicio de pagos en línea, utilizado para transferencias internacionales y pagos en línea.
+  is_base: true
+
+- id: 11
+  code: MP-VENTA_A_CREDITO
+  name: Venta a Crédito
+  description: Pago realizado en cuotas, a plazos.
+  is_base: true
+
+- id: 12
+  code: MP-CHEQUE
+  name: Cheque
+  description: Documento bancario utilizado como forma de pago, aunque en desuso en comparación con otros métodos más modernos.
+  is_base: true
+
+- id: 13
+  code: MP-GIRO_POSTAL
+  name: Giro Postal
+  description: Método de pago en efectivo enviado a través de servicios postales o agencias.
+  is_base: true
+
+- id: 14
+  code: MP-PUNTO_DE_VENTA
+  name: Punto de Venta (POS)
+  description: Pago procesado a través de dispositivos POS, que suelen aceptar tarjetas de crédito, débito y pagos móviles.
+  is_base: true
+
+- id: 15
+  code: MP-WESTERN_UNION
+  name: Western Union / MoneyGram
+  description: Servicios de transferencia de dinero usados para pagos nacionales o internacionales.
+  is_base: true
+
+- id: 16
+  code: MP-CRIPTO
+  name: Criptomonedas
+  description: Pago utilizando criptomonedas. Aunque no es muy común en todos los comercios, está ganando terreno en ciertos mercados.
+  is_base: true

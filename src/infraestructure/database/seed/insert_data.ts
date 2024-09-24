@@ -20,6 +20,10 @@ import { ListPrice } from '../../../domain/entities/ListPrice.entity';
 import { createTypesChannel } from './types_channel.function';
 import { createIssuableDocuments } from './issuable_documents.function';
 import { createPersons } from './persons.function';
+import { createTypesDocuments } from './types_documents.function';
+import { createPointSales } from './point_sales.function';
+import { createMethodPayments } from './method_payments.function';
+import { createWayToPays } from './way_to_pay.function';
 
 config();
 
@@ -499,6 +503,10 @@ export class InserData {
       'type_channel': (data) => createTypesChannel(data),
       'issuable_document': (data) => createIssuableDocuments(data),
       'person': (data) => createPersons(data),
+      'type_document': (data) => createTypesDocuments(data),
+      'point_sale': (data) => createPointSales(data),
+      'method_payment': (data) => createMethodPayments(data),
+      'way_to_pay': (data) => createWayToPays(data),
     }
 
     try {

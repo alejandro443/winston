@@ -1,0 +1,6 @@
+---
+- id: 1
+  name: DEFAULT
+  description: Default
+  code: PS-DEFAULT
+  is_base: true

@@ -1,0 +1,37 @@
+---
+- id: 1
+  code: TD-DNI
+  name: DNI
+  description: DNI
+  character_validation: number
+  length_validation: 8
+- id: 2
+  code: TD-RUC
+  name: RUC
+  description: RUC
+  character_validation: number
+  length_validation: 11
+- id: 3
+  code: TD-PASAPORTE
+  name: PASAPORTE
+  description: PASAPORTE
+  character_validation: string
+  length_validation: 12
+- id: 4
+  code: TD-RUC
+  name: CARNÉT DE EXTRANJERIA
+  description: CARNÉT DE EXTRANJERIA
+  character_validation: number
+  length_validation: 9
+- id: 5
+  code: TD-LDC
+  name: LICENCIA DE CONDUCIR
+  description: LICENCIA DE CONDUCIR
+  character_validation: string
+  length_validation: 12
+- id: 6
+  code: TD-CDEI
+  name: CÉDULA DE IDENTIDAD
+  description: CÉDULA DE IDENTIDAD
+  character_validation: string
+  length_validation: 12

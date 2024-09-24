@@ -1,0 +1,11 @@
+---
+- id: 1
+  code: WTP-Contado
+  name: contado
+  description: Contado
+  is_base: true
+- id: 2
+  code: WTP-Credito
+  name: credito
+  description: Credito
+  is_base: true
