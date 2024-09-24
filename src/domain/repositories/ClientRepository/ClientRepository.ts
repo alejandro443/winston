@@ -35,6 +35,7 @@ export class ClientRepository {
       await clientCreate.$set(client.type_entity, object);
       return clientCreate;
     } catch (error: any) {
+      console.log(error)
       throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }

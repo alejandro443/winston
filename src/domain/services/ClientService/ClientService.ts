@@ -68,6 +68,7 @@ export class ClientService {
 
       return this.repository?.create(client, entity);
     } catch (error: any) {
+      console.log(error)
       throw new ClientApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }

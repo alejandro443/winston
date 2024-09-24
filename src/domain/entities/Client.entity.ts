@@ -176,7 +176,7 @@ export class Client extends Model<Client> {
   })
   declare issuable_documents_ids: number[];
 
-  @BelongsTo(() => IssuableDocument, 'id')
+  @BelongsTo(() => IssuableDocument, 'issuable_documents_id')
   declare issuableDocument: IssuableDocument;
 
   @ForeignKey(() => Zone)

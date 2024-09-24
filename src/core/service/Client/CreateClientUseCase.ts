@@ -48,6 +48,7 @@ export class CreateClientUseCase {
       
       return { ...response.dataValues };
     } catch (error: any) {
+      console.log(error)
       throw new ClientApplicationError(error)
     }
   };
