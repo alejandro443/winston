@@ -1,4 +1,4 @@
-import { Roles } from '@src/infraestructure/shared/enums/Roles';
+import { Roles } from '../../../infraestructure/shared/enums/Roles';
 import { UserService } from 'src/domain/services/UserService/UserService';
 
 export class GetAllUserUseCase {
@@ -30,7 +30,7 @@ export class GetAllUserUseCase {
       const data: any = await response.map((user: any) => {
         const user_data: any = user.toJSON();
         return {
-          id: user_data.id,
+          id: user_data.user.id,
           user: user_data.user.user
         }
       });

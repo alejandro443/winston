@@ -57,7 +57,11 @@ export class UserRepository {
     try {
       const data: any =  await UserRol.findAll({ 
         include: [
-          {model: User, required: true}
+          {
+            model: User, 
+            required: true,
+            attributes: ['id', 'user']
+          }
         ],
         where: { 
           rol_id: rol_id,
