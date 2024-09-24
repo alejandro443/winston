@@ -50,6 +50,21 @@ import { SkuList } from '../../../domain/entities/SkuList.entity';
 import { Supply } from '../../../domain/entities/Supply.entity';
 import { Function } from '../../../domain/entities/Function.entity';
 import { ListPrice } from '../../../domain/entities/ListPrice.entity';
+import { ZoneDetail } from '../../../domain/entities/ZoneDetail.entity';
+import { Warehouse } from '../../../domain/entities/Warehouse.entity';
+import { PointSale } from '../../../domain/entities/PointSale.entity';
+import { Sale } from '../../../domain/entities/Sale.entity';
+import { SaleDetail } from '../../../domain/entities/SaleDetail.entity';
+import { PointSaleUser } from '../../../domain/entities/PointSaleUser.entity';
+import { ListPriceProduct } from '../../../domain/entities/ListPriceProduct.entity';
+import { ListPriceClient } from '../../../domain/entities/ListPriceClient.entity';
+import { FinancialSequence } from '../../../domain/entities/FinancialSequence.entity';
+import { SaleDocument } from '../../../domain/entities/SaleDocument.entity';
+import { SalesPayment } from '../../../domain/entities/SalesPayment.entity';
+import { PaymentSchedule } from '../../../domain/entities/PaymentSchedule.entity';
+import { SalePaymentSchedule } from '../../../domain/entities/SalePaymentSchedule.entity';
+import { QuotaPayment } from '../../../domain/entities/QuotaPayment.entity';
+import { SubmissionStatus } from '../../shared/enums/SubmissionStatus';
 
 const logger = new Logger('Seeds');
 
@@ -103,7 +118,21 @@ async function runSeedInsertData(type, seed) {
     BusinessSubcategory,
     Zone,
     Ubigeo,
-    ListPrice
+    ZoneDetail,
+    Warehouse,
+    PointSale,
+    Sale,
+    SaleDetail,
+    PointSaleUser,
+    ListPrice,
+    ListPriceProduct,
+    ListPriceClient,
+    FinancialSequence,
+    SaleDocument,
+    SalesPayment,
+    PaymentSchedule,
+    SalePaymentSchedule,
+    QuotaPayment
   ]);
   const inser_data: any = new InserData();
   await inser_data.run(type, seed);

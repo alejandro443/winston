@@ -187,7 +187,7 @@ export class Client extends Model<Client> {
   })
   declare zone_id: number;
 
-  @BelongsTo(() => Zone, 'zone_id')
+  @BelongsTo(() => Zone, 'id')
   declare zone: Zone;
 
   @ForeignKey(() => ListPrice)
