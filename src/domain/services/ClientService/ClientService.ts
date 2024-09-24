@@ -3,7 +3,7 @@ import { GenerateCodeClient } from '@src/core/shared/functions/generate_code_cli
 import { PortfolioRepository } from '@src/domain/repositories/ClientRepository/PortfolioRepository';
 import { CompanyRepository } from '@src/domain/repositories/CompanyRepository/CompanyRepository';
 import { PersonRepository } from '@src/domain/repositories/PersonRepository/PersonRepository';
-import { TypeEntity } from '@src/infraestructure/shared/enums/TypeEntity';
+import { TypeEntity } from '../../../infraestructure/shared/enums/TypeEntity';
 import { NewClientDto, UpdateClientDto } from 'src/core/shared/dto/Client/client_dto';
 import { ClientRepository } from 'src/domain/repositories/ClientRepository/ClientRepository';
 
@@ -65,9 +65,6 @@ export class ClientService {
         client.entity_id = entity.id;
       }
       client.code = await GenerateCodeClient(entity.id, client.type_entity);
-
-      console.log(client)
-
       return this.repository?.create(client, entity);
     } catch (error: any) {
       console.log(error)

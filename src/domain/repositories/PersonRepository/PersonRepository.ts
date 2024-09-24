@@ -31,6 +31,7 @@ export class PersonRepository {
       var person_data: any = await Person.create(person);
       return person_data;
     } catch (error: any) {
+      console.log(error)
       throw new PersonApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
