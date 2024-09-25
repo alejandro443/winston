@@ -35,7 +35,7 @@ export class ScheduleSimulationUseCase {
           number_quota: i + 1,
           label: payment_label,
           deadline: deadline,
-          payment_amount: payment_amount,
+          payment_amount: payment_amount.toFixed(2),
           payment_date: payment_date
         });
       }
