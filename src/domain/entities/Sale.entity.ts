@@ -144,32 +144,32 @@ export class Sale extends Model<Sale> {
   declare total_products: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare total_sale: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare sub_total_sale: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare sub_discount: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare neto_sale: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare igv: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
   })
   declare taxed: number;
 
