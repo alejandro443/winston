@@ -44,15 +44,6 @@ jobs:
           debug: true
           envs: GITHUB_USERNAME, GITHUB_TOKEN
           script: |
-            echo "docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN"
-            docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
-
-            echo "docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest"
-            docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest
-
-            echo "docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest"
-            docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest
-
             echo "docker stop ServiceBackend"
             docker stop ServiceBackend
 
@@ -65,10 +56,19 @@ jobs:
             echo "docker volume rm ServiceBackend"
             docker volume rm ServiceBackend
 
+            echo "docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN"
+            docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+
+            echo "docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest"
+            docker pull ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest
+
+            echo "docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest"
+            docker tag ghcr.io/gersonmlb/service_backend_fhyona/service_backend_fhyona:latest service_backend_fhyona:latest
+
             echo "docker system prune -f"
             docker system prune -f
 
             echo "docker volume rm ServiceBackend"
             docker volume create ServiceBackend
             
-            docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ -v ServicePublicFiles:/dist/public/ service_backend_fhyona
+            docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ service_backend_fhyona
