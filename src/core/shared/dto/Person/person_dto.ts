@@ -140,7 +140,7 @@ export class PersonDto {
     type: String,
   })
   @IsString()
-  direction?: string;
+  main_direction?: string;
 
   @IsOptional()
   @ApiPropertyOptional({

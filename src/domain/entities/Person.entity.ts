@@ -115,7 +115,7 @@ export class Person extends Model<Person> {
   @Column({
     type: DataType.STRING,
   })
-  declare direction: string;
+  declare main_direction: string;
 
   @Column({
     type: DataType.JSONB,

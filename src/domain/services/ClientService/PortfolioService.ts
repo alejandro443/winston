@@ -19,7 +19,7 @@ export class PortfolioService {
             channel: client.typeChannel ? client.typeChannel.name : '',
             name: `${client.person.name} ${client.person.last_name}`,
             last_name: client.person.last_name,
-            main_direction: client.person.direction,
+            main_direction: client.person.main_direction,
             province: client.person.province,
             district: client.person.district,
             department: client.person.department,
