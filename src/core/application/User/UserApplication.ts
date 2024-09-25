@@ -16,5 +16,6 @@ export interface UserApplication {
 
   createUserWithPerson(user: NewUserWithPersonDto): Promise<any>;
   getAllUserSellers(): Promise<Array<AllUserDto>>;
+  getAllUserWorkers(): Promise<Array<AllUserDto>>;
 
 }

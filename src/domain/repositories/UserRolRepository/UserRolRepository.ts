@@ -46,6 +46,7 @@ export class UserRolRepository {
           {
             model: User,
             attributes: ['id', 'user', 'code'],
+            where: { consultant: false }
           },
         ], 
       where: { deleted_at: null } });

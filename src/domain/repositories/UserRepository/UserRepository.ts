@@ -7,7 +7,7 @@ export class UserRepository {
 
   async findOne(code: string) {
     try {
-      return User.findOne({ where: { code: code } });
+      return User.findOne({ where: { code: code, consultant: false } });
     } catch (error: any) {
       return error;
     }
@@ -15,7 +15,7 @@ export class UserRepository {
 
   async findAll() {
     try {
-      return User.findAll({ where: { deleted_at: null } });
+      return User.findAll({ where: { deleted_at: null, consultant: false} });
     } catch (error: any) {
       return error;
     }
@@ -31,7 +31,7 @@ export class UserRepository {
 
   async update(code: any, user: UpdateUserDto) {
     try {
-      return User.update(user, { where: { code: code } });
+      return User.update(user, { where: { code: code, consultant: false } });
     } catch (error: any) {
       return error;
     }
@@ -39,7 +39,7 @@ export class UserRepository {
 
   async deleted(code: string) {
     try {
-      return User.destroy({ where: { code: code } });
+      return User.destroy({ where: { code: code, consultant: false } });
     } catch (error: any) {
       return error;
     }
@@ -47,7 +47,7 @@ export class UserRepository {
 
   async getUser(user: any) {
     try {
-      return User.findOne({ where: { user: user } });
+      return User.findOne({ where: { user: user, consultant: false } });
     } catch (error: any) {
       return error;
     }
@@ -60,7 +60,8 @@ export class UserRepository {
           {
             model: User, 
             required: true,
-            attributes: ['id', 'user']
+            attributes: ['id', 'user'],
+            where: { consultant: false }
           }
         ],
         where: { 

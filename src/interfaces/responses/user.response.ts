@@ -66,14 +66,12 @@ class SellersResponseDto {
     description: 'Id del usuario.',
     type: Number,
   })
-  @IsNumber()
   id?: number;
 
   @ApiProperty({
     description: 'Usuario.',
     type: String,
   })
-  @IsString()
   user?: string;
 }
 
@@ -83,4 +81,70 @@ export class SellersResponse extends AppResponse {
     nullable: true,
   })
   data?: SellersResponseDto[];
+}
+
+
+
+// Workers
+class UserWorkersResponseDto {
+  @ApiProperty({
+    description: 'Id del trabajador.',
+    type: Number,
+  })
+  id?: number;
+
+  @ApiProperty({
+    description: 'Usuario.',
+    type: String,
+  })
+  user?: string;
+  
+  @ApiProperty({
+    description: 'Nombre del usuario.',
+    type: String,
+  })
+  name?: string;
+  
+  @ApiProperty({
+    description: 'Apellidos del usuario.',
+    type: String,
+  })
+  last_name?: string;
+  
+  @ApiProperty({
+    description: 'Email del usuario.',
+    type: String,
+  })
+  main_email?: string;
+  
+  @ApiProperty({
+    description: 'Rol del usuario.',
+    type: String,
+  })
+  rol_name?: string;
+  
+  @ApiProperty({
+    description: 'Estado del usuario.',
+    type: Boolean,
+  })
+  status?: boolean;
+  
+  @ApiProperty({
+    description: 'Fecha de creacion del usuario.',
+    type: Date,
+  })
+  created_at?: Date;
+  
+  @ApiProperty({
+    description: 'Fecha de creacion del usuario.',
+    type: Date,
+  })
+  updated_at?: Date;
+}
+export class UserWorkersResponse extends AppResponse {
+  @ApiProperty({
+    type: [UserWorkersResponseDto],
+    nullable: true,
+  })
+  data?: UserWorkersResponseDto[];
 }

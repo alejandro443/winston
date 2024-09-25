@@ -1,3 +1,7 @@
+import { Person } from '@src/domain/entities/Person.entity';
+import { Rol } from '@src/domain/entities/Rol.entity';
+import { User } from '@src/domain/entities/User.entity';
+import { UserRol } from '@src/domain/entities/UserRol.entity';
 import {
   NewWorkerDto,
   UpdateWorkerDto,
@@ -43,6 +47,47 @@ export class WorkerRepository {
     try {
       return Worker.destroy({ where: { code: code } });
     } catch (error: any) {
+      return error;
+    }
+  }
+
+  async userWorkers() {
+    try {
+      const data: any = await Worker.findAll({
+        include: [
+          {
+            model: User,
+            required: true,
+            include: [
+              {
+                model: UserRol,
+                required: true,
+                attributes: ['id'],
+                include: [
+                  {
+                    model: Rol,
+                    required: true,
+                    attributes: ['name']
+                  }
+                ]
+              }
+            ],
+            attributes: ['user'],
+            where: { consultant: false }
+          },
+          {
+            model: Person,
+            required: true,
+            attributes: ['main_email', 'name', 'last_name']
+          }
+        ],
+        attributes: ['id', 'status', 'created_at', 'updated_at'],
+        where: { deleted_at: null } 
+      });
+
+      return data;
+    } catch (error: any) {
+      console.log(error)
       return error;
     }
   }

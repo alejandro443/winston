@@ -67,7 +67,7 @@ export class DeliveryPoint extends Model<DeliveryPoint> {
   declare responsible_id: number;
 
   @BelongsTo(() => Person, 'responsible_id')
-  declare wayToPay: Person;
+  declare person: Person;
 
   @Column({
     type: DataType.BOOLEAN,

@@ -40,7 +40,7 @@ export class Worker extends Model<Worker> {
   })
   declare person_id: number;
 
-  @BelongsTo(() => Person, 'id')
+  @BelongsTo(() => Person, 'person_id')
   declare person: Person;
 
   @ForeignKey(() => TypeWorker)
@@ -51,7 +51,7 @@ export class Worker extends Model<Worker> {
   })
   declare type_worker_id: number;
 
-  @BelongsTo(() => TypeWorker, 'id')
+  @BelongsTo(() => TypeWorker, 'type_worker_id')
   declare typeWorker: TypeWorker;
 
   @Column({
@@ -60,7 +60,7 @@ export class Worker extends Model<Worker> {
   })
   declare user_id: number;
 
-  @BelongsTo(() => User, 'id')
+  @BelongsTo(() => User, 'user_id')
   declare user: User;
 
   @Column({

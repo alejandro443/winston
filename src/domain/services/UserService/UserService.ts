@@ -5,10 +5,15 @@ import {
 import { RolesId } from '../../../infraestructure/shared/enums/Roles';
 import { NewUserDto } from 'src/core/shared/dto/User/user_dto';
 import { UserRepository } from 'src/domain/repositories/UserRepository/UserRepository';
+import { WorkerRepository } from '@src/domain/repositories/WorkerRepository/WorkerRepository';
 
 export class UserService {
-  constructor(private repository?: UserRepository) {
+  constructor(
+    private repository?: UserRepository,
+    private repositoryWorker?: WorkerRepository
+  ) {
     this.repository = new UserRepository();
+    this.repositoryWorker = new WorkerRepository();
   }
 
   async getOneUser(code: string) {
@@ -67,6 +72,14 @@ export class UserService {
     try {
       const rol_id: number = RolesId[rol_name];
       return this.repository?.findByRol(rol_id);
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  async getAllUserWorkers() {
+    try {
+      return this.repositoryWorker?.userWorkers();
     } catch (error: any) {
       return error;
     }

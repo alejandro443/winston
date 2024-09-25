@@ -91,4 +91,12 @@ export class UserApplicationService implements UserApplication {
       return error;
     }
   }
+
+  async getAllUserWorkers(){
+    try {
+      return this.getAllUseCase?.getAllUserWorkers();
+    } catch (error: any) {
+      return error;
+    }
+  }
 }

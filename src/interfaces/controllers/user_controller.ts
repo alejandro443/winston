@@ -22,7 +22,7 @@ import { Log } from '../../infraestructure/shared/log/Log';
 import { GetUserRequestDto } from '../request_dto/UserDto/get.user_dto';
 import { CreateUserRequestDto, CreateUserWithRolesRequestDto } from '../request_dto/UserDto/create.user_dto';
 import { UserApplication } from 'src/core/application/User/UserApplication';
-import { SellersResponse, UserResponse, UserWithPersonResponse, UsersResponse } from '../responses/user.response';
+import { SellersResponse, UserResponse, UserWithPersonResponse, UserWorkersResponse, UsersResponse } from '../responses/user.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
@@ -184,6 +184,24 @@ export class UserController {
     return {
       status: 200,
       message: `Ok`,
+      data: users,
+    };
+  }
+
+  @ApiBadRequestResponse({ description: 'Error' })
+  @ApiCreatedResponse({
+    description: 'The record has been successfully obtain.',
+    type: UserWorkersResponse,
+  })
+  @HttpCode(200)
+  @Get('/workers')
+  async getAllUserWorkers(): Promise<UserWorkersResponse> {
+    Log.info(`(Get) Get all users`);
+
+    const users = await this.application.getAllUserWorkers();
+    return {
+      status: 200,
+      message: `Get all users`,
       data: users,
     };
   }
