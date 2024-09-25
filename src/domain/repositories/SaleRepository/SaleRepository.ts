@@ -91,7 +91,7 @@ export class SaleRepository {
         // 5. Crear los abonos de la venta 
         const sales_payment: any = body?.sales_payment;
 
-        const salesPaymentPromises = sales_payment.schedule.map((payment: any) =>
+        const salesPaymentPromises = sales_payment.map((payment: any) =>
           SalesPayment.create({
             ...payment,
             sale_id: sale.id
