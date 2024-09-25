@@ -21,6 +21,7 @@ import { Auth } from '@src/core/decorators/auth.decorator';
 import { QuotaPaymentDto } from '@src/core/shared/dto/QuotaPayment/quota_payment_dto';
 import { CreateQuotaPaymentRequestDto } from '../request_dto/QuotaPaymentDto/create.dto';
 import { QuotaPaymentResponse, QuotaPaymentsResponse } from '../responses/quota_payment.response';
+import { GetQuotaPaymentRequestDto } from '../request_dto/QuotaPaymentDto/get.dto';
 
 @ApiTags('Quota Payment')
 @Controller('/quota_payment')
@@ -42,7 +43,7 @@ export class QuotaPaymentController {
   @Get('/all/:payment_schedule_id')
   async GetQuotaPayment(
     // TODO: El tipo del params, hacerlo correctamente
-    @Param() params: any,
+    @Param() params: GetQuotaPaymentRequestDto,
   ): Promise<QuotaPaymentsResponse> {
     const data = await this.application.find_all(params.payment_schedule_id);
     return {
