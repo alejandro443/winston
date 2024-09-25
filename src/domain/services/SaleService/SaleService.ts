@@ -68,9 +68,9 @@ export class SaleService {
     }
   }
   
-  async getElectronicReceipts() {
+  async getElectronicReceipts(filters: object) {
     try {
-      return this.repositorySaleDocument?.getAll();
+      return this.repositorySaleDocument?.getAll(filters);
     } catch (error: any) {
       throw new SaleApplicationError(error);
     }

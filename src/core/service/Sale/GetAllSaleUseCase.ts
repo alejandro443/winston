@@ -62,9 +62,9 @@ export class GetAllSaleUseCase {
     }
   }
 
-  async getElectronicReceipts() {
+  async getElectronicReceipts(filters: any) {
     try {
-      const response: any = await this.saleService?.getElectronicReceipts();
+      const response: any = await this.saleService?.getElectronicReceipts(filters);
 
       const response_data: any = response.map((data: any) => {
         const data_json: any = data.toJSON();

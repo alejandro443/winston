@@ -122,11 +122,13 @@ export class SaleController {
     type: ElectronicReceiptsResponse,
   })
   @HttpCode(200)
-  @Get('/electronic_receipts')
-  async getElectronicReceipts(): Promise<ElectronicReceiptsResponse> {
+  @Post('/electronic_receipts')
+  async getElectronicReceipts(
+    @Body() request: FiltersSalesRequestDto,
+  ): Promise<ElectronicReceiptsResponse> {
     Log.info(`(Get) Get all electronic receipts.`);
 
-    const sale = await this.application.getElectronicReceipts();
+    const sale = await this.application.getElectronicReceipts(request);
     return {
       status: 200,
       message: `Ok`,

@@ -87,9 +87,9 @@ export class SaleApplicationService
     }
   }
   
-  async getElectronicReceipts() {
+  async getElectronicReceipts(filters: any) {
     try {
-      return this.getAllUseCase?.getElectronicReceipts();
+      return this.getAllUseCase?.getElectronicReceipts(filters);
     } catch (error: any) {
       return error;
     }

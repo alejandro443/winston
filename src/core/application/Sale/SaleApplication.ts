@@ -17,6 +17,6 @@ export interface SaleApplication {
 
   getAllReceivable(filters: any): Promise<Array<AllSaleDto>>;
   getOneDetails(sale_id: number): Promise<any>;
-  getElectronicReceipts(): Promise<any>;
+  getElectronicReceipts(filters: any): Promise<any>;
 
 }

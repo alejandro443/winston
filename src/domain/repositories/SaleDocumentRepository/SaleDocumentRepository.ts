@@ -8,12 +8,27 @@ import { Sale } from '@src/domain/entities/Sale.entity';
 import { SaleDetail } from '@src/domain/entities/SaleDetail.entity';
 import { SaleDocument } from '@src/domain/entities/SaleDocument.entity';
 import { User } from '@src/domain/entities/User.entity';
+import { Op } from 'sequelize';
 
 export class SaleDocumentRepository {
   constructor() { }
 
-  async getAll() {
+  async getAll(filters: any) {
     try {
+      const whereConditions: any = {
+        deleted_at: null
+      };
+
+      if (filters?.startDate && filters?.endDate) {
+        whereConditions.sale_date = {
+          [Op.between]: [filters.startDate, filters.endDate],
+        };
+      } else if (filters?.startDate) {
+        whereConditions.sale_date = { [Op.gte]: filters.startDate };
+      } else if (filters?.endDate) {
+        whereConditions.sale_date = { [Op.lte]: filters.endDate };
+      }
+
       const data: any = await SaleDocument.findAll({
         include: [
           {
@@ -55,7 +70,8 @@ export class SaleDocumentRepository {
                 attributes: ['user']
               }
             ],
-            attributes: ['currency', 'currency_symbol', 'sale_date', 'type_payment', 'note', 'order_type', 'total_sale']
+            attributes: ['currency', 'currency_symbol', 'sale_date', 'type_payment', 'note', 'order_type', 'total_sale'],
+            where: whereConditions,
           },
         ],
         attributes: ['issuance_date', 'type_document', 'serie', 'correlative', 'submission_status']
