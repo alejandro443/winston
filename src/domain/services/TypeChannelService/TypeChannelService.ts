@@ -26,6 +26,7 @@ export class TypeChannelService {
     try {
       return this.repository?.create(type_channel);
     } catch (error: any) {
+      console.log(error)
       return error;
     }
   }

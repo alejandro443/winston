@@ -18,6 +18,7 @@ export class CreateTypeChannelUseCase {
         status: response.status,
       };
     } catch (error: any) {
+      console.log(error)
       return error;
     }
   }
