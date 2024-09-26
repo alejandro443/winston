@@ -37,6 +37,7 @@ export class PersonService {
 
       return person_new;
     } catch (error: any) {
+      console.log(error)
       return new PersonApplicationError(error)
     }
   }

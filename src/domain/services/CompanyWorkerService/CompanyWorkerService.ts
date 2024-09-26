@@ -10,6 +10,7 @@ export class CompanyWorkerService {
     try {
       return this.repository?.findOne(id);
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error);
     }
   }
@@ -18,6 +19,7 @@ export class CompanyWorkerService {
     try {
       return this.repository?.findAll();
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error);
     }
   }
@@ -27,6 +29,7 @@ export class CompanyWorkerService {
       var company_worker_new: any = await this.repository?.create(company_worker);
       return company_worker_new;
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error)
     }
   }
@@ -35,6 +38,7 @@ export class CompanyWorkerService {
     try {
       return this.repository?.update(id, company_worker);
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error);
     }
   }
@@ -43,6 +47,7 @@ export class CompanyWorkerService {
     try {
       return this.repository?.deleted(id);
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error);
     }
   }
@@ -66,6 +71,7 @@ export class CompanyWorkerService {
 
       return data_company_worker;
     } catch (error: any) {
+      console.log(error)
       throw new CompanyWorkerApplicationError(error);
     }
   }

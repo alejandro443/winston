@@ -9,6 +9,7 @@ export class DetailsScheduleUseCase {
 
   async details_schedule(sale_id: number | string) {
     try {
+      // TO DO: Realizar el retorno de la data, como sera unica, entonces que sea un objecto y no un array de objectos
       const response: any = await this.paymentScheduleService?.ServiceFindAll(sale_id);
       const data_response: any = response.map((data: any) => {
         return {

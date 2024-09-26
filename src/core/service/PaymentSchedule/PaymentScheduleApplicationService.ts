@@ -13,9 +13,9 @@ export class PaymentScheduleApplicationService
     this.detailsScheduleUseCase = new DetailsScheduleUseCase();
   }
 
-  async schedule_simulation(searchTerm: string) {
+  async schedule_simulation(data: any) {
     try {
-      const response: any = await this.simulationUseCase?.simulation(searchTerm);
+      const response: any = await this.simulationUseCase?.simulation(data);
 
       return response;
     } catch (error: any) {

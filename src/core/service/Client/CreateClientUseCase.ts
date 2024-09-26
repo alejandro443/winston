@@ -70,6 +70,7 @@ export class CreateClientUseCase {
         await this.companyWorkerService.createCompanyWorker(company_worker_data)
       });
     } catch (error: any) {
+      console.log(error)
       throw new ClientApplicationError(error)
     }
   }
@@ -99,6 +100,7 @@ export class CreateClientUseCase {
         })
       });
     } catch (error) {
+      console.log(error)
       throw new ClientApplicationError(error)
     }
   }
@@ -110,6 +112,7 @@ export class CreateClientUseCase {
         client_id: client_id
       })
     } catch (error) {
+      console.log(error)
       throw new ClientApplicationError(error)
     }
   }
