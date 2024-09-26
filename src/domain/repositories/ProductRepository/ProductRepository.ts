@@ -1,7 +1,6 @@
 import { ProductApplicationError } from '@src/core/shared/error/ProductApplicationError';
 import { ListPrice } from '@src/domain/entities/ListPrice.entity';
 import { ListPriceProduct } from '@src/domain/entities/ListPriceProduct.entity';
-import { Sequelize } from 'sequelize';
 import {
   NewProductDto,
   UpdateProductDto,
@@ -34,6 +33,7 @@ export class ProductRepository {
       const product_data: any = await Product.create(product);
       return product_data;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
