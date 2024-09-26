@@ -32,7 +32,7 @@ export class CreateClientUseCase {
       if (!response) throw new ClientApplicationError('Error en la creación de cliente.', 'INTERNAL_SERVER_ERROR')
 
       // Create Managers of client
-      if (client.manager_details?.length && client.type_entity == TypeEntity.COMPANY) {
+      if (client.manager_details?.length) {
         await this.CreateManager(client.manager_details, response.entity_id);
       }
 
