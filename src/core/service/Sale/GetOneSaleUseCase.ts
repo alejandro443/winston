@@ -1,4 +1,5 @@
 import { date_for_view } from '@src/core/libraries/date';
+import { SaleApplicationError } from '@src/core/shared/error/SaleApplicationError';
 import { SaleService } from 'src/domain/services/SaleService/SaleService';
 
 export class GetOneSaleUseCase {
@@ -18,6 +19,8 @@ export class GetOneSaleUseCase {
   async getOneDetails(id: number) {
     try {
       const response: any = await this.saleService?.getOneDetailSale(id);
+      console.log('getOneDetails', response)
+
       const response_data: any = response.map((data: any) => {
         const data_json: any = data.toJSON();
         var client = data_json.sale.client.type_entity == 'company' ?
@@ -33,8 +36,7 @@ export class GetOneSaleUseCase {
           submission_status: data_json.submission_status,
           currency: data_json.sale.currency,
           sale_date: date_for_view(data_json.sale.sale_date),
-          sold_by: data_json.sale.soldBy.user,
-          seller_assigned: data_json.sale.seller.user,
+          seller_assigned: data_json.sale.seller?.user || '',
           products: data_json.sale.saleDetails.map((product)=>({
             amount: product.amount,
             product_price: product.product_price,
@@ -47,7 +49,8 @@ export class GetOneSaleUseCase {
       })
       return response_data;
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 }

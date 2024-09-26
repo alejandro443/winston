@@ -8,6 +8,7 @@ import { GetAllSaleUseCase } from './GetAllSaleUseCase';
 import { CreateSaleUseCase } from './CreateSaleUseCase';
 import { UpdateSaleUseCase } from './UpdateSaleUseCase';
 import { DeleteSaleUseCase } from './DeleteSaleUseCase';
+import { SaleApplicationError } from '@src/core/shared/error/SaleApplicationError';
 
 export class SaleApplicationService
   implements SaleApplication
@@ -30,7 +31,8 @@ export class SaleApplicationService
     try {
       return this.getAllUseCase?.getAllSale();
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -38,7 +40,8 @@ export class SaleApplicationService
     try {
       return this.getOneUseCase?.getOneSale(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -46,7 +49,8 @@ export class SaleApplicationService
     try {
       return this.getOneUseCase?.getOneDetails(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -56,7 +60,8 @@ export class SaleApplicationService
     try {
       return this.createUseCase?.createSale(body);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -67,7 +72,8 @@ export class SaleApplicationService
     try {
       return this.updateUseCase?.updateSale(id, body);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -75,7 +81,8 @@ export class SaleApplicationService
     try {
       return this.deleteUseCase?.deleteSale(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 
@@ -83,7 +90,8 @@ export class SaleApplicationService
     try {
       return this.getAllUseCase?.getAllReceivable(filters);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
   
@@ -91,7 +99,8 @@ export class SaleApplicationService
     try {
       return this.getAllUseCase?.getElectronicReceipts(filters);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new SaleApplicationError(error);
     }
   }
 

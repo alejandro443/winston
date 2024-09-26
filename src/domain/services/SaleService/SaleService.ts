@@ -64,6 +64,7 @@ export class SaleService {
     try {
       return this.repositorySaleDocument?.findOneWithSaleDetails(id);
     } catch (error: any) {
+      console.log(error)
       throw new SaleApplicationError(error);
     }
   }
