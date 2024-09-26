@@ -122,6 +122,12 @@ export class SaleDocumentRepository {
               {
                 model: User,
                 required: true,
+                as: 'soldBy',
+                attributes: ['user']
+              },
+              {
+                model: User,
+                required: true,
                 as: 'seller',
                 attributes: ['user']
               }

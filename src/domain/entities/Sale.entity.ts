@@ -58,7 +58,7 @@ export class Sale extends Model<Sale> {
   })
   declare sold_by: number;
 
-  @BelongsTo(() => User, { foreignKey: 'user_id', as: 'soldBy' })
+  @BelongsTo(() => User, { foreignKey: 'sold_by', as: 'soldBy' })
   declare soldBy: User;
 
   @ForeignKey(() => IssuableDocument)
