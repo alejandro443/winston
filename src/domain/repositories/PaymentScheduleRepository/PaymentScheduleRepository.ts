@@ -51,4 +51,25 @@ export class PaymentScheduleRepository {
       throw new PaymentScheduleApplicationError(error);
     }
   }
+  
+  async findAllPayments(sale_id: number | string) {
+    try {
+      const data: any = await SalePaymentSchedule.findOne({
+        include: [
+          { 
+            model: PaymentSchedule, 
+            required: true,
+            attributes: ['id', 'uuid', 'number_quota', 'payment_date', 'done', 'amount', 'payment_amount']
+          }
+        ],
+        where: {
+          sale_id: sale_id,
+          deleted_at: null
+        } 
+      });
+      return data;
+    } catch (error: any) {
+      throw new PaymentScheduleApplicationError(error);
+    }
+  }
 }

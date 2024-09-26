@@ -19,7 +19,6 @@ export class GetOneSaleUseCase {
   async getOneDetails(id: number) {
     try {
       const response: any = await this.saleService?.getOneDetailSale(id);
-      console.log('getOneDetails', response)
 
       const response_data: any = response.map((data: any) => {
         const data_json: any = data.toJSON();

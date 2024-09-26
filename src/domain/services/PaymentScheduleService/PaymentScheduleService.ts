@@ -13,4 +13,12 @@ export class PaymentScheduleService {
       throw new PaymentScheduleApplicationError(error);
     }
   }
+  
+  async ServiceFindAllPayments(sale_id: number | string ) {
+    try {
+      return this.repository?.findAllPayments(sale_id);
+    } catch (error: any) {
+      throw new PaymentScheduleApplicationError(error);
+    }
+  }
 }

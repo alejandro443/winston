@@ -31,4 +31,13 @@ export class PaymentScheduleApplicationService
       throw new PaymentScheduleApplicationError(error);
     }
   }
+  
+  async all_payments(sale_id: number | string) {
+    try {
+      const response: any = await this.detailsScheduleUseCase?.all_payments(sale_id);
+      return response;
+    } catch (error: any) {
+      throw new PaymentScheduleApplicationError(error);
+    }
+  }
 }

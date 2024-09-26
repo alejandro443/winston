@@ -24,3 +24,21 @@ export function date_for_view(value: string): string {
 
   return `${day}/${month}/${year}`;
 }
+
+
+export function days_passed_since(date: Date): number {
+  const today = new Date();
+  
+  // Si la fecha es futura, devolver 0
+  if (date > today) {
+    return 0;
+  }
+  
+  const millisecondsPerDay = 1000 * 60 * 60 * 24;
+  
+  // Calcular la diferencia en milisegundos entre hoy y la fecha proporcionada
+  const diffInMilliseconds = today.getTime() - date.getTime();
+  
+  // Devolver la diferencia en días, redondeando hacia abajo
+  return Math.floor(diffInMilliseconds / millisecondsPerDay);
+}
