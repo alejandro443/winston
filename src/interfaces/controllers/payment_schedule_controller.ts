@@ -10,13 +10,11 @@ import {
 } from '@nestjs/common';
 import {
   ApiBadGatewayResponse,
-  ApiCreatedResponse,
   ApiInternalServerErrorResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { PAYMENT_SCHEDULE_APPLICATION } from 'src/core/shared/constants/application.constants';
 import { PaymentScheduleApplication } from 'src/core/application/PaymentSchedule/PaymentScheduleApplication';
-import { UbigeosResponse } from '../responses/ubigeo.response';
 import { ApplicationCreatorFilter } from '../exception_filters/application.exception_filter';
 import { Auth } from '@src/core/decorators/auth.decorator';
 
@@ -31,40 +29,59 @@ export class PaymentScheduleController {
     private application: PaymentScheduleApplication,
   ) { }
 
-  @ApiCreatedResponse({
-    description: 'The record has been successfully obtain.',
-    type: UbigeosResponse,
-  })
+  // @ApiCreatedResponse({
+  //   description: 'The record has been successfully obtain.',
+  //   type: UbigeosResponse,
+  // })
   @ApiBadGatewayResponse({ description: 'Invalid Simulation.' })
   @HttpCode(200)
   @Post('/schedule_simulation')
   async ScheduleSimulation(
     @Body() body: any,
   ): Promise<any> {
-    const ubigeo = await this.application.schedule_simulation(body);
+    const payment_schedule = await this.application.schedule_simulation(body);
     return {
       status: 200,
       message: `Ok`,
-      data: ubigeo,
+      data: payment_schedule,
     };
   }
 
-  @ApiCreatedResponse({
-    description: 'The record has been successfully obtain.',
-    type: UbigeosResponse,
-  })
+  // @ApiCreatedResponse({
+  //   description: 'The record has been successfully obtain.',
+  //   type: UbigeosResponse,
+  // })
   @ApiBadGatewayResponse({ description: 'Invalid Simulation.' })
   @HttpCode(200)
   @Get('/details_schedule/:sale_id')
-  async DetailsScheduleSimulation(
+  async DetailsSchedule(
     // TODO: El tipo del params, hacerlo correctamente
     @Param() params: any,
   ): Promise<any> {
-    const ubigeo = await this.application.details_schedule(params.sale_id);
+    const payment_schedule = await this.application.details_schedule(params.sale_id);
     return {
       status: 200,
       message: `Ok`,
-      data: ubigeo,
+      data: payment_schedule,
+    };
+  }
+  
+  // @ApiCreatedResponse({
+  //   description: 'The record has been successfully obtain.',
+  //   type: UbigeosResponse,
+  // })
+  @ApiBadGatewayResponse({ description: 'Invalid Simulation.' })
+  @HttpCode(200)
+  @Get('/all_payments/:sale_id')
+  async AllPayments(
+    // TODO: El tipo del params, hacerlo correctamente
+    @Param() params: any,
+  ): Promise<any> {
+    const payment_schedule = await this.application.all_payments(params.sale_id);
+    return {
+      status: 200,
+      message: `Ok`,
+      data: payment_schedule,
     };
   }
 }
