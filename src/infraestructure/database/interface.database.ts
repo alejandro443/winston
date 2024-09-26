@@ -6,6 +6,9 @@ export interface IDatabaseConfigAttributes {
   port?: number | string;
   dialect?: string;
   urlDatabase?: string;
+  timezone?: any;
+  dialectOptions?: any;
+  define?: any;
   dialectModule?: any;
 }
 

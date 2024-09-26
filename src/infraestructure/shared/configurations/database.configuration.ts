@@ -13,6 +13,13 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     host: processenv.DATABASE_HOST_DEV,
     dialect: 'postgres',
     dialectModule: require('pg'),
+    timezone: '-05:00',  // Zona horaria de Perú (UTC-5)
+    dialectOptions: {
+      useUTC: false,  // Para evitar que Sequelize use UTC internamente
+    },
+    define: {
+      timestamps: true,  // Habilita createdAt, updatedAt, y deletedAt
+    },
   },
   test: {
     port: parseInt(processenv.DATABASE_PORT_TEST, 10),
@@ -22,6 +29,13 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     host: processenv.DATABASE_HOST_TEST,
     dialect: 'postgres',
     dialectModule: require('pg'),
+    timezone: '-05:00',  // Zona horaria de Perú (UTC-5)
+    dialectOptions: {
+      useUTC: false,  // Para evitar que Sequelize use UTC internamente
+    },
+    define: {
+      timestamps: true,  // Habilita createdAt, updatedAt, y deletedAt
+    },
   },
   production: {
     port: parseInt(processenv.DATABASE_PORT_PROD, 10),
@@ -31,6 +45,13 @@ export const DatabaseConfiguration: IDatabaseConfiguration = {
     host: processenv.DATABASE_HOST_PROD,
     dialect: 'postgres',
     dialectModule: require('pg'),
+    timezone: '-05:00',  // Zona horaria de Perú (UTC-5)
+    dialectOptions: {
+      useUTC: false,  // Para evitar que Sequelize use UTC internamente
+    },
+    define: {
+      timestamps: true,  // Habilita createdAt, updatedAt, y deletedAt
+    },
   },
 };
 
@@ -43,5 +64,12 @@ export default () => ({
     password: processenv.DATABASE_PASSWORD,
     dialect: 'postgres',
     dialectModule: require('pg'),
+    timezone: '-05:00',  // Zona horaria de Perú (UTC-5)
+    dialectOptions: {
+      useUTC: false,  // Para evitar que Sequelize use UTC internamente
+    },
+    define: {
+      timestamps: true,  // Habilita createdAt, updatedAt, y deletedAt
+    },
   },
 });
