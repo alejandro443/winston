@@ -71,4 +71,4 @@ jobs:
             echo "docker volume rm ServiceBackend"
             docker volume create ServiceBackend
             
-            docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ -v ServicePublicFiles:/dist/public/ service_backend_fhyona
+            docker run -itd --env-file .env --name ServiceBackend -p 5555:5555 --network=FhyonaNetwork --ip 172.18.0.4 --restart=unless-stopped --link ServiceDatabasePG -v ServiceBackend:/app/ -v ServicePublicFiles:/app/dist/public/ service_backend_fhyona
