@@ -1,3 +1,4 @@
+import { date_for_view } from '@src/core/libraries/date';
 import { SaleService } from 'src/domain/services/SaleService/SaleService';
 
 export class GetOneSaleUseCase {
@@ -31,7 +32,7 @@ export class GetOneSaleUseCase {
           voucher_number: `${data_json.serie} - ${data_json.correlative}`,
           submission_status: data_json.submission_status,
           currency: data_json.sale.currency,
-          sale_date: data_json.sale.sale_date,
+          sale_date: date_for_view(data_json.sale.sale_date),
           sold_by: data_json.sale.soldBy.user,
           seller_assigned: data_json.sale.seller.user,
           products: data_json.sale.saleDetails.map((product)=>({

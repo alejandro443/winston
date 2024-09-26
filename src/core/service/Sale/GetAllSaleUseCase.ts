@@ -1,3 +1,4 @@
+import { date_for_view } from '@src/core/libraries/date';
 import { OrderTypes } from '../../../infraestructure/shared/enums/OrderTypes';
 import { SaleService } from 'src/domain/services/SaleService/SaleService';
 
@@ -42,13 +43,13 @@ export class GetAllSaleUseCase {
           sale_id: sale.id,
           sale_crypto_uuid: sale.crypto_uuid,
           sale_paid: sale.paid,
-          sale_date: sale.sale_date,
+          sale_date: date_for_view(sale.sale_date),
           client_name: sale.client.person.name,
           client_phone: sale.client.person.main_phone,
           type_document: sale.saleDocument.type_document,
           document_serie: sale.saleDocument.serie + ' - ' + sale.saleDocument.correlative,
           asssigned_seller: sale.client.seller.user,
-          payment_last_date: sale.salePaymentSchedule.payment_last_date,
+          payment_last_date: date_for_view(sale.salePaymentSchedule.payment_last_date),
           total_sale: sale.total_sale,
           balance_paid: sale.salePaymentSchedule.total_payments,
           outstanding_balance: sale.total_sale - sale.salePaymentSchedule.total_payments,
@@ -81,8 +82,8 @@ export class GetAllSaleUseCase {
           voucher_number: `${data_json.serie} - ${data_json.correlative}`,
           submission_status: data_json.submission_status,
           currency: data_json.sale.currency,
-          sale_date: data_json.sale.sale_date,
-          issuance_date: data_json.issuance_date,
+          sale_date: date_for_view(data_json.sale.sale_date),
+          issuance_date: date_for_view(data_json.issuance_date),
           sold_by: data_json.sale.soldBy.user,
           seller_assigned: data_json.sale.seller.user,
           total_sale: data_json.sale.total_sale
