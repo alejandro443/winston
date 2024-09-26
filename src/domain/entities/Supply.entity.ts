@@ -41,6 +41,7 @@ export class Supply extends Model<Supply> {
 
   @Column({
     type: DataType.TEXT,
+    defaultValue: 'https://cdn-icons-png.flaticon.com/512/4994/4994463.png'
   })
   declare image: string;
 
