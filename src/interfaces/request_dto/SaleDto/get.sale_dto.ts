@@ -27,6 +27,13 @@ export class FiltersSalesRequestDto {
   endDate?: Date;
 
   @ApiProperty({
+    description: 'Id del vendedor asignado.',
+    type: Number,
+  })
+  @IsNumber()
+  seller_assigned?: number;
+
+  @ApiProperty({
     description: 'Estado de la cobranza.',
     type: String,
     enum: ['all', 'paid', 'pending']

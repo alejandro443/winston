@@ -45,6 +45,7 @@ export class Product extends Model<Product> {
 
   @Column({
     type: DataType.STRING,
+    defaultValue: 'https://cdn-icons-png.flaticon.com/512/1370/1370329.png'
   })
   declare image: string;
 

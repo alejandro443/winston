@@ -172,6 +172,10 @@ export class SaleRepository {
         whereConditions['$Client.type_entity$'] = { [Op.iLike]: `%${filters.client}%` };
       }
 
+      if (filters?.seller_assigned) {
+        whereConditions.seller_assigned = filters.seller_assigned;
+      }
+
       if (filters?.startDate && filters?.endDate) {
         whereConditions.sale_date = {
           [Op.between]: [filters.startDate, filters.endDate],
