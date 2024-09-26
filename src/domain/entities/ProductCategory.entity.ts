@@ -42,6 +42,7 @@ export class ProductCategory extends Model<ProductCategory> {
 
   @Column({
     type: DataType.STRING,
+    defaultValue: 'https://cdn.icon-icons.com/icons2/2406/PNG/512/tags_categories_icon_145927.png'
   })
   declare image: string;
 
