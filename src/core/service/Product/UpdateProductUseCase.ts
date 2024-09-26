@@ -23,6 +23,7 @@ export class UpdateProductUseCase {
       }
       return response;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error)
     }
   }
@@ -40,6 +41,7 @@ export class UpdateProductUseCase {
       }
       return response;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error)
     }
   }

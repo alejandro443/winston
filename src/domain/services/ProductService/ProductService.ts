@@ -12,7 +12,8 @@ export class ProductService {
     try {
       return this.repository?.findOne(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error)
     }
   }
 
@@ -20,7 +21,8 @@ export class ProductService {
     try {
       return this.repository?.findAll();
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error)
     }
   }
 
@@ -33,6 +35,7 @@ export class ProductService {
       const product_new: any = this.repository?.create(product);
       return product_new;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error)
     }
   }
@@ -42,6 +45,7 @@ export class ProductService {
       const product_update: any = await this.repository?.update(id, product);
       return product_update;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error)
     }
   }
@@ -50,7 +54,7 @@ export class ProductService {
     try {
       return this.repository?.deleted(id);
     } catch (error: any) {
-      return error;
+      throw new ProductApplicationError(error)
     }
   }
   
@@ -58,7 +62,8 @@ export class ProductService {
     try {
       return this.repository?.findAllByCategories(product_category_id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error)
     }
   }
 
@@ -114,6 +119,7 @@ export class ProductService {
 
       return {...result[0]};
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }

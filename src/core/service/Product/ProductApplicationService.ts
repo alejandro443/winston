@@ -29,7 +29,8 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.getAllUseCase?.getAllProduct();
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 
@@ -37,7 +38,8 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.getOneUseCase?.getOneProduct(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 
@@ -45,7 +47,8 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.createUseCase?.createProduct(product);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 
@@ -53,7 +56,8 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.updateUseCase?.updateProduct(id, product);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 
@@ -61,7 +65,8 @@ export class ProductApplicationService implements ProductApplication {
     try {
       return this.deleteUseCase?.deleteProduct(id);
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR');
     }
   }
 

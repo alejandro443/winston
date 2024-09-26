@@ -38,6 +38,7 @@ export class CreateProductUseCase {
         status: response.status,
       };
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error)
     }
   }

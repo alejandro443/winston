@@ -15,6 +15,7 @@ export class ProductRepository {
     try {
       return Product.findOne({ where: { id: id } });
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
@@ -23,6 +24,7 @@ export class ProductRepository {
     try {
       return Product.findAll({ where: { deleted_at: null } });
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
@@ -49,6 +51,7 @@ export class ProductRepository {
   
       return updateData
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
@@ -57,7 +60,8 @@ export class ProductRepository {
     try {
       return Product.destroy({ where: { id: id } });
     } catch (error: any) {
-      return error;
+      console.log(error)
+      throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
 
@@ -69,6 +73,7 @@ export class ProductRepository {
         raw: true
       })).map(product => product.id);
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
@@ -85,6 +90,7 @@ export class ProductRepository {
 
       return data;
     } catch (error: any) {
+      console.log(error)
       throw new ProductApplicationError(error, 'INTERNAL_SERVER_ERROR')
     }
   }
