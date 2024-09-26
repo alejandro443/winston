@@ -74,6 +74,7 @@ export class GetAllSaleUseCase {
           data_json.sale.client.person;
 
         return {
+          sale_id: data_json.sale_id,
           type_entity: data_json.sale.client.type_entity,
           client_name: client?.name || '',
           client_main_phone: client?.main_phone || '',

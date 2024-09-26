@@ -74,7 +74,7 @@ export class SaleDocumentRepository {
             where: whereConditions,
           },
         ],
-        attributes: ['issuance_date', 'type_document', 'serie', 'correlative', 'submission_status']
+        attributes: ['issuance_date', 'type_document', 'serie', 'correlative', 'submission_status', 'sale_id']
       });
       return data
     } catch (error: any) {
