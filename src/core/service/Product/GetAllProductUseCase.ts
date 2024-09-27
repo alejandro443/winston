@@ -36,7 +36,8 @@ export class GetAllProductUseCase {
 
       const response: any = await this.listPriceProductService?.getByListPrice(products_ids, list_price_id);
       return response.map((product: any) => ({
-        id: product.listPriceId,
+        id: product['product.productId'],
+        list_price_id: product.listPriceId,
         trade_name: product['product.productTradeName'],
         description: product['product.productDesc'],
         sku: product['product.productSKU'],

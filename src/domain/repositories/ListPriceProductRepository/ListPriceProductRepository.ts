@@ -68,7 +68,8 @@ export class ListPriceProductRepository {
               ['trade_name', 'productTradeName'],
               ['description', 'productDesc'],
               ['sku', 'productSKU'],
-              ['image', 'productImage']
+              ['image', 'productImage'],
+              ['id', 'productId']
             ],
             where: { to_sell: true},
             include: [
