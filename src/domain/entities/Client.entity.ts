@@ -95,7 +95,7 @@ export class Client extends Model<Client> {
   @ForeignKey(() => TypeClient)
   @Column({
     field: 'type_client_id',
-    allowNull: false,
+    allowNull: true,
   })
   declare type_client_id: number;
 

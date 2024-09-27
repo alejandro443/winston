@@ -57,18 +57,20 @@ export class ClientDto {
   @IsOptional()
   declare entity_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Id del tipo de cliente',
     type: Number,
   })
   @IsNumber()
+  @IsOptional()
   declare type_client_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Id del tipo de canal de entrada',
     type: Number,
   })
   @IsNumber()
+  @IsOptional()
   declare type_channel_id?: number;
 
   @IsOptional()
@@ -172,14 +174,15 @@ export class ClientDto {
   @IsOptional()
   declare zone_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Id de la lista de precio a la que va a pertenecer el cliente.',
     type: Number,
   })
   @IsNumber()
+  @IsOptional()
   declare list_price_id?: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Id del Vendedor',
     type: Number,
   })
