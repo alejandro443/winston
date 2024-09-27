@@ -81,7 +81,23 @@ export class SearchByDocumentUseCase {
           name: result.data.nombre,
           main_identification: result.data.numeroDocumento,
           condition: result.data.condicion,
-          status: result.data.estado
+          status: result.data.estado,
+          main_direction: result.data.direccion,
+          tipoDocumento: result.data.tipoDocumento,
+          ubigeo: result.data.ubigeo,
+          viaTipo: result.data.viaTipo,
+          viaNombre: result.data.viaNombre,
+          zonaCodigo: result.data.zonaCodigo,
+          zonaTipo: result.data.zonaTipo,
+          numero: result.data.numero,
+          interior: result.data.interior,
+          lote: result.data.lote,
+          dpto: result.data.dpto,
+          manzana: result.data.manzana,
+          kilometro: result.data.kilometro,
+          distrito: result.data.distrito,
+          provincia: result.data.provincia,
+          departamento: result.data.departamento
         }
       }
 

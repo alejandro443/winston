@@ -1,10 +1,7 @@
-import { OmitType, PartialType, getSchemaPath } from '@nestjs/swagger';
 import {
   ApiProperty,
-  ApiPropertyOptional,
-  ApiResponseProperty,
 } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString, ValidateIf } from 'class-validator';
+import { IsString, ValidateIf } from 'class-validator';
 
 export class SearchByDocumentDto {
   @ApiProperty({

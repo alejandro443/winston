@@ -1,6 +1,6 @@
 import { OmitType, PartialType } from '@nestjs/swagger';
 import { ApiProperty, ApiPropertyOptional, ApiResponseProperty } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDateString, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class CompanyDto {
   @ApiResponseProperty()
@@ -168,6 +168,14 @@ export class CompanyDto {
   })
   @IsArray()
   declare emails: [];
+
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Ubigeo de la compañia.',
+    type: Object,
+  })
+  @IsObject()
+  ubigeo?: object;
 
   @IsOptional()
   @ApiPropertyOptional({
