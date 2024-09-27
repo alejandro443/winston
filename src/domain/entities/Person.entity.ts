@@ -36,6 +36,11 @@ export class Person extends Model<Person> {
     type: DataType.STRING,
   })
   declare name: string;
+ 
+  @Column({
+    type: DataType.STRING,
+  })
+  declare trade_name: string;
 
   @Column({
     type: DataType.STRING,

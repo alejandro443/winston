@@ -45,6 +45,11 @@ export class Company extends Model<Company> {
   @Column({
     type: DataType.STRING,
   })
+  declare trade_name: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
   declare main_phone: string;
 
   @Column({
