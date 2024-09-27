@@ -60,6 +60,11 @@ export class QuotaPayment extends Model<QuotaPayment> {
   })
   declare voucher_image: String;
 
+  @Column({
+    type: DataType.STRING,
+  })
+  declare observation: string;
+
   @ForeignKey(() => PaymentSchedule)
   @Column({
     field: 'payment_schedule_id',

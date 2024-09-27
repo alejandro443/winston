@@ -55,6 +55,11 @@ export class SalesPayment extends Model<SalesPayment> {
   })
   declare payment_date: Date;
 
+  @Column({
+    type: DataType.STRING,
+  })
+  declare observation: string;
+
   @ForeignKey(() => Sale)
   @Column({
     field: 'sale_id',

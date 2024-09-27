@@ -54,6 +54,7 @@ export class QuotaPaymentDto {
     type: String,
   })
   @IsString()
+  @IsOptional()
   bank_name: string;
 
   @ApiProperty({
@@ -62,6 +63,14 @@ export class QuotaPaymentDto {
   })
   @IsDateString()
   payment_date: Date;
+
+  @ApiProperty({
+    description: 'Observación del pago.',
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  observation: string;
 
   @ApiPropertyOptional({
     description: 'Imagen del voucher del pago.',

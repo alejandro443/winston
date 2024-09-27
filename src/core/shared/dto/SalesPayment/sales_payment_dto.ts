@@ -46,6 +46,14 @@ export class SalesPaymentDto {
   bank_name: string;
 
   @ApiProperty({
+    description: 'Observación del pago.',
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  observation: string;
+
+  @ApiProperty({
     description: 'Fecha de pago',
     type: Date,
   })
