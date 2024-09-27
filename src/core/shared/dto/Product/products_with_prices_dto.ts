@@ -11,6 +11,12 @@ export class ProductsWithPricesDto extends PickType(ProductDto, ['id', 'name', '
   declare product_brand_name?: string;
 
   @ApiProperty({
+    description: 'Id de la lista de precio.',
+    type: Number,
+  })
+  list_price_id?: number;
+
+  @ApiProperty({
     description: 'Precio unitario.',
     type: Number,
   })
