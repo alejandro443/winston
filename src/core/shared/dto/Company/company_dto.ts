@@ -33,6 +33,13 @@ export class CompanyDto {
   @IsString()
   declare name: string;
   
+  @ApiProperty({
+    description: 'Nombre comercial de la compañia.',
+    type: String,
+  })
+  @IsString()
+  declare trade_name: string;
+  
   
   @IsOptional()
   @ApiPropertyOptional({

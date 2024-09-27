@@ -23,6 +23,13 @@ export class PersonDto {
   name?: string;
 
   @ApiProperty({
+    description: 'Nombre comercial de la persona.',
+    type: String,
+  })
+  @IsString()
+  declare trade_name: string;
+
+  @ApiProperty({
     description: 'Apellido de la persona',
     type: String,
   })
