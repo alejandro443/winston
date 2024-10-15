@@ -7,6 +7,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { InterfacesModule } from './interfaces/interfaces.module';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, cache: true }),
@@ -17,6 +18,7 @@ import { InterfacesModule } from './interfaces/interfaces.module';
       }
     ),
     // InfraestructureModule,
+ 
     SharedModule,
     CoreModule.register({
       modules: [InfraestructureModule, InterfacesModule],

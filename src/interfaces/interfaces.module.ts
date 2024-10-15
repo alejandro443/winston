@@ -50,8 +50,14 @@ import { ListPriceController } from './controllers/list_price_controller';
 import { PaymentScheduleController } from './controllers/payment_schedule_controller';
 import { QuotaPaymentController } from './controllers/quota_payment_controller';
 
+import { LoggerModule } from '@src/infraestructure/shared/logger_config/logger.module';
+import { uUserController } from './controllers/UserController';
+
+
+
 @Module({
   imports: [
+    LoggerModule,   //importamos para todo los controllers
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
@@ -106,7 +112,8 @@ import { QuotaPaymentController } from './controllers/quota_payment_controller';
     PointSaleUserController,
     ListPriceController,
     PaymentScheduleController,
-    QuotaPaymentController
+    QuotaPaymentController,
+    uUserController,
   ],
 })
 export class InterfacesModule {}

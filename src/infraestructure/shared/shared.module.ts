@@ -4,6 +4,7 @@ import ServerConfiguration from './configurations/server.configuration';
 import DatabaseConfiguration from './configurations/database.configuration';
 import { Log } from './log/Log';
 import { Logger } from './log/Logger';
+import { LoggerModule } from './logger_config/logger.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { Logger } from './log/Logger';
     }),
     Log,
     Logger,
+    LoggerModule,
   ],
 })
 export class SharedModule {}

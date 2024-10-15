@@ -4,9 +4,14 @@ import { GenerateSwaggerDocs } from './infraestructure/shared/swagger/generate-s
 import { ValidationPipe } from '@nestjs/common';
 import { ApplicationCreatorFilter } from './interfaces/exception_filters/application.exception_filter';
 import * as bodyParser from 'body-parser';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+
+    // Configura Winston como el logger global
+    app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
   app.use(bodyParser.json());
   // app.useGlobalPipes(
   //   new ValidationPipe({
